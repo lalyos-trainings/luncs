@@ -1,7 +1,6 @@
 package com.epam.training;
 
 import com.epam.training.service.InMemoryRestaurantRepository;
-import com.epam.training.service.MenuLister;
 import com.epam.training.service.RestaurantRepository;
 import com.epam.training.service.SysoutMenuLister;
 
@@ -16,6 +15,8 @@ public class App {
         lister.setRepo(repo);
         
         lister.doList();
+        
+        
     }
 
 }
