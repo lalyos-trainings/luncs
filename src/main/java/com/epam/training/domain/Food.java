@@ -4,6 +4,12 @@ public class Food {
     private String name;
     private String description;
     private int price;
+
+    public Food(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+    
     public String getName() {
         return name;
     }
