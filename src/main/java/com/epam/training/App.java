@@ -1,8 +1,10 @@
 package com.epam.training;
 
+import java.io.PrintWriter;
+
 import com.epam.training.service.InMemoryRestaurantRepository;
-import com.epam.training.service.LoggerMenuLister;
 import com.epam.training.service.MenuLister;
+import com.epam.training.service.PrintWriterMenuLister;
 
 public class App {
 
@@ -12,7 +14,7 @@ public class App {
     public static void main(String[] args) {
       
         //MenuLister lister = new SystemOutMenuLister();
-        MenuLister lister = new LoggerMenuLister(); 
+        MenuLister lister = new PrintWriterMenuLister(new PrintWriter(System.out,true)); 
         
         lister.setRestaurantRepository(new InMemoryRestaurantRepository());
         lister.doList();
