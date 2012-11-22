@@ -1,6 +1,7 @@
 package com.epam.training.domain;
 
 public class Address {
+
     private String street;
     private String city;
     private String zip;
@@ -37,8 +38,9 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
-    
+
     public String toString() {
         return String.format("(%4s) %-12s%-30s  [%s]", zip, city, street,country);
     }
+
 }

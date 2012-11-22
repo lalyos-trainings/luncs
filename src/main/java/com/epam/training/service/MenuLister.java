@@ -1,7 +1,8 @@
 package com.epam.training.service;
 
-public interface MenuLister {
 
-    public void doList();
-
+public interface MenuLister 
+{
+	void setRestaurantRepository(RestaurantRepository rp);
+	void doList();
 }

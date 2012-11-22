@@ -1,6 +1,7 @@
 package com.epam.training.domain;
 
 public class Food {
+
     private String name;
     private String description;
     private int price;
@@ -31,8 +32,10 @@ public class Food {
         this.price = price;
     }
     
+
     public String toString(){
         return  String.format("Food: %-15s [%5d]", name, price);
     }
     
+
 }

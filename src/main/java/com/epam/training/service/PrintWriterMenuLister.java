@@ -9,14 +9,14 @@ import com.epam.training.domain.Restaurant;
 public class PrintWriterMenuLister implements MenuLister {
 
     private PrintWriter writer;
-    private RestaurantRepository repo;
+    private RestaurantRepository restaurantRepository;
     
     public PrintWriterMenuLister(PrintWriter writer) {
         this.writer = writer;
     }
     
     public void doList() {
-        for (Restaurant restaurant : repo.getAllRestaurants()) {
+        for (Restaurant restaurant : restaurantRepository.getAllRestaurants()) {
             writer.println("=== next resti: " + restaurant + "\n===");
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
@@ -28,11 +28,11 @@ public class PrintWriterMenuLister implements MenuLister {
     }
 
     public RestaurantRepository getRepo() {
-        return repo;
+        return restaurantRepository;
     }
 
-    public void setRepo(RestaurantRepository repo) {
-        this.repo = repo;
+    public void setRestaurantRepository(RestaurantRepository restaurantRepository) {
+        this.restaurantRepository = restaurantRepository;
     }
 
 

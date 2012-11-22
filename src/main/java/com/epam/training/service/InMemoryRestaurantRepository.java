@@ -14,8 +14,8 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     
     public InMemoryRestaurantRepository() {
-        addRestaurant(createResti1());
-        addRestaurant(createResti2());        
+        //addRestaurant(createResti1());
+        //addRestaurant(createResti2());        
     }
         
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
@@ -59,4 +59,5 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
     }
+
 }
