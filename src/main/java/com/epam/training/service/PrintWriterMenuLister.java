@@ -23,7 +23,8 @@ public class PrintWriterMenuLister implements MenuLister {
                 writer.println("  " + food.getName());
             }
         }
-
+        
+        writer.flush();
     }
 
     public RestaurantRepository getRepo() {
