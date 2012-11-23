@@ -13,10 +13,9 @@ public class App {
         RestaurantRepository repo = new InMemoryRestaurantRepository();
         SysoutMenuLister lister = new SysoutMenuLister();
         lister.setRepo(repo);
-        
+
         lister.doList();
-        
-        
+
     }
 
 }
