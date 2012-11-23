@@ -9,7 +9,7 @@
 
 	<bean id="csing-csang" c:name="csing-csang" c:zip="1085" c:street="Piac sarka" class="com.epam.training.domain.Restaurant" >
 		<property name="menu">
-			<bean class="com.epam.training.domain.Menu">
+			<bean class="com.epam.training.domain.Menu" id="menu1">
 				<property name="foods">
 					<util:list>
 						<bean p:name="ciposz cirke" p:price="450" class="com.epam.training.domain.Food" />
