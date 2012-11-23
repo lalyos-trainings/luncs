@@ -12,6 +12,7 @@ import com.epam.training.domain.Restaurant;
 public class InMemoryRestaurantRepository implements RestaurantRepository {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    private Map<Integer, Food> foodMap = new HashMap<Integer, Food>();
     
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
@@ -20,15 +21,21 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
-        Set<String> keySet = restaurantMap.keySet();
-        for (String key : keySet) {
-            System.out.println("next repo key:" + key);
-            
+        for (Restaurant restaurant : restaurantMap.values()) {
+            registerFoods(restaurant);
         }
+    }
+
+    private void registerFoods(Restaurant restaurant) {
+        for (Food food : restaurant.getMenu().getFoods()) {
+            foodMap.put(food.getId(), food);
+        }
+        
     }
 
     private void addRestaurant(Restaurant restaurant) {
         restaurantMap.put(restaurant.getName(), restaurant);
+        registerFoods(restaurant);
     }
 
     private Restaurant createResti1() {
@@ -58,5 +65,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
      */
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
+    }
+
+    public Food findFoodById(Integer foodId) {
+        return foodMap.get(foodId);
     }
 }
