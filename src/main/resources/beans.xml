@@ -19,45 +19,4 @@
 		</property>
 	</bean>
 
-	<bean id="kfc" class="com.epam.training.domain.Restaurant">
-		<constructor-arg value="KFC"></constructor-arg>
-		<constructor-arg value="Corvin"></constructor-arg>
-		<constructor-arg value="1082"></constructor-arg>
-		<property name="menu" ref="kfc-menu"></property>
-	</bean>
-	
-	<bean id="meki" class="com.epam.training.domain.Restaurant">
-		<constructor-arg value="mcdonalds"></constructor-arg>
-		<constructor-arg value="Oktogon"></constructor-arg>
-		<constructor-arg value="1082"></constructor-arg>
-		<property name="menu" ref="meki-menu"></property>
-	</bean>
-
-	<bean id="kfc-menu" class="com.epam.training.domain.Menu">
-		<property name="foods">
-			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="csirkeszar"
-					p:price="500" />
-				<bean class="com.epam.training.domain.Food" p:name="csirkelab"
-					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="libamaj"
-					p:price="1500" />
-			</util:list>
-		</property>
-	</bean>
-	
-	<bean id="meki-menu" class="com.epam.training.domain.Menu">
-		<property name="foods">
-			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="sajtos burger"
-					p:price="500" />
-				<bean class="com.epam.training.domain.Food" p:name="csirke burger"
-					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="sajtos csirke burger"
-					p:price="600" />
-			</util:list>
-		</property>
-	</bean>
-
-
 </beans>
