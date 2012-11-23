@@ -13,6 +13,7 @@ public class PrintWriterMenuLister implements MenuLister {
     
     public PrintWriterMenuLister(PrintWriter writer) {
         this.writer = writer;
+        writer.println("nna");
     }
     
     public void doList() {

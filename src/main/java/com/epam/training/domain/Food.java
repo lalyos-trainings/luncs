@@ -4,6 +4,8 @@ public class Food {
     private String name;
     private String description;
     private int price;
+    
+    public Food() {}
 
     public Food(String name, int price) {
         this.name = name;

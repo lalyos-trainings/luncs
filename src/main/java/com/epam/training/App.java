@@ -1,8 +1,10 @@
 package com.epam.training;
 
-import com.epam.training.service.InMemoryRestaurantRepository;
-import com.epam.training.service.RestaurantRepository;
-import com.epam.training.service.SysoutMenuLister;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.core.io.ClassPathResource;
+
+import com.epam.training.service.MenuLister;
 
 public class App {
 
@@ -11,12 +13,17 @@ public class App {
      */
     public static void main(String[] args) {
         
-        RestaurantRepository repo = new InMemoryRestaurantRepository();
-        SysoutMenuLister lister = new SysoutMenuLister();
-        lister.setRepo(repo);
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        
+        reader.loadBeanDefinitions(new ClassPathResource("beans.xml"));
+
+        MenuLister lister = factory.getBean(MenuLister.class);
         
         lister.doList();
-        
+
+
     }
 
 }
