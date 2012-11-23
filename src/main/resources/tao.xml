@@ -12,9 +12,9 @@
         <bean class="com.epam.training.domain.Menu">
             <property name="foods">
                 <util:list>
-                    <bean p:name="Edes-savanyu leves" p:price="450" class="com.epam.training.domain.Food" />
-                    <bean p:name="Ananaszos csirke" p:price="750" class="com.epam.training.domain.Food" />
-                    <bean p:name="Sult ananasz" p:price="150" class="com.epam.training.domain.Food" />
+                    <bean p:ID="21" p:name="Edes-savanyu leves" p:price="450" class="com.epam.training.domain.Food" />
+                    <bean p:ID="22" p:name="Ananaszos csirke" p:price="750" class="com.epam.training.domain.Food" />
+                    <bean p:ID="23" p:name="Sult ananasz" p:price="150" class="com.epam.training.domain.Food" />
                 </util:list>
             </property>
         </bean>

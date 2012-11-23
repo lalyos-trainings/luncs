@@ -1,5 +1,6 @@
 package com.epam.training.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -14,6 +15,10 @@ public class Order {
         billingAddress = billaddress;
         deliveryAddress = deliveryaddress;
         orderItems = items;
+    }
+
+    public Order() {
+        orderItems = new ArrayList<OrderItem>();
     }
 
     public String getCustomer() {

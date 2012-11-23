@@ -3,7 +3,10 @@ package com.epam.training;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.epam.training.domain.Address;
+import com.epam.training.domain.ShoppingCart;
 import com.epam.training.service.MenuLister;
+import com.epam.training.service.OrderService;
 
 public class App {
 
@@ -34,8 +37,19 @@ public class App {
          * RestaurantRepository.class);
          */
         MenuLister lister = ctx.getBean(MenuLister.class);
-
         lister.doList();
-    }
 
+        OrderService orderservice = ctx.getBean(OrderService.class);
+        ShoppingCart cart = ctx.getBean(ShoppingCart.class);
+
+        cart.setOrderservice(orderservice);
+        cart.addFood(1, 1);
+        cart.addFood(2, 2);
+        cart.setCustomer("Jozsi");
+        cart.setDeliveryAddress(new Address("Lonyay 24", "Budapest", "1093", "Hungary"));
+        cart.checkout();
+
+        lister.printOrders(orderservice.getAllOrders());
+
+    }
 }

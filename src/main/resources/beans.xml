@@ -9,11 +9,14 @@
 		default-autowire="byType" default-autowire-candidates="false">
 
 	<bean class="com.epam.training.service.SysoutMenuLister" />
-
+    
 	<bean id="regirepo" class="com.epam.training.service.InMemoryRestaurantRepository" />
 	<bean id="regirepo1" class="com.epam.training.service.InMemoryRestaurantRepository" />
 	<bean id="regirepo2" class="com.epam.training.service.InMemoryRestaurantRepository" />
 	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
+	
+	<bean p:repo-ref="repo" class="com.epam.training.domain.ShoppingCart"/>
+    <bean class="com.epam.training.service.InMemoryOrderService"/>
 
 </beans>
 
