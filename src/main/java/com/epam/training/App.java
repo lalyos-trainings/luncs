@@ -1,8 +1,9 @@
 package com.epam.training;
 
-import com.epam.training.service.InMemoryRestaurantRepository;
-import com.epam.training.service.RestaurantRepository;
-import com.epam.training.service.SysoutMenuLister;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.FileSystemResource;
+
+import com.epam.training.service.MenuLister;
 
 public class App {
 
@@ -10,12 +11,10 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        RestaurantRepository repo = new InMemoryRestaurantRepository();
-        SysoutMenuLister lister = new SysoutMenuLister();
-        lister.setRepo(repo);
+        XmlBeanFactory factory = new XmlBeanFactory(new FileSystemResource("src/main/resources/beans.xml"));
+        MenuLister lister = factory.getBean(MenuLister.class);
         
         lister.doList();
-        
         
     }
 
