@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+
+<bean id="kfc" class="com.epam.training.domain.Restaurant">
+	<constructor-arg value="KFC"></constructor-arg>
+	<constructor-arg value="Corvin"></constructor-arg>
+	<constructor-arg value="1082"></constructor-arg>
+	<property name="menu">
+		<bean id="kfcMenu" class="com.epam.training.domain.Menu">
+			<property name="foods">
+				<util:list>
+					<bean p:name="csirkeszarny" p:price="750"
+						class="com.epam.training.domain.Food" />
+					<bean p:name="csirkelab" p:price="450"
+						class="com.epam.training.domain.Food" />
+					<bean p:name="libamaj" p:price="1550" 
+						class="com.epam.training.domain.Food" />
+				</util:list>
+			</property>
+		</bean>
+	</property>
+</bean>
+
+
+
+</beans>

@@ -37,4 +37,10 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    public String toString () {
+        return String.format("%4s %20s %20s [%s]", zip, city, street, country);
+    }
+    
+    
 }
