@@ -24,6 +24,7 @@ public class PrintWriterMenuLister implements MenuLister {
             }
         }
 
+        writer.flush();
     }
 
     public RestaurantRepository getRepo() {
