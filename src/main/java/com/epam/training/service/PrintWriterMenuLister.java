@@ -21,11 +21,11 @@ public class PrintWriterMenuLister implements MenuLister {
 
     public void doList() {
         for (Restaurant restaurant : repo.getAllRestaurants()) {
-            printWriter.println("=== next resti: " + restaurant.getName());
+            printWriter.println(restaurant);
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                String format = String.format("Food %-15s [%5d HUF]", food.getName(), food.getPrice());
-                printWriter.println(format);
+               
+                printWriter.println(food);
             }
             
         }
