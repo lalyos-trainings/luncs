@@ -16,4 +16,7 @@ public class OrderItem {
         this.food = food;
     }
 
+    public String toString(){
+        return String.format("%s, quantity: %d", this.getFood(),this.getQuantity());
+    }
 }

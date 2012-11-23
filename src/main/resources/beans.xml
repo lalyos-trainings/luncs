@@ -12,6 +12,16 @@
 	
 	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" scope="singleton"/>
 	<bean id="repo1" class="com.epam.training.service.InMemoryRestaurantRepository"/>
-	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>	
+	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>
+		
+	<bean id="orderService" class="com.epam.training.service.InMemoryOrderService" scope="singleton"/>
+	<bean id="shoppingCart1" class="com.epam.training.service.InMemoryShoppingCart"
+		c:order-ref="order1" c:repo-ref="repo" p:orderService-ref="orderService">
+		<property name="customer" value="#{order1.customer}"/>				
+		<property name="deliveryAddress" value="#{order1.deliveryAddress}"/>
+		<property name="billingAddress" value="#{order1.billingAddress}"/>		
+	</bean>
+	
+	
 	
 </beans>

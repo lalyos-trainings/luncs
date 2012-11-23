@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<bean id="order1" class="com.epam.training.domain.Order">
+		<property name="customer" value="Tunde" />
+		<property name="billingAddress">
+			<bean class="com.epam.training.domain.Address"></bean>
+		</property>
+		<property name="deliveryAddress">
+			<bean class="com.epam.training.domain.Address"></bean>
+		</property>
+		<property name="orderItems">
+			<util:list>
+				<bean id="orderItem1" class="com.epam.training.domain.OrderItem"
+					p:quantity="1">
+					<property name="food">
+						<bean class="com.epam.training.domain.Food" p:id="1"
+							p:name="csirkeszarny" p:price="750" />
+					</property>
+				</bean>
+
+				<bean id="orderItem2" class="com.epam.training.domain.OrderItem"
+					p:quantity="1">
+					<property name="food">
+						<bean class="com.epam.training.domain.Food" p:id="2" p:name="csirkelab"
+							p:price="450" />
+					</property>
+				</bean>
+			</util:list>
+		</property>
+	</bean>
+
+	
+</beans>
