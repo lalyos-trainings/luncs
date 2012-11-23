@@ -1,8 +1,11 @@
 package com.epam.training.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import com.epam.training.domain.Food;
 import com.epam.training.domain.Menu;
@@ -47,15 +50,21 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         return r1;
     }
 
-    /* (non-Javadoc)
-     * @see com.epam.training.service.RestaurantRepository#getAllRestaurants()
-     */
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
     }
 
     public Food getFoodById(int id) {
-        // TODO Auto-generated method stub
-        return null;
+        Set<String> restaurants= restaurantMap.keySet();
+        Iterator<String> iter = restaurants.iterator();
+        while (iter.hasNext()) {
+          Restaurant restaurant = restaurantMap.get(iter.next());
+          Collection<Food> foods = restaurant.getMenu().getFoods();
+          for (Food food : foods) {
+              if(food.getId() == id)
+                  return food;
+              }          
+        }        
+        return null;        
     }
 }
