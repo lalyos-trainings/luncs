@@ -5,18 +5,12 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" default-autowire="byName">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" default-autowire="byName" default-autowire-candidates="false">
 
 	<bean class="com.epam.training.service.SysoutMenuLister">
 	</bean>
 
-    <bean id="regiRepo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="false"/>
-    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository">
-        <property name="restaurantMap">
-            <util:map>
-                <entry key="Kfc" value-ref="kfcResti"></entry>
-                <entry key="ChinChung" value-ref="ChinChung"></entry>
-            </util:map>
-        </property>
+    <bean id="regiRepo" class="com.epam.training.service.InMemoryRestaurantRepository"/>
+    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true">
     </bean>
 </beans>
