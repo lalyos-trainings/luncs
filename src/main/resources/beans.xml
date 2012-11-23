@@ -5,15 +5,14 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" 
+		default-autowire="byType" default-autowire-candidates="false" >
 
-    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" />
+    <bean class="com.epam.training.service.SysoutMenuLister" />
     
-    <bean class="com.epam.training.service.SysoutMenuLister" >
-        <property name="repo" ref="singliRepo"  />
-    </bean>
+    <bean id="crepo" class="com.epam.training.service.InMemoryRestaurantRepository" />
     
-    <bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository" >
+    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" >
         <property name="restaurantMap">
             <util:map>
                 <entry key="kfc" value-ref="kfc" />
@@ -21,35 +20,4 @@
             </util:map>
         </property>
     </bean>
-    
-    <bean id="kfc" class="com.epam.training.domain.Restaurant" c:name="KFC" c:street="Corvin" c:zip="1082" >
-        <property name="menu">
-		    <bean id="kfcMenu" class="com.epam.training.domain.Menu" >
-		        <property name="foods" >
-		            <util:list>
-		                <bean class="com.epam.training.domain.Food" p:name="csirkeszarny" p:price="750" />
-		                <bean class="com.epam.training.domain.Food" p:name="csirkelab" p:price="450" />
-		                <bean class="com.epam.training.domain.Food" p:name="libamaj" p:price="1550" />
-		            </util:list>
-		        </property>
-		    </bean>
-        </property>
-    </bean>
-
-    <bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="Ching-Chung" c:street="Práter utca" c:zip="1082" >
-        <property name="menu">
-            <bean class="com.epam.training.domain.Menu" >
-                <property name="foods" >
-                    <util:list>
-                        <bean class="com.epam.training.domain.Food" p:name="ciposcirke" p:price="500" />
-                        <bean class="com.epam.training.domain.Food" p:name="edeszszavanu" p:price="350" />
-                        <bean class="com.epam.training.domain.Food" p:name="pekingi kacsa" p:price="1000" />
-                        <bean class="com.epam.training.domain.Food" p:name="macka husz" p:price="300" />
-                    </util:list>
-                </property>
-            </bean>
-        </property>
-    </bean>
-    
-    
 </beans>

@@ -1,7 +1,7 @@
 package com.epam.training;
 
-import org.springframework.beans.factory.xml.XmlBeanFactory;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.epam.training.service.MenuLister;
 
@@ -12,9 +12,9 @@ public class App {
      */
     public static void main(String[] args) 
     {
-        XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
         
-        MenuLister lister = factory.getBean(MenuLister.class);
+        MenuLister lister = context.getBean(MenuLister.class);
         
         lister.doList();
         
