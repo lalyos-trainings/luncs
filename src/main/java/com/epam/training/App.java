@@ -1,10 +1,10 @@
 package com.epam.training;
 
-import java.io.PrintWriter;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 
-import com.epam.training.service.InMemoryRestaurantRepository;
 import com.epam.training.service.MenuLister;
-import com.epam.training.service.PrintWriterMenuLister;
+
 
 public class App {
 
@@ -13,12 +13,12 @@ public class App {
      */
     public static void main(String[] args) {
       
-        //MenuLister lister = new SystemOutMenuLister();
-        MenuLister lister = new PrintWriterMenuLister(new PrintWriter(System.out,true)); 
+        XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
         
-        lister.setRestaurantRepository(new InMemoryRestaurantRepository());
+        MenuLister lister = factory.getBean(MenuLister.class);
+        
         lister.doList();
-
+        
     }
 
 }
