@@ -13,6 +13,7 @@ public class App {
      */
     public static void main(String[] args) {
       
+        @SuppressWarnings("deprecation")
         XmlBeanFactory factory = new XmlBeanFactory(new ClassPathResource("beans.xml"));
         
         MenuLister lister = factory.getBean(MenuLister.class);
