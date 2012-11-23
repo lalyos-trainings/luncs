@@ -9,5 +9,9 @@
 	<bean class="com.epam.training.service.SysoutMenuLister" />
 
 	<bean id="singlirepo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true"/>
+	
+	<bean id="shopingcart" class="com.epam.training.service.ShoppingCart" scope="prototype" />
+	
+	<bean id="orderservice" class="com.epam.training.service.InMemoryOrderService" scope="singleton" />
 
 </beans>

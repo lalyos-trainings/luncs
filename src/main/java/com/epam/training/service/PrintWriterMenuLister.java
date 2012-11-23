@@ -1,9 +1,7 @@
 package com.epam.training.service;
 
 import java.io.PrintWriter;
-import java.util.Collection;
 
-import com.epam.training.domain.Food;
 import com.epam.training.domain.Restaurant;
 
 public class PrintWriterMenuLister implements MenuLister {
@@ -17,13 +15,8 @@ public class PrintWriterMenuLister implements MenuLister {
     
     public void doList() {
         for (Restaurant restaurant : repo.getAllRestaurants()) {
-            writer.println("=== next resti: " + restaurant.getName());
-            Collection<Food> foods = restaurant.getMenu().getFoods();
-            for (Food food : foods) {
-                writer.println("  " + food.getName());
-            }
+            writer.println("=== next resti: " + restaurant);
         }
-
     }
 
     public RestaurantRepository getRepo() {

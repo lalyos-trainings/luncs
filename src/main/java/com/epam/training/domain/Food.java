@@ -1,11 +1,23 @@
 package com.epam.training.domain;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Food {
+    int id;
+
     private String name;
     private String description;
     private int price;
     
-    public Food() {}
+    static AtomicInteger ID = new AtomicInteger(0);
+    
+    public int getId() {
+        return id;
+    }
+    
+    public Food() {
+        id = ID.incrementAndGet();
+    } 
 
     public Food(String name, int price) {
         this.name = name;
@@ -29,6 +41,11 @@ public class Food {
     }
     public void setPrice(int price) {
         this.price = price;
+    }
+    
+    @Override
+    public String toString() {
+        return String.format("(%d) name: %-20s, price: %-5d", id, name, price);
     }
     
 }

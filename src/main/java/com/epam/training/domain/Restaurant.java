@@ -28,4 +28,8 @@ public class Restaurant {
         this.menu = menu;
     }
     
+    public String toString() {
+        return String.format("name: %s,  address: %s, menu: %s", name, address, menu);
+    }
+    
 }

@@ -6,6 +6,8 @@ public class Address {
     private String zip;
     private String country;
     
+    public Address() {}
+    
     public Address(String street, String city, String zip, String country) {
         this.street = street;
         this.city = city;
@@ -36,5 +38,9 @@ public class Address {
     }
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public String toString() {
+        return String.format("street: %s,  city: %s, zip: %s, country: %s", street, city, zip, country);
     }
 }
