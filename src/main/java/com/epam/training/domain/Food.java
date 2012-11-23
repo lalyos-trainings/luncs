@@ -31,4 +31,8 @@ public class Food {
         this.price = price;
     }
     
+    public String toString(){
+        return  String.format("Food: %-15s [%5d]", name, price);
+    }
+    
 }
