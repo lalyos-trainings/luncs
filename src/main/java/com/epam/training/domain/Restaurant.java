@@ -28,4 +28,8 @@ public class Restaurant {
         this.menu = menu;
     }
     
+    @Override
+    public String toString() {
+        return String.format("%-10s %s", getName(), address.toString());
+    }
 }

@@ -30,5 +30,10 @@ public class Food {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-15s %5d", getName(), getPrice());
+    }
     
 }

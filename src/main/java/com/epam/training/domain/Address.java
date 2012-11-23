@@ -37,4 +37,9 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+    
+    @Override
+    public String toString() {
+        return String.format("(%-10s %10s %5s)", street, city, zip);
+    }
 }
