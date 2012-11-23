@@ -3,26 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" 
+		default-autowire="byType" default-autowire-candidates="false">
 
 
-	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" />
-	<bean class="com.epam.training.service.SystemOutMenuLister">
-		<property name="repo" ref="singliRepo"></property>
-	</bean>
-
-	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository">
-		<property name="restaurantMap">
-			<util:map>
-				<entry key="kfc" value-ref="kfc"></entry>
-				<entry key="chingChung" value-ref="chingChung"></entry>
-			</util:map>
-		</property>
-	</bean>
-
+	<bean class="com.epam.training.service.SystemOutMenuLister"/>
 	
-
-
-
-
+	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository"/>
+	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>	
+	
 </beans>
