@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
@@ -20,12 +21,7 @@
         </property>
     </bean>
     
-    <bean id="kfc" class="com.epam.training.domain.Restaurant" >
-        <constructor-arg value="KFC" ></constructor-arg>
-        <constructor-arg value="Corvin" ></constructor-arg>
-        <constructor-arg value="1082" ></constructor-arg>
-        <property name="menu" ref="kfcMenu" />
-    </bean>
+    <bean id="kfc" class="com.epam.training.domain.Restaurant" c:name="KFC" c:street="Corvin" c:zip="1082" />
     
     <bean id="kfcMenu" class="com.epam.training.domain.Menu" >
         <property name="foods" >
