@@ -10,7 +10,7 @@
 
     <bean class="com.epam.training.service.SysoutMenuLister" />
     
-    <bean id="crepo" class="com.epam.training.service.InMemoryRestaurantRepository" />
+    <bean id="crepo" class="com.epam.training.service.InMemoryRestaurantRepository" scope="singleton" />
     
     <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
 </beans>
