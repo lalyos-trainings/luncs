@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+    <bean id="ChinChung" class="com.epam.training.domain.Restaurant" c:name="ChinChung" c:zip="1085" c:street="Piac sarka">
+        <property name="menu" ref="ChinChungMenu" />
+    </bean>
+
+    <bean id="ChinChungMenu" class="com.epam.training.domain.Menu">
+        <property name="foods">
+            <util:list>
+                <bean class="com.epam.training.domain.Food" p:name="Csiposz Csirke"
+                    p:price="750" />
+                <bean class="com.epam.training.domain.Food" p:name="Edesz-savanyu levesz"
+                    p:price="250" />
+                <bean class="com.epam.training.domain.Food" p:name="Mackahusz"
+                    p:price="1020" />
+            </util:list>
+        </property>
+    </bean>
+</beans>
