@@ -12,12 +12,5 @@
     
     <bean id="crepo" class="com.epam.training.service.InMemoryRestaurantRepository" />
     
-    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" >
-        <property name="restaurantMap">
-            <util:map>
-                <entry key="kfc" value-ref="kfc" />
-                <entry key="chingChung" value-ref="chingChung" />
-            </util:map>
-        </property>
-    </bean>
+    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
 </beans>

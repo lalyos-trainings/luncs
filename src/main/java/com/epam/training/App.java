@@ -17,7 +17,6 @@ public class App {
         MenuLister lister = context.getBean(MenuLister.class);
         
         lister.doList();
-        
     }
 
 }
