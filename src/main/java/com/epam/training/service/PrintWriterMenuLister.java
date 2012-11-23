@@ -24,7 +24,8 @@ public class PrintWriterMenuLister implements MenuLister {
             printWriter.println("=== next resti: " + restaurant.getName());
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                printWriter.println("  " + food.getName());
+                String format = String.format("Food %-15s [%5d HUF]", food.getName(), food.getPrice());
+                printWriter.println(format);
             }
             
         }

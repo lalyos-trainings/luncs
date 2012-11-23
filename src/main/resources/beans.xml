@@ -4,12 +4,14 @@
 	xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" 
-		default-autowire="byType" default-autowire-candidates="false">
+		default-autowire="byType" default-autowire-candidates="false" >
 
 
 	<bean class="com.epam.training.service.SystemOutMenuLister"/>
 	
-	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository"/>
+	
+	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" scope="singleton"/>
+	<bean id="repo1" class="com.epam.training.service.InMemoryRestaurantRepository"/>
 	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>	
 	
 </beans>

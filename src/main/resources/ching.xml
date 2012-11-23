@@ -4,20 +4,24 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="ChingChung" c:street="Piac sarka" c:zip="1082">
+
+	<context:property-placeholder location="classpath:csing.properties"/>
+	<bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="ChingChung" c:street="${csing.street}" c:zip="${csing.zip}">
     	<property name="menu">
-    	<bean id="chingChangMenu" class="com.epam.training.domain.Menu">
+    	<bean id="chingChangMenu" class="com.epam.training.domain.Menu" >
 		<property name="foods">
 			<util:list>
 				<bean class="com.epam.training.domain.Food" p:name="ciposz cirke"
-					p:price="750" />
+					p:price="${csing.price.big}" />
 				<bean class="com.epam.training.domain.Food" p:name="bambuszos risz"
-					p:price="450" />
+					p:price="${csing.price.medium}" />
 				<bean class="com.epam.training.domain.Food" p:name="tofu"
-					p:price="1550" />
+					p:price="${csing.price.small}" />
 			</util:list>
 		</property>
 	</bean>
