@@ -16,6 +16,7 @@
 		<property name="restaurantMap">
 			<util:map>
 				<entry key="kfc" value-ref="kfc"></entry>
+				<entry key="csing-csang" value-ref="csing-csang"></entry>
 			</util:map>
 		</property>
 	</bean>
@@ -28,6 +29,21 @@
 						<bean p:name="csirkeszarny" p:price="750" class="com.epam.training.domain.Food" />
 						<bean p:name="csirkelab" p:price="450" class="com.epam.training.domain.Food" />
 						<bean p:name="libamaj" p:price="1550" class="com.epam.training.domain.Food" />
+					</util:list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="csing-csang" c:name="csing-csang" c:zip="1085" c:street="Piac sarka" class="com.epam.training.domain.Restaurant" >
+		<property name="menu">
+			<bean class="com.epam.training.domain.Menu">
+				<property name="foods">
+					<util:list>
+						<bean p:name="ciposz cirke" p:price="450" class="com.epam.training.domain.Food" />
+						<bean p:name="edesz-szavanyu" p:price="350" class="com.epam.training.domain.Food" />
+						<bean p:name="mackahusz" p:price="1020" class="com.epam.training.domain.Food" />
+						<bean p:name="penki kacsa" p:price="1550" class="com.epam.training.domain.Food" />
 					</util:list>
 				</property>
 			</bean>
