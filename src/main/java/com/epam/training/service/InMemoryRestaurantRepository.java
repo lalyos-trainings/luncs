@@ -31,9 +31,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("pacal", 500));
-        m1.getFoods().add(new Food("toltott kaposzta",750));
-        m1.getFoods().add(new Food("bableves", 690));
+        m1.getFoods().add(new Food(1, "pacal", 500));
+        m1.getFoods().add(new Food(2, "toltott kaposzta",750));
+        m1.getFoods().add(new Food(3, "bableves", 690));
         return r1;
     }
 
@@ -42,9 +42,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("lencse leves", 400));
-        m1.getFoods().add(new Food("gyros",850));
-        m1.getFoods().add(new Food("baklava", 300));
+        m1.getFoods().add(new Food(4, "lencse leves", 400));
+        m1.getFoods().add(new Food(5, "gyros",850));
+        m1.getFoods().add(new Food(6, "baklava", 300));
         return r1;
     }
 
@@ -57,9 +57,11 @@ public class InMemoryRestaurantRepository implements RestaurantRepository
 
     public Food getFoodById(int foodId) 
     {
+        Food foundFood = null;
+        
         Iterator<Restaurant> iterator = restaurantMap.values().iterator();
         
-        while (iterator.hasNext() == true)
+        while (iterator.hasNext() == true && foundFood == null)
         {
             Restaurant restaurant = iterator.next();
             Menu menu = restaurant.getMenu();
@@ -69,11 +71,15 @@ public class InMemoryRestaurantRepository implements RestaurantRepository
             
             while (foodIterator.hasNext() == true)
             {
-                
+                Food food = foodIterator.next();
+                if (food.getId() == foodId)
+                {
+                    foundFood = food;
+                    break;
+                }
             }
-            
         }
         
-        return null;
+        return foundFood;
     }
 }

@@ -15,7 +15,8 @@ public class PrintWriterMenuLister implements MenuLister {
         this.writer = writer;
     }
     
-    public void doList() {
+    public void doList() 
+    {
         for (Restaurant restaurant : repo.getAllRestaurants()) 
         {
             writer.println("==== next restaurant: " + restaurant);

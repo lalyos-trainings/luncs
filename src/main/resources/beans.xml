@@ -10,7 +10,11 @@
 
     <bean class="com.epam.training.service.SysoutMenuLister" />
     
-    <bean id="crepo" class="com.epam.training.service.InMemoryRestaurantRepository" scope="singleton" />
-    
     <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
+    
+    <bean id="orderService" class="com.epam.training.service.InMemoryOrderService" />
+    
+    <!-- auto wire a két függőségre -->
+    <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingCart" />
+    
 </beans>

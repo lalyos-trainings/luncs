@@ -13,7 +13,9 @@ public class Food
         super();
     }
     
-    public Food(String name, int price) {
+    public Food(int id, String name, int price) 
+    {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
