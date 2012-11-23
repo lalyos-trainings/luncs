@@ -12,9 +12,9 @@
 			<bean id="kfcMenu" class="com.epam.training.domain.Menu">
 				<property name="foods">
 					<util:list>
-						<bean p:name="csirkeszarny" p:price="750" class="com.epam.training.domain.Food" />
-						<bean p:name="csirkelab" p:price="450" class="com.epam.training.domain.Food" />
-						<bean p:name="libamaj" p:price="1550" class="com.epam.training.domain.Food" />
+						<bean p:id="201" p:name="csirkeszarny" p:price="750" class="com.epam.training.domain.Food" />
+						<bean p:id="202" p:name="csirkelab" p:price="450" class="com.epam.training.domain.Food" />
+						<bean p:id="203" p:name="libamaj" p:price="1550" class="com.epam.training.domain.Food" />
 					</util:list>
 				</property>
 			</bean>
