@@ -16,7 +16,11 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
     }
-    
+
+    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
+        this.restaurantMap = restaurantMap;
+    }
+
     private void addRestaurant(Restaurant restaurant) {
         restaurantMap.put(restaurant.getName(), restaurant);
     }

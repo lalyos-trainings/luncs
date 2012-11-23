@@ -5,6 +5,12 @@ public class Food {
     private String description;
     private int price;
 
+    
+    public Food() 
+    {
+        super();
+    }
+    
     public Food(String name, int price) {
         this.name = name;
         this.price = price;
