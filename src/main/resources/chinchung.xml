@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:c="http://www.springframework.org/schema/c"
-    xmlns:util="http://www.springframework.org/schema/util"
-    xmlns:p="http://www.springframework.org/schema/p"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean id="ChinChung" class="com.epam.training.domain.Restaurant" c:name="ChinChung" c:zip="1085" c:street="Piac sarka">
+    <context:property-placeholder location="classpath:csing.properties" />
+    <bean id="ChinChung" class="com.epam.training.domain.Restaurant" c:name="ChinChung" c:zip="${csing.zip}" c:street="${csing.street}">
         <property name="menu" ref="ChinChungMenu" />
     </bean>
 
@@ -15,11 +18,11 @@
         <property name="foods">
             <util:list>
                 <bean class="com.epam.training.domain.Food" p:name="Csiposz Csirke"
-                    p:price="750" />
+                    p:price="${csing.price.small}" />
                 <bean class="com.epam.training.domain.Food" p:name="Edesz-savanyu levesz"
-                    p:price="250" />
+                    p:price="${csing.price.medium}" />
                 <bean class="com.epam.training.domain.Food" p:name="Mackahusz"
-                    p:price="1020" />
+                    p:price="${csing.price.big}" />
             </util:list>
         </property>
     </bean>

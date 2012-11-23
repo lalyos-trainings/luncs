@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-autowire="byType"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean class="com.epam.training.service.InMemoryOrderService"></bean>
+    
+    <bean class="com.epam.training.service.ShoppingCart" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" c:os-ref="" />
+    </bean>
+    
+    <bean id="addr" class="com.epam.training.domain.Address" c:street="kit" c:zip="is" c:city="erdekelne" c:country="ez" />
+
+    
+</beans>

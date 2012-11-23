@@ -55,4 +55,15 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
     }
+
+    public Food getFoodById(int id) {
+        for (Restaurant r : restaurantMap.values()) {
+            for (Food f : r.getMenu().getFoods()) {
+                if (f.getId() == id) {
+                    return f;
+                }
+            }
+        }
+        return null;
+    }
 }

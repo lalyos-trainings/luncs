@@ -10,6 +10,7 @@
 		<config>src/main/resources/beans.xml</config>
 		<config>src/main/resources/chinchung.xml</config>
 		<config>src/main/resources/kfc.xml</config>
+		<config>src/main/resources/orders.xml</config>
 	</configs>
 	<configSets>
 	</configSets>
