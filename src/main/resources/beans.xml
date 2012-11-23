@@ -20,21 +20,19 @@
 		</property>
 	</bean>
 
-	<bean id="kfc" class="com.epam.training.domain.Restaurant" >
-		<constructor-arg value="KFC"></constructor-arg>
-		<constructor-arg value="Corvin"></constructor-arg>
-		<constructor-arg value="1082"></constructor-arg>
-		<property name="menu" ref="kfcMenu" />
-	</bean>
-	
-	<bean id="kfcMenu" class="com.epam.training.domain.Menu">
-		<property name="foods">
-			<util:list>
-				<bean p:name="csirkeszarny" p:price="750" class="com.epam.training.domain.Food" />
-				<bean p:name="csirkelab" p:price="450" class="com.epam.training.domain.Food" />
-				<bean p:name="libamaj" p:price="1550" class="com.epam.training.domain.Food" />
-			</util:list>
+	<bean id="kfc" c:name="KFC" c:zip="1082" c:street="Corvin" class="com.epam.training.domain.Restaurant" >
+		<property name="menu">
+			<bean id="kfcMenu" class="com.epam.training.domain.Menu">
+				<property name="foods">
+					<util:list>
+						<bean p:name="csirkeszarny" p:price="750" class="com.epam.training.domain.Food" />
+						<bean p:name="csirkelab" p:price="450" class="com.epam.training.domain.Food" />
+						<bean p:name="libamaj" p:price="1550" class="com.epam.training.domain.Food" />
+					</util:list>
+				</property>
+			</bean>
 		</property>
 	</bean>
+	
 
 </beans>
