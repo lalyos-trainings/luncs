@@ -17,11 +17,10 @@ public class PrintWriterMenuLister implements MenuLister {
     
     public void doList() {
         for (Restaurant restaurant : repo.getAllRestaurants()) {
-            writer.println("=== next resti: " + restaurant.getName());
+            writer.println("=== next resti: " + restaurant + "\n===");
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                String format = String.format("Food: %-15s [%5d]", food.getName(), food.getPrice());
-                writer.println(format);
+                writer.println(food);
             }
         }
 

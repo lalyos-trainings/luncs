@@ -3,6 +3,7 @@ package com.epam.training.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import com.epam.training.domain.Food;
 import com.epam.training.domain.Menu;
@@ -19,6 +20,11 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
+        Set<String> keySet = restaurantMap.keySet();
+        for (String key : keySet) {
+            System.out.println("next repo key:" + key);
+            
+        }
     }
 
     private void addRestaurant(Restaurant restaurant) {
