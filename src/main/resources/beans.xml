@@ -5,11 +5,9 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" default-autowire="byType">
 
-	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" />
 	<bean class="com.epam.training.service.SysoutMenuLister">
-		<property name="repo" ref="singliRepo" />
 	</bean>
 
     <bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository">
@@ -18,41 +16,6 @@
                 <entry key="Kfc" value-ref="kfcResti"></entry>
                 <entry key="ChinChung" value-ref="ChinChung"></entry>
             </util:map>
-        </property>
-    </bean>
-
-    <bean id="kfcResti" class="com.epam.training.domain.Restaurant" c:name="KFC" c:zip="1081" c:street="Corvin">
-        <property name="menu" ref="KfcMenu" />
-    </bean>
-
-	<bean id="KfcMenu" class="com.epam.training.domain.Menu">
-		<property name="foods">
-			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="Csirkeszarny"
-					p:price="750" />
-				<bean class="com.epam.training.domain.Food" p:name="Csirkelab"
-					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="Libamaj"
-					p:price="1500" />
-			</util:list>
-		</property>
-	</bean>
-
-
-    <bean id="ChinChung" class="com.epam.training.domain.Restaurant" c:name="ChinChung" c:zip="1085" c:street="Piac sarka">
-        <property name="menu" ref="ChinChungMenu" />
-    </bean>
-
-    <bean id="ChinChungMenu" class="com.epam.training.domain.Menu">
-        <property name="foods">
-            <util:list>
-                <bean class="com.epam.training.domain.Food" p:name="Csiposz Csirke"
-                    p:price="750" />
-                <bean class="com.epam.training.domain.Food" p:name="Edesz-savanyu levesz"
-                    p:price="250" />
-                <bean class="com.epam.training.domain.Food" p:name="Mackahusz"
-                    p:price="1020" />
-            </util:list>
         </property>
     </bean>
 </beans>
