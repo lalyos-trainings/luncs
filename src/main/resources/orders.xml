@@ -5,10 +5,9 @@
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean class="com.epam.training.service.InMemoryOrderService"></bean>
+    <bean id="imos" class="com.epam.training.service.InMemoryOrderService"></bean>
     
-    <bean class="com.epam.training.service.ShoppingCart" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" c:os-ref="" />
-    </bean>
+    <bean class="com.epam.training.service.ShoppingCart" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
     
     <bean id="addr" class="com.epam.training.domain.Address" c:street="kit" c:zip="is" c:city="erdekelne" c:country="ez" />
 

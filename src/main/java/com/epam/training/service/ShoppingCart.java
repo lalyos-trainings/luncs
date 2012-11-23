@@ -1,17 +1,16 @@
 package com.epam.training.service;
 
 import com.epam.training.domain.Address;
-import com.epam.training.domain.Food;
 import com.epam.training.domain.Order;
 import com.epam.training.domain.OrderItem;
 
 public class ShoppingCart {
     private final Order order;
-    private final OrderService os;
+    private OrderService os;
+    private RestaurantRepository rr;
 
-    public ShoppingCart(String customer, Address billingAddress, Address deliveryAddress, OrderService os) {
+    public ShoppingCart(String customer, Address billingAddress, Address deliveryAddress) {
         order = new Order(customer, billingAddress, deliveryAddress);
-        this.os = os;
     }
 
     public String getCustomer() {
@@ -26,11 +25,27 @@ public class ShoppingCart {
         return order.getDeliveryAddress();
     }
 
-    public void addFood(Food food, int quantity) {
-        order.getOrderItems().add(new OrderItem(quantity, food));
+    public void addFood(int id, int quantity) {
+        order.getOrderItems().add(new OrderItem(quantity, rr.getFoodById(id)));
     }
 
     public void checkout() {
         os.doOrder(order);
+    }
+
+    public OrderService getOs() {
+        return os;
+    }
+
+    public void setOs(OrderService os) {
+        this.os = os;
+    }
+
+    public RestaurantRepository getRr() {
+        return rr;
+    }
+
+    public void setRr(RestaurantRepository rr) {
+        this.rr = rr;
     }
 }

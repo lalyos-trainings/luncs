@@ -15,11 +15,11 @@
 	<bean id="KfcMenu" class="com.epam.training.domain.Menu">
 		<property name="foods">
 			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="Csirkeszarny"
+				<bean class="com.epam.training.domain.Food" p:id="1" p:name="Csirkeszarny"
 					p:price="750" />
-				<bean class="com.epam.training.domain.Food" p:name="Csirkelab"
+				<bean class="com.epam.training.domain.Food" p:id="2" p:name="Csirkelab"
 					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="Libamaj"
+				<bean class="com.epam.training.domain.Food" p:id="3" p:name="Libamaj"
 					p:price="1500" />
 			</util:list>
 		</property>

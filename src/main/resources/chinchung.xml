@@ -17,11 +17,11 @@
     <bean id="ChinChungMenu" class="com.epam.training.domain.Menu">
         <property name="foods">
             <util:list>
-                <bean class="com.epam.training.domain.Food" p:name="Csiposz Csirke"
+                <bean class="com.epam.training.domain.Food"  p:id="4" p:name="Csiposz Csirke"
                     p:price="${csing.price.small}" />
-                <bean class="com.epam.training.domain.Food" p:name="Edesz-savanyu levesz"
+                <bean class="com.epam.training.domain.Food" p:id="5" p:name="Edesz-savanyu levesz"
                     p:price="${csing.price.medium}" />
-                <bean class="com.epam.training.domain.Food" p:name="Mackahusz"
+                <bean class="com.epam.training.domain.Food" p:id="6" p:name="Mackahusz"
                     p:price="${csing.price.big}" />
             </util:list>
         </property>
