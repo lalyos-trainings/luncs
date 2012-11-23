@@ -23,6 +23,8 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
 
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
+        System.out.println("itt");
+        System.out.println(restaurantMap.keySet());
     }
 
     private Restaurant createResti1() {
