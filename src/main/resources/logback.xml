@@ -10,4 +10,7 @@
   <root level="info">
     <appender-ref ref="STDOUT" />
   </root>
+  
+  <logger name="org" level="info" />
+  
 </configuration>
