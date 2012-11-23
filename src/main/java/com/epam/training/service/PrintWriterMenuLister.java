@@ -20,7 +20,8 @@ public class PrintWriterMenuLister implements MenuLister {
             writer.println("=== next resti: " + restaurant.getName());
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                writer.println("  " + food.getName());
+                String format = String.format("Food: %-15s [%5d]", food.getName(), food.getPrice());
+                writer.println(format);
             }
         }
 
