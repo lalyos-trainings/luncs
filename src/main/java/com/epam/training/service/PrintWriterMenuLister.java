@@ -19,8 +19,10 @@ public class PrintWriterMenuLister implements MenuLister {
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             writer.println("=== next resti: " + restaurant.getName());
             Collection<Food> foods = restaurant.getMenu().getFoods();
-            for (Food food : foods) {
-                writer.println("  " + food.getName());
+            for (Food food : foods) 
+            {
+                String format = String.format("kajcsi: %-15s ára: %5d YEN", food.getName(), food.getPrice());
+                writer.println(format);
             }
         }
         

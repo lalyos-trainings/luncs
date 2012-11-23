@@ -4,18 +4,22 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="Ching-Chung" c:street="Práter utca" c:zip="1082" >
+    <context:property-placeholder location="classpath:ching.properties" />
+
+    <bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="Ching-Chung" c:street="${ching.street}" c:zip="${ching.zip}" >
         <property name="menu">
             <bean class="com.epam.training.domain.Menu" >
                 <property name="foods" >
                     <util:list>
-                        <bean class="com.epam.training.domain.Food" p:name="ciposcirke" p:price="500" />
-                        <bean class="com.epam.training.domain.Food" p:name="edeszszavanu" p:price="350" />
-                        <bean class="com.epam.training.domain.Food" p:name="pekingi kacsa" p:price="1000" />
-                        <bean class="com.epam.training.domain.Food" p:name="macka husz" p:price="300" />
+                        <bean class="com.epam.training.domain.Food" p:name="ciposcirke" p:price="${ching.price.small}" />
+                        <bean class="com.epam.training.domain.Food" p:name="edeszszavanu" p:price="${ching.price.small}" />
+                        <bean class="com.epam.training.domain.Food" p:name="pekingi kacsa" p:price="${ching.price.medium}" />
+                        <bean class="com.epam.training.domain.Food" p:name="macka husz" p:price="${ching.price.big}" />
                     </util:list>
                 </property>
             </bean>
