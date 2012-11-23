@@ -16,13 +16,14 @@ public class PrintWriterMenuLister implements MenuLister {
     }
     
     public void doList() {
-        for (Restaurant restaurant : repo.getAllRestaurants()) {
-            writer.println("=== next resti: " + restaurant.getName());
+        for (Restaurant restaurant : repo.getAllRestaurants()) 
+        {
+            writer.println("==== next restaurant: " + restaurant);
             Collection<Food> foods = restaurant.getMenu().getFoods();
+            
             for (Food food : foods) 
             {
-                String format = String.format("kajcsi: %-15s ára: %5d YEN", food.getName(), food.getPrice());
-                writer.println(format);
+                writer.println(food);
             }
         }
         

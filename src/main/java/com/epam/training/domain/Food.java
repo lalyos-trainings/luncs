@@ -34,5 +34,12 @@ public class Food {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() 
+    {
+        return String.format("kajcsi: %-15s ára: %5d YEN", getName(), getPrice());
+    }
+    
     
 }
