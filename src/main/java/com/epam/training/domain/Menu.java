@@ -1,11 +1,11 @@
 package com.epam.training.domain;
 
-
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Menu {
 	private int week;
-	private Collection<Food> foods;
+	private Collection<Food> foods = new ArrayList<Food>();
 	
 	public int getWeek() {
 		return week;

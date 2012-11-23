@@ -35,5 +35,4 @@ public class PrintWriterMenuLister implements MenuLister {
         this.restaurantRepository = restaurantRepository;
     }
 
-
 }
