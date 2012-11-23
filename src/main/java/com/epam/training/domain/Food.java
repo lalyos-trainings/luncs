@@ -4,10 +4,12 @@ public class Food {
     private String name;
     private String description;
     private int price;
-
+    private int id;
+    
     public Food() {}
     
-    public Food(String name, int price) {
+    public Food(int id, String name, int price) {
+        this.id = id;
         this.name = name;
         this.price = price;
     }
@@ -31,9 +33,18 @@ public class Food {
         this.price = price;
     }
 
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return String.format("%-15s %5d", getName(), getPrice());
     }
-    
+        
 }
