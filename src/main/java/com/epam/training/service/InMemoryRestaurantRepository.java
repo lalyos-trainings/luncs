@@ -2,14 +2,15 @@ package com.epam.training.service;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import com.epam.training.domain.Food;
 import com.epam.training.domain.Menu;
 import com.epam.training.domain.Restaurant;
 
-public class InMemoryRestaurantRepository implements RestaurantRepository {
-
+public class InMemoryRestaurantRepository implements RestaurantRepository 
+{
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     
     public InMemoryRestaurantRepository() {
@@ -52,5 +53,27 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
      */
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
+    }
+
+    public Food getFoodById(int foodId) 
+    {
+        Iterator<Restaurant> iterator = restaurantMap.values().iterator();
+        
+        while (iterator.hasNext() == true)
+        {
+            Restaurant restaurant = iterator.next();
+            Menu menu = restaurant.getMenu();
+            Collection<Food> foods = menu.getFoods();
+            
+            Iterator<Food> foodIterator = foods.iterator();
+            
+            while (foodIterator.hasNext() == true)
+            {
+                
+            }
+            
+        }
+        
+        return null;
     }
 }

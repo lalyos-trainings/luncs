@@ -1,6 +1,8 @@
 package com.epam.training.domain;
 
-public class Food {
+public class Food 
+{
+    private int id;
     private String name;
     private String description;
     private int price;
@@ -16,6 +18,14 @@ public class Food {
         this.price = price;
     }
     
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getName() {
         return name;
     }
