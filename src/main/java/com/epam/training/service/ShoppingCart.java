@@ -1,12 +1,10 @@
 package com.epam.training.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.epam.training.domain.Address;
-import com.epam.training.domain.Food;
+import com.epam.training.domain.Order;
 import com.epam.training.domain.OrderItem;
 
 public class ShoppingCart {
@@ -27,14 +25,25 @@ public class ShoppingCart {
         this.deliveryAddress = deliveryAddress;
     }
 
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+
     List<OrderItem> list = new ArrayList<OrderItem>();
     
-    void addFood ( int foodId, int quant ) {
+    public void addFood ( int foodId, int quant ) {
         
        OrderItem temp = new OrderItem(foodId, quant);
        list.add(temp); 
     }  
     
+    public Order checkout () {
+        
+        Order order = new Order(customerName, billingAddress, deliveryAddress, list);
+        return order;
+        
+    }
     
 }
     
