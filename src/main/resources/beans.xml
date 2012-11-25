@@ -15,4 +15,7 @@
 	<bean id="regirepo2" class="com.epam.training.service.InMemoryRestaurantRepository" />
 	<bean id="restaurantRepository" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
 
+	<bean class="com.epam.training.service.SystemOutOrderLister" autowire-candidate="true" />
+	<bean class="com.epam.training.service.InMemoryOrderService" autowire-candidate="true" />
+	<bean class="com.epam.training.service.ShoppingCart" autowire-candidate="true" />
 </beans>

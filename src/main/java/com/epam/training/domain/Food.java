@@ -1,11 +1,25 @@
 package com.epam.training.domain;
 
+import org.springframework.context.ApplicationContext;
+
 public class Food {
 
     private String name;
     private String description;
     private int price;
+    
+    private static ApplicationContext ctx;
+    
+    public static void setApplicationContext(ApplicationContext ctx)
+    {
+    	Food.ctx = ctx;
+    }
 
+    public static Food getById(String id)
+    {
+    	return ctx.getBean(id, Food.class);
+    }
+    
     public Food() {}
     
     public Food(String name, int price) {
