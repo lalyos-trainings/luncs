@@ -5,16 +5,23 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	default-autowire="byType"
 	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		
+	<!--  annotacionak -->
+	<context:component-scan base-package="com.acme"></context:component-scan>
 	
+	<!--  locale megy string-kent -->
 	<bean id="menuLister" class="com.acme.training.service.SysoutMenuLister" p:locale="hu"/>
 
-	<bean id="singlirepo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true"/>
+	<!--  az auto wire automatikusan megkeresi, hogy milyen beanek passzolnak a settterekbe-->
+	<!--bean id="singlirepo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true"/-->
 	
-	<bean id="shopingcart" class="com.acme.training.service.ShoppingCart" scope="prototype" />
+	<!--bean id="shopingcart" class="com.acme.training.service.ShoppingCart" scope="prototype" /-->
 	
-	<bean id="orderservice" class="com.acme.training.service.InMemoryOrderService" scope="singleton" />
+	<!--  bean id="orderservice" class="com.acme.training.service.InMemoryOrderService" scope="singleton" /-->
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" 
 	   p:basename="luncs" />

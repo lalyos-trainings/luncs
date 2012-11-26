@@ -3,8 +3,14 @@ package com.acme.training.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+
+@Component("kart") //ez a neve a beannek
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE) //prototype a scope
 
 public class ShoppingCart implements BeanNameAware {
     

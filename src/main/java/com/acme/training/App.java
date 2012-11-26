@@ -27,7 +27,7 @@ public class App {
         
 //        MenuLister lister = context.getBean(MenuLister.class);
         
-        ShoppingCart cart = context.getBean(ShoppingCart.class);
+        ShoppingCart cart = context.getBean("kart", ShoppingCart.class);
         
         cart.setCustomer("joska");
         cart.setDeliveryAddress(new Address("ahol lakom", "bp", "1032", "hun"));

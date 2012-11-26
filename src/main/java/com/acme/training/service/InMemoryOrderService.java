@@ -3,6 +3,9 @@ package com.acme.training.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class InMemoryOrderService implements OrderService {
     
     List<Order> orders = new ArrayList<Order>();
