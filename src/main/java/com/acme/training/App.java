@@ -3,6 +3,7 @@ package com.acme.training;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -18,6 +19,7 @@ public class App {
     public static void main(String[] args) {
        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "csing-csang.xml", "kfc.xml");
        InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
+       String message = ctx.getMessage("welcome", null, new Locale("hu"));
        
        cart.addFood(1, 1);
        cart.addFood(3, 2);
@@ -29,6 +31,7 @@ public class App {
        OrderService os = ctx.getBean(OrderService.class);
        LinkedList<Order> orders = os.getAllOrders();
       
+       System.out.println("=========" + message + "=========");
        for(int i=0; i<orders.size(); i++){
            System.out.println(orders.get(i).getCustomer());
           System.out.println(orders.get(i).getDeliveryAddress());

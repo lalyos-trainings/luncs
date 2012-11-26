@@ -9,7 +9,7 @@
 		  default-autowire="byType" default-autowire-candidates="false" default-lazy-init="false">
 
 	<bean class="com.acme.training.service.SysoutMenuLister"/>
-    
+    <bean class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" id="messageSource"/>
     <bean id="regirepo" class="com.acme.training.service.InMemoryRestaurantRepository" lazy-init="true" scope="singleton"/>	
     <bean id="shoppingCart" class="com.acme.training.service.InMemoryShoppingcart"/>
     <bean id="os" class="com.acme.training.service.OrderService" autowire-candidate="true"/>
