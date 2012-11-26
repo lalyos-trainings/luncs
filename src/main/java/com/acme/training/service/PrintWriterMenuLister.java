@@ -23,12 +23,14 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public void doList() {
         String nextMsg;
+        String foodMsg;
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             nextMsg = ctx.getMessage("rest.next", null, new Locale("hu"));
             writer.println("=== " + nextMsg + ": " + restaurant.toString());
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                String format = String.format("Food: %-25s [%5d]", food.getName(), food.getPrice());
+                foodMsg = ctx.getMessage("food.name", null, new Locale("hu"));
+                String format = String.format(foodMsg + ": %-25s [%5d]", food.getName(), food.getPrice());
                 writer.println(format);
             }
         }
