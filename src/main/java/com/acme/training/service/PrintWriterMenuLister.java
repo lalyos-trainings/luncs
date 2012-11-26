@@ -16,8 +16,20 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private PrintWriter writer;
     private RestaurantRepository repo;
     private ApplicationContext context;
+    private Locale locale;
     
     
+    public Locale getLocale()
+    {
+        return locale;
+    }
+
+    public void setLocale(Locale locale)
+    {
+        System.out.println("O: " + locale);
+        this.locale = locale;
+    }
+
     public PrintWriterMenuLister(PrintWriter writer) 
     {
         this.writer = writer;
@@ -25,18 +37,18 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     
     public void doList() 
     {
-        String nextRestMessage = context.getMessage("rest.next", null, new Locale("hu", "HU"));
+        String nextRestMessage = context.getMessage("rest.next", null, locale);
+        String foodName = context.getMessage("food.name", null, locale);
+        
         
         for (Restaurant restaurant : repo.getAllRestaurants()) 
         {
-            
             writer.println("==== " + nextRestMessage + ": " + restaurant);
-//            writer.println("==== next restaurant: " + restaurant);
             Collection<Food> foods = restaurant.getMenu().getFoods();
-            
+           
             for (Food food : foods) 
             {
-                writer.println(food);
+                writer.println(String.format("%s: %-15s %5d YEN", foodName, food.getName(), food.getPrice()));
             }
         }
         
