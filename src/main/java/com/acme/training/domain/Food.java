@@ -1,4 +1,4 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
 import org.springframework.context.ApplicationContext;
 

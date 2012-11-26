@@ -8,14 +8,14 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
 		default-autowire="byType" default-autowire-candidates="false">
 
-	<bean class="com.epam.training.service.SystemOutMenuLister" />
+	<bean class="com.acme.training.service.SystemOutMenuLister" />
  
-	<bean id="regirepo" class="com.epam.training.service.InMemoryRestaurantRepository" />
-	<bean id="regirepo1" class="com.epam.training.service.InMemoryRestaurantRepository" />
-	<bean id="regirepo2" class="com.epam.training.service.InMemoryRestaurantRepository" />
-	<bean id="restaurantRepository" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
+	<bean id="regirepo" class="com.acme.training.service.InMemoryRestaurantRepository" />
+	<bean id="regirepo1" class="com.acme.training.service.InMemoryRestaurantRepository" />
+	<bean id="regirepo2" class="com.acme.training.service.InMemoryRestaurantRepository" />
+	<bean id="restaurantRepository" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
 
-	<bean class="com.epam.training.service.SystemOutOrderLister" autowire-candidate="true" />
-	<bean class="com.epam.training.service.InMemoryOrderService" autowire-candidate="true" />
-	<bean class="com.epam.training.service.ShoppingCart" autowire-candidate="true" />
+	<bean class="com.acme.training.service.SystemOutOrderLister" autowire-candidate="true" />
+	<bean class="com.acme.training.service.InMemoryOrderService" autowire-candidate="true" />
+	<bean class="com.acme.training.service.ShoppingCart" scope="prototype" autowire-candidate="true" />
 </beans>

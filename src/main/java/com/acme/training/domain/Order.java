@@ -1,4 +1,4 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
 import java.util.ArrayList;
 import java.util.List;

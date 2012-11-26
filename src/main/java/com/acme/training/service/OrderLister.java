@@ -1,4 +1,4 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 public interface OrderLister {
 	void setOrderService(OrderService os);

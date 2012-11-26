@@ -1,12 +1,12 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.training.domain.Address;
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Order;
-import com.epam.training.domain.OrderItem;
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Order;
+import com.acme.training.domain.OrderItem;
 
 public class ShoppingCart {
 	
@@ -15,10 +15,10 @@ public class ShoppingCart {
 	private List<OrderItem> cart = new ArrayList<OrderItem>();
 	private OrderService orderService;
 	
-	public ShoppingCart(OrderService os)
+	/*public ShoppingCart(OrderService os)
 	{
 		this.setOrderService(os);
-	}
+	}*/
 	
 	public ShoppingCart() {}
 

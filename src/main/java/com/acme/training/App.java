@@ -1,12 +1,12 @@
-package com.epam.training;
+package com.acme.training;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.epam.training.domain.Address;
-import com.epam.training.domain.Food;
-import com.epam.training.service.OrderLister;
-import com.epam.training.service.ShoppingCart;
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
+import com.acme.training.service.OrderLister;
+import com.acme.training.service.ShoppingCart;
 
 public class App {
 
@@ -23,7 +23,15 @@ public class App {
         Address addr = new Address("Futó utca 47.", "Budapest", "1082", "Hungary");
         cart.setBillingAddress(addr);
         cart.setDeliveringAddress(addr);
-        cart.checkout("Epam Systems");
+        cart.checkout("E. Systems");
+        
+        cart = ctx.getBean(ShoppingCart.class);
+        cart.addFood("csirke", 20);
+        cart.addFood("husleves", 10);
+        addr = new Address("Király utca 1.", "Budapest", "1082", "Hungary");
+        cart.setBillingAddress(addr);
+        cart.setDeliveringAddress(addr);
+        cart.checkout("VP");
         
         OrderLister lister = ctx.getBean(OrderLister.class);
         lister.doList();

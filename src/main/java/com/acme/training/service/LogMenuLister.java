@@ -1,13 +1,14 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.Collection;
 
 import org.slf4j.LoggerFactory;
 
 import org.slf4j.Logger;
-import com.epam.training.App;
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Restaurant;
+
+import com.acme.training.App;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Restaurant;
 
 public class LogMenuLister implements MenuLister {
 
