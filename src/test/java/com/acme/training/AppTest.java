@@ -1,4 +1,4 @@
-package com.epam.training;
+package com.acme.training;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

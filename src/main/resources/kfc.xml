@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
+
+	<bean id="kfc" class="com.acme.training.domain.Restaurant" c:name="KFC"
+		c:street="Corvin" c:zip="1082" p:menu-ref="KFC-Menu" />
+	<bean id="KFC-Menu" class="com.acme.training.domain.Menu" p:week="1">
+		<property name="foods">
+			<util:list>
+				<bean class="com.acme.training.domain.Food" p:name="csirkeszarny"
+					p:price="750" p:description="csirkeszarny csipos bundaban" />
+				<bean class="com.acme.training.domain.Food" p:name="csirkecomb"
+					p:price="950" p:description="rantott csirkecomb" />
+				<bean class="com.acme.training.domain.Food" p:name="libamaj"
+					p:price="1450" p:description="sult libamaj" />
+			</util:list>
+		</property>
+	</bean>
+
+</beans>
