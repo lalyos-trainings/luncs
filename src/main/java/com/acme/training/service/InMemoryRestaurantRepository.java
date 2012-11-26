@@ -8,11 +8,13 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
+@Component("memoryRest")
 public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware 
 {
     private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);

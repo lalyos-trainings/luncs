@@ -26,7 +26,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public void setLocale(Locale locale)
     {
-        System.out.println("O: " + locale);
         this.locale = locale;
     }
 
@@ -39,7 +38,9 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     {
         String nextRestMessage = context.getMessage("rest.next", null, locale);
         String foodName = context.getMessage("food.name", null, locale);
+        String message = context.getMessage("welcome", null, locale);
         
+        writer.println(String.format("=== %s ===", message));
         
         for (Restaurant restaurant : repo.getAllRestaurants()) 
         {
