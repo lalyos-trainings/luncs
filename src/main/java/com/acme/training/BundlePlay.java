@@ -1,7 +1,11 @@
 package com.acme.training;
 
 import java.util.Locale;
-import java.util.ResourceBundle;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.acme.training.service.MenuLister;
 
 public class BundlePlay {
 
@@ -9,11 +13,12 @@ public class BundlePlay {
      * @param args
      */
     public static void main(String[] args) {
-        Locale german = Locale.GERMAN;
-        Locale hun = new Locale("hu");
-        Locale ck = new Locale("hu", "ro");
-        ResourceBundle bundle = ResourceBundle.getBundle("luncs");
-        String msg = bundle.getString("welcome");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml");
+        MenuLister ml = ctx.getBean(MenuLister.class);
+
+        String msg = ctx.getMessage("welcome", null, new Locale("hu"));
         System.out.println(msg);
+
+        ml.doList();
     }
 }
