@@ -1,18 +1,13 @@
 package com.acme.training;
 
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
-import com.acme.training.domain.OrderItem;
 import com.acme.training.service.InMemoryShoppingcart;
-import com.acme.training.service.OrderService;
+import com.acme.training.service.MenuLister;
 
 public class App {
 
@@ -21,7 +16,7 @@ public class App {
        InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
        String message = ctx.getMessage("welcome", null, new Locale("hu"));
        
-       cart.addFood(1, 1);
+       /*cart.addFood(1, 1);
        cart.addFood(3, 2);
        cart.setCustomer("beluska");
        cart.setDeliveryAddress("Budapest", "KAKI utca 4", "666", "Ungarn");
@@ -43,6 +38,11 @@ public class App {
               System.out.println(food.getName()+ "    " + food.getPrice() + "  q:" + quantity);
           }      
        }
+       */
+       System.out.println("=========" + message + "=========");
+       MenuLister lister = ctx.getBean(MenuLister.class);
+       lister.doList();
+
     }
 }
 
