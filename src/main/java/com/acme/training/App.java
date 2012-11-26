@@ -15,9 +15,6 @@ import com.acme.training.service.OrderService;
 
 public class App {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "csing-csang.xml", "kfc.xml");
        InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
