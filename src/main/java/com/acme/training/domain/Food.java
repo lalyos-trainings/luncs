@@ -1,4 +1,4 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
 public class Food {
     private String name;

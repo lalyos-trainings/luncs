@@ -7,14 +7,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-    <bean id="tao" class="com.epam.training.domain.Restaurant" c:name="Tao" c:street="Kalvin" c:zip="1083">
+    <bean id="tao" class="com.acme.training.domain.Restaurant" c:name="Tao" c:street="Kalvin" c:zip="1083">
       <property name="menu">
-        <bean class="com.epam.training.domain.Menu">
+        <bean class="com.acme.training.domain.Menu">
             <property name="foods">
                 <util:list>
-                    <bean p:ID="21" p:name="Edes-savanyu leves" p:price="450" class="com.epam.training.domain.Food" />
-                    <bean p:ID="22" p:name="Ananaszos csirke" p:price="750" class="com.epam.training.domain.Food" />
-                    <bean p:ID="23" p:name="Sult ananasz" p:price="150" class="com.epam.training.domain.Food" />
+                    <bean p:ID="21" p:name="Edes-savanyu leves" p:price="450" class="com.acme.training.domain.Food" />
+                    <bean p:ID="22" p:name="Ananaszos csirke" p:price="750" class="com.acme.training.domain.Food" />
+                    <bean p:ID="23" p:name="Sult ananasz" p:price="150" class="com.acme.training.domain.Food" />
                 </util:list>
             </property>
         </bean>

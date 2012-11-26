@@ -1,8 +1,8 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.List;
 
-import com.epam.training.domain.Order;
+import com.acme.training.domain.Order;
 
 public interface OrderService {
 

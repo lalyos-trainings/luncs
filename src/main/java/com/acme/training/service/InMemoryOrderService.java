@@ -1,9 +1,9 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.epam.training.domain.Order;
+import com.acme.training.domain.Order;
 
 public class InMemoryOrderService implements OrderService {
 

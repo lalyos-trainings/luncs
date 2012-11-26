@@ -1,7 +1,7 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
-import com.epam.training.service.OrderService;
-import com.epam.training.service.RestaurantRepository;
+import com.acme.training.service.OrderService;
+import com.acme.training.service.RestaurantRepository;
 
 public class ShoppingCart {
 
@@ -18,7 +18,6 @@ public class ShoppingCart {
     }
 
     public Food foodById(int foodId) {
-        System.out.println("NEM MEGY");
         Food tempfood = new Food();
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             for (Food food : restaurant.getMenu().getFoods()) {

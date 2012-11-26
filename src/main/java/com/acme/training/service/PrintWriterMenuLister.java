@@ -1,13 +1,13 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.List;
 
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Order;
-import com.epam.training.domain.OrderItem;
-import com.epam.training.domain.Restaurant;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Order;
+import com.acme.training.domain.OrderItem;
+import com.acme.training.domain.Restaurant;
 
 public class PrintWriterMenuLister implements MenuLister {
 
