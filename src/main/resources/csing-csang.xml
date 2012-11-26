@@ -16,10 +16,10 @@
 	       <bean class="com.epam.training.domain.Menu">
 	           <property name="foods">
 	               <util:list>
-	                   <bean p:name="ciposz cirke" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
-	                   <bean p:name="edesz-szavanyu" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
-	                   <bean p:name="mackahusz" p:price="${csing.price.medium}" class="com.epam.training.domain.Food" />
-	                   <bean p:name="penki kacsa" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
+	                   <bean p:id="1" p:name="ciposz cirke" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
+	                   <bean p:id="2" p:name="edesz-szavanyu" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
+	                   <bean p:id="3" p:name="mackahusz" p:price="${csing.price.medium}" class="com.epam.training.domain.Food" />
+	                   <bean p:id="4" p:name="penki kacsa" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
 	               </util:list>
 	           </property>
 	       </bean>

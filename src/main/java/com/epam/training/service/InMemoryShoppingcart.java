@@ -43,7 +43,7 @@ public class InMemoryShoppingcart implements ShoppingCart{
     }
 
     public void checkOut() {
-        // TODO Auto-generated method stub
+        os.doOrder(order);
         
     }
 

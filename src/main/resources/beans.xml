@@ -12,6 +12,8 @@
     
     <bean id="regirepo" class="com.epam.training.service.InMemoryRestaurantRepository" lazy-init="true" scope="singleton"/>	
 
+    <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingcart"/>
+    
 	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" >
 		<property name="restaurantMap">
 			<util:map>
