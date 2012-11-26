@@ -22,7 +22,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public void setLocale(Locale locale) {
         this.locale = locale;
-        System.out.println("-------------------------->> " + locale);
     }
 
     public PrintWriterMenuLister(PrintWriter writer) {
@@ -46,7 +45,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public void setApplicationContext(ApplicationContext context) throws BeansException {
         this.context = context;
-        System.out.println("-------------------------->> " + context);
     }
 
 }
