@@ -9,14 +9,14 @@ public interface ShoppingCart {
 
 //    public void addFood(String restiName, String foodName, int count);
 //
-    public void addFood(String foodName, int count);
+    public ShoppingCart withFood(String foodName, int count);
 
-    public void setCustomer(String name);
+    public ShoppingCart withCustomer(String name);
 
-    public void setDeliveryAddress(Address address);
+    public ShoppingCart withDeliveryAddress(Address address);
 
-    public void setBillingAddress(Address address);
+    public ShoppingCart withBillingAddress(Address address);
 
     public Order checkOut();
-
+    
 }

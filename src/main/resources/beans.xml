@@ -18,9 +18,14 @@
 	<bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository"
 		autowire-candidate="true"/>
 		
-	<bean id="shoppingCart1" class="com.acme.training.service.InMemoryShoppingCart" p:customer="${shoppingcart.1.customer}"></bean>
-	<bean id="address1" class="com.acme.training.domain.Address" c:zip="${shoppingcart.1.address.zip}" c:street="${shoppingcart.1.address.street}" autowire-candidate="true"/>
+   <bean id="shoppingCart1" class="com.acme.training.service.InMemoryShoppingCart"></bean>
+<!-- 	<bean id="shoppingCart1" class="com.acme.training.service.InMemoryShoppingCart" p:customer="${shoppingcart.1.customer}"></bean> -->
+<!-- 	<bean id="address1" class="com.acme.training.domain.Address" c:zip="${shoppingcart.1.address.zip}" c:street="${shoppingcart.1.address.street}" autowire-candidate="true"/> -->
 	
-	<bean id="orderService" class="com.acme.training.service.InMemoryOrderService"></bean>
+	<bean id="orderService" class="com.acme.training.service.InMemoryOrderService"/>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource"
+		p:basename="luncs" />
 
 </beans>

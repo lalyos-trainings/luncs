@@ -1,26 +1,32 @@
 package com.acme.training.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
 
-public class Order {
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class Order implements ApplicationContextAware{
 
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
-    private List<OrderItem> orders;
+    private Map<String, OrderItem> orderItems;
+    private ApplicationContext applicationContext;
 
     public Order(String customer, Address billingAddress, Address deliveryAddress) {
         super();
         this.customer = customer;
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
-        this.orders = new ArrayList<OrderItem>();
+        this.orderItems = new HashMap<String, OrderItem>();
     }
 
     public Order() {
         super();
-        orders = new ArrayList<OrderItem>();
+        orderItems = new HashMap<String, OrderItem>();
     }
     
     public String getCustomer() {
@@ -47,24 +53,35 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
     }
     
-    public List<OrderItem> getOrders() {
-        return orders;
+    public Map<String, OrderItem> getOrderItems() {
+        return orderItems;
     }
     
-    public void setOrders(List<OrderItem> orders) {
-        this.orders = orders;
+    public void addOrderItem(Food food, int quantity){
+        OrderItem tmp = orderItems.get(food.getName());
+        if(tmp == null){
+            orderItems.put(food.getName(), new OrderItem(quantity, food));
+        }
+        else{
+            tmp.setQuantity(tmp.getQuantity() + quantity);
+        }
     }
     
-    public void addOrderItem(OrderItem orderItem){
-        orders.add(orderItem);
+    public void setOrderItems(Map<String, OrderItem> orders) {
+        this.orderItems = orders;
     }
     
     @Override
     public String toString() {
+        String orderMessage = applicationContext.getMessage("orderFormat", null, new Locale("hu"));
         String formattedOrder = String
-                .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s",
-                        customer, deliveryAddress, billingAddress, orders);
+                .format(orderMessage,
+                        customer, deliveryAddress, billingAddress, orderItems);
         return formattedOrder;
+    }
+
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        applicationContext = context;
     }
     
 }

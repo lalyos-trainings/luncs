@@ -1,11 +1,17 @@
 package com.acme.training.domain;
 
 import java.util.Collection;
+import java.util.Locale;
 
-public class Menu {
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
+public class Menu implements ApplicationContextAware{
     
     private Collection<Food> foods;
     private int week;
+    private ApplicationContext applicationContext;
 
     public Menu(Collection<Food> foods, int week) {
         super();
@@ -35,18 +41,19 @@ public class Menu {
 
     @Override
     public String toString() {
-//        String foodString = "";
-//        for(Food food : foods){
-//            foodString += food + "\n";
-//        }
-//        return "Menu [foods=" + foods + ", week=" + week + "]";
-        return week + ". heti menü:\n"/* + "\n" + foodString*/;
+        String menuMessage = applicationContext.getMessage("menuFormat", null, new Locale("hu"));
+        String formattedMenu = String.format(menuMessage, week);
+        return formattedMenu;
     }
     
     public void addFood(Food food){
         if(foods != null){
             foods.add(food);
         }
+    }
+
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        applicationContext = context;
     }
 
 }

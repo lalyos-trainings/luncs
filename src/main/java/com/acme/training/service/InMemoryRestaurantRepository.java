@@ -1,22 +1,23 @@
 package com.acme.training.service;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import com.acme.training.domain.Address;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-public class InMemoryRestaurantRepository implements RestaurantRepository {
+public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
 
     public InMemoryRestaurantRepository() {
-        // generateTestInstances();
         super();
     }
 
@@ -33,25 +34,6 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
 
     public void removeRestaurant(String key) {
         restaurantMap.remove(key);
-    }
-
-    private void generateTestInstances() {
-        Address a1 = new Address("1088", "Magyarország", "Budapest", "Práter utca");
-        Collection<Food> foods1 = new ArrayList<Food>();
-        foods1.add(new Food("Káposztás tészta", 350, "Kockatészta reszelt, párolt káposztával és sok borssal."));
-        foods1.add(new Food("Rántott csirkemell", 750, "Rántott csirkemell"));
-        Menu m1 = new Menu(foods1, 1);
-        Restaurant r1 = new Restaurant("Dezső bá", a1, m1);
-
-        Address a2 = new Address("113x", "Magyarország", "Budapest", "Pozsonyi utca");
-        Collection<Food> foods2 = new ArrayList<Food>();
-        foods2.add(new Food("Szűzérmék Calvados mártással", 2500, "Szűzérmék baconbe gyöngyölve, almás mártással."));
-        foods2.add(new Food("Marhabélszín erdei gombával", 3500, "Marhabélszín többféle erdei gombával."));
-        Menu m2 = new Menu(foods2, 1);
-        Restaurant r2 = new Restaurant("Szilvakék paradicsom", a2, m2);
-
-        restaurantMap.put("elso", r1);
-        restaurantMap.put("masodik", r2);
     }
 
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
@@ -92,6 +74,10 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
             }
         }
         return r;
+    }
+
+    public void setBeanName(String name) {
+        logger.info("*************************\ninmemoryrestaurantrepository: {}\n*************************", name);
     }
 
 }

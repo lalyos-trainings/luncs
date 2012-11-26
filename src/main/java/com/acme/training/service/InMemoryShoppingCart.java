@@ -1,17 +1,25 @@
 package com.acme.training.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
-import com.acme.training.domain.OrderItem;
 
-public class InMemoryShoppingCart implements ShoppingCart {
+public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     private RestaurantRepository repo;
     private Order order;
+    private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
     
-    public InMemoryShoppingCart(){
+    private InMemoryShoppingCart(){
         order = new Order();
+    }
+    
+    public static ShoppingCart getShoppingCart(){
+        return new InMemoryShoppingCart();
     }
     
     public void setRepo(RestaurantRepository repo){
@@ -23,25 +31,33 @@ public class InMemoryShoppingCart implements ShoppingCart {
 //        order.addOrderItem(new OrderItem(count, food));
 //    }
 //    
-    public void addFood(String foodName, int count){
+    public ShoppingCart withFood(String foodName, int count){
         Food food = repo.findFoodById(foodName);
-        order.addOrderItem(new OrderItem(count, food));
+        order.addOrderItem(food, count);
+        return this;
     }
     
-    public void setCustomer(String name){
+    public ShoppingCart withCustomer(String name){
         order.setCustomer(name);
+        return this;
     }
     
-    public void setDeliveryAddress(Address address){
+    public ShoppingCart withDeliveryAddress(Address address){
         order.setDeliveryAddress(address);
+        return this;
     }
     
-    public void setBillingAddress(Address address){
+    public ShoppingCart withBillingAddress(Address address){
         order.setBillingAddress(address);
+        return this;
     }
     
     public Order checkOut(){
         return order;
     }
 
+    public void setBeanName(String name) {
+        logger.info("*************************\ninMemoryShoppingCart: {}\n*************************", name);
+    }
+    
 }
