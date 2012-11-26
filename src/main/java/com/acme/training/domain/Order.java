@@ -15,13 +15,15 @@ public class Order implements ApplicationContextAware{
     private Address deliveryAddress;
     private Map<String, OrderItem> orderItems;
     private ApplicationContext applicationContext;
+    private Locale locale;
 
-    public Order(String customer, Address billingAddress, Address deliveryAddress) {
+    public Order(String customer, Address billingAddress, Address deliveryAddress, Locale locale) {
         super();
         this.customer = customer;
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
         this.orderItems = new HashMap<String, OrderItem>();
+        this.locale = locale;
     }
 
     public Order() {
@@ -57,6 +59,14 @@ public class Order implements ApplicationContextAware{
         return orderItems;
     }
     
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
+
     public void addOrderItem(Food food, int quantity){
         OrderItem tmp = orderItems.get(food.getName());
         if(tmp == null){
@@ -73,7 +83,7 @@ public class Order implements ApplicationContextAware{
     
     @Override
     public String toString() {
-        String orderMessage = applicationContext.getMessage("orderFormat", null, new Locale("hu"));
+        String orderMessage = applicationContext.getMessage("orderFormat", null, locale);
         String formattedOrder = String
                 .format(orderMessage,
                         customer, deliveryAddress, billingAddress, orderItems);

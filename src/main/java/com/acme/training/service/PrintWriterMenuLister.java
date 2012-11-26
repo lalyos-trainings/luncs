@@ -35,6 +35,7 @@ public class PrintWriterMenuLister implements MenuLister {
             }
             printWriter.println();
         }
+        printWriter.flush();
     }
 
 }

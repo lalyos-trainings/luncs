@@ -11,6 +11,8 @@ public class Menu implements ApplicationContextAware{
     
     private Collection<Food> foods;
     private int week;
+    
+//    private Locale locale;
     private ApplicationContext applicationContext;
 
     public Menu(Collection<Food> foods, int week) {
@@ -39,10 +41,19 @@ public class Menu implements ApplicationContextAware{
         this.week = week;
     }
 
+//    public Locale getLocale() {
+//        return locale;
+//    }
+//
+//    public void setLocale(Locale locale) {
+//        this.locale = locale;
+//    }
+//
     @Override
     public String toString() {
-        String menuMessage = applicationContext.getMessage("menuFormat", null, new Locale("hu"));
-        String formattedMenu = String.format(menuMessage, week);
+//        String menuMessage = applicationContext.getMessage("menuFormat", null, locale);
+//        String formattedMenu = String.format(menuMessage, week);
+        String formattedMenu = String.format("%d. heti menü:\n", week);
         return formattedMenu;
     }
     

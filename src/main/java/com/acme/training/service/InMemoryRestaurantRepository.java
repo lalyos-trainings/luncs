@@ -3,6 +3,7 @@ package com.acme.training.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
+    private Locale locale;
 
     public InMemoryRestaurantRepository() {
         super();
@@ -38,6 +40,14 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
 
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 
     public Food findFoodById(String restiName, String foodName) {
