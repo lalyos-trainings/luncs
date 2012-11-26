@@ -1,5 +1,7 @@
 package com.acme.training.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -31,7 +33,8 @@ public class ShoppingCart implements BeanNameAware {
     }
 
     public void addFood(int id, int quantity) {
-        order.getOrderItems().add(new OrderItem(quantity, rr.getFoodById(id)));
+        List<OrderItem> orders = order.getOrderItems();
+        orders.add(new OrderItem(quantity, rr.getFoodById(id)));
     }
 
     public void checkout() {

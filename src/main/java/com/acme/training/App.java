@@ -23,8 +23,6 @@ public class App {
         cart.addFood(4, 4);
         cart.checkout();
 
-        ShoppingCart c = appContext.getBean("cart2", ShoppingCart.class);
-
         OrderService os = appContext.getBean(InMemoryOrderService.class);
 
         for (Order o : os.getOrders()) {

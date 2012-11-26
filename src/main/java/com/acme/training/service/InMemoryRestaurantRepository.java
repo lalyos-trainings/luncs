@@ -14,7 +14,7 @@ import com.acme.training.domain.Restaurant;
 
 public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private final Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
 
     public InMemoryRestaurantRepository() {
