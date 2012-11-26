@@ -6,9 +6,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" 
 		default-autowire="byType" default-autowire-candidates="false" >
 
-
-	<bean class="com.acme.service.SystemOutMenuLister"/>
-	
+	<bean class="com.acme.service.SystemOutMenuLister" p:locale="hu" />
 	
 	<bean id="repo" class="com.acme.service.InMemoryRestaurantRepository" scope="singleton"/>
 	<bean id="repo1" class="com.acme.service.InMemoryRestaurantRepository"/>

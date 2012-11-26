@@ -6,12 +6,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Food implements ApplicationContextAware{
+public class Food{
     private int id;
     private String name;
     private String description;
     private int price;
-    private String foodName;
     
     public Food(){
         
@@ -58,10 +57,7 @@ public class Food implements ApplicationContextAware{
     
     public String toString(){
         
-        return  String.format("%s %-15s [%5d HUF]",foodName, this.getName(), this.getPrice());
+        return  String.format("Food %-15s [%5d HUF]", this.getName(), this.getPrice());
     }
 
-    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
-         foodName = ctx.getMessage("food.name", null, new Locale("hu"));
-    }
 }

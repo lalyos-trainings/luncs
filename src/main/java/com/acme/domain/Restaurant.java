@@ -6,12 +6,11 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Restaurant implements ApplicationContextAware {
+public class Restaurant {
 
     private String name;
     private Address address;
     private Menu menu;
-    private ApplicationContext ctx;
     
     public Restaurant(String name, String street, String zip) {
         this.name = name;
@@ -36,12 +35,8 @@ public class Restaurant implements ApplicationContextAware {
         this.menu = menu;
     }
     
-    public String toString(){
-        String nextRestMsg = ctx.getMessage("rest.next", null, new Locale("hu"));
-        return String.format("%s %-20s %n %s",nextRestMsg, name, address);
-    }
-    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
-        this.ctx = ctx;
+    public String toString(){       
+        return String.format(" %-20s %n %s", name, address);
     }
     
 }
