@@ -1,12 +1,12 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Menu;
-import com.epam.training.domain.Restaurant;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Menu;
+import com.acme.training.domain.Restaurant;
 
 public class InMemoryRestaurantRepository implements RestaurantRepository {
 

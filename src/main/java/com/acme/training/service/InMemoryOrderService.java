@@ -1,9 +1,9 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.epam.training.domain.Order;
+import com.acme.training.domain.Order;
 
 public class InMemoryOrderService implements OrderService {
     public List<Order> orders = new LinkedList<Order>();

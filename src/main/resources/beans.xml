@@ -7,10 +7,10 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" default-autowire="byType" default-autowire-candidates="false">
 
-	<bean class="com.epam.training.service.SysoutMenuLister">
+	<bean class="com.acme.training.service.SysoutMenuLister">
 	</bean>
 
-    <bean id="regiRepo" class="com.epam.training.service.InMemoryRestaurantRepository"/>
-    <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true">
+    <bean id="regiRepo" class="com.acme.training.service.InMemoryRestaurantRepository"/>
+    <bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true">
     </bean>
 </beans>
