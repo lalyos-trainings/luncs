@@ -17,4 +17,5 @@
 	<bean id="orderService" class="com.acme.service.InMemoryOrderService" scope="singleton"/>
 	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart" scope="prototype" p:orderService-ref="orderService"/>
 	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs"/>
 </beans>
