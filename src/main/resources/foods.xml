@@ -9,6 +9,6 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean id="csirke" class="com.acme.training.domain.Food" c:name="Csirke" c:price="800" />
-	<bean id="husleves" class="com.acme.training.domain.Food" c:name="Húsleves" c:price="500" />
+	<bean id="csirke" class="com.acme.training.domain.Food" c:name="Csirke" c:price="800" scope="prototype" />
+	<bean id="husleves" class="com.acme.training.domain.Food" c:name="Húsleves" c:price="500" scope="prototype" />
 </beans>
