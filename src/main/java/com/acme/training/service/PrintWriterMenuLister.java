@@ -19,19 +19,21 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private PrintWriter writer;
     private RestaurantRepository repo;
     private ApplicationContext ctx;
+    private Locale locale;
 
     public PrintWriterMenuLister(PrintWriter writer) {
         this.writer = writer;
     }
 
     public void doList() {
-        String nextRestMsg = ctx.getMessage("rest.next", null, new Locale("hu"));
+        String nextRestMsg = ctx.getMessage("rest.next", null, locale);
+        String foodName = ctx.getMessage("food.name", null, locale);
         for (Restaurant restaurant : repo.getAllRestaurants()) {
 
             writer.println("=== " + nextRestMsg + ": " + restaurant + "\n===");
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                writer.println(food);
+                writer.println(String.format("%s: %-15s [%5d]", foodName, food.getName(), food.getPrice()));
             }
         }
 
@@ -62,6 +64,14 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.ctx = ctx;
 
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 
 }
