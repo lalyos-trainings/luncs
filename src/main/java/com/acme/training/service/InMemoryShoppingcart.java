@@ -1,14 +1,19 @@
 package com.acme.training.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 
-public class InMemoryShoppingcart implements ShoppingCart{
+public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
     
     private OrderService os;
     private RestaurantRepository repo;
     private Order order;
+    private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
     public InMemoryShoppingcart() {
         order = new Order();
@@ -46,5 +51,11 @@ public class InMemoryShoppingcart implements ShoppingCart{
         os.doOrder(order);
         
     }
+    
+    public void setBeanName(String bean) {
+        logger.info("bean:" + bean);
+        logger.info("hash" + hashCode());
+    }
+
 
 }
