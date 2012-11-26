@@ -1,6 +1,7 @@
 package com.acme.training;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -53,9 +54,12 @@ public class App {
         
         os.doOrder( cart.checkout() );
         
-        List<Order> l = os.getAllOrders();
+//        System.out.println(context.getMessage("welcome", null, new Locale("hu_RO")));
         
-        for (Order o : l) {
+        MenuLister lister = (MenuLister) context.getBean("menuLister");
+        lister.doList();
+        
+        for (Order o : os.getAllOrders()) {
             System.out.println(
                     String.format("%n%norder: %s", o)
             );
