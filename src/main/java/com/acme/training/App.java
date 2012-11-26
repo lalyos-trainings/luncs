@@ -1,7 +1,5 @@
 package com.acme.training;
 
-import java.util.Locale;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,8 +15,6 @@ public class App {
 
         MenuLister lister = ctx.getBean(MenuLister.class);
 
-        String message = ctx.getMessage("welcome", null, new Locale("hu"));
-        System.out.println(String.format("=== %s ===", message));
         lister.doList();
 
     }
