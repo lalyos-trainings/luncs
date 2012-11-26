@@ -1,11 +1,13 @@
 package com.acme.training;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Order;
+import com.acme.training.service.MenuLister;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
 
@@ -17,7 +19,14 @@ public class App
     public static void main(String[] args) 
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
-       
+     
+        String message = context.getMessage("welcome", null, new Locale("hu", "HU"));
+        
+        System.out.println(String.format("=== %s ===", message));
+        
+        MenuLister lister = context.getBean(MenuLister.class);
+        lister.doList();
+        
         ShoppingCart cart = context.getBean(ShoppingCart.class);
         
         cart.setCustomer("János");
