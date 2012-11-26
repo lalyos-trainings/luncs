@@ -5,14 +5,19 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.domain.Food;
 import com.acme.domain.Menu;
 import com.acme.domain.Restaurant;
 
-public class InMemoryRestaurantRepository implements RestaurantRepository {
+public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private ArrayList<Food> foodList = new ArrayList<Food>();
+    private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
         this.restaurantMap = restaurantMap;
@@ -77,5 +82,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
             }
         }
         return null;
+    }
+
+    public void setBeanName(String arg0) {
+        logger.info(arg0);
     }
 }

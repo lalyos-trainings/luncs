@@ -34,6 +34,14 @@ public class App {
         cart.setDeliveryAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
         cart.checkout();
         
+        ShoppingCart cart1 = ctx.getBean(ShoppingCart.class);
+        cart1.addFood(1, 1);
+        cart1.addFood(2, 1);
+        cart1.setCustomer("Tunde");
+        cart1.setBillingAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
+        cart1.setDeliveryAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
+        cart1.checkout();
+        
         OrderService orderService = ctx.getBean(OrderService.class);
         Collection<Order> allOrders = orderService.getAllOrders();
         

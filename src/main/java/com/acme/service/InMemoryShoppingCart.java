@@ -2,16 +2,20 @@ package com.acme.service;
 
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.domain.Address;
 import com.acme.domain.Order;
 import com.acme.domain.OrderItem;
 
-public class InMemoryShoppingCart implements ShoppingCart {
+public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
     private Order order;
     private RestaurantRepository repo;
     private InMemoryOrderService orderService;
-    
+    private Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
     
     public void setOrderService(InMemoryOrderService orderService) {
         this.orderService = orderService;
@@ -53,6 +57,10 @@ public class InMemoryShoppingCart implements ShoppingCart {
 
     public void checkout() {      
         orderService.doOrder(order);
+    }
+
+    public void setBeanName(String arg0) {
+        logger.info("shopping carts name:"+arg0+" hashcode:"+this.hashCode());
     }
     
  
