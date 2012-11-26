@@ -11,16 +11,16 @@
 
 
 	<context:property-placeholder location="classpath:csing.properties"/>
-	<bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="ChingChung" c:street="${csing.street}" c:zip="${csing.zip}">
+	<bean id="chingChung" class="com.acme.domain.Restaurant" c:name="ChingChung" c:street="${csing.street}" c:zip="${csing.zip}">
     	<property name="menu">
-    	<bean id="chingChangMenu" class="com.epam.training.domain.Menu" >
+    	<bean id="chingChangMenu" class="com.acme.domain.Menu" >
 		<property name="foods">
 			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="ciposz cirke"
+				<bean class="com.acme.domain.Food" p:name="ciposz cirke"
 					p:price="${csing.price.big}" />
-				<bean class="com.epam.training.domain.Food" p:name="bambuszos risz"
+				<bean class="com.acme.domain.Food" p:name="bambuszos risz"
 					p:price="${csing.price.medium}" />
-				<bean class="com.epam.training.domain.Food" p:name="tofu"
+				<bean class="com.acme.domain.Food" p:name="tofu"
 					p:price="${csing.price.small}" />
 			</util:list>
 		</property>

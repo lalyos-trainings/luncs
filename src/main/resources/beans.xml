@@ -7,16 +7,16 @@
 		default-autowire="byType" default-autowire-candidates="false" >
 
 
-	<bean class="com.epam.training.service.SystemOutMenuLister"/>
+	<bean class="com.acme.service.SystemOutMenuLister"/>
 	
 	
-	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" scope="singleton"/>
-	<bean id="repo1" class="com.epam.training.service.InMemoryRestaurantRepository"/>
-	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>
+	<bean id="repo" class="com.acme.service.InMemoryRestaurantRepository" scope="singleton"/>
+	<bean id="repo1" class="com.acme.service.InMemoryRestaurantRepository"/>
+	<bean id="singliRepo" class="com.acme.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>
 		
-	<bean id="orderService" class="com.epam.training.service.InMemoryOrderService" scope="singleton"/>
-	<bean id="shoppingCart1" class="com.epam.training.service.InMemoryShoppingCart"
-		c:order-ref="order1" c:repo-ref="repo" p:orderService-ref="orderService">
+	<bean id="orderService" class="com.acme.service.InMemoryOrderService" scope="singleton"/>
+	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart"
+		c:order-ref="order1" c:repo-ref="repo" p:orderService-ref="orderService" scope="prototype">
 		<property name="customer" value="#{order1.customer}"/>				
 		<property name="deliveryAddress" value="#{order1.deliveryAddress}"/>
 		<property name="billingAddress" value="#{order1.billingAddress}"/>		
