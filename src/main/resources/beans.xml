@@ -14,6 +14,6 @@
     
     <bean id="orderService" class="com.epam.training.service.InMemoryOrderService" autowire-candidate="true" scope="singleton" />
     
-    <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingCart" />
+    <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingCart" scope="prototype" />
     
 </beans>
