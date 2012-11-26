@@ -37,6 +37,8 @@ public class App {
           System.out.println("-------------------------------------");
           System.out.println("Your order has the foll. details:");
           System.out.println("Customer:"+o.getCustomer());
+          System.out.println("Delivery address:"+o.getDeliveryAddress());
+          System.out.println("Billing address:"+o.getBillingAddress());
           System.out.println("Order Items:");
           for (OrderItem oi: o.getOrderItems()){
               System.out.println(oi);

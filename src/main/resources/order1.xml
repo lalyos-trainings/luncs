@@ -8,10 +8,10 @@
 	<bean id="order1" class="com.epam.training.domain.Order">
 		<property name="customer" value="Tunde" />
 		<property name="billingAddress">
-			<bean class="com.epam.training.domain.Address"></bean>
+			<bean class="com.epam.training.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
 		</property>
 		<property name="deliveryAddress">
-			<bean class="com.epam.training.domain.Address"></bean>
+			<bean class="com.epam.training.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
 		</property>
 		<property name="orderItems">
 			<util:list>
