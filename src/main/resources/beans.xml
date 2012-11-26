@@ -17,6 +17,7 @@
 	
 	<bean class="com.acme.training.domain.ShoppingCart"/>
     <bean class="com.acme.training.service.InMemoryOrderService"/>
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs"/>
 
 </beans>
 
