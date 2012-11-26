@@ -36,6 +36,6 @@ public class Restaurant {
 
     @Override
     public String toString() {
-        return String.format("Restaurant: %-20s %n  %s", name, address.toString());
+        return String.format("%-20s %n  %s", name, address.toString());
     }
 }

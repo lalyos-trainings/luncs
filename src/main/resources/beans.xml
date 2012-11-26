@@ -7,12 +7,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" default-autowire="byType" default-autowire-candidates="false">
 
-	<bean class="com.acme.training.service.SysoutMenuLister">
-	</bean>
+	<bean class="com.acme.training.service.SysoutMenuLister" p:locale="de"/>
+	
 
     <bean id="regiRepo" class="com.acme.training.service.InMemoryRestaurantRepository"/>
-    <bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true">
-    </bean>
+    <bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
     
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
 </beans>

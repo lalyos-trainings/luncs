@@ -16,6 +16,7 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private final PrintWriter writer;
     private RestaurantRepository repo;
     private ApplicationContext ctx;
+    private Locale locale;
 
     public PrintWriterMenuLister(PrintWriter writer) {
         this.writer = writer;
@@ -25,11 +26,11 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
         String nextMsg;
         String foodMsg;
         for (Restaurant restaurant : repo.getAllRestaurants()) {
-            nextMsg = ctx.getMessage("rest.next", null, new Locale("hu"));
+            nextMsg = ctx.getMessage("rest.next", null, locale);
             writer.println("=== " + nextMsg + ": " + restaurant.toString());
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                foodMsg = ctx.getMessage("food.name", null, new Locale("hu"));
+                foodMsg = ctx.getMessage("food.name", null, locale);
                 String format = String.format(foodMsg + ": %-25s [%5d]", food.getName(), food.getPrice());
                 writer.println(format);
             }
@@ -47,5 +48,13 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.ctx = ctx;
+    }
+
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
     }
 }
