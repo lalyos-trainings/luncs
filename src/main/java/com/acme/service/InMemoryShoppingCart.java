@@ -12,8 +12,14 @@ public class InMemoryShoppingCart implements ShoppingCart {
     private RestaurantRepository repo;
     private InMemoryOrderService orderService;
     
+    
     public void setOrderService(InMemoryOrderService orderService) {
         this.orderService = orderService;
+    }
+    
+    public InMemoryShoppingCart(){
+        this.order = new Order();
+        this.repo = new InMemoryRestaurantRepository();
     }
 
     public InMemoryShoppingCart(Order order, RestaurantRepository repo){
@@ -26,6 +32,7 @@ public class InMemoryShoppingCart implements ShoppingCart {
         OrderItem orderItem = new OrderItem();        
         orderItem.setFood(this.repo.getFoodbyId(foodId) );
         orderItem.setQuantity(quantity);
+        
         order.getOrderItems().add(orderItem);
     }
     

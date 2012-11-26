@@ -1,12 +1,13 @@
 package com.acme.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Order {
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Collection<OrderItem> orderItems;
+    private Collection<OrderItem> orderItems = new ArrayList<OrderItem>();
     public String getCustomer() {
         return customer;
     }

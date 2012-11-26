@@ -5,33 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean id="order1" class="com.acme.training.domain.Order">
+	<bean id="order1" class="com.acme.domain.Order">
 		<property name="customer" value="Tunde" />
 		<property name="billingAddress">
-			<bean class="com.acme.training.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
+			<bean class="com.acme.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
 		</property>
 		<property name="deliveryAddress">
-			<bean class="com.acme.training.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
-		</property>
-		<property name="orderItems">
-			<util:list>
-				<bean id="orderItem1" class="com.acme.training.domain.OrderItem"
-					p:quantity="1">
-					<property name="food">
-						<bean class="com.acme.training.domain.Food" p:id="1"
-							p:name="csirkeszarny" p:price="750" />
-					</property>
-				</bean>
-
-				<bean id="orderItem2" class="com.epam.training.domain.OrderItem"
-					p:quantity="1">
-					<property name="food">
-						<bean class="com.epam.training.domain.Food" p:id="2" p:name="csirkelab"
-							p:price="450" />
-					</property>
-				</bean>
-			</util:list>
-		</property>
+			<bean class="com.acme.domain.Address" p:city="Budapest" p:country="Hungary" p:street="Corvin Street" p:zip="1085"></bean>
+		</property>		
 	</bean>
 
 	

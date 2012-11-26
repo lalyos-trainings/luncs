@@ -15,13 +15,6 @@
 	<bean id="singliRepo" class="com.acme.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>
 		
 	<bean id="orderService" class="com.acme.service.InMemoryOrderService" scope="singleton"/>
-	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart"
-		c:order-ref="order1" c:repo-ref="repo" p:orderService-ref="orderService" scope="prototype">
-		<property name="customer" value="#{order1.customer}"/>				
-		<property name="deliveryAddress" value="#{order1.deliveryAddress}"/>
-		<property name="billingAddress" value="#{order1.billingAddress}"/>		
-	</bean>
-	
-	
+	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart" scope="prototype" p:orderService-ref="orderService"/>
 	
 </beans>

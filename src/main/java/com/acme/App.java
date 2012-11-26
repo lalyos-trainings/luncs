@@ -5,6 +5,7 @@ import java.util.Collection;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.acme.domain.Address;
 import com.acme.domain.Order;
 import com.acme.domain.OrderItem;
 import com.acme.service.MenuLister;
@@ -28,6 +29,9 @@ public class App {
         ShoppingCart cart = ctx.getBean(ShoppingCart.class);
         cart.addFood(1, 1);
         cart.addFood(2, 1);
+        cart.setCustomer("Tunde");
+        cart.setBillingAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
+        cart.setDeliveryAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
         cart.checkout();
         
         OrderService orderService = ctx.getBean(OrderService.class);
