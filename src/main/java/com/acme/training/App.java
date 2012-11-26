@@ -12,7 +12,6 @@ import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 import com.acme.training.service.InMemoryShoppingcart;
 import com.acme.training.service.OrderService;
-import com.acme.training.service.SysoutMenuLister;
 
 public class App {
 
