@@ -14,12 +14,10 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
     private Order order;
     private RestaurantRepository repo;
-    private InMemoryOrderService orderService;
+    private OrderService orderService;
     private Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
     
-    public void setOrderService(InMemoryOrderService orderService) {
-        this.orderService = orderService;
-    }
+   
     
     public InMemoryShoppingCart(){
         this.order = new Order();
@@ -59,10 +57,17 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         orderService.doOrder(order);
     }
 
+    public OrderService getOrderService() {
+        return orderService;
+    }
+
     public void setBeanName(String arg0) {
         logger.info("shopping carts name:"+arg0+" hashcode:"+this.hashCode());
     }
     
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
  
     
 }

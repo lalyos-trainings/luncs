@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:c="http://www.springframework.org/schema/c"
+	default-autowire="byType"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" 
-		default-autowire="byType" default-autowire-candidates="false" >
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-	<bean class="com.acme.service.SystemOutMenuLister" p:locale="hu" />
+	<context:component-scan base-package="com.acme"/>
+
+	<bean class="com.acme.service.SystemOutMenuLister" p:locale="hu_ro" />
 	
-	<bean id="repo" class="com.acme.service.InMemoryRestaurantRepository" scope="singleton"/>
-	<bean id="repo1" class="com.acme.service.InMemoryRestaurantRepository"/>
-	<bean id="singliRepo" class="com.acme.service.InMemoryRestaurantRepository"  autowire-candidate="true"/>
+	<bean id="singliRepo" class="com.acme.service.InMemoryRestaurantRepository"  />
 		
-	<bean id="orderService" class="com.acme.service.InMemoryOrderService" scope="singleton"/>
-	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart" scope="prototype" p:orderService-ref="orderService"/>
+	<bean id="shoppingCart1" class="com.acme.service.InMemoryShoppingCart" scope="prototype"/>
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs"/>
 </beans>

@@ -3,8 +3,11 @@ package com.acme.service;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.springframework.stereotype.Component;
+
 import com.acme.domain.Order;
 
+@Component
 public class InMemoryOrderService implements OrderService {
    
     private ArrayList<Order> orders = new ArrayList<Order>();
