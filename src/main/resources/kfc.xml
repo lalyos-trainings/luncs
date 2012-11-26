@@ -7,17 +7,17 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean id="kfc" class="com.epam.training.domain.Restaurant" c:name="KFC"
+	<bean id="kfc" class="com.acme.domain.Restaurant" c:name="KFC"
 		c:street="Corvin Plaza" c:zip="1082">
 		<property name="menu">
-			<bean id="KFCMenu" class="com.epam.training.domain.Menu">
+			<bean id="KFCMenu" class="com.acme.domain.Menu">
 				<property name="foods">
 					<util:list>
-						<bean class="com.epam.training.domain.Food" p:name="csirkeszarny"
+						<bean class="com.acme.domain.Food" p:name="csirkeszarny"
 							p:price="750" />
-						<bean class="com.epam.training.domain.Food" p:name="csirkelab"
+						<bean class="com.acme.domain.Food" p:name="csirkelab"
 							p:price="450" />
-						<bean class="com.epam.training.domain.Food" p:name="libamaj"
+						<bean class="com.acme.domain.Food" p:name="libamaj"
 							p:price="1550" />
 					</util:list>
 				</property>
