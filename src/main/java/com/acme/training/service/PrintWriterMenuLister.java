@@ -25,6 +25,9 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     public void doList() {
         String nextMsg;
         String foodMsg;
+
+        writer.println(ctx.getMessage("welcome", null, locale));
+
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             nextMsg = ctx.getMessage("rest.next", null, locale);
             writer.println("=== " + nextMsg + ": " + restaurant.toString());
