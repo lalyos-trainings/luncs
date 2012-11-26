@@ -3,16 +3,20 @@ package com.acme.training.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-public class InMemoryRestaurantRepository implements RestaurantRepository {
+public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private Map<Integer, Food> foodMap = new HashMap<Integer, Food>();
+    private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
@@ -66,5 +70,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
 
     public Food findFoodById(Integer foodId) {
         return foodMap.get(foodId);
+    }
+
+    public void setBeanName(String name) {
+        logger.info("my name is: " + name);
     }
 }
