@@ -6,16 +6,18 @@
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
-		default-autowire="byType" default-autowire-candidates="false">
+		default-autowire="byType" default-autowire-candidates="true">
 
-	<bean class="com.acme.training.service.SystemOutMenuLister" />
+	<!-- <bean class="com.acme.training.service.SystemOutMenuLister" />
  
 	<bean id="regirepo" class="com.acme.training.service.InMemoryRestaurantRepository" />
 	<bean id="regirepo1" class="com.acme.training.service.InMemoryRestaurantRepository" />
 	<bean id="regirepo2" class="com.acme.training.service.InMemoryRestaurantRepository" />
-	<bean id="restaurantRepository" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
+	<bean id="restaurantRepository" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" /> -->
 
 	<bean class="com.acme.training.service.SystemOutOrderLister" autowire-candidate="true" />
 	<bean class="com.acme.training.service.InMemoryOrderService" autowire-candidate="true" />
 	<bean class="com.acme.training.service.ShoppingCart" scope="prototype" autowire-candidate="true" />
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
 </beans>

@@ -1,5 +1,7 @@
 package com.acme.training;
 
+import java.util.Locale;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -32,6 +34,8 @@ public class App {
         cart.setBillingAddress(addr);
         cart.setDeliveringAddress(addr);
         cart.checkout("VP");
+        
+        System.out.println(ctx.getMessage("welcome", null, new Locale("hu")));
         
         OrderLister lister = ctx.getBean(OrderLister.class);
         lister.doList();

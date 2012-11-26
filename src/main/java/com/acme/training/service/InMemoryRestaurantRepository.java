@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
+
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
@@ -12,6 +16,7 @@ import com.acme.training.domain.Restaurant;
 public class InMemoryRestaurantRepository implements RestaurantRepository {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    
     
     public InMemoryRestaurantRepository() {
         //addRestaurant(createResti1());
@@ -59,5 +64,7 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
     }
+
+	
 
 }
