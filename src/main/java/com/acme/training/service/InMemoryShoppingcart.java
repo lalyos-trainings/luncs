@@ -3,11 +3,16 @@ package com.acme.training.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 
+@Component("cart_huhu")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
     
     private OrderService os;
