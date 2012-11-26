@@ -2,8 +2,11 @@ package com.acme.training.service;
 
 import java.util.LinkedList;
 
+import org.springframework.stereotype.Component;
+
 import com.acme.training.domain.Order;
 
+@Component
 public class OrderService {
     
     private LinkedList<Order> orders;
