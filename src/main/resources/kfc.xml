@@ -8,20 +8,20 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
 
-<bean id="kfc" class="com.epam.training.domain.Restaurant">
+<bean id="kfc" class="com.acme.training.domain.Restaurant">
 	<constructor-arg value="KFC"></constructor-arg>
 	<constructor-arg value="Corvin"></constructor-arg>
 	<constructor-arg value="1082"></constructor-arg>
 	<property name="menu">
-		<bean id="kfcMenu" class="com.epam.training.domain.Menu">
+		<bean id="kfcMenu" class="com.acme.training.domain.Menu">
 			<property name="foods">
 				<util:list>
-					<bean p:name="csirkeszarny" p:price="750"
-						class="com.epam.training.domain.Food" />
-					<bean p:name="csirkelab" p:price="450"
-						class="com.epam.training.domain.Food" />
-					<bean p:name="libamaj" p:price="1550" 
-						class="com.epam.training.domain.Food" />
+					<bean p:name="csirkeszarny" p:price="750" p:foodId="1"
+						class="com.acme.training.domain.Food" />
+					<bean p:name="csirkelab" p:price="450" p:foodId="2"
+						class="com.acme.training.domain.Food" />
+					<bean p:name="libamaj" p:price="1550" p:foodId="3" 
+						class="com.acme.training.domain.Food" />
 				</util:list>
 			</property>
 		</bean>
