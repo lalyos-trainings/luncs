@@ -15,10 +15,10 @@ import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-@Component
+@Component("memoryRest")
 public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
     public InMemoryRestaurantRepository() {
@@ -26,10 +26,6 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
         addRestaurant(createResti2());        
     }
         
-    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
-        this.restaurantMap = restaurantMap;
-    }
-
     private void addRestaurant(Restaurant restaurant) {
         restaurantMap.put(restaurant.getName(), restaurant);
     }
