@@ -11,15 +11,15 @@
 
 <context:property-placeholder location="classpath:csing.properties"/>
 
-	<bean id="csing-csang" c:name="csing-csang" c:zip="${csing.zip}" c:street="${csing.street}" class="com.epam.training.domain.Restaurant" >
+	<bean id="csing-csang" c:name="csing-csang" c:zip="${csing.zip}" c:street="${csing.street}" class="com.acme.training.domain.Restaurant" >
 	   <property name="menu">
-	       <bean class="com.epam.training.domain.Menu">
+	       <bean class="com.acme.training.domain.Menu">
 	           <property name="foods">
 	               <util:list>
-	                   <bean p:id="1" p:name="ciposz cirke" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
-	                   <bean p:id="2" p:name="edesz-szavanyu" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
-	                   <bean p:id="3" p:name="mackahusz" p:price="${csing.price.medium}" class="com.epam.training.domain.Food" />
-	                   <bean p:id="4" p:name="penki kacsa" p:price="${csing.price.small}" class="com.epam.training.domain.Food" />
+	                   <bean p:id="1" p:name="ciposz cirke" p:price="${csing.price.small}" class="com.acme.training.domain.Food" />
+	                   <bean p:id="2" p:name="edesz-szavanyu" p:price="${csing.price.small}" class="com.acme.training.domain.Food" />
+	                   <bean p:id="3" p:name="mackahusz" p:price="${csing.price.medium}" class="com.acme.training.domain.Food" />
+	                   <bean p:id="4" p:name="penki kacsa" p:price="${csing.price.small}" class="com.acme.training.domain.Food" />
 	               </util:list>
 	           </property>
 	       </bean>
