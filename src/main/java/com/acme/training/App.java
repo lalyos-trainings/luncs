@@ -18,10 +18,12 @@ public class App {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml",
                 "orders.xml");
 
-        ShoppingCart cart = appContext.getBean(ShoppingCart.class);
+        ShoppingCart cart = appContext.getBean("cart", ShoppingCart.class);
         cart.addFood(2, 2);
         cart.addFood(4, 4);
         cart.checkout();
+
+        ShoppingCart c = appContext.getBean("cart2", ShoppingCart.class);
 
         OrderService os = appContext.getBean(InMemoryOrderService.class);
 

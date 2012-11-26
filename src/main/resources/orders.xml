@@ -7,7 +7,8 @@
 
     <bean class="com.acme.training.service.InMemoryOrderService"></bean>
     
-    <bean class="com.acme.training.service.ShoppingCart" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
+    <bean id="cart" class="com.acme.training.service.ShoppingCart" scope="prototype" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
+    <bean id="cart2" class="com.acme.training.service.ShoppingCart" scope="prototype" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
     
     <bean id="addr" class="com.acme.training.domain.Address" c:street="kit" c:zip="is" c:city="erdekelne" c:country="ez" />
 
