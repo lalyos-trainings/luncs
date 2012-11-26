@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.acme.domain.Address;
 import com.acme.domain.Order;
 import com.acme.domain.OrderItem;
 
+@Component("kart")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
     private Order order;
@@ -57,10 +62,6 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         orderService.doOrder(order);
     }
 
-    public OrderService getOrderService() {
-        return orderService;
-    }
-
     public void setBeanName(String arg0) {
         logger.info("shopping carts name:"+arg0+" hashcode:"+this.hashCode());
     }
@@ -69,5 +70,8 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         this.orderService = orderService;
     }
  
-    
+    public OrderService getOrderService() {
+        return orderService;
+    }
+
 }

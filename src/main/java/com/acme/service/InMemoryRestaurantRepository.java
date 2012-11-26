@@ -8,21 +8,19 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.stereotype.Component;
 
 import com.acme.domain.Food;
 import com.acme.domain.Menu;
 import com.acme.domain.Restaurant;
 
+@Component("repo")
 public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private ArrayList<Food> foodList = new ArrayList<Food>();
     private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
-    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
-        this.restaurantMap = restaurantMap;
-    }
-
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
