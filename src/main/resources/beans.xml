@@ -12,9 +12,8 @@
     
     <bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
     
-    <bean id="orderService" class="com.epam.training.service.InMemoryOrderService" />
+    <bean id="orderService" class="com.epam.training.service.InMemoryOrderService" autowire-candidate="true" />
     
-    <!-- auto wire a két függőségre -->
     <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingCart" />
     
 </beans>

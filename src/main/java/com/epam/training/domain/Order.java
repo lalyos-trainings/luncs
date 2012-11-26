@@ -53,5 +53,31 @@ public class Order
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+    @Override
+    public String toString() 
+    {
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("customer: ");
+        buffer.append(customer);
+        buffer.append("\r\nbilling address: ");
+        buffer.append(billingAddress);
+        buffer.append("\r\ndeliver address: ");
+        buffer.append(deliveryAddress);
+        buffer.append("\r\n");
+        
+        int i = 0;
+        while (i < orderItems.size())
+        {
+            OrderItem item = orderItems.get(i);
+            buffer.append(item);
+            buffer.append("\r\n");
+            i++;
+        }
+        
+        return buffer.toString();
+    }
+    
+    
     
 }

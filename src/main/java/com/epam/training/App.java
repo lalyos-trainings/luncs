@@ -1,9 +1,12 @@
 package com.epam.training;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.epam.training.service.MenuLister;
+import com.epam.training.domain.Order;
+import com.epam.training.service.OrderService;
 import com.epam.training.service.ShoppingCart;
 
 public class App 
@@ -17,17 +20,27 @@ public class App
        
         ShoppingCart cart = context.getBean(ShoppingCart.class);
         
-        // TODO 
+        cart.setCustomer("János");
+        cart.setDeliveryAddress("Harcsa utca 17.", "Talak", "6352", "HU");
+        cart.setBillingAddress("Harcsa utca 17.", "Talak", "6352", "HU");
+
+        cart.addFood(5, 2);
+        cart.addFood(1, 4);
+
+        cart.checkout();
+
+        OrderService orderService = context.getBean(OrderService.class);
         
-//      cart.setCustomer()
-//      cart.setDeliveryAddress(street, city, zip, country)
-//      cart.setBillingAddress(street, city, zip, country)
-//      
-//      cart.addFood(foodId, quantity)
+        List<Order> orders = orderService.getAllOrders();
         
-        MenuLister lister = context.getBean(MenuLister.class);
+        int i = 0;
+        while (i < orders.size())
+        {
+            Order order = orders.get(i);
+            System.out.println(String.format("%d. order:%n%s", (i+1), order));
+            i++;
+        }
         
-        lister.doList();
     }
 
 }

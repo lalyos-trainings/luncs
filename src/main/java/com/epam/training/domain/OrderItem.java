@@ -24,4 +24,11 @@ public class OrderItem
     public void setFood(Food food) {
         this.food = food;
     }
+
+    @Override
+    public String toString() 
+    {
+        return String.format("%s, %d db",  food, quantity);
+    }
+    
 }
