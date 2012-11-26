@@ -1,7 +1,5 @@
 package com.acme.training;
 
-import java.util.Locale;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -21,16 +19,15 @@ public class App
         
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing-csang.xml");
         
-        System.out.println(ctx.getMessage("welcome", null, new Locale("hu")));
-        System.out.println();
-
-        MenuLister menuLister = ctx.getBean("menuLister", SystemOutMenuLister.class);
+        MenuLister menuLister = ctx.getBean(SystemOutMenuLister.class);
         menuLister.doList();
         
-        ShoppingCart cart = ctx.getBean("shoppingCart1", InMemoryShoppingCart.class);
+        ShoppingCart cart = ctx.getBean(InMemoryShoppingCart.class);
+        ShoppingCart cart2 = ctx.getBean(InMemoryShoppingCart.class);
 //        cart.addFood("KFC", "csirkeszarny", 1);
 //        cart.addFood("csing-csang", "szezamos csirke", 2);
-        OrderService os = ctx.getBean("orderService", InMemoryOrderService.class);
+        OrderService os = ctx.getBean(InMemoryOrderService.class);
+        OrderService os2 = ctx.getBean(InMemoryOrderService.class);
         os.doOrder(cart.withBillingAddress(new Address("1122", "Csaba utca"))
                 .withDeliveryAddress(new Address("1122", "Csaba utca"))
                 .withCustomer("Sztike")
@@ -38,9 +35,22 @@ public class App
                 .withFood("szezamos csirke", 2)
                 .withFood("csirkeszarny", 2)
                 .checkOut());
+        os.doOrder(cart2.withBillingAddress(new Address("1234", "Ize utca"))
+                .withDeliveryAddress(new Address("1234", "Ize utca"))
+                .withCustomer("Gizi")
+                .withFood("leves", 1)
+                .withFood("leves", 1)
+                .withFood("edes-savanyu", 3)
+                .checkOut());
         for(Order order : os.getAllOrders()){
-            order.setApplicationContext(ctx);
             System.out.println(order);
+            System.out.println();
         }
+
+//        System.out.println("OS2:");
+//        for(Order order : os2.getAllOrders()){
+//            System.out.println(order);
+//            System.out.println();
+//        }
     }
 }

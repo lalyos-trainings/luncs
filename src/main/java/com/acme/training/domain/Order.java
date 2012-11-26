@@ -1,29 +1,22 @@
 package com.acme.training.domain;
 
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
-public class Order implements ApplicationContextAware{
+public class Order{
 
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
     private Map<String, OrderItem> orderItems;
-    private ApplicationContext applicationContext;
-    private Locale locale;
 
-    public Order(String customer, Address billingAddress, Address deliveryAddress, Locale locale) {
+    public Order(String customer, Address billingAddress, Address deliveryAddress) {
         super();
         this.customer = customer;
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
         this.orderItems = new HashMap<String, OrderItem>();
-        this.locale = locale;
     }
 
     public Order() {
@@ -59,14 +52,6 @@ public class Order implements ApplicationContextAware{
         return orderItems;
     }
     
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
-
     public void addOrderItem(Food food, int quantity){
         OrderItem tmp = orderItems.get(food.getName());
         if(tmp == null){
@@ -83,15 +68,14 @@ public class Order implements ApplicationContextAware{
     
     @Override
     public String toString() {
-        String orderMessage = applicationContext.getMessage("orderFormat", null, locale);
+//        String orderMessage = applicationContext.getMessage("orderFormat", null, locale);
+//        String formattedOrder = String
+//                .format(orderMessage,
+//                        customer, deliveryAddress, billingAddress, orderItems);
         String formattedOrder = String
-                .format(orderMessage,
-                        customer, deliveryAddress, billingAddress, orderItems);
+        .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s",
+                customer, deliveryAddress, billingAddress, orderItems);
         return formattedOrder;
     }
 
-    public void setApplicationContext(ApplicationContext context) throws BeansException {
-        applicationContext = context;
-    }
-    
 }

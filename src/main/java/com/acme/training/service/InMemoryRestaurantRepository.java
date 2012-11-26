@@ -9,10 +9,14 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
+@Component("memoryRest")
+@Scope("singleton")
 public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
     private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();

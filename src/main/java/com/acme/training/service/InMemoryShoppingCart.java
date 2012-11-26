@@ -1,21 +1,22 @@
 package com.acme.training.service;
 
-import java.util.Locale;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 
+@Component
+@Scope("prototype")
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     private RestaurantRepository repo;
     private Order order;
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
-    private Locale locale;
     
     private InMemoryShoppingCart(){
         order = new Order();
@@ -55,15 +56,6 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         return this;
     }
     
-    public Locale getLocale() {
-        return locale;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-        order.setLocale(locale);
-    }
-
     public Order checkOut(){
         return order;
     }
