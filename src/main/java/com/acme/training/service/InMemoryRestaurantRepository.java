@@ -19,15 +19,11 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
 {
     private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
-    }
-
-    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
-        this.restaurantMap = restaurantMap;
     }
 
     private void addRestaurant(Restaurant restaurant) {
