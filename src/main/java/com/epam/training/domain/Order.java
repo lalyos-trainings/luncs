@@ -1,5 +1,6 @@
 package com.epam.training.domain;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Order {
@@ -8,6 +9,10 @@ public class Order {
     Address deliveryAddress;
     List<OrderItem> orderItems;
     
+    public Order() {
+        orderItems = new LinkedList<OrderItem>();
+    }
+
     public String getCustomer() {
         return customer;
     }

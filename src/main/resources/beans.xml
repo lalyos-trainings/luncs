@@ -11,8 +11,9 @@
 	<bean class="com.epam.training.service.SysoutMenuLister"/>
     
     <bean id="regirepo" class="com.epam.training.service.InMemoryRestaurantRepository" lazy-init="true" scope="singleton"/>	
-
     <bean id="shoppingCart" class="com.epam.training.service.InMemoryShoppingcart"/>
+    <bean id="os" class="com.epam.training.service.OrderService" autowire-candidate="true"/>
+    
     
 	<bean id="singliRepo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true" >
 		<property name="restaurantMap">

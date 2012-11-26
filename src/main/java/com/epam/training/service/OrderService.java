@@ -8,11 +8,7 @@ public class OrderService {
     
     private LinkedList<Order> orders;
     
-    
     public OrderService() {
-    }
-
-    public OrderService(LinkedList<Order> orders) {
         orders = new LinkedList<Order>();
     }
     

@@ -38,7 +38,7 @@ public class App {
           System.out.println(orders.get(i).getDeliveryAddress());
           List<OrderItem> orderItems = orders.get(i).getOrderItems();
           
-          for(int j=0; i<orderItems.size(); j++){
+          for(int j=0; j<orderItems.size(); j++){
               Food food = orderItems.get(j).getFood();
               int quantity = orderItems.get(j).getQuantity();
               System.out.println(food.getName()+ "    " + food.getPrice() + "  q:" + quantity);
