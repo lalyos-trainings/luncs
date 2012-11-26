@@ -14,6 +14,6 @@
     
     <bean id="orderService" class="com.acme.training.service.InMemoryOrderService" autowire-candidate="true" scope="singleton" />
     
-    <bean id="shoppingCart" class="com.acme.training.service.InMemoryShoppingCart" scope="prototype" />
+    <bean class="com.acme.training.service.InMemoryShoppingCart" scope="prototype" />
     
 </beans>

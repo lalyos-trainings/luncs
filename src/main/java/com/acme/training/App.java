@@ -41,6 +41,10 @@ public class App
             i++;
         }
         
+        cart = context.getBean(ShoppingCart.class);
+        cart = context.getBean(ShoppingCart.class);
+        cart = context.getBean(ShoppingCart.class);
+        
     }
 
 }
