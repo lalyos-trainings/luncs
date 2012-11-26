@@ -1,15 +1,25 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
 public class Food {
     private String name;
     private String description;
     private int price;
+    private int foodId;
+    
+    public int getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(int foodId) {
+        this.foodId = foodId;
+    }
 
     public Food() {}
     
-    public Food(String name, int price) {
+    public Food(String name, int price, int foodId) {
         this.name = name;
         this.price = price;
+        this.foodId = foodId;
     }
     
     public String getName() {
@@ -32,7 +42,8 @@ public class Food {
     }
     
     public String toString(){
-        return  String.format("Food: %-15s [%5d]", name, price);
+        return  String.format("Food: %-15s [%5d] id: %2s", name, price, foodId);
     }
+   
     
 }

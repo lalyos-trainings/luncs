@@ -1,13 +1,14 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Menu;
-import com.epam.training.domain.Restaurant;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Menu;
+import com.acme.training.domain.Restaurant;
 
 public class InMemoryRestaurantRepository implements RestaurantRepository {
 
@@ -36,9 +37,9 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("pacal", 500));
-        m1.getFoods().add(new Food("toltott kaposzta",750));
-        m1.getFoods().add(new Food("bableves", 690));
+        m1.getFoods().add(new Food("pacal", 500, 1));
+        m1.getFoods().add(new Food("toltott kaposzta",750, 2));
+        m1.getFoods().add(new Food("bableves", 690, 3));
         return r1;
     }
 
@@ -47,16 +48,39 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("lencse leves", 400));
-        m1.getFoods().add(new Food("gyros",850));
-        m1.getFoods().add(new Food("baklava", 300));
+        m1.getFoods().add(new Food("lencse leves", 400, 4));
+        m1.getFoods().add(new Food("gyros",850, 5));
+        m1.getFoods().add(new Food("baklava", 300, 6));
         return r1;
     }
 
     /* (non-Javadoc)
-     * @see com.epam.training.service.RestaurantRepository#getAllRestaurants()
+     * @see com.acme.training.service.RestaurantRepository#getAllRestaurants()
      */
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
     }
+    
+    public Food getFoodById(int id){
+        
+                Food food = null;
+        
+        for (Restaurant restaurant : restaurantMap.values()){
+            for(Food tempFood : restaurant.getMenu().getFoods()){
+            
+               if(id==tempFood.getFoodId()){
+                  food=tempFood;
+                }    
+                
+            }
+            
+        }
+        
+        
+        return food;
+         
+         
+     }
+    
+    
 }

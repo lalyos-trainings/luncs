@@ -1,8 +1,14 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
 public class OrderItem {
     private int quantity;
     private Food food;
+    
+    public OrderItem (Food food, int q){
+            this.food = food;
+            quantity=q;
+    }
+    
     
     
     public int getQuantity() {
@@ -18,5 +24,9 @@ public class OrderItem {
         this.food = food;
     }
     
-    
+    public String toString(){
+        
+        return food + ", mennyiseg: " + quantity; 
+    }
+   
 }

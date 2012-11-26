@@ -1,5 +1,6 @@
-package com.epam.training.domain;
+package com.acme.training.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
@@ -7,6 +8,12 @@ public class Order {
     private Address billingAddr;
     private Address deliveryAddr;
     private List<OrderItem> itemList;
+    
+    public Order(){
+        itemList = new ArrayList<OrderItem>();
+        
+    };
+    
     public String getCustomer() {
         return customer;
     }
@@ -32,7 +39,10 @@ public class Order {
         this.itemList = itemList;
     }
     
-    
+    public String toString(){
+        
+        return customer + ", " + deliveryAddr.toString(); 
+    }
     
     
 }
