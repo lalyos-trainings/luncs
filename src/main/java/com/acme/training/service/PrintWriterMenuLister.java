@@ -16,18 +16,31 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private PrintWriter writer;
     private RestaurantRepository repo;
     private ApplicationContext ctx;
+    private Locale locale;   
     
+    
+    public Locale getLocale() {
+        return locale;
+    }
+
+    public void setLocale(Locale locale) {
+        this.locale = locale;
+    }
+
     public PrintWriterMenuLister(PrintWriter writer) {
         this.writer = writer;
     }
     
     public void doList() {
-        String nextRestMsg = ctx.getMessage("rest.next",null,new Locale("hu"));
+        String welcomeMsg = ctx.getMessage("welcome",null,locale);
+        String nextRestMsg = ctx.getMessage("rest.next",null,locale);
+        String foodName = ctx.getMessage("food.name", null, locale);
+        writer.println("=======" + welcomeMsg + "=======");
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             writer.println("=== " + nextRestMsg + " resti: " + restaurant);
             Collection<Food> foods = restaurant.getMenu().getFoods();
             for (Food food : foods) {
-                writer.println(food);            
+                writer.println(String.format("%s: %s %-15s", foodName, food.getName(), food.getPrice()));            
             }
         }
 

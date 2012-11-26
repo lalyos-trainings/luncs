@@ -1,17 +1,11 @@
 package com.acme.training.domain;
 
-import java.util.Locale;
 
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-
-public class Food implements ApplicationContextAware{
+public class Food{
     private String name;
     private String description;
     private int price;
     private int id;
-    private String foodName_;
     
     public Food() {}
     
@@ -51,12 +45,7 @@ public class Food implements ApplicationContextAware{
 
     @Override
     public String toString() {
-        return String.format("%s %-15s %5d", foodName_, getName(), getPrice());
-    }
-
-    public void setApplicationContext(ApplicationContext ctx) throws BeansException {
-        foodName_ = ctx.getMessage("food.name", null, new Locale("hu"));
-        
+        return String.format("Food: %s %-15s", getName(), getPrice());
     }
         
 }

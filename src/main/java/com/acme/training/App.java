@@ -6,15 +6,13 @@ import java.util.Locale;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.acme.training.service.InMemoryShoppingcart;
 import com.acme.training.service.MenuLister;
 
 public class App {
 
     public static void main(String[] args) {
        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "csing-csang.xml", "kfc.xml");
-       InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
-       String message = ctx.getMessage("welcome", null, new Locale("hu"));
+//       InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
        
        /*cart.addFood(1, 1);
        cart.addFood(3, 2);
@@ -39,7 +37,7 @@ public class App {
           }      
        }
        */
-       System.out.println("=========" + message + "=========");
+       
        MenuLister lister = ctx.getBean(MenuLister.class);
        lister.doList();
 
