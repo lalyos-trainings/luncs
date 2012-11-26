@@ -17,8 +17,6 @@ public class App {
         
         MenuLister lister = ctx.getBean(MenuLister.class);
         
-        String msg = ctx.getMessage("welcome", null, new Locale("hu"));
-        System.out.println(String.format("=== %s ===", msg));
         lister.doList();
         
     }
