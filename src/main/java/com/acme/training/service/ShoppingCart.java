@@ -3,11 +3,14 @@ package com.acme.training.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 
+@Component
 public class ShoppingCart {
 	
 	private Address deliveringAddress;

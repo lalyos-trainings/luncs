@@ -18,7 +18,7 @@ public class OrderItem {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	private Food getFood() {
+	public Food getFood() {
 		return food;
 	}
 	private void setFood(Food food) {

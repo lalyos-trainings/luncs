@@ -5,15 +5,26 @@ import java.util.Locale;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 
+@Component
 public class SystemOutOrderLister implements OrderLister, ApplicationContextAware {
 
 	private OrderService os;
 	private ApplicationContext ctx;
+	private Locale locale;
 	
+	public Locale getLocale() {
+		return locale;
+	}
+
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+	}
+
 	public void setOrderService(OrderService os) {
 		// TODO Auto-generated method stub
 		this.os = os;
@@ -21,14 +32,17 @@ public class SystemOutOrderLister implements OrderLister, ApplicationContextAwar
 
 	public void doList() {
 		// TODO Auto-generated method stub
-		String customer = ctx.getMessage("customer", null, new Locale( "hu"));
+		String customer = ctx.getMessage("customer", null, locale);
+		String baddress = ctx.getMessage("baddress", null, locale);
+		String daddress = ctx.getMessage("daddress", null, locale);
+		String food =  ctx.getMessage("food", null, locale);
 		for (Order order : os.getAllOrders()) {
             System.out.println("======");
 			System.out.println(customer + ": " + order.getCustomer());
-			System.out.println("Billing Address: " + order.getBillingAddress());
-			System.out.println("Delivery Address: " + order.getDeliveringAddress());
+			System.out.println(baddress + ": " + order.getBillingAddress());
+			System.out.println(daddress + ": " + order.getDeliveringAddress());
 			for (OrderItem oi: order.getItems()) {
-            	System.out.println(oi);
+            	System.out.println(food + ": " + oi.getQuantity() + "x " + oi.getFood().getName());
             }
 			System.out.println("======");
         }

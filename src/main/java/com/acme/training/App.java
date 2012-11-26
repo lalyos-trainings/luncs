@@ -35,7 +35,7 @@ public class App {
         cart.setDeliveringAddress(addr);
         cart.checkout("VP");
         
-        System.out.println(ctx.getMessage("welcome", null, new Locale("hu")));
+        //System.out.println(ctx.getMessage("welcome", null, new Locale("hu")));
         
         OrderLister lister = ctx.getBean(OrderLister.class);
         lister.doList();
