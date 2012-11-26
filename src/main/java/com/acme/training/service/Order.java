@@ -2,6 +2,8 @@ package com.acme.training.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 import com.acme.training.domain.Address;
 
@@ -10,10 +12,10 @@ public class Order {
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
-    private List<OrderItem> items;
+    private Map<Integer, OrderItem> items;
     
     public Order() {
-        items = new ArrayList<OrderItem>();
+        items = new HashMap<Integer, OrderItem>();
         billingAddress = new Address();
         deliveryAddress = new Address();
     }
@@ -36,23 +38,24 @@ public class Order {
     public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
+    
     public List<OrderItem> getItems() {
-        return items;
-    }
-    public void setItems(List<OrderItem> items) {
-        this.items = items;
+        return new ArrayList<OrderItem>(items.values());
     }
     
     public void addOrderItem(OrderItem item) {
-        items.add(item);
-    }
-    
-    public String toString() {
-        StringBuffer ib = new StringBuffer();
-        for (OrderItem i : items) {
-            ib.append(String.format("item: %s%n", i));
+        OrderItem found;
+        if ( (found = items.get(item.getFoodId())) == null ) {
+            items.put(item.getFoodId(), item);
+        } else {
+            found.setCount( found.getCount() + item.getCount() );
         }
-        return String.format("customer: %s, billing address: %s, delivery address: %s, items: %s",  customer, billingAddress.toString(), deliveryAddress, items);
     }
 
+    @Override
+    public String toString() {
+        return "Order [customer=" + customer + ", billingAddress=" + billingAddress + ", deliveryAddress="
+                + deliveryAddress + ", items=" + items + "]";
+    }
+    
 }
