@@ -11,15 +11,15 @@
 
     <context:property-placeholder location="classpath:ching.properties" />
 
-    <bean id="chingChung" class="com.epam.training.domain.Restaurant" c:name="Ching-Chung" c:street="${ching.street}" c:zip="${ching.zip}" >
+    <bean id="chingChung" class="com.acme.training.domain.Restaurant" c:name="Ching-Chung" c:street="${ching.street}" c:zip="${ching.zip}" >
         <property name="menu">
-            <bean class="com.epam.training.domain.Menu" >
+            <bean class="com.acme.training.domain.Menu" >
                 <property name="foods" >
                     <util:list>
-                        <bean class="com.epam.training.domain.Food" p:id="4" p:name="ciposcirke" p:price="${ching.price.small}" />
-                        <bean class="com.epam.training.domain.Food" p:id="5" p:name="edeszszavanu" p:price="${ching.price.small}" />
-                        <bean class="com.epam.training.domain.Food" p:id="6" p:name="pekingi kacsa" p:price="${ching.price.medium}" />
-                        <bean class="com.epam.training.domain.Food" p:id="7" p:name="macka husz" p:price="${ching.price.big}" />
+                        <bean class="com.acme.training.domain.Food" p:id="4" p:name="ciposcirke" p:price="${ching.price.small}" />
+                        <bean class="com.acme.training.domain.Food" p:id="5" p:name="edeszszavanu" p:price="${ching.price.small}" />
+                        <bean class="com.acme.training.domain.Food" p:id="6" p:name="pekingi kacsa" p:price="${ching.price.medium}" />
+                        <bean class="com.acme.training.domain.Food" p:id="7" p:name="macka husz" p:price="${ching.price.big}" />
                     </util:list>
                 </property>
             </bean>
