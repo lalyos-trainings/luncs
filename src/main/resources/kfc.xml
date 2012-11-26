@@ -5,21 +5,21 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd" >
 
-	<bean id="kfc" class="com.epam.training.domain.Restaurant">
+	<bean id="kfc" class="com.acme.training.domain.Restaurant">
 		<constructor-arg value="KFC"></constructor-arg>
 		<constructor-arg value="Corvin"></constructor-arg>
 		<constructor-arg value="1082"></constructor-arg>
 		<property name="menu" ref="kfc-menu"></property>
 	</bean>
 	
-	<bean id="kfc-menu" class="com.epam.training.domain.Menu">
+	<bean id="kfc-menu" class="com.acme.training.domain.Menu">
 		<property name="foods">
 			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="csirkeszar"
+				<bean class="com.acme.training.domain.Food" p:name="csirkeszar"
 					p:price="500" />
-				<bean class="com.epam.training.domain.Food" p:name="csirkelab"
+				<bean class="com.acme.training.domain.Food" p:name="csirkelab"
 					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="libamaj"
+				<bean class="com.acme.training.domain.Food" p:name="libamaj"
 					p:price="1500" />
 			</util:list>
 		</property>

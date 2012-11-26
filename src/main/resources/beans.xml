@@ -6,12 +6,12 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
 	default-autowire="byType">
 
-	<bean class="com.epam.training.service.SysoutMenuLister" />
+	<bean class="com.acme.training.service.SysoutMenuLister" />
 
-	<bean id="singlirepo" class="com.epam.training.service.InMemoryRestaurantRepository" autowire-candidate="true"/>
+	<bean id="singlirepo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true"/>
 	
-	<bean id="shopingcart" class="com.epam.training.service.ShoppingCart" scope="prototype" />
+	<bean id="shopingcart" class="com.acme.training.service.ShoppingCart" scope="prototype" />
 	
-	<bean id="orderservice" class="com.epam.training.service.InMemoryOrderService" scope="singleton" />
+	<bean id="orderservice" class="com.acme.training.service.InMemoryOrderService" scope="singleton" />
 
 </beans>

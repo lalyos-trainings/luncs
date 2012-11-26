@@ -10,21 +10,21 @@
 		
 <context:property-placeholder location="classpath:meki.properties"/>
 
-	<bean id="meki" class="com.epam.training.domain.Restaurant">
+	<bean id="meki" class="com.acme.training.domain.Restaurant">
 		<constructor-arg value="${meki.name}"></constructor-arg>
 		<constructor-arg value="${meki.address}"></constructor-arg>
 		<constructor-arg value="${meki.zip}"></constructor-arg>
 		<property name="menu" ref="meki-menu"></property>
 	</bean>
 
-	<bean id="meki-menu" class="com.epam.training.domain.Menu">
+	<bean id="meki-menu" class="com.acme.training.domain.Menu">
 		<property name="foods">
 			<util:list>
-				<bean class="com.epam.training.domain.Food" p:name="sajtos burger"
+				<bean class="com.acme.training.domain.Food" p:name="sajtos burger"
 					p:price="500" />
-				<bean class="com.epam.training.domain.Food" p:name="csirke burger"
+				<bean class="com.acme.training.domain.Food" p:name="csirke burger"
 					p:price="450" />
-				<bean class="com.epam.training.domain.Food" p:name="sajtos csirke burger"
+				<bean class="com.acme.training.domain.Food" p:name="sajtos csirke burger"
 					p:price="600" />
 			</util:list>
 		</property>
