@@ -8,9 +8,9 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
 		default-autowire="byType" >
 
-	<bean class="com.epam.training.service.SysoutMenuLister" />
-	<bean id="repo" class="com.epam.training.service.InMemoryRestaurantRepository" />
+	<bean class="com.acme.training.service.SysoutMenuLister" />
+	<bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" />
 
-	<bean class="com.epam.training.service.InMemoryOrderService" />
-	<bean class="com.epam.training.service.ShoppingCart"  scope="prototype" />
+	<bean class="com.acme.training.service.InMemoryOrderService" />
+	<bean class="com.acme.training.service.ShoppingCart"  scope="prototype" />
 </beans>

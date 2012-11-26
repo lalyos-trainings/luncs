@@ -1,9 +1,9 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
-import com.epam.training.domain.Address;
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Order;
-import com.epam.training.domain.OrderItem;
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Order;
+import com.acme.training.domain.OrderItem;
 
 public class ShoppingCart {
 

@@ -1,9 +1,9 @@
-package com.epam.training;
+package com.acme.training;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.epam.training.service.MenuLister;
+import com.acme.training.service.MenuLister;
 
 public class App {
 

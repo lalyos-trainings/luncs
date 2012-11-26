@@ -1,13 +1,13 @@
-package com.epam.training.service;
+package com.acme.training.service;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.epam.training.domain.Food;
-import com.epam.training.domain.Menu;
-import com.epam.training.domain.Restaurant;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.Menu;
+import com.acme.training.domain.Restaurant;
 
 public class InMemoryRestaurantRepository implements RestaurantRepository {
 
@@ -60,9 +60,6 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         return r1;
     }
 
-    /* (non-Javadoc)
-     * @see com.epam.training.service.RestaurantRepository#getAllRestaurants()
-     */
     public Collection<Restaurant> getAllRestaurants() {
         return restaurantMap.values();
     }

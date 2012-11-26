@@ -1,12 +1,12 @@
-package com.epam.training;
+package com.acme.training;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.epam.training.domain.Address;
-import com.epam.training.domain.Order;
-import com.epam.training.service.OrderService;
-import com.epam.training.service.ShoppingCart;
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Order;
+import com.acme.training.service.OrderService;
+import com.acme.training.service.ShoppingCart;
 
 public class NetCincer {
 
