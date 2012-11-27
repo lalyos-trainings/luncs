@@ -1,12 +1,6 @@
 package com.acme.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 
@@ -15,12 +9,8 @@ import com.acme.domain.Menu;
 import com.acme.domain.Restaurant;
 
 @Component("repo")
-public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
-    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
-    private ArrayList<Food> foodList = new ArrayList<Food>();
-    private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
-    
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
@@ -64,25 +54,5 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
         foodList.add(f2);
         foodList.add(f3);
         return r1;
-    }
-
-    /* (non-Javadoc)
-     * @see com.epam.training.service.RestaurantRepository#getAllRestaurants()
-     */
-    public Collection<Restaurant> getAllRestaurants() {
-        return restaurantMap.values();
-    }
-
-    public Food getFoodbyId(int id) {        
-        for (Food f: foodList){
-            if (f.getId() == id){
-                return f;
-            }
-        }
-        return null;
-    }
-
-    public void setBeanName(String arg0) {
-        logger.info(arg0);
     }
 }
