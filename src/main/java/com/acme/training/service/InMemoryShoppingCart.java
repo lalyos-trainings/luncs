@@ -17,7 +17,7 @@ import com.acme.training.domain.Order;
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     @Autowired
-    @Qualifier("memoryRest")
+//    @Qualifier("memoryRest")
     private RestaurantRepository repo;
     private Order order;
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
