@@ -8,6 +8,7 @@ public class BundlePlay {
     /**
      * @param args
      */
+    @SuppressWarnings("unused")
     public static void main(String[] args) {
         Locale germany = Locale.GERMANY;
         Locale hun = new Locale("hu");

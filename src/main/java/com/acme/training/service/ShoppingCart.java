@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -13,6 +12,7 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
+import com.acme.training.repository.RestaurantRepository;
 
 @Component("kart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)

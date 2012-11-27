@@ -1,4 +1,4 @@
-package com.acme.training.service;
+package com.acme.training.lister;
 
 public interface MenuLister {
 

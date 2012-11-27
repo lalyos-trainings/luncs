@@ -1,4 +1,4 @@
-package com.acme.training.service;
+package com.acme.training.repository;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanNameAware;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;

@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationEvent;
 
 import com.acme.training.domain.Order;
 
+@SuppressWarnings("serial")
 public class OrderEvent extends ApplicationEvent{
 
     private Order order;

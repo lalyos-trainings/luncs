@@ -1,14 +1,16 @@
 package com.acme.training.domain;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 
 public class Order {
-    private String id;
+    
+    private static int nextId=0;
+    private String id=String.valueOf(nextId++);
+
     private String customer;
     private Address deliveryAddress;
     private Address billingAddress;
@@ -62,7 +64,7 @@ public class Order {
         }         
     }
     public List<OrderItem> getItems() {
-        List<OrderItem> ret = new ArrayList(itemMap.values());
+        List<OrderItem> ret = new ArrayList<OrderItem>(itemMap.values());
         return ret;
     }
 }

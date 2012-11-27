@@ -1,4 +1,4 @@
-package com.acme.training.service;
+package com.acme.training.lister;
 
 import java.io.PrintWriter;
 import java.util.Collection;
@@ -8,13 +8,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
+import com.acme.training.repository.RestaurantRepository;
 
 public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware {
 

@@ -1,8 +1,9 @@
-package com.acme.training.service;
+package com.acme.training.lister;
 
 import java.io.PrintWriter;
 
 import org.springframework.stereotype.Component;
+
 
 
 @Component

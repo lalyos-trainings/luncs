@@ -1,11 +1,9 @@
 package com.acme.training;
 
-import java.util.Locale;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.acme.training.service.MenuLister;
+import com.acme.training.lister.MenuLister;
 
 public class App {
 
