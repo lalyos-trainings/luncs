@@ -3,7 +3,10 @@ package com.acme.training.domain;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+//@Component
 public class RestaurantOrder {
 
 	private static int nextId = 0;
@@ -12,6 +15,10 @@ public class RestaurantOrder {
 	private Map<Integer,OrderItem> orderItemMap = new HashMap<Integer, OrderItem>();
 	private Customer customer;
 	private Integer id = nextId++;
+	
+	public RestaurantOrder() {
+		// TODO Auto-generated constructor stub		
+	}
 	
 	public RestaurantOrder( Restaurant restaurant, Customer customer ) {
 		this.restaurant = restaurant;
