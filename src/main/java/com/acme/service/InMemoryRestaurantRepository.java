@@ -8,8 +8,8 @@ import com.acme.domain.Food;
 import com.acme.domain.Menu;
 import com.acme.domain.Restaurant;
 
-@Component("repo")
-public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository, BeanNameAware {
+@Component("memoryRepo")
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
@@ -54,5 +54,10 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         foodList.add(f2);
         foodList.add(f3);
         return r1;
+    }
+
+    public void setBeanName(String arg0) {
+        // TODO Auto-generated method stub
+        
     }
 }

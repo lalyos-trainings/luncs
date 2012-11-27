@@ -1,7 +1,6 @@
 package com.acme;
 
 import java.util.Collection;
-import java.util.Locale;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -22,8 +21,6 @@ public class App {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "ching.xml", "kfc.xml", "order1.xml");
 
         MenuLister lister = ctx.getBean(MenuLister.class);
-
-       
         
         lister.doList();
         

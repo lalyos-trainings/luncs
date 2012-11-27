@@ -1,10 +1,9 @@
 package com.acme.service;
 
-import java.util.ArrayList;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,9 @@ import com.acme.domain.OrderItem;
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
     private Order order;
+    @Autowired
     private RestaurantRepository repo;
+    @Autowired
     private OrderService orderService;
     private Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
     
@@ -29,11 +30,11 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         this.repo = new InMemoryRestaurantRepository();
     }
 
-    public InMemoryShoppingCart(Order order, RestaurantRepository repo){
+ /*   public InMemoryShoppingCart(Order order, RestaurantRepository repo){
         this.order = order;
         this.repo = repo;
         this.order.setOrderItems(new ArrayList<OrderItem>());
-    }
+    }*/
     
     public void addFood(int foodId, int quantity){
         OrderItem orderItem = new OrderItem();        

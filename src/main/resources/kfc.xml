@@ -13,11 +13,11 @@
 			<bean id="KFCMenu" class="com.acme.domain.Menu">
 				<property name="foods">
 					<util:list>
-						<bean class="com.acme.domain.Food" p:name="csirkeszarny"
+						<bean class="com.acme.domain.Food" p:id="1" p:name="csirkeszarny"
 							p:price="750" />
-						<bean class="com.acme.domain.Food" p:name="csirkelab"
+						<bean class="com.acme.domain.Food" p:id="2" p:name="csirkelab"
 							p:price="450" />
-						<bean class="com.acme.domain.Food" p:name="libamaj"
+						<bean class="com.acme.domain.Food" p:id="3" p:name="libamaj"
 							p:price="1550" />
 					</util:list>
 				</property>

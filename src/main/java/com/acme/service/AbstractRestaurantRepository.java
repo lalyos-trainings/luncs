@@ -12,7 +12,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import com.acme.domain.Food;
 import com.acme.domain.Restaurant;
 
-public class AbstractRestaurantRepository {
+public class AbstractRestaurantRepository implements RestaurantRepository {
 
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     protected ArrayList<Food> foodList = new ArrayList<Food>();
