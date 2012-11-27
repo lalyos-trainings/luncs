@@ -8,6 +8,8 @@ public class Food{
     private int price;
     private Restaurant restaurant;
 
+    public Food(){}
+    
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;

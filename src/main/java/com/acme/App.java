@@ -63,6 +63,12 @@ public class App {
         
         InMemoryNAVService navService = ctx.getBean(InMemoryNAVService.class);
         navService.printTotalVAT();
+        
+        //TODO Collection<> getRestaurantBills(), getOrderItemByRest()
+        //restaurantOrders Map<String, Collection<OrderItem>> in Order class
+        //create Small Order classes for each restaurant and big Order(Customer Order) class for the overall Order including all small Orders(Restaurant Order)
+        //orderEventet megvaltoztatni -> nem Order lesz benne, hanem CustomerOrder
+        //textfile-ba leirni, ha olyan dontest kell hozni, ami nincs benne a specifikacioban
     }
 
 }

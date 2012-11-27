@@ -12,6 +12,10 @@ public class Restaurant {
     private Address address;
     private Menu menu;
     
+    public Restaurant(){
+        
+    }
+    
     public Restaurant(String name, String street, String zip) {
         this.name = name;
         this.address = new Address(street, "Budapest", zip, "Hungary");        

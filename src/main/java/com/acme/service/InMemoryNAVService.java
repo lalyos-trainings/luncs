@@ -10,7 +10,7 @@ public class InMemoryNAVService implements  ApplicationListener<OrderEvent> {
 
     private int uberGrandTotal;
     @Value("${vat}")
-    private String vat;
+    private double vat;
     
     public void onApplicationEvent(OrderEvent event) {
         int total = event.getOrder().getGrandTotal();
@@ -22,7 +22,7 @@ public class InMemoryNAVService implements  ApplicationListener<OrderEvent> {
     }
     
     public double getTotalVAT(){
-        return uberGrandTotal * Double.parseDouble(vat);
+        return uberGrandTotal * vat;
     }
    
     

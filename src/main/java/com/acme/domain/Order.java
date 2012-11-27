@@ -31,7 +31,10 @@ public class Order {
     }
     public void setOrderItems(Collection<OrderItem> orderItems) {
         this.orderItems = orderItems;
+        //TODO create addItem method
     }
+    
+    
     public int getGrandTotal() {
         int total = 0;
         for (OrderItem item: orderItems){
