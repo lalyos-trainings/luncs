@@ -7,6 +7,7 @@ import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 import com.acme.training.service.InMemoryOrderService;
 import com.acme.training.service.InMemoryStatisticService;
+import com.acme.training.service.InMemoryNavService;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
 
@@ -34,5 +35,8 @@ public class App {
 
         InMemoryStatisticService ss = appContext.getBean(InMemoryStatisticService.class);
         ss.printStatistics();
+
+        InMemoryNavService ns = appContext.getBean(InMemoryNavService.class);
+        ns.printNav();
     }
 }

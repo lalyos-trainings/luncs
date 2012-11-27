@@ -17,12 +17,12 @@
     <bean id="ChinChungMenu" class="com.acme.training.domain.Menu">
         <property name="foods">
             <util:list>
-                <bean class="com.acme.training.domain.Food"  p:id="4" p:name="Csiposz Csirke"
-                    p:price="${csing.price.small}" />
-                <bean class="com.acme.training.domain.Food" p:id="5" p:name="Edesz-savanyu levesz"
-                    p:price="${csing.price.medium}" />
-                <bean class="com.acme.training.domain.Food" p:id="6" p:name="Mackahusz"
-                    p:price="${csing.price.big}" />
+                <bean class="com.acme.training.domain.Food" c:id="4" c:name="Csiposz Csirke"
+                    c:price="${csing.price.small}" c:restaurant-ref="ChinChung" />
+                <bean class="com.acme.training.domain.Food" c:id="5" c:name="Edesz-savanyu levesz"
+                    c:price="${csing.price.medium}" c:restaurant-ref="ChinChung" />
+                <bean class="com.acme.training.domain.Food" c:id="6" c:name="Mackahusz"
+                    c:price="${csing.price.big}" c:restaurant-ref="ChinChung" />
             </util:list>
         </property>
     </bean>

@@ -5,13 +5,13 @@ public class Food {
     private String name;
     private String description;
     private int price;
+    private final Restaurant restaurant;
 
-    public Food() {
-    }
-
-    public Food(String name, int price) {
+    public Food(int id, String name, int price, Restaurant restaurant) {
+        this.id = id;
         this.name = name;
         this.price = price;
+        this.restaurant = restaurant;
     }
 
     public String getName() {
@@ -44,5 +44,9 @@ public class Food {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
     }
 }

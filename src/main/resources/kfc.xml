@@ -15,12 +15,12 @@
 	<bean id="KfcMenu" class="com.acme.training.domain.Menu">
 		<property name="foods">
 			<util:list>
-				<bean class="com.acme.training.domain.Food" p:id="1" p:name="Csirkeszarny"
-					p:price="750" />
-				<bean class="com.acme.training.domain.Food" p:id="2" p:name="Csirkelab"
-					p:price="450" />
-				<bean class="com.acme.training.domain.Food" p:id="3" p:name="Libamaj"
-					p:price="1500" />
+				<bean class="com.acme.training.domain.Food" c:id="1" c:name="Csirkeszarny"
+					c:price="750" c:restaurant-ref="kfcResti" />
+				<bean class="com.acme.training.domain.Food" c:id="2" c:name="Csirkelab"
+					c:price="450" c:restaurant-ref="kfcResti" />
+				<bean class="com.acme.training.domain.Food" c:id="3" c:name="Libamaj"
+					c:price="1500" c:restaurant-ref="kfcResti" />
 			</util:list>
 		</property>
 	</bean>
