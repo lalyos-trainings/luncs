@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Order;
@@ -16,6 +18,10 @@ public class InMemoryOrderService implements OrderService
     
     private List<Order> orders;
     
+    @Autowired
+    private ApplicationContext context;
+    
+    
     public InMemoryOrderService() 
     {
         orders = new ArrayList<Order>();
@@ -24,8 +30,8 @@ public class InMemoryOrderService implements OrderService
     public void doOrder(Order order) 
     {
         orders.add(order);
-        
-        logger.info("order placed");
+
+        context.publishEvent(new OrderEvent(this, order));
     }
 
     public List<Order> getAllOrders() 

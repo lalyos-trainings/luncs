@@ -30,5 +30,10 @@ public class OrderItem
     {
         return String.format("%s, %d db",  food, quantity);
     }
+
+    public void addQuantity(int quantity)
+    {
+        this.quantity += quantity;
+    }
     
 }
