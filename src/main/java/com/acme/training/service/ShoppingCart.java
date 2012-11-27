@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -21,8 +20,7 @@ public class ShoppingCart implements BeanNameAware {
     private Order order;
     private OrderService os;
     @Autowired
-    @Qualifier("${restaurant.repo.type}")
-    private RestaurantRepository rr;
+    private RestaurantRepository repo;
     private final Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     public ShoppingCart() {
@@ -46,7 +44,7 @@ public class ShoppingCart implements BeanNameAware {
 
     public void addFood(int id, int quantity) {
         List<OrderItem> orders = order.getOrderItems();
-        orders.add(new OrderItem(quantity, rr.getFoodById(id)));
+        orders.add(new OrderItem(quantity, repo.getFoodById(id)));
     }
 
     public void checkout() {
@@ -62,11 +60,11 @@ public class ShoppingCart implements BeanNameAware {
     }
 
     public RestaurantRepository getRr() {
-        return rr;
+        return repo;
     }
 
     public void setRr(RestaurantRepository rr) {
-        this.rr = rr;
+        this.repo = rr;
     }
 
     public void setBeanName(String arg0) {
