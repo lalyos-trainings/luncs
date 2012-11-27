@@ -9,7 +9,7 @@ public interface RestaurantRepository {
 
     public Collection<Restaurant> getAllRestaurants();
     
-    Food getFoodById ( int id ) ;
+    Food findFoodById ( Integer id ) ;
 
 }
 

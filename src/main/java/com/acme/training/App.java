@@ -1,6 +1,7 @@
 package com.acme.training;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
@@ -28,18 +29,22 @@ public class App {
         // restaurant menus
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
         MenuLister lister = ctx.getBean(MenuLister.class);
+      
+       
+        
         lister.doList();
+        
+
        
         // order
        
   //     ApplicationContext ctx2 = new ClassPathXmlApplicationContext("beans.xml");
-       
+       /*
        ShoppingCart s_cart = ctx.getBean(ShoppingCart.class);
        
        // pacal_id=3 ; csirke_id=7;
        
-       
-       
+              
        s_cart.addFood(3, 1);
        s_cart.addFood(7, 2);
        
@@ -59,7 +64,7 @@ public class App {
            System.out.println(o);
        }
 
-       
+       */
     }
 
 }

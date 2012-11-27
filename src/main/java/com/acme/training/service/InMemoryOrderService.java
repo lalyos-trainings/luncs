@@ -1,23 +1,27 @@
 package com.acme.training.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Order;
 
+@Component("memory")
 public class InMemoryOrderService implements OrderService {
 
-    List<Order> list = new ArrayList<Order>();
+    Map<String, Order> orders = new HashMap<String, Order>();
     
-    public void doOrder(Order o) {
-        list.add(o);
+    public void doOrder(Order order) {
+        orders.put(order.getId(), order);
     }
-
-    public List<Order> getAllOrders() {
-        return list;
+    
+    public Collection<Order> getAllOrder() {
+        return orders.values();
     }
-
     
-    
-    
+    public Order findById(String id) {
+        return orders.get(id);
+    }
 }

@@ -17,13 +17,13 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 		<bean class="com.acme.training.domain.Menu" id="menu1">
 			<property name="foods">
 				<util:list>
-					<bean p:name="ciposz cirke" p:price="${csing.price.small}"  p:foodId="4"
+					<bean p:name="ciposz cirke" p:price="${csing.price.small}"  p:id="4"
 						class="com.acme.training.domain.Food" />
-					<bean p:name="edesz-szavanyu" p:price="${csing.price.small}"  p:foodId="5"
+					<bean p:name="edesz-szavanyu" p:price="${csing.price.small}"  p:id="5"
 						class="com.acme.training.domain.Food" />
-					<bean p:name="mackahusz" p:price="${csing.price.medium}" p:foodId="6"
+					<bean p:name="mackahusz" p:price="${csing.price.medium}" p:id="6"
 						class="com.acme.training.domain.Food" />
-					<bean p:name="penki kacsa" p:price="${csing.price.big}" p:foodId="7"
+					<bean p:name="penki kacsa" p:price="${csing.price.big}" p:id="7"
 						class="com.acme.training.domain.Food" />
 				</util:list>
 			</property>

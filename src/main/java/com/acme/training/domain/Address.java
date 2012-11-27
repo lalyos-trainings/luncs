@@ -38,9 +38,7 @@ public class Address {
         this.country = country;
     }
     
-    public String toString () {
-        return String.format("%4s %10s %10s     [%s]", zip, city, street, country);
+    public String toString() {
+        return String.format("(%4s) %-12s%-30s [%s]", zip, city, street,country);
     }
-    
-    
 }

@@ -4,22 +4,19 @@ public class Food {
     private String name;
     private String description;
     private int price;
-    private int foodId;
-
-    public int getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(int foodId) {
-        this.foodId = foodId;
-    }
+    private Integer id;
 
     public Food() {}
     
-    public Food(String name, int price, int foodId ) {
+    public Food(String name, int price) {
         this.name = name;
         this.price = price;
-        this.foodId=foodId;
+    }
+
+    public Food(String name, int price, Integer id) {
+        this.name = name;
+        this.price = price;
+        this.id=id;
     }
     
     public String getName() {
@@ -39,6 +36,18 @@ public class Food {
     }
     public void setPrice(int price) {
         this.price = price;
+    }
+    
+    public String toString(){
+        return String.format("Food: %-15s [%5d]", name, price);
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
     
 }

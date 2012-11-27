@@ -55,7 +55,7 @@ import com.acme.training.service.SysoutMenuLister;
            ShoppingCart s_cart = ctx2.getBean(ShoppingCart.class);
            
            // pacal_id=3 ; csirke_id=7;
-           
+           /*
            s_cart.addFood(3, 1);
            s_cart.addFood(7, 2);
            
@@ -75,7 +75,7 @@ import com.acme.training.service.SysoutMenuLister;
            for ( Order o : list) {
                System.out.println(o);
            }
-           
+           */
            
         }
 

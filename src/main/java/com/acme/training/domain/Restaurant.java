@@ -29,8 +29,7 @@ public class Restaurant {
     }
     
     public String toString() {
-        return String.format("Restaurant: %-20s %n    %s", name, address.toString());
-        
+        return String.format("Restaurant: %-20s %n %s" , name, address.toString());
     }
     
 }
