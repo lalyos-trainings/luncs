@@ -7,9 +7,8 @@ import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-@Component("MemoryRest")
-public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository,
-        BeanNameAware {
+@Component("memoryRepo")
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
