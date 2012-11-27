@@ -7,8 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Restaurant;
 
-@Component
-@Qualifier("xml")
+@Component("xml")
 public class XmlConfigurableRestaurantRepository extends AbstractRestaurantRepository {
 
     public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {

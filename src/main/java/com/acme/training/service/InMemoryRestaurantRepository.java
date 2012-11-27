@@ -9,8 +9,7 @@ import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-@Component("repo")
-@Qualifier("memory")
+@Component("memory")
 public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
     public InMemoryRestaurantRepository() {
