@@ -27,4 +27,8 @@ public class OrderItem {
     public void setFood(Food food) {
         this.food = food;
     }
+
+    public void addQuantity(int q) {
+        this.quantity += q;
+    }
 }

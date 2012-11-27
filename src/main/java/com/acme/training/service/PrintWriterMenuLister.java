@@ -49,10 +49,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
         return repo;
     }
 
-    public void setRepo(RestaurantRepository repo) {
-        this.repo = repo;
-    }
-
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.ctx = ctx;
     }

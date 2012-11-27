@@ -14,16 +14,21 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 
-@Component
+@Component("cart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ShoppingCart implements BeanNameAware {
-    private Order order;
+    private final Order order;
     private OrderService os;
     @Autowired
     private RestaurantRepository repo;
     private final Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     public ShoppingCart() {
+        order = new Order();
+        Address addr = new Address("pelda", "Budapset", "1088", "Hungary");
+        order.setBillingAddress(addr);
+        order.setDeliveryAddress(addr);
+        order.setCustomer("Bela");
     }
 
     public ShoppingCart(String customer, Address billingAddress, Address deliveryAddress) {
@@ -59,12 +64,8 @@ public class ShoppingCart implements BeanNameAware {
         this.os = os;
     }
 
-    public RestaurantRepository getRr() {
+    public RestaurantRepository getRepo() {
         return repo;
-    }
-
-    public void setRr(RestaurantRepository rr) {
-        this.repo = rr;
     }
 
     public void setBeanName(String arg0) {

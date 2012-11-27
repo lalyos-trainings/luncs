@@ -7,11 +7,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean class="com.acme.training.service.InMemoryOrderService"></bean>
-    
-    <bean id="cart" class="com.acme.training.service.ShoppingCart" scope="prototype" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
-    <bean id="cart2" class="com.acme.training.service.ShoppingCart" scope="prototype" c:customer="Sanyi" c:deliveryAddress-ref="addr" c:billingAddress-ref="addr" />
-    
     <bean id="addr" class="com.acme.training.domain.Address" c:street="kit" c:zip="is" c:city="erdekelne" c:country="ez" />
 
     
