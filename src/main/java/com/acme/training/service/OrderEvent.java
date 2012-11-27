@@ -11,7 +11,6 @@ public class OrderEvent extends ApplicationEvent {
     public OrderEvent(OrderService source, Order order) {
         super(source);
         this.order = order;
-        // TODO Auto-generated constructor stub
     }
 
     public Order getOrder() {
