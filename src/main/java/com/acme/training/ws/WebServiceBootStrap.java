@@ -17,10 +17,10 @@ public class WebServiceBootStrap {
     public static void main(String[] args) throws UnknownHostException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
         
-        MenuWS webService=ctx.getBean(MenuWS.class);
-        InetAddress local=InetAddress.getLocalHost();
-        Endpoint.publish("http://"+local.getHostAddress()+":8080/menu", webService);
-        System.out.print(local.toString());
+        MenuWS menuService=ctx.getBean(MenuWS.class);
+        String menuServiceUrl="http://"+InetAddress.getLocalHost().getHostAddress()+":8080/menu";
+        Endpoint.publish(menuServiceUrl, menuService);
+
 
     }
 

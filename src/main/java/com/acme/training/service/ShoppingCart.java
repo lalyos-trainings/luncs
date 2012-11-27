@@ -70,10 +70,4 @@ public class ShoppingCart implements BeanNameAware{
         logger.info("my hashCode is: " + hashCode());
         
     }
-    
-    public Integer getSC(String customer){ // ***************************************************************************** ID
-        
-        return 0;
-    }
-
 }
