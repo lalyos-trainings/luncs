@@ -14,8 +14,8 @@
 	<context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
 	
 	<context:component-scan base-package="com.acme" />
-
-	<bean class="com.acme.training.service.SysoutMenuLister" p:locale="de" />
+	
+	<alias name="${restaurant.repo.type}" alias="repo"/>
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
 	
