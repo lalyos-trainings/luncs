@@ -67,7 +67,7 @@ public class Food {
 
     @Override
     public String toString() {
-        String formattedFood = String.format(/*"%-2d " + */"%s\n    %-20s %7.1f", /*id, */restaurant.getName(), name, price/*, description*/);
+        String formattedFood = String.format("%-2d %s\n    %-20s %7.1f", id, restaurant.getName(), name, price/*, description*/);
         return formattedFood;
     }
     

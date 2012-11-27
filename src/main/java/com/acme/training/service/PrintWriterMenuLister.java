@@ -48,23 +48,23 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     public void doList() {
         String msg = applicationContext.getMessage("welcome", null, locale);
         printWriter.println(msg);
-        // for(Restaurant restaurant : repo.getAllRestaurants()){
-        // printWriter.println("============================");
-        // printWriter.println(restaurant);
-        // printWriter.println("----------------------------");
-        // printWriter.println(restaurant.getMenu());
-        // Collection<Food> foods = restaurant.getMenu().getFoods();
-        // for(Food food : foods){
-        // printWriter.println(food);
-        // }
-        // printWriter.println();
-        // }
-        Map<Integer, Food> foodMap = repo.getFoodMap(); 
-        for (Integer i : foodMap.keySet()) {
-            printWriter.print(i + ": ");
-            printWriter.print(foodMap.get(i));
-            printWriter.print("\n");
+        for (Restaurant restaurant : repo.getAllRestaurants()) {
+            printWriter.println("============================");
+            printWriter.println(restaurant);
+            printWriter.println("----------------------------");
+            printWriter.println(restaurant.getMenu());
+            Collection<Food> foods = restaurant.getMenu().getFoods();
+            for (Food food : foods) {
+                printWriter.println(food);
+            }
+            printWriter.println();
         }
+        // Map<Integer, Food> foodMap = repo.getFoodMap();
+        // for (Integer i : foodMap.keySet()) {
+        // printWriter.print(i + ": ");
+        // printWriter.print(foodMap.get(i));
+        // printWriter.print("\n");
+        // }
         printWriter.flush();
     }
 
