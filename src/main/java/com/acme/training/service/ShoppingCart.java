@@ -3,6 +3,7 @@ package com.acme.training.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,6 +18,7 @@ import com.acme.training.domain.OrderItem;
 public class ShoppingCart implements BeanNameAware{
 
     private OrderService orderService;
+    @Autowired
     private RestaurantRepository repo;    
     private Order order;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
@@ -48,14 +50,6 @@ public class ShoppingCart implements BeanNameAware{
         Food food = repo.findFoodById(id);
         order.addItem(new OrderItem(quantity, food));
         return this;
-    }
-
-    public RestaurantRepository getRepo() {
-        return repo;
-    }
-
-    public void setRepo(RestaurantRepository repo) {
-        this.repo = repo;
     }
 
     public void checkout() {
