@@ -6,6 +6,7 @@ import java.util.Locale;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -15,6 +16,7 @@ import com.acme.domain.Restaurant;
 public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware {
     
     @Autowired
+    @Qualifier("#{restaurant.repo.type}")
     private RestaurantRepository repo;
     private PrintWriter printWriter;
     private ApplicationContext ctx;
@@ -22,10 +24,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     
     public PrintWriterMenuLister(PrintWriter printWriter){        
         this.printWriter = printWriter;
-    }
-
-    public void setRestaurantRepository(RestaurantRepository repo) {
-        this.repo = repo;        
     }
 
     public void doList() {
@@ -46,13 +44,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
         
     }
 
-    public RestaurantRepository getRepo() {
-        return repo;
-    }
-
-    public void setRepo(RestaurantRepository repo) {
-        this.repo = repo;
-    }
 
     public Locale getLocale() {
         return locale;
