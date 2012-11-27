@@ -33,7 +33,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     public void printStatistic() {
         System.out.println("==== STATISTIC:");
         for (OrderItem item : foodStatistic.values()) {
-            System.out.println(String.format(" %20s : %-4d" , item.getFood().getName(), item.getQuantity()));
+            System.out.println(String.format(" %20s [%10s] : %-4d" , item.getFood().getRestaurant().getName(), item.getFood().getName(), item.getQuantity()));
         }
     }
 }
