@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Order;
@@ -13,8 +15,12 @@ import com.acme.training.domain.Order;
 public class InMemoryOrderService implements OrderService {
     Map<String, Order> orders = new HashMap<String, Order>();
 
+    @Autowired
+    private ApplicationContext context;
+
     public void doOrder(Order order) {
         orders.put(order.getId(), order);
+        context.publishEvent(new OrderEvent(this, order));
     }
 
     public Collection<Order> getAllOrder() {
