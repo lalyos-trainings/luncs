@@ -20,7 +20,6 @@ public class ShoppingCart implements BeanNameAware{
 
     private OrderService orderService;
     @Autowired
-    @Qualifier("xml")
     private RestaurantRepository repo;    
     private Order order;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
