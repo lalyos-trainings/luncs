@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
@@ -19,6 +20,7 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private PrintWriter writer;
     
     @Autowired
+    @Qualifier("xml")
     private RestaurantRepository repo;
     private ApplicationContext ctx;
     private Locale locale;
