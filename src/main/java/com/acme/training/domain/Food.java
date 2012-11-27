@@ -6,42 +6,47 @@ public class Food {
     private int price;
     private Integer id;
     private Restaurant restaurant;
-    
-public Food() {
-    
-}
+
+    public Food() {
+
+    }
 
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
-        this.restaurant=restaurant;
+        this.restaurant = restaurant;
     }
-    
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
-    
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getDescription() {
         return description;
     }
+
     public void setDescription(String description) {
         this.description = description;
     }
+
     public int getPrice() {
         return price;
     }
+
     public void setPrice(int price) {
         this.price = price;
     }
-    
-    public String toString(){
-        return  String.format("Food: %-15s [%5d]", name, price);
+
+    public String toString() {
+        return String.format("Food: %-15s [%5d]", name, price);
     }
 
     public void setId(Integer id) {
@@ -51,5 +56,5 @@ public Food() {
     public Integer getId() {
         return id;
     }
-    
+
 }

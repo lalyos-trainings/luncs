@@ -1,8 +1,5 @@
 package com.acme.training.service;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -10,36 +7,38 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.ordermodel.Order;
+import com.acme.training.ordermodel.CustomerOrder;
 import com.acme.training.ordermodel.OrderItem;
 import com.acme.training.repository.RestaurantRepository;
 
-@Component("kart")
+@Component("ShoppingCart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ShoppingCart implements BeanNameAware{
+public class ShoppingCart{
 
+    @Autowired
     private OrderService orderService;
     @Autowired
     private RestaurantRepository repo;    
-    private Order order;
-    private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
-
+    private CustomerOrder customerOrder;
+  
     private ShoppingCart() {
-        this.order = new Order();
+        this.customerOrder = new CustomerOrder();
     }
     
+    // ******************************************* SETTING UP SHOPPINGCART ************************************************
+    
     public ShoppingCart withCustomer(String customer) {
-        order.setCustomer(customer);
+        customerOrder.setCustomer(customer);
         return this;
     }
     
     public ShoppingCart withDeliveryAddress(Address deliveryAddress) {
-        order.setDeliveryAddress(deliveryAddress);
+        customerOrder.setDeliveryAddress(deliveryAddress);
         return this;
     }
 
     public ShoppingCart withBillingAddress(Address billingAddress) {
-        order.setBillingAddress(billingAddress);
+        customerOrder.setBillingAddress(billingAddress);
         return this;
     }
 
@@ -49,25 +48,17 @@ public class ShoppingCart implements BeanNameAware{
 
     public ShoppingCart withFood(int id, int quantity) {
         Food food = repo.findFoodById(id);
-        order.addItem(new OrderItem(quantity, food));
+        customerOrder.addItem(new OrderItem(quantity, food));
         return this;
     }
 
+    // ******************************************** FINISHING SHOPPING **************************************************
     public void checkout() {
-        orderService.doOrder(order);
+        orderService.doOrder(customerOrder);
     }
 
+    // *********************************************** GETTERS ************************************************************
     public OrderService getOrderService() {
         return orderService;
-    }
-
-    public void setOrderService(OrderService orderService) {
-        this.orderService = orderService;
-    }
-
-    public void setBeanName(String name) {
-        logger.info("my name is: " + name);
-        logger.info("my hashCode is: " + hashCode());
-        
     }
 }

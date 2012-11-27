@@ -1,15 +1,26 @@
 package com.acme.training.ws;
 
+import javax.jws.WebService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.ordermodel.Order;
+import com.acme.training.ordermodel.CustomerOrder;
 import com.acme.training.ordermodel.OrderItem;
+import com.acme.training.ordermodel.RestaurantOrder;
 import com.acme.training.service.ShoppingCart;
 
+@WebService
+@Component
 public class ShoppingWS {
 
+    @Autowired
     private ShoppingCart cart;
-    private Order order;
+    private RestaurantOrder rOrder;
+    @SuppressWarnings("unused")
+    private CustomerOrder cOder;
 
     public ShoppingWS() {
 
@@ -26,7 +37,7 @@ public class ShoppingWS {
 
     public void addFood(int scId, Food food, int quantity) {
         
-        order.addItem(new OrderItem(quantity, food));
+        rOrder.addItem(new OrderItem(quantity, food));
 
     }
 
@@ -40,7 +51,7 @@ public class ShoppingWS {
     public int checkout() {
        
         cart.checkout();
-        return 0;
+        return 1;
 
     }
 

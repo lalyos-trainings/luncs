@@ -1,5 +1,7 @@
 package com.acme.training.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +10,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
+import com.acme.training.domain.Restaurant;
 import com.acme.training.ordermodel.OrderItem;
+import com.acme.training.ordermodel.RestaurantOrder;
 
 @Component
 public class NavService implements ApplicationListener<OrderEvent> {
@@ -19,7 +23,12 @@ public class NavService implements ApplicationListener<OrderEvent> {
     private Map<String, Integer> incomeMap = new HashMap<String, Integer>();
 
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
+        List<OrderItem> items=new ArrayList<OrderItem>();
+        Map<String, RestaurantOrder> restOrders=event.getCustomerOrder().getRestaurantOrders();
+        for (RestaurantOrder restaurantOrder : restOrders.values()) {
+            List<OrderItem> item=restaurantOrder.getItems();
+            items.addAll(item);
+        }
         for (OrderItem item : items) {
             countIncome(item);
         }

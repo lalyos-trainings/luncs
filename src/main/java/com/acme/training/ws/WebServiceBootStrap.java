@@ -18,8 +18,14 @@ public class WebServiceBootStrap {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
         
         MenuWS menuService=ctx.getBean(MenuWS.class);
+        ShoppingWS shoppingService=ctx.getBean(ShoppingWS.class);
+        
         String menuServiceUrl="http://"+InetAddress.getLocalHost().getHostAddress()+":8080/menu";
+        String shoppingServiceUrl="http://"+InetAddress.getLocalHost().getHostAddress()+":8080/shopping";
+        
         Endpoint.publish(menuServiceUrl, menuService);
+        Endpoint.publish(shoppingServiceUrl, shoppingService);
+        System.out.print(shoppingServiceUrl);
 
 
     }
