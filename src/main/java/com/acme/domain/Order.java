@@ -32,4 +32,13 @@ public class Order {
     public void setOrderItems(Collection<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+    public int getGrandTotal() {
+        int total = 0;
+        for (OrderItem item: orderItems){
+            int price = item.getFood().getPrice();
+            int quantity = item.getQuantity();
+            total +=price*quantity;
+        }
+        return total;
+    }
 }

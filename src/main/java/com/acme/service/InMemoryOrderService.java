@@ -23,6 +23,7 @@ public class InMemoryOrderService implements OrderService {
         orders.add(order);
         OrderEvent event = new OrderEvent(this, order);
         context.publishEvent(event);
+                
     }
 
     public Collection<Order> getAllOrders() {

@@ -8,6 +8,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.acme.domain.Address;
 import com.acme.domain.Order;
 import com.acme.domain.OrderItem;
+import com.acme.service.InMemoryNAVService;
 import com.acme.service.InMemoryStatisticService;
 import com.acme.service.MenuLister;
 import com.acme.service.OrderService;
@@ -59,6 +60,9 @@ public class App {
         
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
         statisticService.printStatistic();
+        
+        InMemoryNAVService navService = ctx.getBean(InMemoryNAVService.class);
+        navService.printTotalVAT();
     }
 
 }
