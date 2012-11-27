@@ -2,6 +2,8 @@ package com.acme.training;
 
 import java.util.List;
 
+import javax.xml.ws.Endpoint;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -11,6 +13,7 @@ import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.MenuLister;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
+import com.acme.training.ws.MenuWS;
 
 public class App 
 {
@@ -56,10 +59,20 @@ public class App
         lister.doList();
     }
     
+    private static void menuWS()
+    {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
+        
+        MenuWS menuWS = context.getBean(MenuWS.class);
+        
+        Endpoint.publish("http://localhost:8081/menu", menuWS);
+    }
+    
     public static void main(String[] args) 
     {
 //      lister();
-        netCincer();
+//        netCincer();
+        menuWS();
     }
 
 }
