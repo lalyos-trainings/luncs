@@ -13,6 +13,7 @@
 
 	<context:component-scan base-package="com.acme"/>
 	<context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
+	<alias name="${restaurant.repo.type}" alias="repo"/>
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs"/>
 	
