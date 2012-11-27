@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -24,7 +25,8 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware
     private OrderService orderService;
     
     @Autowired
-    private RestaurantRepository repository;
+    @Qualifier("memory")
+    private RestaurantRepository repo;
 
     public InMemoryShoppingCart() 
     {
@@ -33,7 +35,7 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware
     
     public void addFood(int foodId, int quantity) 
     {
-        Food food = repository.getFoodById(foodId);
+        Food food = repo.getFoodById(foodId);
         order.addOrderItem(quantity, food);
     }
 
