@@ -3,10 +3,10 @@ package com.acme.training.service;
 import java.io.PrintWriter;
 import java.util.Collection;
 import java.util.Locale;
+import java.util.Map;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -49,16 +49,22 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     public void doList() {
         String msg = applicationContext.getMessage("welcome", null, locale);
         printWriter.println(msg);
-        for(Restaurant restaurant :  repo.getAllRestaurants()){
-            printWriter.println("============================");
-            printWriter.println(restaurant);
-            printWriter.println("----------------------------");
-            printWriter.println(restaurant.getMenu());
-            Collection<Food> foods = restaurant.getMenu().getFoods();
-            for(Food food : foods){
-                printWriter.println(food);
-            }
-            printWriter.println();
+        // for(Restaurant restaurant : repo.getAllRestaurants()){
+        // printWriter.println("============================");
+        // printWriter.println(restaurant);
+        // printWriter.println("----------------------------");
+        // printWriter.println(restaurant.getMenu());
+        // Collection<Food> foods = restaurant.getMenu().getFoods();
+        // for(Food food : foods){
+        // printWriter.println(food);
+        // }
+        // printWriter.println();
+        // }
+        Map<Integer, Food> foodMap = repo.getFoodMap(); 
+        for (Integer i : foodMap.keySet()) {
+            printWriter.print(i + ": ");
+            printWriter.print(foodMap.get(i));
+            printWriter.print("\n");
         }
         printWriter.flush();
     }

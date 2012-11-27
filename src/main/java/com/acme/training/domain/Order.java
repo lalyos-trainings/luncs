@@ -10,6 +10,7 @@ public class Order{
     private Address billingAddress;
     private Address deliveryAddress;
     private Map<String, OrderItem> orderItems;
+    private double total;
 
     public Order(String customer, Address billingAddress, Address deliveryAddress) {
         super();
@@ -17,11 +18,13 @@ public class Order{
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
         this.orderItems = new HashMap<String, OrderItem>();
+        total = 0;
     }
 
     public Order() {
         super();
         orderItems = new HashMap<String, OrderItem>();
+        total = 0;
     }
     
     public String getCustomer() {
@@ -60,12 +63,25 @@ public class Order{
         else{
             tmp.addQuantity(quantity);
         }
+        total += (quantity * food.getPrice());
     }
     
     public void setOrderItems(Map<String, OrderItem> orders) {
         this.orderItems = orders;
     }
     
+    public double countTotal(){
+        double total = 0;
+        for(OrderItem item: orderItems.values()){
+            total += (item.getQuantity() * item.getFood().getPrice());
+        }
+        return total;
+    }
+    
+    public double getTotal() {
+        return total;
+    }
+
     @Override
     public String toString() {
 //        String orderMessage = applicationContext.getMessage("orderFormat", null, locale);
@@ -73,8 +89,8 @@ public class Order{
 //                .format(orderMessage,
 //                        customer, deliveryAddress, billingAddress, orderItems);
         String formattedOrder = String
-        .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s",
-                customer, deliveryAddress, billingAddress, orderItems);
+                .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s\n----------------\nTotal: %.2f",
+                        customer, deliveryAddress, billingAddress, orderItems, total);
         return formattedOrder;
     }
 

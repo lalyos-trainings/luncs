@@ -4,11 +4,10 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
@@ -16,8 +15,11 @@ import com.acme.training.domain.Restaurant;
 public class AbstractRestaurantRepository implements RestaurantRepository{
 
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+    private Map<Integer, Food> foodMap = new HashMap<Integer, Food>();
     private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
-
+    
+    private int maxId = 0;
+    
     public AbstractRestaurantRepository() {
         super();
     }
@@ -29,7 +31,7 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
         return restaurantMap.values();
     }
 
-    public Food findFoodById(String restiName, String foodName) {
+    public Food findFoodByRestiAndName(String restiName, String foodName) {
         Food tmp = null;
         Food r = null;
         boolean found = false;
@@ -48,38 +50,36 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
         return r;
     }
 
-    public Food findFoodByName(String foodName) {
-        Food tmp = null;
-        Food r = null;
-        boolean found = false;
-        for (Restaurant resti : getAllRestaurants()) {
-            Iterator<Food> it = resti.getMenu().getFoods().iterator();
-            while (!found && it.hasNext()) {
-                tmp = it.next();
-                if (tmp.getName().equalsIgnoreCase(foodName)) {
-                    found = true;
-                    r = tmp;
-                }
-            }
-        }
-        return r;
+//    public Food findFoodById(int foodId) {
+//        Food tmp = null;
+//        Food r = null;
+//        boolean found = false;
+//        for (Restaurant resti : getAllRestaurants()) {
+//            Iterator<Food> it = resti.getMenu().getFoods().iterator();
+//            while (!found && it.hasNext()) {
+//                tmp = it.next();
+//                if (tmp.getId() == foodId) {
+//                    found = true;
+//                    r = tmp;
+//                }
+//            }
+//        }
+//        return r;
+//    }
+//
+    public Food findFoodById(int foodId) {
+        return foodMap.get(foodId);
     }
 
-    public Food findFoodById(int foodId) {
-        Food tmp = null;
-        Food r = null;
-        boolean found = false;
-        for (Restaurant resti : getAllRestaurants()) {
-            Iterator<Food> it = resti.getMenu().getFoods().iterator();
-            while (!found && it.hasNext()) {
-                tmp = it.next();
-                if (tmp.getId() == foodId) {
-                    found = true;
-                    r = tmp;
-                }
-            }
+    public void registerFoods(Restaurant restaurant){
+        for(Food food : restaurant.getMenu().getFoods()){
+            foodMap.put(maxId, food);
+            maxId++;
         }
-        return r;
+    }
+    
+    public Map<Integer, Food> getFoodMap() {
+        return foodMap;
     }
 
     public void setBeanName(String name) {

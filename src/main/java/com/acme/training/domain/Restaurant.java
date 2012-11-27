@@ -14,6 +14,11 @@ public class Restaurant {
         this.menu = menu;
     }
 
+    public Restaurant(String name) {
+        super();
+        this.name = name;
+    }
+
     public Restaurant(String name, String street, String zip) {
         super();
         this.name = name;

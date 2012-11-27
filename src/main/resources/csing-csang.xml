@@ -14,12 +14,12 @@
     <bean id="Kinai-Menu" class="com.acme.training.domain.Menu" p:week="1">
         <property name="foods">
             <util:list>
-                <bean class="com.acme.training.domain.Food" p:name="szezamos csirke"
-                    p:price="${csing.price.high}" p:description="csirkemell darabok szezamos-mezes-csipos bundaban"/>
-                <bean class="com.acme.training.domain.Food" p:name="edes-savanyu"
-                    p:price="${csing.price.medium}" p:description="-"/>
-                <bean class="com.acme.training.domain.Food" p:name="leves"
-                    p:price="${csing.price.low}" p:description="kinai leves"/>
+                <bean class="com.acme.training.domain.Food" c:name="szezamos csirke"
+                    c:price="${csing.price.high}" c:description="csirkemell darabok szezamos-mezes-csipos bundaban" c:restaurant-ref="csing-csang"/>
+                <bean class="com.acme.training.domain.Food" c:name="edes-savanyu"
+                    c:price="${csing.price.medium}" c:description="-" c:restaurant-ref="csing-csang"/>
+                <bean class="com.acme.training.domain.Food" c:name="leves"
+                    c:price="${csing.price.low}" c:description="kinai leves" c:restaurant-ref="csing-csang"/>
             </util:list>
         </property>
     </bean>

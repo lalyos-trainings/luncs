@@ -4,7 +4,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -29,22 +28,13 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     public static ShoppingCart getShoppingCart(){
         return new InMemoryShoppingCart();
     }
-    
-    private void setRepo(RestaurantRepository repo){
-        this.repo = repo;
-    }
-    
+ 
     public RestaurantRepository getRepo(){
         return repo;
     }
     
-//    public void addFood(String restiName, String foodName, int count){
-//        Food food = repo.findFoodById(restiName, foodName);
-//        order.addOrderItem(new OrderItem(count, food));
-//    }
-//    
-    public ShoppingCart withFood(String foodName, int count){
-        Food food = repo.findFoodByName(foodName);
+    public ShoppingCart withFood(String restiName, String foodName, int count){
+        Food food = repo.findFoodByRestiAndName(restiName, foodName);
         if (food != null) {
             order.addOrderItem(food, count);
         }

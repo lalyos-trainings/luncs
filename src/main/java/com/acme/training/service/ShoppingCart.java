@@ -7,9 +7,7 @@ public interface ShoppingCart {
 
 //    public void setRepo(RestaurantRepository repo);
 
-//    public void addFood(String restiName, String foodName, int count);
-//
-    public ShoppingCart withFood(String foodName, int count);
+    public ShoppingCart withFood(String restiName, String foodName, int count);
 
     public ShoppingCart withFood(int foodId, int count);
 

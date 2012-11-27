@@ -3,7 +3,6 @@ package com.acme.training.service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
-import java.util.Map;
 
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.annotation.Scope;
@@ -27,15 +26,16 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
 
     public void addRestaurant(String key, Restaurant restaurant) {
         restaurantMap.put(key, restaurant);
+        registerFoods(restaurant);
     }
 
     public void removeRestaurant(String key) {
         restaurantMap.remove(key);
     }
 
-    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
-        this.restaurantMap = restaurantMap;
-    }
+//    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
+//        this.restaurantMap = restaurantMap;
+//    }
 
     public Locale getLocale() {
         return locale;
@@ -46,24 +46,28 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
     }
     
     private void generateTestInstances() {
+        Restaurant r1 = new Restaurant("Csing-csang");
         Address a1 = new Address("1082", "Ulloi ut");
+        r1.setAddress(a1);
         Collection<Food> foods1 = new ArrayList<Food>();
-        foods1.add(new Food("szezamos csirke", 850, "Csirkemell darabok szezamos-mezes-csipos bundaban."));
-        foods1.add(new Food("edes-savanyu", 650, "-"));
-        foods1.add(new Food("leves", 350, "Kinai leves."));
+        foods1.add(new Food("szezamos csirke", 850, "Csirkemell darabok szezamos-mezes-csipos bundaban.", r1));
+        foods1.add(new Food("edes-savanyu", 650, "-", r1));
+        foods1.add(new Food("leves", 350, "Kinai leves.", r1));
         Menu m1 = new Menu(foods1, 1);
-        Restaurant r1 = new Restaurant("Csing-csang", a1, m1);
+        r1.setMenu(m1);
 
+        Restaurant r2 = new Restaurant("KFC");
         Address a2 = new Address("1082", "Corvin negyed");
+        r2.setAddress(a2);
         Collection<Food> foods2 = new ArrayList<Food>();
-        foods2.add(new Food("csirkeszarny", 750, "Csirkeszarny csipos bundaban."));
-        foods2.add(new Food("csirkecomb", 950, "Rantott csirkecomb."));
-        foods2.add(new Food("libamaj", 1450, "Sult libamaj."));
+        foods2.add(new Food("csirkeszarny", 750, "Csirkeszarny csipos bundaban.", r2));
+        foods2.add(new Food("csirkecomb", 950, "Rantott csirkecomb.", r2));
+        foods2.add(new Food("libamaj", 1450, "Sult libamaj.", r2));
         Menu m2 = new Menu(foods2, 1);
-        Restaurant r2 = new Restaurant("KFC", a2, m2);
-
-        restaurantMap.put("elso", r1);
-        restaurantMap.put("masodik", r2);
+        r2.setMenu(m2);
+        
+        addRestaurant("elso", r1);
+        addRestaurant("masodik", r2);
     }
 
 

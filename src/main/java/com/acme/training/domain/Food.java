@@ -1,6 +1,5 @@
 package com.acme.training.domain;
 
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class Food {
@@ -8,21 +7,18 @@ public class Food {
     private String name;
     private double price;
     private String description;
-    private int id;
+//    private int id;
+    private Restaurant restaurant;
     
-    private static AtomicInteger ID = new AtomicInteger(0);
+//    private static AtomicInteger ID = new AtomicInteger(0);
 
-    public Food(){
-        super();
-        id = ID.incrementAndGet();
-    }
-    
-    public Food(String name, double price, String description) {
+    public Food(String name, double price, String description, Restaurant restaurant) {
         super();
         this.name = name;
         this.price = price;
         this.description = description;
-        id = ID.incrementAndGet();
+        this.restaurant = restaurant;
+//        id = ID.incrementAndGet();
     }
     
     public String getName() {
@@ -49,13 +45,21 @@ public class Food {
         this.description = description;
     }
     
-    public int getId(){
-        return id;
+//    public int getId(){
+//        return id;
+//    }
+//
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
     @Override
     public String toString() {
-        String formattedFood = String.format("%-2d %-20s %7.1f", id, name, price/*, description*/);
+        String formattedFood = String.format(/*"%-2d " + */"%s\n    %-20s %7.1f", /*id, */restaurant.getName(), name, price/*, description*/);
         return formattedFood;
     }
     
