@@ -1,26 +1,15 @@
 package com.acme.training.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-@Component("memoryRest")
-public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
 
-    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
-    private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
-    
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
+
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
@@ -50,28 +39,5 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
         m1.getFoods().add(new Food(5, "gyros",850));
         m1.getFoods().add(new Food(6, "baklava", 300));
         return r1;
-    }
-
-    public Collection<Restaurant> getAllRestaurants() {
-        return restaurantMap.values();
-    }
-
-    public Food getFoodById(int id) {
-        Set<String> restaurants= restaurantMap.keySet();
-        Iterator<String> iter = restaurants.iterator();
-        while (iter.hasNext()) {
-          Restaurant restaurant = restaurantMap.get(iter.next());
-          Collection<Food> foods = restaurant.getMenu().getFoods();
-          for (Food food : foods) {
-              if(food.getId() == id)
-                  return food;
-              }          
-        }        
-        return null;        
-    }
-
-    public void setBeanName(String bean) {
-        logger.info("bean:" + bean);
-        
     }
 }
