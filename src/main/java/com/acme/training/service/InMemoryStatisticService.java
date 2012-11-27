@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,8 @@ import com.acme.training.domain.OrderItem;
 public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{
 
     Map<Integer, OrderItem> foodStatistic = new HashMap<Integer, OrderItem>();
+    private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
+
     public void onApplicationEvent(OrderEvent event) {
         List<OrderItem> items = event.getOrder().getItems();
         for (OrderItem item : items) {
@@ -20,13 +24,15 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
         }
     }
     private void doStatistic(OrderItem item) {
+        logger.info("next OrderItem:" + item.toString());
+
         Integer foodId = item.getFood().getId();
         
         OrderItem orderItem = foodStatistic.get(foodId);
         if (orderItem != null) {
             orderItem.addQuantity(item.getQuantity());
         } else {
-            foodStatistic.put(foodId, item);
+            foodStatistic.put(foodId, new OrderItem(item));
         }
     }
 
