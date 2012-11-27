@@ -18,7 +18,6 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     private void doStatistic(OrderItem item)
     {
         int foodId = item.getFood().getId();
-        int quantity = item.getQuantity();
         
         OrderItem orderItem = foodStatistic.get(foodId);
         

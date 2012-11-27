@@ -16,10 +16,10 @@
             <bean class="com.acme.training.domain.Menu" >
                 <property name="foods" >
                     <util:list>
-                        <bean class="com.acme.training.domain.Food" p:id="4" p:name="ciposcirke" p:price="${ching.price.small}" />
-                        <bean class="com.acme.training.domain.Food" p:id="5" p:name="edeszszavanu" p:price="${ching.price.small}" />
-                        <bean class="com.acme.training.domain.Food" p:id="6" p:name="pekingi kacsa" p:price="${ching.price.medium}" />
-                        <bean class="com.acme.training.domain.Food" p:id="7" p:name="macka husz" p:price="${ching.price.big}" />
+                        <bean class="com.acme.training.domain.Food" c:id="4" c:name="ciposcirke" c:price="${ching.price.small}" c:restaurant-ref="chingChung" />
+                        <bean class="com.acme.training.domain.Food" c:id="5" c:name="edeszszavanu" c:price="${ching.price.small}" c:restaurant-ref="chingChung" />
+                        <bean class="com.acme.training.domain.Food" c:id="6" c:name="pekingi kacsa" c:price="${ching.price.medium}" c:restaurant-ref="chingChung" />
+                        <bean class="com.acme.training.domain.Food" c:id="7" c:name="macka husz" c:price="${ching.price.big}" c:restaurant-ref="chingChung" />
                     </util:list>
                 </property>
             </bean>

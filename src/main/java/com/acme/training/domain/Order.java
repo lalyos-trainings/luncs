@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Order 
 {
+    private static int nextId = 0;
+    
+    private String id = String.valueOf(nextId++);
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;

@@ -7,6 +7,7 @@ public class Food
     private String name;
     private String description;
     private int price;
+    private Restaurant restaurant;
 
     
     public Food() 
@@ -14,13 +15,19 @@ public class Food
         super();
     }
     
-    public Food(int id, String name, int price) 
+    public Food(int id, String name, int price, Restaurant restaurant) 
     {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.restaurant = restaurant;
     }
     
+    public Restaurant getRestaurant()
+    {
+        return restaurant;
+    }
+
     public int getId() {
         return id;
     }
