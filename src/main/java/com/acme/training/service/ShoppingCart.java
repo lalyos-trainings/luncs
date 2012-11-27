@@ -21,7 +21,7 @@ public class ShoppingCart implements BeanNameAware {
     private Order order;
     private OrderService os;
     @Autowired
-    @Qualifier("xml")
+    @Qualifier("${restaurant.repo.type}")
     private RestaurantRepository rr;
     private final Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 

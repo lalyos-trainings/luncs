@@ -16,7 +16,7 @@ import com.acme.training.domain.Restaurant;
 public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware {
 
     @Autowired
-    @Qualifier("xml")
+    @Qualifier("${restaurant.repo.type}")
     private RestaurantRepository repo;
     private final PrintWriter writer;
     private ApplicationContext ctx;
