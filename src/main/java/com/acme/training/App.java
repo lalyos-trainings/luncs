@@ -17,7 +17,7 @@ public class App
     public static void main( String[] args )
     {
         
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing-csang.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml"/*, "kfc.xml", "csing-csang.xml"*/);
         
         MenuLister menuLister = ctx.getBean(SystemOutMenuLister.class);
         menuLister.doList();
@@ -27,7 +27,7 @@ public class App
 //        cart.addFood("KFC", "csirkeszarny", 1);
 //        cart.addFood("csing-csang", "szezamos csirke", 2);
         OrderService os = ctx.getBean(InMemoryOrderService.class);
-        OrderService os2 = ctx.getBean(InMemoryOrderService.class);
+//        OrderService os2 = ctx.getBean(InMemoryOrderService.class);
         os.doOrder(cart.withBillingAddress(new Address("1122", "Csaba utca"))
                 .withDeliveryAddress(new Address("1122", "Csaba utca"))
                 .withCustomer("Sztike")

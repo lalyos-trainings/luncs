@@ -11,6 +11,6 @@ public interface RestaurantRepository {
     
 //    public Food findFoodById(String restiName, String foodName);
 //
-    public Food findFoodById(String foodName);
+    public Food findFoodByName(String foodName);
 
 }

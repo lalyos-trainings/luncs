@@ -11,9 +11,9 @@ public class LoggerMenuLister implements MenuLister {
     private RestaurantRepository repo;
     
     /**
-     * @see com.acme.training.service.MenuLister#setRestaurantRepo(com.acme.training.service.RestaurantRepository)
+     * @see com.acme.training.service.MenuLister#setRepo(com.acme.training.service.RestaurantRepository)
      */
-    public void setRestaurantRepo(RestaurantRepository repo){
+    public void setRepo(RestaurantRepository repo){
         this.repo = repo;
     }
     
@@ -25,10 +25,6 @@ public class LoggerMenuLister implements MenuLister {
             logger.info("==========================");
             logger.info("next resti: {}", restaurant);
         }
-    }
-    
-    public void setRepo(RestaurantRepository repo){
-        setRestaurantRepo(repo);
     }
     
     public RestaurantRepository getRepo(){

@@ -5,7 +5,7 @@ import com.acme.training.domain.Order;
 
 public interface ShoppingCart {
 
-    public void setRepo(RestaurantRepository repo);
+//    public void setRepo(RestaurantRepository repo);
 
 //    public void addFood(String restiName, String foodName, int count);
 //

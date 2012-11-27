@@ -1,5 +1,10 @@
 package com.acme.training.service;
 
-public class XmlConfigurableRestaurantRepository extends InMemoryRestaurantRepository {
+import org.springframework.stereotype.Component;
+
+@Component("xmlRest")
+public class XmlConfigurableRestaurantRepository extends AbstractRestaurantRepository {
+    
+    
 
 }

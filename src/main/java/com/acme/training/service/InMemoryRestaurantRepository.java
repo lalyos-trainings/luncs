@@ -1,37 +1,28 @@
 package com.acme.training.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
+import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
 @Component("memoryRest")
 @Scope("singleton")
-public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware {
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
-    private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     private Locale locale;
 
     public InMemoryRestaurantRepository() {
         super();
-    }
-
-    /**
-     * @see com.acme.training.service.RestaurantRepository#getAllRestaurants()
-     */
-    public Collection<Restaurant> getAllRestaurants() {
-        return restaurantMap.values();
+        generateTestInstances();
     }
 
     public void addRestaurant(String key, Restaurant restaurant) {
@@ -53,45 +44,27 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
     public void setLocale(Locale locale) {
         this.locale = locale;
     }
+    
+    private void generateTestInstances() {
+        Address a1 = new Address("1082", "Ulloi ut");
+        Collection<Food> foods1 = new ArrayList<Food>();
+        foods1.add(new Food("szezamos csirke", 850, "Csirkemell darabok szezamos-mezes-csipos bundaban."));
+        foods1.add(new Food("edes-savanyu", 650, "-"));
+        foods1.add(new Food("leves", 350, "Kinai leves."));
+        Menu m1 = new Menu(foods1, 1);
+        Restaurant r1 = new Restaurant("Csing-csang", a1, m1);
 
-    public Food findFoodById(String restiName, String foodName) {
-        Food tmp = null;
-        Food r = null;
-        boolean found = false;
-        for (Restaurant resti : getAllRestaurants()) {
-            if (resti.getName().equalsIgnoreCase(restiName)) {
-                Iterator<Food> it = resti.getMenu().getFoods().iterator();
-                while (!found && it.hasNext()) {
-                    tmp = it.next();
-                    if (tmp.getName().equalsIgnoreCase(foodName)) {
-                        found = true;
-                        r = tmp;
-                    }
-                }
-            }
-        }
-        return r;
+        Address a2 = new Address("1082", "Corvin negyed");
+        Collection<Food> foods2 = new ArrayList<Food>();
+        foods2.add(new Food("csirkeszarny", 750, "Csirkeszarny csipos bundaban."));
+        foods2.add(new Food("csirkecomb", 950, "Rantott csirkecomb."));
+        foods2.add(new Food("libamaj", 1450, "Sult libamaj."));
+        Menu m2 = new Menu(foods2, 1);
+        Restaurant r2 = new Restaurant("KFC", a2, m2);
+
+        restaurantMap.put("elso", r1);
+        restaurantMap.put("masodik", r2);
     }
 
-    public Food findFoodById(String foodName) {
-        Food tmp = null;
-        Food r = null;
-        boolean found = false;
-        for (Restaurant resti : getAllRestaurants()) {
-            Iterator<Food> it = resti.getMenu().getFoods().iterator();
-            while (!found && it.hasNext()) {
-                tmp = it.next();
-                if (tmp.getName().equalsIgnoreCase(foodName)) {
-                    found = true;
-                    r = tmp;
-                }
-            }
-        }
-        return r;
-    }
-
-    public void setBeanName(String name) {
-        logger.info("*************************\ninmemoryrestaurantrepository: {}\n*************************", name);
-    }
 
 }

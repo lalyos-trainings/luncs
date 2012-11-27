@@ -3,6 +3,8 @@ package com.acme.training.service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +16,8 @@ import com.acme.training.domain.Order;
 @Scope("prototype")
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
+    @Autowired
+    @Qualifier("memoryRest")
     private RestaurantRepository repo;
     private Order order;
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
@@ -26,8 +30,12 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         return new InMemoryShoppingCart();
     }
     
-    public void setRepo(RestaurantRepository repo){
+    private void setRepo(RestaurantRepository repo){
         this.repo = repo;
+    }
+    
+    public RestaurantRepository getRepo(){
+        return repo;
     }
     
 //    public void addFood(String restiName, String foodName, int count){
@@ -36,8 +44,10 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 //    }
 //    
     public ShoppingCart withFood(String foodName, int count){
-        Food food = repo.findFoodById(foodName);
-        order.addOrderItem(food, count);
+        Food food = repo.findFoodByName(foodName);
+        if (food != null) {
+            order.addOrderItem(food, count);
+        }
         return this;
     }
     
