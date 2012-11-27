@@ -8,13 +8,21 @@ public class Food {
     private Restaurant restaurant;
     
     public Food(){}
-    
+ 
+    @Deprecated
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
         this.restaurant = restaurant;
     }
-    
+
+    public Food(int id, String name, int price, Restaurant restaurant) {
+        this.name = name;
+        this.price = price;
+        this.restaurant = restaurant;
+        this.id = id;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
