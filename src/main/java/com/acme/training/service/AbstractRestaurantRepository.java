@@ -12,7 +12,7 @@ import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-public class AbstractRestaurantRepository
+public class AbstractRestaurantRepository implements RestaurantRepository
 {
     private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();

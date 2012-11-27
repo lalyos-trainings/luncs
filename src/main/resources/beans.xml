@@ -17,6 +17,6 @@
     
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
     
-<!--     <bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" /> -->
+<!--     <bean id="memoryRest" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" /> -->
     
 </beans>
