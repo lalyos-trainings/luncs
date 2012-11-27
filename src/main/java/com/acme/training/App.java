@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Order;
+import com.acme.training.service.InMemoryAFAService;
 import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.MenuLister;
 import com.acme.training.service.OrderService;
@@ -42,7 +43,10 @@ public class App
         
         InMemoryStatisticService statistic = context.getBean(InMemoryStatisticService.class);
         statistic.printStatistic();
-    }
+
+        InMemoryAFAService nav = context.getBean(InMemoryAFAService.class);
+        nav.doAFA();
+}
     
     private static void lister()
     {

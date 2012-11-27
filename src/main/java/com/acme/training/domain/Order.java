@@ -81,6 +81,23 @@ public class Order
         return buffer.toString();
     }
     
-    
+    public int getTotal()
+    {
+        int total = 0;
+        
+        int i = 0;
+        while (i < orderItems.size())
+        {
+            OrderItem orderItem = orderItems.get(i);
+            int quantity = orderItem.getQuantity();
+            Food food = orderItem.getFood();
+            
+            total += food.getPrice() * quantity;
+            
+            i++;
+        }
+        
+        return total;
+    }
     
 }
