@@ -19,4 +19,8 @@ public class OrderItem {
     public String toString(){
         return String.format("%s, quantity: %d", this.getFood(),this.getQuantity());
     }
+    
+    public void addQuantity(int quantity){
+        this.quantity+=quantity;
+    }
 }
