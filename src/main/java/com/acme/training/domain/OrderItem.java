@@ -30,6 +30,10 @@ public class OrderItem {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+    
+    public void addQuantity(int quantity){
+        this.quantity += quantity;
+    }
 
     @Override
     public String toString(){

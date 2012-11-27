@@ -58,7 +58,7 @@ public class Order{
             orderItems.put(food.getName(), new OrderItem(quantity, food));
         }
         else{
-            tmp.setQuantity(tmp.getQuantity() + quantity);
+            tmp.addQuantity(quantity);
         }
     }
     

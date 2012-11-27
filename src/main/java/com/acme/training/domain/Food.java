@@ -1,14 +1,20 @@
 package com.acme.training.domain;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class Food {
 
     private String name;
     private double price;
     private String description;
+    private int id;
+    
+    private static AtomicInteger ID = new AtomicInteger(0);
 
     public Food(){
         super();
+        id = ID.incrementAndGet();
     }
     
     public Food(String name, double price, String description) {
@@ -16,6 +22,7 @@ public class Food {
         this.name = name;
         this.price = price;
         this.description = description;
+        id = ID.incrementAndGet();
     }
     
     public String getName() {
@@ -41,10 +48,14 @@ public class Food {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    public int getId(){
+        return id;
+    }
 
     @Override
     public String toString() {
-        String formattedFood = String.format("%-20s %7.1f", name, price/*, description*/);
+        String formattedFood = String.format("%-2d %-20s %7.1f", id, name, price/*, description*/);
         return formattedFood;
     }
     

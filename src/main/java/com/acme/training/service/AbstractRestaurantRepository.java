@@ -65,6 +65,23 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
         return r;
     }
 
+    public Food findFoodById(int foodId) {
+        Food tmp = null;
+        Food r = null;
+        boolean found = false;
+        for (Restaurant resti : getAllRestaurants()) {
+            Iterator<Food> it = resti.getMenu().getFoods().iterator();
+            while (!found && it.hasNext()) {
+                tmp = it.next();
+                if (tmp.getId() == foodId) {
+                    found = true;
+                    r = tmp;
+                }
+            }
+        }
+        return r;
+    }
+
     public void setBeanName(String name) {
         logger.info("*************************\ninmemoryrestaurantrepository: {}\n*************************", name);
     }

@@ -11,6 +11,8 @@ public interface ShoppingCart {
 //
     public ShoppingCart withFood(String foodName, int count);
 
+    public ShoppingCart withFood(int foodId, int count);
+
     public ShoppingCart withCustomer(String name);
 
     public ShoppingCart withDeliveryAddress(Address address);

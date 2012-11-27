@@ -51,6 +51,14 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         return this;
     }
     
+    public ShoppingCart withFood(int foodId, int count){
+        Food food = repo.findFoodById(foodId);
+        if (food != null) {
+            order.addOrderItem(food, count);
+        }
+        return this;
+    }
+    
     public ShoppingCart withCustomer(String name){
         order.setCustomer(name);
         return this;
