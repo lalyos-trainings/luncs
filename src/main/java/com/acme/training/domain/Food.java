@@ -2,17 +2,18 @@ package com.acme.training.domain;
 
 
 public class Food{
+
     private String name;
     private String description;
     private int price;
     private int id;
+    private Restaurant restaurant;
     
-    public Food() {}
-    
-    public Food(int id, String name, int price){
+    public Food(int id, String name, int price, Restaurant restaurant){
         this.id = id;
         this.name = name;
         this.price = price;
+        this.restaurant = restaurant;
     }
     
     public String getName() {
@@ -33,16 +34,15 @@ public class Food{
     public void setPrice(int price) {
         this.price = price;
     }
-
-    
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }    
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
-
     @Override
     public String toString() {
         return String.format("Food: %s %-15s", getName(), getPrice());
