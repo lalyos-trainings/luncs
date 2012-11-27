@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.OrderItem;
+import com.acme.training.ordermodel.OrderItem;
 
 @Component
 public class NavService implements ApplicationListener<OrderEvent> {

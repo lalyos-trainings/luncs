@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.OrderItem;
+import com.acme.training.ordermodel.OrderItem;
 
 @Component
 public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{

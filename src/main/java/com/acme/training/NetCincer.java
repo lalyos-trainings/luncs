@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Order;
+import com.acme.training.ordermodel.Order;
 import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.NavService;
 import com.acme.training.service.OrderService;
@@ -32,7 +32,7 @@ public class NetCincer {
         .withDeliveryAddress(new Address("Futo utca 47", "Budapest", "1082", "H"))
         .withFood(102, 5)
         .withFood(202, 1)
-        .checkout();
+        .checkout(); 
 
         OrderService orderService = ctx.getBean(OrderService.class);
         for (Order order : orderService.getAllOrder()) {

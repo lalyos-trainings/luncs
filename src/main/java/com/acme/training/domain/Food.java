@@ -7,7 +7,9 @@ public class Food {
     private Integer id;
     private Restaurant restaurant;
     
-
+public Food() {
+    
+}
 
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;

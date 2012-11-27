@@ -1,9 +1,12 @@
-package com.acme.training.domain;
+package com.acme.training.ordermodel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
 
 
 public class Order {

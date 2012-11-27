@@ -1,8 +1,11 @@
-package com.acme.training.domain;
+package com.acme.training.ordermodel;
+
+import com.acme.training.domain.Food;
 
 public class OrderItem {
     private int quantity;
     private Food food;
+   
     
     public OrderItem(int quantity, Food food) {
         super();
@@ -21,6 +24,12 @@ public class OrderItem {
     public void setFood(Food food) {
         this.food = food;
     }
+    
+    public int getTotal()  {
+        return food.getPrice()*quantity;
+    }
+
+    
     public void addQuantity(int additional) {
         this.quantity += additional;
     }

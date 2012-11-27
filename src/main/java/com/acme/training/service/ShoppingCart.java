@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
-import com.acme.training.domain.OrderItem;
+import com.acme.training.ordermodel.Order;
+import com.acme.training.ordermodel.OrderItem;
 import com.acme.training.repository.RestaurantRepository;
 
 @Component("kart")
@@ -69,6 +69,11 @@ public class ShoppingCart implements BeanNameAware{
         logger.info("my name is: " + name);
         logger.info("my hashCode is: " + hashCode());
         
+    }
+    
+    public Integer getSC(String customer){ // ***************************************************************************** ID
+        
+        return 0;
     }
 
 }

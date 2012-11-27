@@ -2,7 +2,7 @@ package com.acme.training.service;
 
 import java.util.Collection;
 
-import com.acme.training.domain.Order;
+import com.acme.training.ordermodel.Order;
 
 public interface OrderService {
 
