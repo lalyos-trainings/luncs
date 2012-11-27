@@ -12,8 +12,8 @@ import org.springframework.context.ApplicationContextAware;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
-public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware {
-
+public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware 
+{
     private PrintWriter writer;
     
     @Autowired()
@@ -61,10 +61,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
 
     public RestaurantRepository getRepo() {
         return repo;
-    }
-
-    public void setRepo(RestaurantRepository repo) {
-        this.repo = repo;
     }
 
     public void setApplicationContext(ApplicationContext context) throws BeansException
