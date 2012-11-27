@@ -1,30 +1,24 @@
 package com.acme.domain;
 
-import java.util.Locale;
-
-import org.springframework.beans.BeansException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 public class Food{
     private int id;
     private String name;
     private String description;
     private int price;
-    
-    public Food(){
-        
-    }
+    private Restaurant restaurant;
 
-    public Food(String name, int price) {
+    public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
+        this.setRestaurant(restaurant);
     }
     
-    public Food(int id, String name, int price) {
+    public Food(int id, String name, int price, Restaurant restaurant) {
         this.id = id;
         this.name = name;
         this.price = price;
+        this.setRestaurant(restaurant);
     }
     
     public int getId() {
@@ -58,6 +52,14 @@ public class Food{
     public String toString(){
         
         return  String.format("Food %-15s [%5d HUF]", this.getName(), this.getPrice());
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 
 }

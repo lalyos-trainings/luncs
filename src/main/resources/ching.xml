@@ -16,12 +16,12 @@
     	<bean id="chingChangMenu" class="com.acme.domain.Menu" >
 		<property name="foods">
 			<util:list>
-				<bean class="com.acme.domain.Food" p:id="4" p:name="ciposz cirke"
-					p:price="${csing.price.big}" />
-				<bean class="com.acme.domain.Food" p:id="5" p:name="bambuszos risz"
-					p:price="${csing.price.medium}" />
-				<bean class="com.acme.domain.Food" p:id="6" p:name="tofu"
-					p:price="${csing.price.small}" />
+				<bean class="com.acme.domain.Food" c:id="4" c:name="ciposz cirke"
+					c:price="${csing.price.big}" c:restaurant-ref="chingChung"/>
+				<bean class="com.acme.domain.Food" c:id="5" c:name="bambuszos risz"
+					c:price="${csing.price.medium}" c:restaurant-ref="chingChung" />
+				<bean class="com.acme.domain.Food" c:id="6" c:name="tofu"
+					c:price="${csing.price.small}" c:restaurant-ref="chingChung"/>
 			</util:list>
 		</property>
 	</bean>
