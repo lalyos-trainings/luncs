@@ -14,6 +14,7 @@ import com.acme.training.domain.OrderItem;
 public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{
 
     Map<Integer, OrderItem> foodStatistics = new HashMap<Integer, OrderItem>();
+    
     public void onApplicationEvent(OrderEvent event) {
         List<OrderItem> orderItems = event.getOrder().getOrderItems();
         for(OrderItem item : orderItems){
@@ -30,7 +31,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
             foodStatistics.put(foodId, item);        
     }
     public void printStat(){
-        System.out.println("============STAT===========");
+        System.out.println("=========ORDER STAT========");
         Collection<OrderItem> items = foodStatistics.values();
         for(OrderItem item : items){
             System.out.println("{ " + item.getFood().getRestaurant().getName() + " } " + item.getFood().getName() + " : " + item.getQuantity());

@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
+import com.acme.training.service.InMemoryAFAService;
 import com.acme.training.service.InMemoryShoppingcart;
 import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.OrderService;
@@ -19,6 +20,7 @@ public class Ordering {
        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "csing-csang.xml", "kfc.xml");
        InMemoryShoppingcart cart = ctx.getBean(InMemoryShoppingcart.class);
        InMemoryStatisticService statService = ctx.getBean(InMemoryStatisticService.class);
+       InMemoryAFAService NAVService = ctx.getBean(InMemoryAFAService.class);
        
        cart.addFood(1, 1);
        cart.addFood(3, 2);
@@ -43,7 +45,7 @@ public class Ordering {
        }
              
        statService.printStat();
-       
+       NAVService.doNAVStatistics();
 
     }
 }

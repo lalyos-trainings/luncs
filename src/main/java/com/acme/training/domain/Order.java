@@ -45,6 +45,17 @@ public class Order {
         orderItems.add(new OrderItem(quantity, food));
     }
     
+    public int getTotal(){
+        int totalPrice = 0;
+        for(int i=0; i<orderItems.size(); i++){
+            Food food = orderItems.get(i).getFood();
+            int quantity = orderItems.get(i).getQuantity();
+            int price = food.getPrice();
+            totalPrice += price * quantity;
+        }
+        return totalPrice;
+    }
+    
     
     
     
