@@ -50,4 +50,14 @@ public class Order {
         this.orderItems = orderItems;
     }
 
+    public int total() {
+        int total = 0;
+        for (OrderItem oi : orderItems) {
+            int price = oi.getFood().getPrice();
+            int quantity = oi.getQuantity();
+            total += price * quantity;
+        }
+
+        return total;
+    }
 }
