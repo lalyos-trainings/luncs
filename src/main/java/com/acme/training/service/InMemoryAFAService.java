@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,9 @@ import com.acme.training.domain.Order;
 @Component
 public class InMemoryAFAService implements ApplicationListener<OrderEvent>
 {
+    @Value("${vat}")
+    private double vat;
+    
     private Map<String, Integer> incomes = new HashMap<String, Integer>(); 
     
     public void onApplicationEvent(OrderEvent event)
@@ -43,9 +47,9 @@ public class InMemoryAFAService implements ApplicationListener<OrderEvent>
             Entry<String, Integer> next = iterator.next();
             
             int total = next.getValue();
-            double afa = total * 0.27;
+            double afa = total * vat / 100.0;
             
-            System.out.println(String.format("%-12s : %10d    YEN ÁFA: %10g YEN", next.getKey(), total, afa));
+            System.out.println(String.format("%-12s : %10d    YEN ÁFA (%.2g %%): %10g YEN", next.getKey(), total, vat, afa));
         }
     }
 }
