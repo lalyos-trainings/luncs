@@ -15,7 +15,7 @@ import com.acme.training.domain.Restaurant;
 
 @Component("memoryRest")
 @Scope("singleton")
-public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository{
 
     private Locale locale;
 
@@ -26,7 +26,7 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
 
     public void addRestaurant(String key, Restaurant restaurant) {
         restaurantMap.put(key, restaurant);
-        registerFoods(restaurant);
+        registerFood(restaurant);
     }
 
     public void removeRestaurant(String key) {
@@ -53,6 +53,7 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         foods1.add(new Food("szezamos csirke", 850, "Csirkemell darabok szezamos-mezes-csipos bundaban.", r1));
         foods1.add(new Food("edes-savanyu", 650, "-", r1));
         foods1.add(new Food("leves", 350, "Kinai leves.", r1));
+        foods1.add(new Food("csirkecomb", 850, "Kinai csirkecomb.", r1));
         Menu m1 = new Menu(foods1, 1);
         r1.setMenu(m1);
 

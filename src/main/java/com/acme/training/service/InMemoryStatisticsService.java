@@ -12,7 +12,7 @@ import com.acme.training.domain.OrderItem;
 @Component
 public class InMemoryStatisticsService implements ApplicationListener<OrderEvent>{
 
-    private Map<String, OrderItem> foodStatistics = new HashMap<String, OrderItem>();
+    private Map<Integer, OrderItem> foodStatistics = new HashMap<Integer, OrderItem>();
     
     public void onApplicationEvent(OrderEvent event) {
         Collection<OrderItem> items = event.getOrder().getOrderItems().values();
@@ -22,13 +22,12 @@ public class InMemoryStatisticsService implements ApplicationListener<OrderEvent
     }
 
     private void doStatistics(OrderItem item) {
-        String foodId = item.getFood().getName();
-        OrderItem orderItem = foodStatistics.get(foodId);
+        OrderItem orderItem = foodStatistics.get(item.getFood().getId());
         if(orderItem != null){
             orderItem.addQuantity(item.getQuantity());
         }
         else{
-            foodStatistics.put(foodId, new OrderItem(item.getQuantity(), item.getFood()));
+            foodStatistics.put(item.getFood().getId(), new OrderItem(item.getQuantity(), item.getFood()));
         }
         
     }

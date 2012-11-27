@@ -9,7 +9,7 @@ public class Order{
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Map<String, OrderItem> orderItems;
+    private Map<Integer, OrderItem> orderItems;
     private double total;
 
     public Order(String customer, Address billingAddress, Address deliveryAddress) {
@@ -17,13 +17,13 @@ public class Order{
         this.customer = customer;
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
-        this.orderItems = new HashMap<String, OrderItem>();
+        this.orderItems = new HashMap<Integer, OrderItem>();
         total = 0;
     }
 
     public Order() {
         super();
-        orderItems = new HashMap<String, OrderItem>();
+        orderItems = new HashMap<Integer, OrderItem>();
         total = 0;
     }
     
@@ -51,23 +51,19 @@ public class Order{
         this.deliveryAddress = deliveryAddress;
     }
     
-    public Map<String, OrderItem> getOrderItems() {
+    public Map<Integer, OrderItem> getOrderItems() {
         return orderItems;
     }
     
     public void addOrderItem(Food food, int quantity){
-        OrderItem tmp = orderItems.get(food.getName());
+        OrderItem tmp = orderItems.get(food.getId());
         if(tmp == null){
-            orderItems.put(food.getName(), new OrderItem(quantity, food));
+            orderItems.put(food.getId(), new OrderItem(quantity, food));
         }
         else{
             tmp.addQuantity(quantity);
         }
         total += (quantity * food.getPrice());
-    }
-    
-    public void setOrderItems(Map<String, OrderItem> orders) {
-        this.orderItems = orders;
     }
     
     public double countTotal(){
@@ -82,15 +78,24 @@ public class Order{
         return total;
     }
 
+//    public Collection<RestaurantBill> getRestaurantBills(){
+//        return null;
+//    }
+
     @Override
     public String toString() {
 //        String orderMessage = applicationContext.getMessage("orderFormat", null, locale);
 //        String formattedOrder = String
 //                .format(orderMessage,
 //                        customer, deliveryAddress, billingAddress, orderItems);
+        StringBuilder oi = new StringBuilder();
+        for(OrderItem item : orderItems.values()){
+            oi.append(item);
+            oi.append("\n");
+        }
         String formattedOrder = String
                 .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s\n----------------\nTotal: %.2f",
-                        customer, deliveryAddress, billingAddress, orderItems, total);
+                        customer, deliveryAddress, billingAddress, oi.toString(), total);
         return formattedOrder;
     }
 

@@ -7,6 +7,10 @@ public class Restaurant {
     private Address address;
     private Menu menu;
 
+    public Restaurant(){
+        super();
+    }
+    
     public Restaurant(String name, Address address, Menu menu) {
         super();
         this.name = name;

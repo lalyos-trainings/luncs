@@ -19,17 +19,15 @@ public class App
     public static void main( String[] args )
     {
         
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml"/*, "kfc.xml", "csing-csang.xml"*/);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing-csang.xml");
         
         MenuLister menuLister = ctx.getBean(SystemOutMenuLister.class);
         menuLister.doList();
         
         ShoppingCart cart = ctx.getBean(InMemoryShoppingCart.class);
         ShoppingCart cart2 = ctx.getBean(InMemoryShoppingCart.class);
-//        cart.addFood("KFC", "csirkeszarny", 1);
-//        cart.addFood("csing-csang", "szezamos csirke", 2);
+        ShoppingCart cart3 = ctx.getBean(InMemoryShoppingCart.class);
         OrderService os = ctx.getBean(InMemoryOrderService.class);
-//        OrderService os2 = ctx.getBean(InMemoryOrderService.class);
         os.doOrder(cart.withBillingAddress(new Address("1122", "Csaba utca"))
                 .withDeliveryAddress(new Address("1122", "Csaba utca"))
                 .withCustomer("Sztike")
@@ -47,16 +45,17 @@ public class App
                 .withFood("Csing-csang", "edes-savanyu", 3)
                 .withFood("Csing-csang", "szezamos csirke", 5)
                 .checkOut());
+        os.doOrder(cart3.withBillingAddress(new Address("1234", "Ize utca"))
+                .withDeliveryAddress(new Address("1234", "Ize utca"))
+                .withCustomer("Jani")
+                .withFood("Csing-csang", "csirkecomb", 1)
+                .withFood("KFC", "csirkecomb", 1)
+                .checkOut());
         for(Order order : os.getAllOrders()){
             System.out.println(order);
             System.out.println();
         }
 
-//        System.out.println("OS2:");
-//        for(Order order : os2.getAllOrders()){
-//            System.out.println(order);
-//            System.out.println();
-//        }
         InMemoryStatisticsService statisticService = ctx.getBean(InMemoryStatisticsService.class);
         statisticService.printStatistics();
 

@@ -5,18 +5,23 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
 
-	<bean id="kfc" class="com.acme.training.domain.Restaurant" c:name="KFC"
-		c:street="Corvin" c:zip="1082" p:menu-ref="KFC-Menu" />
-	<bean id="KFC-Menu" class="com.acme.training.domain.Menu" p:week="1">
-		<property name="foods">
-			<util:list>
-				<bean class="com.acme.training.domain.Food" c:name="csirkeszarny"
-					c:price="750" c:description="csirkeszarny csipos bundaban" c:restaurant-ref="kfc"/>
-				<bean class="com.acme.training.domain.Food" c:name="csirkecomb"
-					c:price="950" c:description="rantott csirkecomb"  c:restaurant-ref="kfc"/>
-				<bean class="com.acme.training.domain.Food" c:name="libamaj"
-					c:price="1450" c:description="sult libamaj"  c:restaurant-ref="kfc"/>
-			</util:list>
+	<bean id="kfc" c:name="KFC" c:zip="1082" c:street="Corvin"
+		class="com.acme.training.domain.Restaurant">
+		<property name="menu">
+			<bean id="kfcMenu" class="com.acme.training.domain.Menu">
+				<property name="foods">
+					<util:list>
+						<bean class="com.acme.training.domain.Food" c:name="csirkeszarny"
+							c:price="750" c:description="csirkeszarny csipos bundaban"
+							c:restaurant-ref="kfc" />
+						<bean class="com.acme.training.domain.Food" c:name="csirkecomb"
+							c:price="950" c:description="rantott csirkecomb"
+							c:restaurant-ref="kfc" />
+						<bean class="com.acme.training.domain.Food" c:name="libamaj"
+							c:price="1450" c:description="sult libamaj" c:restaurant-ref="kfc" />
+					</util:list>
+				</property>
+			</bean>
 		</property>
 	</bean>
 

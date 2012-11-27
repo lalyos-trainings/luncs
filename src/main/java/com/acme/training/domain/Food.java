@@ -7,11 +7,15 @@ public class Food {
     private String name;
     private double price;
     private String description;
-//    private int id;
+    private int id;
     private Restaurant restaurant;
     
 //    private static AtomicInteger ID = new AtomicInteger(0);
 
+    public Food(){
+        super();
+    }
+    
     public Food(String name, double price, String description, Restaurant restaurant) {
         super();
         this.name = name;
@@ -45,16 +49,20 @@ public class Food {
         this.description = description;
     }
     
-//    public int getId(){
-//        return id;
-//    }
-//
+    public int getId(){
+        return id;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

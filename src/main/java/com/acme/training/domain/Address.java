@@ -19,6 +19,8 @@ public class Address {
         this(zip, "Magyarország", "Budapest", street);
     }
     
+    public Address(){}
+    
     public String getZipCode() {
         return zipCode;
     }

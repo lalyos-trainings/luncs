@@ -4,15 +4,15 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.BeanNameAware;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
-public class AbstractRestaurantRepository implements RestaurantRepository{
+public class AbstractRestaurantRepository implements RestaurantRepository, BeanNameAware{
 
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private Map<Integer, Food> foodMap = new HashMap<Integer, Food>();
@@ -35,16 +35,13 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
         Food tmp = null;
         Food r = null;
         boolean found = false;
-        for (Restaurant resti : getAllRestaurants()) {
-            if (resti.getName().equalsIgnoreCase(restiName)) {
-                Iterator<Food> it = resti.getMenu().getFoods().iterator();
-                while (!found && it.hasNext()) {
-                    tmp = it.next();
-                    if (tmp.getName().equalsIgnoreCase(foodName)) {
-                        found = true;
-                        r = tmp;
-                    }
-                }
+        Iterator<Food> it = foodMap.values().iterator();
+        while (!found && it.hasNext()) {
+            tmp = it.next();
+            if (tmp.getName().equalsIgnoreCase(foodName)
+                    && tmp.getRestaurant().getName().equalsIgnoreCase(restiName)) {
+                found = true;
+                r = tmp;
             }
         }
         return r;
@@ -71,8 +68,9 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
         return foodMap.get(foodId);
     }
 
-    public void registerFoods(Restaurant restaurant){
+    public void registerFood(Restaurant restaurant){
         for(Food food : restaurant.getMenu().getFoods()){
+            food.setId(maxId);
             foodMap.put(maxId, food);
             maxId++;
         }
@@ -83,7 +81,7 @@ public class AbstractRestaurantRepository implements RestaurantRepository{
     }
 
     public void setBeanName(String name) {
-        logger.info("*************************\ninmemoryrestaurantrepository: {}\n*************************", name);
+        logger.info("*************************\nabstractrestaurantrepository: {}\n*************************", name);
     }
 
 }

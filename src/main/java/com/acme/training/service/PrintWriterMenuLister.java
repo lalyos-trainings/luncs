@@ -19,7 +19,6 @@ import com.acme.training.domain.Restaurant;
 public class PrintWriterMenuLister implements MenuLister, ApplicationContextAware{
 
     @Autowired
-//    @Qualifier("memoryRest")
     private RestaurantRepository repo;
     private PrintWriter printWriter;
     @Value("${language}")

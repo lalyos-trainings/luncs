@@ -9,18 +9,20 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <bean id="csing-csang" class="com.acme.training.domain.Restaurant" c:name="Csing-Csang"
-        c:street="${csing.street}" c:zip="${csing.zip}" p:menu-ref="Kinai-Menu" />
-    <bean id="Kinai-Menu" class="com.acme.training.domain.Menu" p:week="1">
-        <property name="foods">
-            <util:list>
+    <bean id="csing-csang" c:name="Csing-csang" c:zip="${csing.zip}" c:street="${csing.street}" class="com.acme.training.domain.Restaurant" >
+        <property name="menu">
+            <bean class="com.acme.training.domain.Menu" id="menu1">
+                <property name="foods">
+                    <util:list>
                 <bean class="com.acme.training.domain.Food" c:name="szezamos csirke"
                     c:price="${csing.price.high}" c:description="csirkemell darabok szezamos-mezes-csipos bundaban" c:restaurant-ref="csing-csang"/>
                 <bean class="com.acme.training.domain.Food" c:name="edes-savanyu"
                     c:price="${csing.price.medium}" c:description="-" c:restaurant-ref="csing-csang"/>
                 <bean class="com.acme.training.domain.Food" c:name="leves"
                     c:price="${csing.price.low}" c:description="kinai leves" c:restaurant-ref="csing-csang"/>
-            </util:list>
+                    </util:list>
+                </property>
+            </bean>
         </property>
     </bean>
 </beans>

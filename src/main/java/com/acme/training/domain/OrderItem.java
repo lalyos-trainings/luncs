@@ -37,7 +37,7 @@ public class OrderItem {
 
     @Override
     public String toString(){
-        String formattedOrderItem = String.format("%-2d db %s", quantity, food.getName());
+        String formattedOrderItem = String.format("%3d %-20s from %-20s", quantity, food.getName(), food.getRestaurant().getName());
         return formattedOrderItem;
     }
 
