@@ -11,19 +11,10 @@
         default-autowire="byType"
 	>
 
+    <context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"  />
+
     <context:component-scan base-package="com.acme" />
 
-    <bean class="com.acme.training.service.SysoutMenuLister" p:locale="de"  />
-    
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
     
-<!--     <bean class="ShoppingCart" /> -->
-    
-<!--     <bean class="com.acme.training.service.XmlConfigurableRestaurantRepository" > -->
-<!--         <qualifier value="xml" /> -->
-<!--     </bean> -->
-    
-<!--     <bean class="com.acme.training.service.InMemoryRestaurantRepository" > -->
-<!--         <qualifier value="memory" /> -->
-<!--     </bean> -->
 </beans>
