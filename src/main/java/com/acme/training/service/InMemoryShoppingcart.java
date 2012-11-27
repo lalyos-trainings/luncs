@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
     @Autowired
     private OrderService os;
     @Autowired
+    @Qualifier("xml")
     private RestaurantRepository repo;
     private Order order;
     private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
