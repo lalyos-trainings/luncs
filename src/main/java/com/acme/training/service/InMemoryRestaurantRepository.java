@@ -2,7 +2,6 @@ package com.acme.training.service;
 
 
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
