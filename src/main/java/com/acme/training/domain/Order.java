@@ -68,4 +68,14 @@ public class Order {
         List<OrderItem> ret = new ArrayList(itemMap.values());
         return ret;
     }
+    public int getGrandTotal() {
+        int total  = 0;
+        for (OrderItem item : itemMap.values()) {
+            int price = item.getFood().getPrice();
+            int quantity = item.getQuantity();
+            total += price * quantity;
+        }
+        
+        return total;
+    }
 }

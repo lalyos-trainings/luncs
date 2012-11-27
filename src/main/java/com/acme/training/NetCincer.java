@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Order;
 import com.acme.training.service.InMemoryStatisticService;
+import com.acme.training.service.NavService;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
 
@@ -40,6 +41,9 @@ public class NetCincer {
         
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
         statisticService.printStatistic();
+        
+        NavService navService = ctx.getBean(NavService.class);
+        System.out.println("Total VAT: " + navService.getTotalVAT());
     }
 
 }
