@@ -29,7 +29,7 @@ public class Ordering {
        LinkedList<Order> orders = os.getAllOrders();
       
        for(int i=0; i<orders.size(); i++){
-           System.out.println(orders.get(i).getCustomer());
+          System.out.println(orders.get(i).getCustomer());
           System.out.println(orders.get(i).getDeliveryAddress());
           List<OrderItem> orderItems = orders.get(i).getOrderItems();
           

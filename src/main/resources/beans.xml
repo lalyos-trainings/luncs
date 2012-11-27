@@ -18,5 +18,4 @@
     <!-- mert a Locale primitiv tipuskent van kezelve -->
     <bean class="com.acme.training.service.SysoutMenuLister" p:locale="de"/>
     
-    
 </beans>
