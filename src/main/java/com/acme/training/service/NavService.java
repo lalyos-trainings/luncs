@@ -1,11 +1,14 @@
 package com.acme.training.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class NavService implements ApplicationListener<OrderEvent> {
 
+    @Value("${vat}")
+    private double vat;
     private int uberGrandTotal = 0;
     
     public void onApplicationEvent(OrderEvent event) {
@@ -18,7 +21,7 @@ public class NavService implements ApplicationListener<OrderEvent> {
     }
     
     public double getTotalVAT() {
-        return uberGrandTotal * 0.25;
+        return uberGrandTotal * vat;
     }
 
 }
