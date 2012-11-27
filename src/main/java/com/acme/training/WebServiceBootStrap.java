@@ -1,5 +1,7 @@
 package com.acme.training;
 
+import javax.xml.ws.Endpoint;
+
 import com.acme.training.ws.MenuWS;
 
 public class WebServiceBootStrap {
@@ -9,7 +11,7 @@ public class WebServiceBootStrap {
      */
     public static void main(String[] args) {
         MenuWS menuWS = new MenuWS();
-        Endpoint.publish("http://localhost:8080/menu", new AddressesWS(menuService));
+        Endpoint.publish("http://localhost:8080/menu", menuWS);
 
     }
 
