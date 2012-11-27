@@ -11,7 +11,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
-public class AbstractRestaurantRepository {
+public class AbstractRestaurantRepository implements RestaurantRepository {
 
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
     private Map<Integer, Food> foodMap = new HashMap<Integer, Food>();
