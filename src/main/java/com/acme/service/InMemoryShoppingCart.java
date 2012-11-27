@@ -19,7 +19,7 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
     private Order order;
     @Autowired
-    @Qualifier("#{restaurant.repo.type}")
+    @Qualifier("xml")
     private RestaurantRepository repo;
     @Autowired
     private OrderService orderService;
