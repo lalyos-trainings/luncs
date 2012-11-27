@@ -1,13 +1,15 @@
 package com.acme.training.service;
 
-
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository, BeanNameAware {
+@Component("MemoryRest")
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository,
+        BeanNameAware {
 
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
