@@ -6,19 +6,18 @@
 	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd">
-		
+
 	<bean id="kfc" c:name="KFC" c:zip="1082" c:street="Corvin" class="com.acme.training.domain.Restaurant" >
 		<property name="menu">
 			<bean id="kfcMenu" class="com.acme.training.domain.Menu">
 				<property name="foods">
 					<util:list>
-						<bean p:ID="11" p:name="csirkeszarny" p:price="750" class="com.acme.training.domain.Food" />
-						<bean p:ID="12" p:name="csirkelab" p:price="450" class="com.acme.training.domain.Food" />
-						<bean p:ID="13" p:name="libamaj" p:price="1550" class="com.acme.training.domain.Food" />
+						<bean p:id="201" p:name="csirkeszarny" p:price="750" class="com.acme.training.domain.Food" />
+						<bean p:id="202" p:name="csirkelab" p:price="450" class="com.acme.training.domain.Food" />
+						<bean p:id="203" p:name="libamaj" p:price="1550" class="com.acme.training.domain.Food" />
 					</util:list>
 				</property>
 			</bean>
 		</property>
 	</bean>
-
 </beans>

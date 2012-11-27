@@ -50,6 +50,7 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+<<<<<<< HEAD
     <dependency>
     	<groupId>org.slf4j</groupId>
     	<artifactId>slf4j-api</artifactId>
@@ -60,5 +61,7 @@
         <artifactId>spring-context</artifactId>
         <version>3.1.2.RELEASE</version>
     </dependency>            
+=======
+>>>>>>> official/master
   </dependencies>
 </project>

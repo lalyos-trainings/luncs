@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #################
 ## Eclipse
 #################
@@ -162,3 +163,10 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+=======
+.classpath
+.project
+.settings
+target
+.springBeans
+>>>>>>> official/master

@@ -1,11 +1,10 @@
 package com.acme.training.domain;
 
-
 public class Food {
     private String name;
     private String description;
     private int price;
-    private int ID;
+    private Integer id;
 
     public Food() {
     }
@@ -39,15 +38,15 @@ public class Food {
         this.price = price;
     }
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int iD) {
-        ID = iD;
-    }
-
     public String toString() {
-        return String.format("Food name: %-15s [%5d]", name, price);
+        return String.format("Food: %-15s [%5d]", name, price);
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
     }
 }

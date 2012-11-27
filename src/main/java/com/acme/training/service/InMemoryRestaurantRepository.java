@@ -1,34 +1,24 @@
 package com.acme.training.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-public class InMemoryRestaurantRepository implements RestaurantRepository {
-
-    private Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
+@Component("repo")
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository,
+        BeanNameAware {
 
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());
     }
 
-    public void setRestaurantMap(Map<String, Restaurant> restaurantMap) {
-        this.restaurantMap = restaurantMap;
-        Set<String> keySet = restaurantMap.keySet();
-        for (String key : keySet) {
-            System.out.println("next repo key:" + key);
-
-        }
-    }
-
     private void addRestaurant(Restaurant restaurant) {
         restaurantMap.put(restaurant.getName(), restaurant);
+        registerFoods(restaurant);
     }
 
     private Restaurant createResti1() {
@@ -51,14 +41,5 @@ public class InMemoryRestaurantRepository implements RestaurantRepository {
         m1.getFoods().add(new Food("gyros", 850));
         m1.getFoods().add(new Food("baklava", 300));
         return r1;
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.epam.training.service.RestaurantRepository#getAllRestaurants()
-     */
-    public Collection<Restaurant> getAllRestaurants() {
-        return restaurantMap.values();
     }
 }

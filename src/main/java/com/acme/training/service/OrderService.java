@@ -1,13 +1,14 @@
 package com.acme.training.service;
 
-import java.util.List;
+import java.util.Collection;
 
 import com.acme.training.domain.Order;
 
 public interface OrderService {
 
-    public abstract void doOrder(Order o);
+    public void doOrder(Order order);
 
-    public abstract List<Order> getAllOrders();
+    public Collection<Order> getAllOrder();
 
+    public Order findById(String id);
 }

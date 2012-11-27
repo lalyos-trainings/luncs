@@ -4,22 +4,17 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:c="http://www.springframework.org/schema/c"
-	default-autowire="byType" default-autowire-candidates="false"
+	default-autowire="byType"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+		>
 
 	<context:component-scan base-package="com.acme" />
-	<bean class="com.acme.training.service.SysoutMenuLister" p:locale="de"/>
-    
-	<bean id="regirepo" class="com.acme.training.service.InMemoryRestaurantRepository" />
-	<bean id="regirepo1" class="com.acme.training.service.InMemoryRestaurantRepository" />
-	<bean id="regirepo2" class="com.acme.training.service.InMemoryRestaurantRepository" />
-	<bean id="repo" class="com.acme.training.service.InMemoryRestaurantRepository" autowire-candidate="true" />
+
+	<bean class="com.acme.training.service.SysoutMenuLister" p:locale="de" />
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
 	
-	<bean class="com.acme.training.domain.ShoppingCart"/>
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs"/>
-
 </beans>
-

@@ -10,7 +10,7 @@ public class ShoppingCart {
     private OrderService orderservice;
 
     public void addFood(int foodId, int quantity) {
-        order.addOrderItem(new OrderItem(quantity, foodById(foodId)));
+        order.addItem(new OrderItem(quantity, foodById(foodId)));
     }
 
     public void setCustomer(String cust) {
@@ -21,7 +21,7 @@ public class ShoppingCart {
         Food tempfood = new Food();
         for (Restaurant restaurant : repo.getAllRestaurants()) {
             for (Food food : restaurant.getMenu().getFoods()) {
-                if (food.getID() == foodId) {
+                if (food.getId() == foodId) {
                     return food;
                 }
             }

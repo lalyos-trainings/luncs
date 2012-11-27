@@ -1,13 +1,13 @@
 package com.acme.training.domain;
 
 public class OrderItem {
-
     private int quantity;
     private Food food;
 
-    public OrderItem(int quant, Food f) {
-        quantity = quant;
-        food = f;
+    public OrderItem(int quantity, Food food) {
+        super();
+        this.quantity = quantity;
+        this.food = food;
     }
 
     public int getQuantity() {
@@ -26,4 +26,7 @@ public class OrderItem {
         this.food = food;
     }
 
+    public void addQuantity(int additional) {
+        this.quantity += additional;
+    }
 }
