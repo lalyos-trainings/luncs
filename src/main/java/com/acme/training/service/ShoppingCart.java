@@ -26,14 +26,24 @@ public class ShoppingCart implements BeanNameAware {
     @Autowired
     /*
      * qualifier: ha az autowire számára nem egyértelmű, hogy melyik példányt tegye be, akkor a qualifierrel meg tudjuk
-     * mondani a kívánt bean nevét (valamiért mindkét helyre kell az qualifier)
+     * mondani a kívánt bean nevét (itt: *NEM A SETTEREN KERESZTÜL ADJA ÁT*)
      */
-    @Qualifier("memoryRepository") 
+//    @Qualifier("memoryRepository") 
+    
+    
+    
+    /*
+     * most: aliassal hivatkozunk, az alias az xml-ben van összedugva a fenti névvel
+     */
+    @Qualifier("repository") 
     private RestaurantRepository repository;
     
-    public void setRepository(@Qualifier("memoryRepository") RestaurantRepository repository) {
+//    public void setRepository(@Qualifier("memoryRepository") RestaurantRepository repository) {
+    
+    
+   /* public void setRepository(@Qualifier("repository") RestaurantRepository repository) {
         this.repository = repository;
-    }
+    }*/
 
     public ShoppingCart() {
         order = new Order();

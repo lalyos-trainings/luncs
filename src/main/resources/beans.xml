@@ -25,5 +25,9 @@
 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" 
 	   p:basename="luncs" />
+	   
+	<!--  alias: névnek ad másik nevet, amit annotálhatunk, viszont az alias kapcsolatot prop file-ból kapcsolgathatunk -->
+	
+	<alias name="memoryRepository" alias="repository" />
 	
 </beans>
