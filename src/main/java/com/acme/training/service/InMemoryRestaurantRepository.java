@@ -1,12 +1,6 @@
 package com.acme.training.service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 
@@ -15,12 +9,8 @@ import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
 @Component("memoryRest")
-public class InMemoryRestaurantRepository implements RestaurantRepository, BeanNameAware 
+public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements RestaurantRepository, BeanNameAware 
 {
-    private static Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
-    
-    protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
-    
     public InMemoryRestaurantRepository() {
         addRestaurant(createResti1());
         addRestaurant(createResti2());        
@@ -50,45 +40,5 @@ public class InMemoryRestaurantRepository implements RestaurantRepository, BeanN
         m1.getFoods().add(new Food(5, "gyros",850));
         m1.getFoods().add(new Food(6, "baklava", 300));
         return r1;
-    }
-
-    /* (non-Javadoc)
-     * @see com.acme.training.service.RestaurantRepository#getAllRestaurants()
-     */
-    public Collection<Restaurant> getAllRestaurants() {
-        return restaurantMap.values();
-    }
-
-    public Food getFoodById(int foodId) 
-    {
-        Food foundFood = null;
-        
-        Iterator<Restaurant> iterator = restaurantMap.values().iterator();
-        
-        while (iterator.hasNext() == true && foundFood == null)
-        {
-            Restaurant restaurant = iterator.next();
-            Menu menu = restaurant.getMenu();
-            Collection<Food> foods = menu.getFoods();
-            
-            Iterator<Food> foodIterator = foods.iterator();
-            
-            while (foodIterator.hasNext() == true)
-            {
-                Food food = foodIterator.next();
-                if (food.getId() == foodId)
-                {
-                    foundFood = food;
-                    break;
-                }
-            }
-        }
-        
-        return foundFood;
-    }
-
-    public void setBeanName(String beanName) 
-    {
-        logger.info("bean name: " + beanName);
     }
 }
