@@ -3,9 +3,12 @@ package com.acme.training.ws;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jws.WebService;
+
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
+@WebService
 public class MenuWS {
 
     private List<Food> foods = new ArrayList<Food>();
