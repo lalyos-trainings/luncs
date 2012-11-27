@@ -11,7 +11,8 @@ public class BundlePlay {
      * @param args
      */
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml",
+                "orders.xml");
         MenuLister ml = ctx.getBean(MenuLister.class);
 
         ml.doList();

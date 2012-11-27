@@ -1,6 +1,7 @@
 package com.acme.training.service;
 
 import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
@@ -8,6 +9,7 @@ import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
 @Component("memoryRepo")
+@Qualifier("memory")
 public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
     public InMemoryRestaurantRepository() {

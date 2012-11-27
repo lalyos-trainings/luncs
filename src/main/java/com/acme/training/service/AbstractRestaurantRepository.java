@@ -13,7 +13,7 @@ import com.acme.training.domain.Restaurant;
 public class AbstractRestaurantRepository implements RestaurantRepository {
 
     protected Map<String, Restaurant> restaurantMap = new HashMap<String, Restaurant>();
-    protected final Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
+    protected Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
 
     public AbstractRestaurantRepository() {
         super();
