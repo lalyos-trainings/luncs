@@ -22,7 +22,7 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     @Qualifier("xml")
     private RestaurantRepository repo;
     private ApplicationContext ctx;
-    @Value("hu")
+    @Value("${language}")
     private Locale locale;   
     
     
