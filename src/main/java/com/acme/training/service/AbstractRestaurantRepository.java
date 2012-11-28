@@ -25,7 +25,8 @@ public class AbstractRestaurantRepository implements RestaurantRepository {
 
     public Food getFoodById(int id) {
         for (Restaurant r : restaurantMap.values()) {
-            for (Food f : r.getMenu().getFoods()) {
+            for (Food f : r.getMenu()
+                           .getFoods()) {
                 if (f.getId() == id) {
                     return f;
                 }

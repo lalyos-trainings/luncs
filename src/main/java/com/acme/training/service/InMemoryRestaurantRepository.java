@@ -24,9 +24,12 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food(7, "pacal", 500, r1));
-        m1.getFoods().add(new Food(8, "toltott kaposzta", 750, r1));
-        m1.getFoods().add(new Food(9, "bableves", 690, r1));
+        m1.getFoods()
+          .add(new Food(7, "pacal", 500, r1));
+        m1.getFoods()
+          .add(new Food(8, "toltott kaposzta", 750, r1));
+        m1.getFoods()
+          .add(new Food(9, "bableves", 690, r1));
         return r1;
     }
 
@@ -35,9 +38,12 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food(10, "lencse leves", 400, r1));
-        m1.getFoods().add(new Food(11, "gyros", 850, r1));
-        m1.getFoods().add(new Food(12, "baklava", 300, r1));
+        m1.getFoods()
+          .add(new Food(10, "lencse leves", 400, r1));
+        m1.getFoods()
+          .add(new Food(11, "gyros", 850, r1));
+        m1.getFoods()
+          .add(new Food(12, "baklava", 300, r1));
         return r1;
     }
 
