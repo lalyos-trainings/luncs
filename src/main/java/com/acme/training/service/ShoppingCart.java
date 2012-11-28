@@ -2,44 +2,44 @@ package com.acme.training.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
+import com.acme.training.domain.Restaurant;
+import com.acme.training.domain.RestaurantOrder;
 
 @Component("kart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ShoppingCart implements BeanNameAware{
-
+public class ShoppingCart {
+	
+	@Autowired
+	private RestaurantRepository repo;
     private OrderService orderService;
-    @Autowired
-    private RestaurantRepository repo;    
-    private Order order;
+    private CustomerOrder customerOrder;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
-    private ShoppingCart() {
-        this.order = new Order();
+    public ShoppingCart() {
+        this.customerOrder = new CustomerOrder();
     }
     
     public ShoppingCart withCustomer(String customer) {
-        order.setCustomer(customer);
+    	customerOrder.setCustomerName(customer);
         return this;
     }
     
     public ShoppingCart withDeliveryAddress(Address deliveryAddress) {
-        order.setDeliveryAddress(deliveryAddress);
+        customerOrder.setDeliveryAddress(deliveryAddress);
         return this;
     }
 
     public ShoppingCart withBillingAddress(Address billingAddress) {
-        order.setBillingAddress(billingAddress);
+        customerOrder.setBillingAddress(billingAddress);
         return this;
     }
 
@@ -49,12 +49,17 @@ public class ShoppingCart implements BeanNameAware{
 
     public ShoppingCart withFood(int id, int quantity) {
         Food food = repo.findFoodById(id);
-        order.addItem(new OrderItem(quantity, food));
+        Restaurant restaurant = food.getRestaurant();
+        
+        RestaurantOrder restaurantOrder = new RestaurantOrder(restaurant);
+        OrderItem orderItem = new OrderItem(quantity, food);
+		restaurantOrder.getOrderItems().add(orderItem);
+		customerOrder.getRestaurantOrders().add(restaurantOrder);
         return this;
     }
 
     public void checkout() {
-        orderService.doOrder(order);
+        orderService.doOrder(customerOrder);
     }
 
     public OrderService getOrderService() {

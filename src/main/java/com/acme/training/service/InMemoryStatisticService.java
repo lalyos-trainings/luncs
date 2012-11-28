@@ -1,5 +1,6 @@
 package com.acme.training.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,13 +9,17 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.OrderItem;
+import com.acme.training.domain.RestaurantOrder;
 
 @Component
 public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{
 
     Map<Integer, OrderItem> foodStatistic = new HashMap<Integer, OrderItem>();
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
+    	List<OrderItem> items = new ArrayList<OrderItem>();
+		for (RestaurantOrder restaurantOrder : event.getOrder().getRestaurantOrders()) {
+			items.addAll(restaurantOrder.getOrderItems());
+		}
         for (OrderItem item : items) {
             doStatistic(item);
         }

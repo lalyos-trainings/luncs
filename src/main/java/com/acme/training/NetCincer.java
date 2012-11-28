@@ -4,7 +4,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
+import com.acme.training.service.InMemoryNAVService;
 import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
@@ -34,12 +35,15 @@ public class NetCincer {
         .checkout();
 
         OrderService orderService = ctx.getBean(OrderService.class);
-        for (Order order : orderService.getAllOrder()) {
-            System.out.println("- next order:" + order);
+        for (CustomerOrder order : orderService.getAllOrder()) {
+            System.out.println("- next order: " + order.printBill());
         }
         
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
         statisticService.printStatistic();
+        
+        InMemoryNAVService navService = ctx.getBean(InMemoryNAVService.class);
+        navService.showIncome();
     }
 
 }

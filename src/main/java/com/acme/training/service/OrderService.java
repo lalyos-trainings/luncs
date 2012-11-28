@@ -2,14 +2,18 @@ package com.acme.training.service;
 
 import java.util.Collection;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 public interface OrderService {
 
-    public void doOrder(Order order);
+    void doOrder(CustomerOrder order);
 
-    public Collection<Order> getAllOrder();
+    Collection<CustomerOrder> getAllOrder();
 
-    public Order findById(String id);
+    CustomerOrder findById(String id);
+
+	int addNewShoppingCart(String customer);
+
+	ShoppingCart getShoppingCartById(Integer cartId);
 
 }

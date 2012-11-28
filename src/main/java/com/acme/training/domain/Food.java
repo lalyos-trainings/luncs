@@ -13,6 +13,8 @@ public class Food {
         this.restaurant = restaurant;
     }
     
+    public Food(){}
+    
     public Restaurant getRestaurant() {
         return restaurant;
     }

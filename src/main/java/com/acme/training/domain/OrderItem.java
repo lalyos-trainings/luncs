@@ -24,4 +24,8 @@ public class OrderItem {
     public void addQuantity(int additional) {
         this.quantity += additional;
     }
+    
+    public int getTotal() {
+    	return food.getPrice() * quantity;
+    }
 }

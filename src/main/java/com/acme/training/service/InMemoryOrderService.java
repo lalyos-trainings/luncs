@@ -10,29 +10,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryOrderService implements OrderService {
 
+	private static int SHOPPING_CART_ID = 0;
+	
     Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);
-    Map<String, Order> orders = new HashMap<String, Order>();
+    Map<String, CustomerOrder> customerOrders = new HashMap<String, CustomerOrder>();
+    Map<Integer, ShoppingCart> shoppingCarts = new HashMap<Integer, ShoppingCart>();
     @Autowired
     private ApplicationContext context;
     
-    public void doOrder(Order order) {
-        logger.info("new Order for:" + order.getCustomer());
-        orders.put(order.getId(), order);
-        logger.info("# of order:" + orders.keySet().size());
+    public void doOrder(CustomerOrder order) {
+        logger.info("new Order for:" + order.getCustomerName());
+        customerOrders.put(order.getId(), order);
+        logger.info("# of order:" + customerOrders.keySet().size());
         OrderEvent event = new OrderEvent(this, order);
         context.publishEvent(event);
     }
     
-    public Collection<Order> getAllOrder() {
-        return orders.values();
+    public Collection<CustomerOrder> getAllOrder() {
+        return customerOrders.values();
     }
     
-    public Order findById(String id) {
-        return orders.get(id);
+    public CustomerOrder findById(String id) {
+        return customerOrders.get(id);
     }
+
+	public int addNewShoppingCart(String customer) {
+		int id = ++SHOPPING_CART_ID;
+		ShoppingCart cart = context.getBean(ShoppingCart.class);
+		
+		shoppingCarts.put(id, cart);
+		
+		return id;
+	}
+
+	public ShoppingCart getShoppingCartById(Integer cartId) {
+		return shoppingCarts.get(cartId);
+	}
 }
