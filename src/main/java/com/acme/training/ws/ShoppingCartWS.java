@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 @WebService
 @Component
 public class ShoppingCartWS {
-
+    public void init() {
+        
+    }
+    
+    public ShoppingCartWS() {
+    }
 
 }

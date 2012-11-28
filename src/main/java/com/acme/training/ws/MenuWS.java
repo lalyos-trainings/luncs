@@ -30,7 +30,8 @@ public class MenuWS {
             for (Food food : foods2) {
                 foods.add(food);
             }
-        }        
+        }    
+        System.out.println("Init called");
     }
     
     public MenuWS() {
