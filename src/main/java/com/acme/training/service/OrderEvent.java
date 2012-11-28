@@ -6,6 +6,7 @@ import com.acme.training.domain.CustomerOrder;
 
 public class OrderEvent extends ApplicationEvent {
 
+    private static final long serialVersionUID = 9022146304728972161L;
     private final CustomerOrder order;
 
     public OrderEvent(OrderService source, CustomerOrder order) {
@@ -13,7 +14,7 @@ public class OrderEvent extends ApplicationEvent {
         this.order = order;
     }
 
-    public CustomerOrder getOrder() {
+    public CustomerOrder getCustomerOrder() {
         return order;
     }
 }
