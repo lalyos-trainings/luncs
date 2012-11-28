@@ -25,7 +25,6 @@ public class Ordering {
        
        cart.addFood(1, 1);
        cart.addFood(3, 2);
-       cart.addFood(3, 2);
        cart.setCustomer("beluska");
        cart.setDeliveryAddress("Budapest", "KAKI utca 4", "666", "Ungarn");
        cart.setBillingaddress("Budapest", "KAKI utca 4", "666", "Ungarn");

@@ -56,7 +56,9 @@ public class CustomerOrder {
     
     public int getTotal(){
         int totalPrice = 0;
-        // TODO csinald emg paraszt 
+        for(RestaurantOrder restOrder:restaurantOrders.values()){
+            totalPrice += restOrder.getTotal();
+        }
         return totalPrice;
     }
     
