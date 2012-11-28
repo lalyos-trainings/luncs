@@ -16,6 +16,7 @@ import com.acme.service.MenuLister;
 import com.acme.service.OrderService;
 import com.acme.service.ShoppingCart;
 import com.acme.ws.MenuWS;
+import com.acme.ws.ShoppingCartWS;
 
 public class App {
 
@@ -58,17 +59,16 @@ public class App {
         
         InMemoryNAVService navService = ctx.getBean(InMemoryNAVService.class);
         navService.printTotalVAT();
-        
-        //TODO Collection<> getRestaurantBills(), getOrderItemByRest()
-        //restaurantOrders Map<String, Collection<OrderItem>> in Order class
-        //create Small Order classes for each restaurant and big Order(Customer Order) class for the overall Order including all small Orders(Restaurant Order)
-        //orderEventet megvaltoztatni -> nem Order lesz benne, hanem CustomerOrder
+               
         //textfile-ba leirni, ha olyan dontest kell hozni, ami nincs benne a specifikacioban
         
         MenuWS menuWS = ctx.getBean(MenuWS.class);
        //InetAddress localHost = InetAddress.getLocalHost();
        //Endpoint.publish("http://"+localHost.getHostAddress()+":8080/menu", menuWS );
         Endpoint.publish("http://localhost:8080/menu", menuWS );
+        
+        ShoppingCartWS scWS = ctx.getBean(ShoppingCartWS.class);
+        Endpoint.publish("http://localhost:8080/shoppingcart", scWS);
     }
     
 

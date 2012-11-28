@@ -4,6 +4,8 @@ import com.acme.domain.Address;
 
 public interface ShoppingCart {
 
+    public abstract int getShoppingCartId();
+    
     public abstract void addFood(int foodId, int quantity);
 
     public abstract void setCustomer(String customer);
@@ -11,7 +13,7 @@ public interface ShoppingCart {
     public abstract void setDeliveryAddress(Address address);
 
     public abstract void setBillingAddress(Address address);
-    
-    public void checkout();
+        
+    public int checkout();
 
 }

@@ -21,6 +21,7 @@ import com.acme.domain.RestaurantOrder;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
+    private int shoppingCartId;
     private static int orderId=0;
     private CustomerOrder customerOrder;
     @Autowired
@@ -28,12 +29,13 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     @Autowired
     private OrderService orderService;
     private Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
-    
+    private static int innerIdCounter=0;
    
     
     public InMemoryShoppingCart(){
-        this.customerOrder = new CustomerOrder(orderId++);
-        this.repo = new InMemoryRestaurantRepository();
+        super();
+        this.customerOrder = new CustomerOrder(orderId++);   
+        this.shoppingCartId = innerIdCounter++;
     }
     
     public void addFood(int foodId, int quantity){
@@ -72,6 +74,10 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         customerOrder.addRestaurantOrder(restaurantOrder);
     }
    
+    public int getShoppingCartId() {
+        return shoppingCartId;
+    }   
+
     public void setCustomer(String customer){
         customerOrder.setCustomer(customer);
     }
@@ -86,8 +92,9 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         customerOrder.setBillingAddress(address);
     }
 
-    public void checkout() {      
+    public int checkout() {      
         orderService.doOrder(customerOrder);
+        return customerOrder.getId();
     }
 
     public void setBeanName(String arg0) {

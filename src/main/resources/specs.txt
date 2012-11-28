@@ -1,0 +1,4 @@
+--I added a collection of shopping carts in ShoppingCartWS, which will hold all the shopping carts created by a user w/ws
+  - did it to be able to refer to a shopping cart with a given id when methods like addFood, etc are called
+  
+--Added a shopping cart id as parameter to the ws method checkout(), in order to know which shopping cart has to be checked out
