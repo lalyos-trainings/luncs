@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.jws.WebMethod;
+import javax.jws.WebParam;
+import javax.jws.WebResult;
 import javax.jws.WebService;
 
 import org.slf4j.Logger;
@@ -39,8 +41,9 @@ public class ShoppingCartWS {
     public ShoppingCartWS() {
     }
     
-    @WebMethod
-    public Integer getShoppingCart(String customer) {
+    @WebMethod   
+    @WebResult(name="CartID")
+    public Integer getShoppingCart(@WebParam(name="CustomerName") String customer) {
         logger.debug("getShoppingCart() request: ",customer);
         ShoppingCart nextCart = context.getBean(InMemoryShoppingCart.class);
         nextCart.withCustomer(customer);
@@ -52,7 +55,8 @@ public class ShoppingCartWS {
     }
     
     @WebMethod
-    public boolean addFood(int cartId, int foodId, int quantity) {
+    @WebResult(name="successful")
+    public boolean addFood(@WebParam(name="CartID") int cartId, @WebParam(name="FoodID") int foodId, @WebParam(name="Quantity") int quantity) {
         logger.debug("addFood() request [cartId=" + cartId +"; foodId=" + foodId + "; quantity=" + quantity +"]");
         ShoppingCart cart = cartMap.get(cartId);
         if ((cart != null) && (quantity > 0)) {
@@ -66,7 +70,8 @@ public class ShoppingCartWS {
     }
     
     @WebMethod
-    public boolean setDeliveryAddress(int cartId, String city, String street, String zip, String country) {
+    @WebResult(name="successful")
+    public boolean setDeliveryAddress(@WebParam(name="CartID") int cartId, @WebParam(name="City") String city, @WebParam(name="Street") String street, @WebParam(name="Zip") String zip, @WebParam(name="Country") String country) {
         logger.debug("setDeliveryAddress() request [cartId=" + cartId + "; city=" + city + "; street=" + street + "; zip=" + zip + "; country=" + country + "]");
         ShoppingCart cart = cartMap.get(cartId);
         if (cart != null) {            
@@ -80,7 +85,8 @@ public class ShoppingCartWS {
     }
     
     @WebMethod
-    public String checkout(int cartId) {
+    @WebResult(name="OrderID")
+    public String checkout(@WebParam(name="CartID") int cartId) {
         logger.debug("checkout() request [cartId=" + cartId + "]");
         ShoppingCart cart = cartMap.get(cartId);
         if (cart != null) {
