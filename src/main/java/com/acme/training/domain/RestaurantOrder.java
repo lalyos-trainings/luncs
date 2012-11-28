@@ -24,6 +24,17 @@ public class RestaurantOrder {
         return result;
     }
 
+    public void addItem(OrderItem item) {
+        Food food = item.getFood();
+        int quantity = item.getQuantity();
+        OrderItem previousOrder = orderItems.get(food.getId());
+        if (null == previousOrder) {
+            orderItems.put(food.getId(), item);
+        } else {
+            previousOrder.addQuantity(quantity);
+        }
+    }
+
     public int getTotal() {
         int total = 0;
         for (OrderItem item : orderItems.values()) {

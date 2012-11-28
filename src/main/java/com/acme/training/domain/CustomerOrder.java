@@ -69,10 +69,10 @@ public class CustomerOrder {
         RestaurantOrder previousOrder = items.get(food.getRestaurant());
         if (null == previousOrder) {
             RestaurantOrder order = new RestaurantOrder(food.getRestaurant());
-            order.addOrderItem(item);
+            order.addItem(item);
             items.put(food.getRestaurant(), order);
         } else {
-            previousOrder.addOrderItem(item);
+            previousOrder.addItem(item);
         }
     }
 
