@@ -71,4 +71,8 @@ public class ShoppingCart implements BeanNameAware {
 
     }
 
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
+
 }

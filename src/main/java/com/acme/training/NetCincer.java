@@ -5,8 +5,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
-import com.acme.training.service.InMemoryStatisticService;
-import com.acme.training.service.NavService;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
 
@@ -41,7 +39,6 @@ public class NetCincer {
             System.out.println(customerOrder);
             System.out.println();
         }
-        
     }
 
 }
