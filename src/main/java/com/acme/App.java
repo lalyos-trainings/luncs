@@ -1,6 +1,5 @@
 package com.acme;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Collection;
 
@@ -10,8 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.domain.Address;
-import com.acme.domain.Order;
-import com.acme.domain.OrderItem;
+import com.acme.domain.CustomerOrder;
 import com.acme.service.InMemoryNAVService;
 import com.acme.service.InMemoryStatisticService;
 import com.acme.service.MenuLister;
@@ -26,7 +24,7 @@ public class App {
      * @throws UnknownHostException 
      */
     public static void main(String[] args) throws UnknownHostException {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "ching.xml", "kfc.xml", "order1.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "ching.xml", "kfc.xml");
 
         MenuLister lister = ctx.getBean(MenuLister.class);
         
@@ -34,7 +32,7 @@ public class App {
         
         ShoppingCart cart = ctx.getBean(ShoppingCart.class);
         cart.addFood(1, 1);
-        cart.addFood(2, 1);
+        cart.addFood(5, 1);
         cart.setCustomer("Tunde");
         cart.setBillingAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
         cart.setDeliveryAddress(new Address("Corvin Street", "Budapest", "1085", "Hungary"));
@@ -49,19 +47,10 @@ public class App {
         cart1.checkout();
         
         OrderService orderService = ctx.getBean(OrderService.class);
-        Collection<Order> allOrders = orderService.getAllOrders();
+        Collection<CustomerOrder> allOrders = orderService.getAllOrders();
         
-        for (Order o: allOrders){
-          System.out.println("-------------------------------------");
-          System.out.println("Your order has the foll. details:");
-          System.out.println("Customer:"+o.getCustomer());
-          System.out.println("Delivery address:"+o.getDeliveryAddress());
-          System.out.println("Billing address:"+o.getBillingAddress());
-          System.out.println("Order Items:");
-          for (OrderItem oi: o.getOrderItems()){
-              System.out.println(oi);
-          }
-          System.out.println("-------------------------------------");
+        for (CustomerOrder o: allOrders){
+          o.printBill();
         }
         
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
@@ -77,7 +66,7 @@ public class App {
         //textfile-ba leirni, ha olyan dontest kell hozni, ami nincs benne a specifikacioban
         
         MenuWS menuWS = ctx.getBean(MenuWS.class);
-        InetAddress localHost = InetAddress.getLocalHost();
+       //InetAddress localHost = InetAddress.getLocalHost();
        //Endpoint.publish("http://"+localHost.getHostAddress()+":8080/menu", menuWS );
         Endpoint.publish("http://localhost:8080/menu", menuWS );
     }

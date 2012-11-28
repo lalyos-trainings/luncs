@@ -3,6 +3,15 @@ package com.acme.domain;
 public class OrderItem {
     private int quantity;
     private Food food;
+    
+    public OrderItem(){}
+    
+    public OrderItem(OrderItem item){        
+        super();
+        this.food = item.food;
+        this.quantity = item.quantity;
+    }
+    
     public int getQuantity() {
         return quantity;
     }

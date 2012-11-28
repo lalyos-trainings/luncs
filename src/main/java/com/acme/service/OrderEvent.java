@@ -2,24 +2,22 @@ package com.acme.service;
 
 import org.springframework.context.ApplicationEvent;
 
-import com.acme.domain.Order;
+import com.acme.domain.CustomerOrder;
 
 public class OrderEvent extends ApplicationEvent{
 
     private static final long serialVersionUID = 1L;
-    private Order order;
-    
-    public OrderEvent(OrderService source, Order order) {
+    private CustomerOrder customerOrder;
+           
+           
+    public OrderEvent(OrderService source, CustomerOrder customerOrder) {
         super(source);
-        this.setOrder(order);
+        this.customerOrder = customerOrder; 
     }
 
-    public Order getOrder() {
-        return order;
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
+   
 }

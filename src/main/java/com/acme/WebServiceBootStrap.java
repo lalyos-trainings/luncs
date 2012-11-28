@@ -18,7 +18,7 @@ public class WebServiceBootStrap {
      */
     public static void main(String[] args) throws UnknownHostException {
         
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "ching.xml" , "order1.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "ching.xml");
         
         MenuWS menuWS = ctx.getBean(MenuWS.class);
         InetAddress localHost = InetAddress.getLocalHost();
