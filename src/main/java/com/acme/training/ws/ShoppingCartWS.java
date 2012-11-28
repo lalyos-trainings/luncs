@@ -27,7 +27,7 @@ public class ShoppingCartWS {
 	public Integer getShoppingCart(String customer)
 	{
 		int id = idCounter++;
-		ShoppingCart sc = ctx.getBean(InMemoryShoppingCart.class);
+		ShoppingCart sc = ctx.getBean(ShoppingCart.class);
 		sc.withCustomer(customer);
 		userCarts.put(id, sc);
 		return id;
