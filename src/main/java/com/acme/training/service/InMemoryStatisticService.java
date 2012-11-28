@@ -20,20 +20,20 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
         }
     }
     private void doStatistic(OrderItem item) {
-        Integer foodId = item.getFood().getId();
-        
-        OrderItem orderItem = foodStatistic.get(foodId);
-        if (orderItem != null) {
-            orderItem.addQuantity(item.getQuantity());
-        } else {
-            foodStatistic.put(foodId, item);
-        }
+//        Integer foodId = item.getFood().getId();
+//        
+//        OrderItem orderItem = foodStatistic.get(foodId);
+//        if (orderItem != null) {
+//            orderItem.addQuantity(item.getQuantity());
+//        } else {
+//            foodStatistic.put(foodId, item);
+//        }
     }
 
     public void printStatistic() {
-        System.out.println("==== STATISTIC:");
-        for (OrderItem item : foodStatistic.values()) {
-            System.out.println(String.format(" %20s : %-4d" , item.getFood().getName(), item.getQuantity()));
-        }
+//        System.out.println("==== STATISTIC:");
+//        for (OrderItem item : foodStatistic.values()) {
+//            System.out.println(String.format(" %20s [%10s] : %-4d" , item.getFood().getRestaurant().getName(), item.getFood().getName(), item.getQuantity()));
+//        }
     }
 }

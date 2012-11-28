@@ -5,14 +5,20 @@ public class Food {
     private String description;
     private int price;
     private Integer id;
-
+    private Restaurant restaurant;
+    
     public Food() {}
     
-    public Food(String name, int price) {
+    public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
+        this.restaurant = restaurant;
     }
     
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
     public String getName() {
         return name;
     }
