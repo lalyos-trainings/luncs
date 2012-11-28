@@ -25,7 +25,7 @@ public class InMemoryShoppingCart implements BeanNameAware, ShoppingCart {
         return id;
     }
 
-    public String getOrderId() {
+    public String getCustomerOrderId() {
         return order.getId();
     }
 

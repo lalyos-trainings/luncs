@@ -6,7 +6,7 @@ public interface ShoppingCart {
     
     public abstract int getId();
     
-    public abstract String getOrderId();
+    public abstract String getCustomerOrderId();
 
     public abstract ShoppingCart withCustomer(String customer);
 
