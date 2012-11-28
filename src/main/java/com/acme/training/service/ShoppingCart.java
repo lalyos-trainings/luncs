@@ -55,6 +55,7 @@ public class ShoppingCart implements BeanNameAware{
 
     public void checkout() {
         orderService.doOrder(order);
+        logger.info("checking out order:" + order.getId());
     }
 
     public OrderService getOrderService() {

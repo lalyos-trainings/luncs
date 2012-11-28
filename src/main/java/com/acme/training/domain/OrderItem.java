@@ -10,6 +10,12 @@ public class OrderItem {
         this.food = food;
     }
 
+    public OrderItem(OrderItem other) {
+        super();
+        this.quantity = other.quantity;
+        this.food = other.food;
+    }
+
     public int getQuantity() {
         return quantity;
     }
@@ -29,4 +35,10 @@ public class OrderItem {
     public void addQuantity(int additional) {
         this.quantity += additional;
     }
+
+    @Override
+    public String toString() {
+        return "OrderItem [quantity=" + quantity + ", food=" + food.getName() + "]";
+    }
+
 }

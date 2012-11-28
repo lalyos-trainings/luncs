@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Map;
 
 public class Order {
-    private String id;
+    
+    private static int nextId = 0;
+    
+    private String id = String.valueOf(nextId++);
     private String customer;
     private Address deliveryAddress;
     private Address billingAddress;
@@ -72,5 +75,15 @@ public class Order {
     public List<OrderItem> getItems() {
         List<OrderItem> ret = new ArrayList(itemMap.values());
         return ret;
+    }
+    public int getGrandTotal() {
+        int total  = 0;
+        for (OrderItem item : itemMap.values()) {
+            int price = item.getFood().getPrice();
+            int quantity = item.getQuantity();
+            total += price * quantity;
+        }
+        
+        return total;
     }
 }
