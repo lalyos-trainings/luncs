@@ -1,6 +1,8 @@
 package com.acme.training.service;
 
-import java.util.LinkedList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -11,20 +13,20 @@ import com.acme.training.domain.CustomerOrder;
 @Component
 public class OrderService {
     
-    private LinkedList<CustomerOrder> orders;
+    private Map<Integer, CustomerOrder> orders;
     @Autowired
     private ApplicationContext ctx;     //annotacioval ugynazt erjuk el, mint ha Aware lenne
     
     public OrderService() {
-        orders = new LinkedList<CustomerOrder>();
+        orders = new HashMap<Integer, CustomerOrder>();
     }
     
     public void doOrder(CustomerOrder order){
-        orders.add(order);
+        orders.put(order.getId(), order);
         ctx.publishEvent(new OrderEvent(this, order));
     };
     
-    public LinkedList<CustomerOrder> getAllOrders(){
-        return orders;
+    public Collection<CustomerOrder> getAllOrders(){
+        return orders.values();
     };
 }

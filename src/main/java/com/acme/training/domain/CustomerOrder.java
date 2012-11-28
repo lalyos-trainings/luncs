@@ -8,9 +8,12 @@ public class CustomerOrder {
     private Address billingAddress;
     private Address deliveryAddress;
     private Map<String, RestaurantOrder> restaurantOrders;
+    private int orderId;
+    private static int nextId = 0;
     
     public CustomerOrder() {
         restaurantOrders = new HashMap<String, RestaurantOrder>();
+        orderId=nextId++;
     }
 
     public String getCustomer() {
@@ -60,6 +63,10 @@ public class CustomerOrder {
             totalPrice += restOrder.getTotal();
         }
         return totalPrice;
+    }
+
+    public int getId() {
+        return orderId;
     }
     
     

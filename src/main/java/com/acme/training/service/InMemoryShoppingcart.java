@@ -22,9 +22,12 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
     private RestaurantRepository repo;
     private CustomerOrder order;
     private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
+    private int cartId;
+    private static int nextId = 0;
     
     public InMemoryShoppingcart() {
         order = new CustomerOrder();
+        cartId = nextId++;
     }
 
     public void addFood(int foodId, int quantity) {
@@ -44,8 +47,9 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
         order.setDeliveryAddress(new Address(street, city, zip, country));
     }
 
-    public void checkOut() {
+    public int checkOut() {
         os.doOrder(order);
+        return order.getId();
     }
     
     public void setBeanName(String bean) {
@@ -53,5 +57,14 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
         logger.info("hash" + hashCode());
     }
 
+    public String getCustomer() {
+        return order.getCustomer();
+    }
+
+    public int getCartId() {
+        return cartId;
+    }
+
+    
 
 }
