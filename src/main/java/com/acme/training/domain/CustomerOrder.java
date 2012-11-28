@@ -14,10 +14,14 @@ public class CustomerOrder {
 
 	public CustomerOrder(){}
 	
-	public CustomerOrder( String customerName, String street, String city, String zip, String country ){
-	    customer = new Customer( customerName, street, city, zip, country );
-	}
-	
+    public CustomerOrder( String customerName, String street, String city, String zip, String country ){
+        customer = new Customer( customerName, street, city, zip, country );
+    }
+    
+    public CustomerOrder( String customerName ){
+        customer = new Customer( customerName );
+    }
+    
 	public int getId(){
 	    return id;
 	}

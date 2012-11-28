@@ -10,20 +10,29 @@ import com.acme.training.domain.CustomerOrder;
 @Component
 public class CustomerOrderRepository {
 
+    // id, CustomerOrder
     Map< Integer, CustomerOrder > customerOrders = new HashMap< Integer, CustomerOrder>();
+    // name, CustomerOrder
+    Map< String, CustomerOrder > customerOrdersByName = new HashMap< String, CustomerOrder>();
 
-    
     public CustomerOrderRepository() {
         
     }
     
-    // start a new order
+    // start a new order and return with id
     public int addCustomerOrder( String customerName, String street, String city, String zip, String country){
         CustomerOrder customerOrder = new CustomerOrder(customerName, street, city, zip, country);
         customerOrders.put( customerOrder.getId(), customerOrder );
+        customerOrdersByName.put( customerName, customerOrder );
         return customerOrder.getId();
     }
     
+    public int addCustomerOrder( String customerName ){
+        CustomerOrder customerOrder = new CustomerOrder(customerName);
+        customerOrders.put( customerOrder.getId(), customerOrder );
+        customerOrdersByName.put( customerName, customerOrder );
+        return customerOrder.getId();
+    }
     
     public CustomerOrder getCustomerOrderById( Integer id ){
         return customerOrders.get( id );
@@ -37,9 +46,20 @@ public class CustomerOrderRepository {
         this.customerOrders = customerOrders;
     }
 
-    public int getCustomerOrderIdByName( String name ){
-        return customerOrders.get( name ).getId();
+    public Integer getCustomerOrderIdByName( String name ){
+        CustomerOrder co = customerOrdersByName.get( name );
+        if ( co != null ){
+            return co.getId();
+        }else{
+            return null;
+        }
     }
     
-    
+    public String getAllCustomerName(){
+        String names = "";
+        for ( CustomerOrder co : customerOrders.values() ){
+            names += ", " + co.getCustomer().getName();
+        }
+        return names;
+    }
 }

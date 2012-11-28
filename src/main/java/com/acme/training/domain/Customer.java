@@ -9,12 +9,16 @@ public class Customer {
 	    
 	}
 	
-	public Customer( String name, String street, String city, String zip, String country ){
-	    this.name = name;
-	    this.billingAddress = new Address(street, city, zip, country);
-	    this.deliveryAddress = new Address(street, city, zip, country);
-	}
-	
+    public Customer( String name, String street, String city, String zip, String country ){
+        this.name = name;
+        this.billingAddress = new Address(street, city, zip, country);
+        this.deliveryAddress = new Address(street, city, zip, country);
+    }
+    
+    public Customer( String name ){
+        this.name = name;
+    }
+    
     public Address getBillingAddress() {
         return billingAddress;
     }

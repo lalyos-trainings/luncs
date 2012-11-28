@@ -10,11 +10,16 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.Customer;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.CustomerOrderRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 @WebService
 @Component
 public class ShoppingCartWS {
 
+    private Logger logger = LoggerFactory.getLogger( ShoppingCartWS.class );
+    
     // the "shopping carts" = "customer orders" will be stored here:
     @Autowired
     private CustomerOrderRepository custRepo;
@@ -30,8 +35,28 @@ public class ShoppingCartWS {
 //        System.out.println( "SHOPPINGCARTWS - " + co.getBillString() );
 //    }
     
+    
+    /**
+     * Returns with a shopping cart or generates a new one
+     * @param customerName
+     * @return
+     */
     public Integer getShoppingCart( String customerName ){
-        return custRepo.getCustomerOrderIdByName( customerName );
+        
+        Integer coId = custRepo.getCustomerOrderIdByName( customerName );
+        
+        if ( coId == null ){
+            logger.info( "Customer order not found by the name: " + customerName + " -> generate a new one" );
+            logger.info( "Current customers:" + custRepo.getAllCustomerName() );
+            coId = custRepo.addCustomerOrder( customerName );
+        }else{
+            logger.info( "Customer order found by name: " + coId );
+        }
+        
+        System.out.println( "********" + coId );
+        
+//        custRepo.addCustomerOrder(customerName, street, city, zip, country)
+        return coId;
     }
     
     public String addFood( int scId, int foodId, int quantity){
