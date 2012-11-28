@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
 
-import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 

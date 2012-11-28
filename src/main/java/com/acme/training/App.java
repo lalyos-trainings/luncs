@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.InMemoryNAVService;
 import com.acme.training.service.InMemoryOrderService;
 import com.acme.training.service.InMemoryShoppingCart;
@@ -28,15 +28,15 @@ public class App
         ShoppingCart cart2 = ctx.getBean(InMemoryShoppingCart.class);
         ShoppingCart cart3 = ctx.getBean(InMemoryShoppingCart.class);
         OrderService os = ctx.getBean(InMemoryOrderService.class);
-        os.doOrder(cart.withBillingAddress(new Address("1122", "Csaba utca"))
+        cart.withBillingAddress(new Address("1122", "Csaba utca"))
                 .withDeliveryAddress(new Address("1122", "Csaba utca"))
                 .withCustomer("Sztike")
                 .withFood("KFC", "csirkeszarny", 1)
                 .withFood("Csing-csang", "szezamos csirke", 2)
                 .withFood("KFC", "csirkeszarny", 2)
                 .withFood(4, 1)
-                .checkOut());
-        os.doOrder(cart2.withBillingAddress(new Address("1234", "Ize utca"))
+                .checkOut();
+        cart2.withBillingAddress(new Address("1234", "Ize utca"))
                 .withDeliveryAddress(new Address("1234", "Ize utca"))
                 .withCustomer("Gizi")
                 .withFood("Csing-csang", "leves", 1)
@@ -44,14 +44,14 @@ public class App
                 .withFood("KFC", "csirkeszarny", 1)
                 .withFood("Csing-csang", "edes-savanyu", 3)
                 .withFood("Csing-csang", "szezamos csirke", 5)
-                .checkOut());
-        os.doOrder(cart3.withBillingAddress(new Address("1234", "Ize utca"))
+                .checkOut();
+        cart3.withBillingAddress(new Address("1234", "Ize utca"))
                 .withDeliveryAddress(new Address("1234", "Ize utca"))
                 .withCustomer("Jani")
                 .withFood("Csing-csang", "csirkecomb", 1)
                 .withFood("KFC", "csirkecomb", 1)
-                .checkOut());
-        for(Order order : os.getAllOrders()){
+                .checkOut();
+        for(CustomerOrder order : os.getAllOrders()){
             System.out.println(order);
             System.out.println();
         }

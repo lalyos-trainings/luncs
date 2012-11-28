@@ -47,28 +47,13 @@ public class AbstractRestaurantRepository implements RestaurantRepository, BeanN
         return r;
     }
 
-//    public Food findFoodById(int foodId) {
-//        Food tmp = null;
-//        Food r = null;
-//        boolean found = false;
-//        for (Restaurant resti : getAllRestaurants()) {
-//            Iterator<Food> it = resti.getMenu().getFoods().iterator();
-//            while (!found && it.hasNext()) {
-//                tmp = it.next();
-//                if (tmp.getId() == foodId) {
-//                    found = true;
-//                    r = tmp;
-//                }
-//            }
-//        }
-//        return r;
-//    }
-//
     public Food findFoodById(int foodId) {
         return foodMap.get(foodId);
     }
 
     public void registerFood(Restaurant restaurant){
+        restaurant.setId(maxId);
+        maxId++;
         for(Food food : restaurant.getMenu().getFoods()){
             food.setId(maxId);
             foodMap.put(maxId, food);

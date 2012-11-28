@@ -6,6 +6,7 @@ public class Restaurant {
     private String name;
     private Address address;
     private Menu menu;
+    private int id;
 
     public Restaurant(){
         super();
@@ -51,6 +52,14 @@ public class Restaurant {
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override

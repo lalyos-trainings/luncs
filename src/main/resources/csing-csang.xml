@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:c="http://www.springframework.org/schema/c"
-	xmlns:util="http://www.springframework.org/schema/util"
-	xmlns:p="http://www.springframework.org/schema/p"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:c="http://www.springframework.org/schema/c"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:util="http://www.springframework.org/schema/util"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
 
     <bean id="csing-csang" c:name="Csing-csang" c:zip="${csing.zip}" c:street="${csing.street}" class="com.acme.training.domain.Restaurant" >
         <property name="menu">
@@ -20,6 +21,8 @@
                     c:price="${csing.price.medium}" c:description="-" c:restaurant-ref="csing-csang"/>
                 <bean class="com.acme.training.domain.Food" c:name="leves"
                     c:price="${csing.price.low}" c:description="kinai leves" c:restaurant-ref="csing-csang"/>
+                <bean class="com.acme.training.domain.Food" c:name="csirkecomb"
+                    c:price="${csing.price.high}" c:description="Kinai csirkecomb." c:restaurant-ref="csing-csang"/>
                     </util:list>
                 </property>
             </bean>

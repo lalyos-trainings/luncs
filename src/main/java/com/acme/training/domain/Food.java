@@ -57,17 +57,13 @@ public class Food {
         return restaurant;
     }
 
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
     @Override
     public String toString() {
-        String formattedFood = String.format("%-2d %s\n    %-20s %7.1f", id, restaurant.getName(), name, price/*, description*/);
+        String formattedFood = String.format("%-2d "/* + "%s\n    "*/ + "%-20s %7.1f", id, /*restaurant.getName(),*/ name, price/*, description*/);
         return formattedFood;
     }
     

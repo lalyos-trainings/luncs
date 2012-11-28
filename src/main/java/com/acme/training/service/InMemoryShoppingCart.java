@@ -1,5 +1,7 @@
 package com.acme.training.service;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 @Scope("prototype")
@@ -17,11 +19,17 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     @Autowired
     private RestaurantRepository repo;
-    private Order order;
+    private CustomerOrder order;
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
+    @Autowired
+    private OrderService orderService;
+    private int id;
+    
+    private static AtomicInteger ID = new AtomicInteger(0);
     
     private InMemoryShoppingCart(){
-        order = new Order();
+        order = new CustomerOrder();
+        id = ID.incrementAndGet();
     }
     
     public static ShoppingCart getShoppingCart(){
@@ -63,7 +71,20 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         return this;
     }
     
-    public Order checkOut(){
+    public OrderService getOrderService() {
+        return orderService;
+    }
+
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public CustomerOrder checkOut(){
+        orderService.doOrder(order);
         return order;
     }
 

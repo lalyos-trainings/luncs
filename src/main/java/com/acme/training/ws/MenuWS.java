@@ -1,10 +1,13 @@
 package com.acme.training.ws;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
@@ -15,16 +18,25 @@ import com.acme.training.service.RestaurantRepository;
 @WebService
 public class MenuWS {
 
+    @Autowired
     private RestaurantRepository repo;
-    private List<Food> food = new ArrayList<Food>();
+    private List<Food> foods = new ArrayList<Food>();
     
     public MenuWS(){
-        Restaurant resti = new Restaurant("Ancsa", "Futó utca", "1082");
-        food.add(new Food("babgulyás", 850, "Babgulyás magyarosan.", resti));
-        food.add(new Food("palacsinta", 250, "Palacsinta választható töltelékkel.", resti));
     }
     
-    public List<Food> getFood(){
-        return food;
+    public void init() {
+        Collection<Restaurant> restaurants = repo.getAllRestaurants();
+        for (Restaurant restaurant : restaurants) {
+            Collection<Food> foods2 = restaurant.getMenu().getFoods();
+            for (Food f : foods2) {
+                foods.add(f);
+            }
+        }        
+    }
+    
+    @WebMethod
+    public List<Food> getFoods(){
+        return foods;
     }
 }

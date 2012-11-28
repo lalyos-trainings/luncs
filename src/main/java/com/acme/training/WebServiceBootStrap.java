@@ -16,7 +16,7 @@ public class WebServiceBootStrap {
      * @param args
      */
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml"/*, "kfc.xml", "csing-csang.xml"*/);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing-csang.xml");
 
         MenuWS menuWS = ctx.getBean(MenuWS.class);
         try {

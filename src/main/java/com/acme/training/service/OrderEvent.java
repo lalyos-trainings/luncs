@@ -2,7 +2,7 @@ package com.acme.training.service;
 
 import org.springframework.context.ApplicationEvent;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 public class OrderEvent extends ApplicationEvent {
 
@@ -10,14 +10,14 @@ public class OrderEvent extends ApplicationEvent {
      * 
      */
     private static final long serialVersionUID = 1L;
-    private Order order;
+    private CustomerOrder order;
     
-    public OrderEvent(OrderService source, Order order) {
+    public OrderEvent(OrderService source, CustomerOrder order) {
         super(source);
         this.order = order;
     }
     
-    public Order getOrder(){
+    public CustomerOrder getOrder(){
         return order;
     }
 

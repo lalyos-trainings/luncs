@@ -1,29 +1,33 @@
 package com.acme.training.domain;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 
-public class Order{
+public class CustomerOrder{
 
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
-    private Map<Integer, OrderItem> orderItems;
+//    private Map<Integer, OrderItem> orderItems;
+    private Map<Integer, RestaurantOrder> restaurantOrders;
     private double total;
 
-    public Order(String customer, Address billingAddress, Address deliveryAddress) {
+    public CustomerOrder(String customer, Address billingAddress, Address deliveryAddress) {
         super();
         this.customer = customer;
         this.billingAddress = billingAddress;
         this.deliveryAddress = deliveryAddress;
-        this.orderItems = new HashMap<Integer, OrderItem>();
+//        this.orderItems = new HashMap<Integer, OrderItem>();
+        restaurantOrders = new HashMap<Integer, RestaurantOrder>();
         total = 0;
     }
 
-    public Order() {
+    public CustomerOrder() {
         super();
-        orderItems = new HashMap<Integer, OrderItem>();
+//        orderItems = new HashMap<Integer, OrderItem>();
+        restaurantOrders = new HashMap<Integer, RestaurantOrder>();
         total = 0;
     }
     
@@ -51,36 +55,30 @@ public class Order{
         this.deliveryAddress = deliveryAddress;
     }
     
-    public Map<Integer, OrderItem> getOrderItems() {
-        return orderItems;
-    }
+//    public Map<Integer, OrderItem> getOrderItems() {
+//        return orderItems;
+//    }
     
     public void addOrderItem(Food food, int quantity){
-        OrderItem tmp = orderItems.get(food.getId());
+//        OrderItem tmp = orderItems.get(food.getId());
+        RestaurantOrder tmp = restaurantOrders.get(food.getRestaurant().getId()); 
         if(tmp == null){
-            orderItems.put(food.getId(), new OrderItem(quantity, food));
+//            orderItems.put(food.getId(), new OrderItem(quantity, food));
+            tmp = new RestaurantOrder();
+            tmp.setRestaurant(food.getRestaurant());
+            restaurantOrders.put(food.getRestaurant().getId(), tmp);
         }
-        else{
-            tmp.addQuantity(quantity);
-        }
+        tmp.addOrderItem(food, quantity);
         total += (quantity * food.getPrice());
-    }
-    
-    public double countTotal(){
-        double total = 0;
-        for(OrderItem item: orderItems.values()){
-            total += (item.getQuantity() * item.getFood().getPrice());
-        }
-        return total;
     }
     
     public double getTotal() {
         return total;
     }
 
-//    public Collection<RestaurantBill> getRestaurantBills(){
-//        return null;
-//    }
+    public Collection<RestaurantOrder> getRestaurantOrders(){
+        return restaurantOrders.values();
+    }
 
     @Override
     public String toString() {
@@ -89,9 +87,11 @@ public class Order{
 //                .format(orderMessage,
 //                        customer, deliveryAddress, billingAddress, orderItems);
         StringBuilder oi = new StringBuilder();
-        for(OrderItem item : orderItems.values()){
-            oi.append(item);
-            oi.append("\n");
+        for (RestaurantOrder restaurantOrder : restaurantOrders.values()) {
+            for (OrderItem item : restaurantOrder.getOrderItems()) {
+                oi.append(item);
+                oi.append("\n");
+            }
         }
         String formattedOrder = String
                 .format("%s's order\n---------------------------------\nDelivery address:\t%s\nBilling address:\t%s\nOrder items:\n%s\n----------------\nTotal: %.2f",

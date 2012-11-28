@@ -1,7 +1,7 @@
 package com.acme.training.service;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 public interface ShoppingCart {
 
@@ -17,6 +17,8 @@ public interface ShoppingCart {
 
     public ShoppingCart withBillingAddress(Address address);
 
-    public Order checkOut();
+    public CustomerOrder checkOut();
+    
+    public int getId();
     
 }
