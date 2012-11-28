@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 
 @Component("kart")
