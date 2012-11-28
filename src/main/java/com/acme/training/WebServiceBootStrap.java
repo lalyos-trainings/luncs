@@ -22,7 +22,7 @@ public class WebServiceBootStrap {
         MenuWS menuWS = ctx.getBean(MenuWS.class);
 
         InetAddress localHost = InetAddress.getLocalHost();
-        String url = "http://" + localHost.getHostAddress() + ":8080/menu?wsdl";
+        String url = "http://" + localHost.getHostAddress() + ":8080/menu";
         System.out.println("Listenng on: " + url);
         Endpoint.publish(url, menuWS);
 

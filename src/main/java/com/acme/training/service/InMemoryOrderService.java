@@ -2,7 +2,6 @@ package com.acme.training.service;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -11,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryOrderService implements OrderService {
 
     Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);
-    Map<String, Order> orders = new HashMap<String, Order>();
+    Map<Integer, CustomerOrder> orders = new HashMap<Integer, CustomerOrder>();
     @Autowired
     private ApplicationContext context;
 
-    public void doOrder(Order order) {
+    public void doOrder(CustomerOrder order) {
         logger.info("new Order for:" + order.getCustomer());
         orders.put(order.getId(), order);
         logger.info("# of order:" + orders.keySet().size());
@@ -29,16 +28,11 @@ public class InMemoryOrderService implements OrderService {
         context.publishEvent(event);
     }
 
-    public Collection<Order> getAllOrder() {
+    public Collection<CustomerOrder> getAllOrder() {
         return orders.values();
     }
 
-    public Order findById(String id) {
+    public CustomerOrder findById(Integer id) {
         return orders.get(id);
-    }
-
-    public List<Order> getAllOrders() {
-        // TODO Auto-generated method stub
-        return null;
     }
 }

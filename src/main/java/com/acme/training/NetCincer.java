@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.InMemoryStatisticService;
 import com.acme.training.service.NavService;
 import com.acme.training.service.OrderService;
@@ -27,13 +27,13 @@ public class NetCincer {
                 .withFood(102, 5).withFood(202, 1).checkout();
 
         OrderService orderService = ctx.getBean(OrderService.class);
-        for (Order order : orderService.getAllOrder()) {
+        for (CustomerOrder order : orderService.getAllOrder()) {
             System.out.println("- next order:" + order);
         }
 
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
         statisticService.printStatistic();
-        
+
         NavService navService = ctx.getBean(NavService.class);
         System.out.println("Total VAT: " + navService.getTotalVAT());
     }
