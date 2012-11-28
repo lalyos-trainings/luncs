@@ -16,6 +16,18 @@ import com.acme.training.domain.OrderItem;
 @Component("kart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class InMemoryShoppingCart implements BeanNameAware, ShoppingCart {
+    
+    private static int nextId = 0;
+    
+    private int id = nextId++;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getOrderId() {
+        return order.getId();
+    }
 
     private OrderService orderService;
     @Autowired
@@ -23,7 +35,7 @@ public class InMemoryShoppingCart implements BeanNameAware, ShoppingCart {
     private CustomerOrder order;
     private Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
 
-    private InMemoryShoppingCart() {
+    public InMemoryShoppingCart() {
         this.order = new CustomerOrder();
     }
     

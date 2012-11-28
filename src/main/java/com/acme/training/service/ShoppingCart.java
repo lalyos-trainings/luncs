@@ -3,6 +3,10 @@ package com.acme.training.service;
 import com.acme.training.domain.Address;
 
 public interface ShoppingCart {
+    
+    public abstract int getId();
+    
+    public abstract String getOrderId();
 
     public abstract ShoppingCart withCustomer(String customer);
 
