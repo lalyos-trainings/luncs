@@ -12,7 +12,7 @@ public class NavService implements ApplicationListener<OrderEvent> {
     private int uberGrandTotal = 0;
     
     public void onApplicationEvent(OrderEvent event) {
-        int orderTotal = event.getOrder().getGrandTotal();
+        int orderTotal = event.getCustomerOrder().getTotal();
         uberGrandTotal += orderTotal;
     }
     

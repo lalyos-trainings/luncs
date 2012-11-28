@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.OrderItem;
+import com.acme.training.domain.RestaurantOrder;
 
 @Component
 public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{
@@ -18,9 +19,11 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
 
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
-        for (OrderItem item : items) {
-            doStatistic(item);
+        List<RestaurantOrder> restaurantOrders = event.getCustomerOrder().getRestaurantOrders();
+        for (RestaurantOrder restaurantOrder : restaurantOrders) {
+            for (OrderItem orderItem : restaurantOrder.getOrderItems().values()) {
+                doStatistic(orderItem);
+            }
         }
     }
     private void doStatistic(OrderItem item) {

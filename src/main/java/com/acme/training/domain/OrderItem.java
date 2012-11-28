@@ -28,12 +28,20 @@ public class OrderItem {
     public void setFood(Food food) {
         this.food = food;
     }
+    public int getTotal() {
+        return quantity * food.getPrice();
+    }
+
     public void addQuantity(int additional) {
         this.quantity += additional;
     }
     @Override
     public String toString() {
         return "OrderItem [quantity=" + quantity + ", food=" + food.getName() + "]";
+    }
+    
+    public String printBill() {
+        return String.format("OrderItem: %20s %2d * %5d   [%6d]", food.getName(), quantity, food.getPrice(), getTotal());
     }
     
     

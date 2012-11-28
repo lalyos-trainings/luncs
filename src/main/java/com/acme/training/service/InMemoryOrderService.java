@@ -10,17 +10,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryOrderService implements OrderService {
 
     Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);
-    Map<String, Order> orders = new HashMap<String, Order>();
+    Map<String, CustomerOrder> orders = new HashMap<String, CustomerOrder>();
     @Autowired
     private ApplicationContext context;
     
-    public void doOrder(Order order) {
+    public void doOrder(CustomerOrder order) {
         logger.info("new Order for:" + order.getCustomer());
         orders.put(order.getId(), order);
         logger.info("# of order:" + orders.keySet().size());
@@ -28,11 +28,11 @@ public class InMemoryOrderService implements OrderService {
         context.publishEvent(event);
     }
     
-    public Collection<Order> getAllOrder() {
+    public Collection<CustomerOrder> getAllOrder() {
         return orders.values();
     }
     
-    public Order findById(String id) {
+    public CustomerOrder findById(String id) {
         return orders.get(id);
     }
 }
