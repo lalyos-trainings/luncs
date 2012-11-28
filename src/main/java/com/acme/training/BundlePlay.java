@@ -4,9 +4,6 @@ import java.util.ResourceBundle;
 
 public class BundlePlay {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         ResourceBundle bundle = ResourceBundle.getBundle("luncs");
         

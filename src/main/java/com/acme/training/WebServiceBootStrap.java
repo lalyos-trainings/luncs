@@ -13,10 +13,6 @@ import com.acme.training.ws.ShoppingCartWS;
 
 public class WebServiceBootStrap {
 
-    /**
-     * @param args
-     * @throws UnknownHostException 
-     */
     public static void main(String[] args) throws UnknownHostException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
 

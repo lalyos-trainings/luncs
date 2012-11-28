@@ -7,9 +7,6 @@ import com.acme.training.service.MenuLister;
 
 public class App {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
         
