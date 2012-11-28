@@ -18,7 +18,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
 
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
+        List<OrderItem> items = event.getCustomerOrder().getItems();
         for (OrderItem item : items) {
             doStatistic(item);
         }

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
@@ -21,11 +22,11 @@ public class ShoppingCart implements BeanNameAware{
     private OrderService orderService;
     @Autowired
     private RestaurantRepository repo;    
-    private Order order;
+    private CustomerOrder order;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     private ShoppingCart() {
-        this.order = new Order();
+        this.order = new CustomerOrder();
     }
     
     public ShoppingCart withCustomer(String customer) {

@@ -1,7 +1,16 @@
 package com.acme.training.domain;
 
 public class Restaurant {
+    private static int nextId = 0;
+    
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    private String id = String.valueOf(nextId++);
     private String name;
     private Address address;
     private Menu menu;
