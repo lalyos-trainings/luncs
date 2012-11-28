@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.CustomerOrder;
 
-@Component("InMemoryOrderService")
+@Component("orderService")
 @Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class InMemoryOrderService implements OrderService {
 
@@ -24,6 +24,7 @@ public class InMemoryOrderService implements OrderService {
     private ApplicationContext context;
     
     public void doOrder(CustomerOrder order) {
+        logger.info(this + " (" + hashCode() +") is processing order.");
         logger.info("new Order for:" + order.getCustomer());
         orders.put(order.getId(), order);
         logger.info("# of order:" + orders.keySet().size());
