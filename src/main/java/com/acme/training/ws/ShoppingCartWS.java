@@ -1,7 +1,9 @@
 package com.acme.training.ws;
 
+import java.util.HashMap;
 import java.util.Map;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +20,36 @@ public class ShoppingCartWS {
    private ApplicationContext ctx;
    private Map<Integer, ShoppingCart> shoppingCarts;
    
-   public void addFood(int shoppingCartId, int foodId, int quantity){
+   
+   public ShoppingCartWS() {
+       shoppingCarts = new HashMap<Integer, ShoppingCart>();
+   }
+
+   public void addFood(
+           @WebParam(name="shoppingCartId")
+           int shoppingCartId, 
+           @WebParam(name="foodId")
+           int foodId, 
+           @WebParam(name="quantity")
+           int quantity){
        for (ShoppingCart shoppingCart : shoppingCarts.values()) {
            if(shoppingCart.getCartId() == shoppingCartId){
                shoppingCart.addFood(foodId, quantity);
            }
        }
    }
-   
-   public void setCustomer(int shoppingCartId, String customer){
-       for (ShoppingCart shoppingCart : shoppingCarts.values()) {
-           if(shoppingCart.getCartId() == shoppingCartId){
-               shoppingCart.setCustomer(customer);
-           }
-       }
-   }
-   
-   public void setDeliveryAddress(int shoppingCartId, String city, String street, String zip, String country){
+
+   public void setDeliveryAddress(
+           @WebParam(name="shoppingCartId")
+           int shoppingCartId,
+           @WebParam(name="city")
+           String city, 
+           @WebParam(name="street")
+           String street, 
+           @WebParam(name="zip")
+           String zip, 
+           @WebParam(name="country")
+           String country){
        for (ShoppingCart shoppingCart : shoppingCarts.values()) {
            if(shoppingCart.getCartId() == shoppingCartId){
                shoppingCart.setDeliveryAddress(city, street, zip, country);
@@ -42,7 +57,17 @@ public class ShoppingCartWS {
        }
    }
    
-   public void setBillingaddress(int shoppingCartId, String city, String street, String zip, String country){
+   public void setBillingaddress(
+           @WebParam(name="shoppingCartId")
+           int shoppingCartId,
+           @WebParam(name="city")
+           String city, 
+           @WebParam(name="street")
+           String street, 
+           @WebParam(name="zip")
+           String zip, 
+           @WebParam(name="country")
+           String country){
        for (ShoppingCart shoppingCart : shoppingCarts.values()) {
            if(shoppingCart.getCartId() == shoppingCartId){
                shoppingCart.setBillingaddress(city, street, zip, country);
@@ -50,21 +75,32 @@ public class ShoppingCartWS {
        }
    }
    
-   public int checkOut(int shoppingCartId){
+   public int checkOut(
+           @WebParam(name="shoppingCartId")
+           int shoppingCartId){
        ShoppingCart shoppingCart = shoppingCarts.get(shoppingCartId);
        return shoppingCart.checkOut();
    }
    
-   public int getShoppingCart(String customer){ 
-       for (ShoppingCart shoppingCart : shoppingCarts.values()) {
-           if(customer.equals(shoppingCart.getCustomer())){
-               return shoppingCart.getCartId();
-           }
+   public int getShoppingCart(
+           @WebParam(name="customer")
+           String customer){ 
+       ShoppingCart foundShoppingCart = findShoppingCart(customer);
+       if(foundShoppingCart != null)
+           return foundShoppingCart.getCartId();
+       else{
+           InMemoryShoppingcart shoppingcart = ctx.getBean(InMemoryShoppingcart.class);
+           shoppingcart.setCustomer(customer);
+           shoppingCarts.put(shoppingcart.getCartId(), shoppingcart);
+           return shoppingcart.getCartId();
        }
-       InMemoryShoppingcart shoppingcart = new InMemoryShoppingcart();
-       shoppingcart.setCustomer(customer);
-       shoppingCarts.put(shoppingcart.getCartId(), shoppingcart);
-       return shoppingcart.getCartId();
-       }
+    }   
+  
+    private ShoppingCart findShoppingCart(String customer){
+        for (ShoppingCart shoppingCart : shoppingCarts.values()) {
+            if(customer.equals(shoppingCart.getCustomer()))
+                return shoppingCart;
+        }
+        return null;
+    }
 }
-                            

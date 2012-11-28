@@ -1,7 +1,6 @@
 package com.acme.training;
 
 import java.util.Collection;
-import java.util.LinkedList;
 import java.util.Map;
 
 import org.springframework.context.ApplicationContext;
@@ -31,19 +30,18 @@ public class Ordering {
        cart.checkOut();
        
        OrderService os = ctx.getBean(OrderService.class);
-       LinkedList<CustomerOrder> orders = os.getAllOrders();
-      
-       for(int i=0; i<orders.size(); i++){
-          System.out.println(orders.get(i).getCustomer());
-          System.out.println(orders.get(i).getDeliveryAddress());
-          Map<String, RestaurantOrder> restaurantOrders = orders.get(i).restaurantOrders();
-          for (RestaurantOrder value : restaurantOrders.values()) {
-              Collection<OrderItem> orderItems = value.getOrderItems();
-              for (OrderItem orderItem : orderItems) {
-                  System.out.println("{" + orderItem.getFood().getRestaurant().getName() + "}  " +
-                          orderItem.getFood() + "  q: " + orderItem.getQuantity());                 
-              }
-          }    
+       Collection<CustomerOrder> orders = os.getAllOrders();
+       for (CustomerOrder customerOrder : orders) {
+           System.out.println(customerOrder.getCustomer());
+           System.out.println(customerOrder.getDeliveryAddress());
+           Map<String, RestaurantOrder> restaurantOrders = customerOrder.restaurantOrders();
+           for (RestaurantOrder value : restaurantOrders.values()) {
+               Collection<OrderItem> orderItems = value.getOrderItems();
+               for (OrderItem orderItem : orderItems) {
+                   System.out.println("{" + orderItem.getFood().getRestaurant().getName() + "}  " +
+                           orderItem.getFood() + "  q: " + orderItem.getQuantity());                 
+               }
+           }
        }
              
        statService.printStat();
