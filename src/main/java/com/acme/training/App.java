@@ -1,5 +1,7 @@
 package com.acme.training;
 
+import java.util.Locale;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

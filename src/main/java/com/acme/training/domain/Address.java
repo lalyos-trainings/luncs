@@ -12,6 +12,13 @@ public class Address {
         this.zip = zip;
         this.country = country;
     }
+    
+    public Address(Address addr) {
+        this.street = addr.street;
+        this.city = addr.city;
+        this.zip = addr.zip;
+        this.country = addr.country;
+    }
 
     public String getStreet() {
         return street;
