@@ -53,12 +53,12 @@ public class ShoppingCartWS {
     public boolean addFood(int cartId, int foodId, int quantity) {
         logger.debug("addFood() request [cartId=" + cartId +"; foodId=" + foodId + "; quantity=" + quantity +"]");
         ShoppingCart cart = cartMap.get(cartId);
-        if (cart != null) {
+        if ((cart != null) && (quantity > 0)) {
             cart.withFood(foodId, quantity);
             logger.info("Food (id: " + foodId + ", q: " + quantity + ") added to cart (id: " + cartId +")");
             return true;
         } else {
-            logger.warn("addFood() request: invalid cartId: "+cartId);
+            logger.warn("addFood() request: invalid request: cartId="+cartId+"; foodId="+foodId+"; quantity="+quantity);
             return false;
         }                
     }

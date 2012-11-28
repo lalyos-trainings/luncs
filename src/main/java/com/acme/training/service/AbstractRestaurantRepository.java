@@ -24,8 +24,7 @@ public class AbstractRestaurantRepository implements RestaurantRepository {
     protected void registerFoods(Restaurant restaurant) {
         for (Food food : restaurant.getMenu().getFoods()) {
             foodMap.put(food.getId(), food);
-        }
-        
+        }        
     }
 
     public Collection<Restaurant> getAllRestaurants() {
