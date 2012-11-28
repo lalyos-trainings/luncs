@@ -2,16 +2,16 @@ package com.acme.training.ws;
 
 import javax.jws.WebService;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Customer;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.CustomerOrderRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.acme.training.service.WSFoodRepository;
 
 
 @WebService
@@ -23,18 +23,15 @@ public class ShoppingCartWS {
     // the "shopping carts" = "customer orders" will be stored here:
     @Autowired
     private CustomerOrderRepository custRepo;
+    
+    // much simpler to work from a "foods" bean 
+    @Autowired
+    private WSFoodRepository foodRepo;
+    
   
     public ShoppingCartWS(){
     }
   
-// INIT for testing:
-//    public void init(){
-//        int id = custRepo.addCustomerOrder( "Mancika", "Pek", "Debrecen", "1234", "Hungary");
-//        
-//        CustomerOrder co = custRepo.getCustomerOrderById(id);
-//        System.out.println( "SHOPPINGCARTWS - " + co.getBillString() );
-//    }
-    
     
     /**
      * Returns with a shopping cart or generates a new one
@@ -60,8 +57,17 @@ public class ShoppingCartWS {
     }
     
     public String addFood( int scId, int foodId, int quantity){
+
+        CustomerOrder co = custRepo.getCustomerOrderById( scId );
+        if ( co != null ){
+            logger.info( "addFood: Shopping cart (CustomerOrder) not found" );
+            return "Shopping cart not found!";
+        }else{
+            co.addFood( foodRepo.getFoodById(foodId), quantity );
+            logger.info( "addFood: " + quantity +"pcs food with ID " + foodId + " added to cart with ID " + scId );
+            return "Food added";
+        }
         
-        return "Food added";
     }
     
     public String setDeliveryAddress( int scId, String city, String street, String zip, String country ){

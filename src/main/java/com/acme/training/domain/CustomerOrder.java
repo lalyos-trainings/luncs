@@ -1,15 +1,16 @@
 package com.acme.training.domain;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CustomerOrder {
 	
     private static int nextId = 0;
     
 	private Customer customer;
-	private Collection<RestaurantOrder> restaurantOrders = new ArrayList<RestaurantOrder>();
+	// rest name, order
+	private Map<String, RestaurantOrder> restaurantOrders = new HashMap<String, RestaurantOrder>();
 	private int id = nextId++;
 
 	public CustomerOrder(){}
@@ -20,6 +21,16 @@ public class CustomerOrder {
     
     public CustomerOrder( String customerName ){
         customer = new Customer( customerName );
+    }
+    
+    /**
+     * add food to the proper restaurant's order
+     * @param food
+     * @param quantity
+     */
+    public void addFood( Food food, Integer quantity ){
+        RestaurantOrder properRO = restaurantOrders.get( food.getRestaurant().getName() );
+        properRO.addItem( new OrderItem(quantity, food) );
     }
     
 	public int getId(){
@@ -38,7 +49,7 @@ public class CustomerOrder {
 	    
 	    
 	    String restOrdersStr = "";
-	    for ( RestaurantOrder restOrd : restaurantOrders ){
+	    for ( RestaurantOrder restOrd : restaurantOrders.values() ){
 	        restOrdersStr += restOrd.getBill(); 
 	    }
 	    
@@ -58,7 +69,7 @@ public class CustomerOrder {
 	
 	public int getTotal(){
 		int total = 0;
-		for ( RestaurantOrder ro: restaurantOrders ){
+		for ( RestaurantOrder ro: restaurantOrders.values() ){
 			int roTotal = ro.getTotal();
 			total += roTotal;
 		}
@@ -66,7 +77,7 @@ public class CustomerOrder {
 	}
 	
 	public void addRestaurantOrder( RestaurantOrder ro ){
-		restaurantOrders.add(ro);
+		restaurantOrders.put( ro.getRestaurant().getName(), ro );
 	}
 	
 	public String getDeliveryAddress(){
@@ -77,15 +88,19 @@ public class CustomerOrder {
 	public Customer getCustomer() {
 		return customer;
 	}
+	
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public Collection<RestaurantOrder> getRestaurantOrders() {
-		return restaurantOrders;
-	}
-	public void setRestaurantOrders(Collection<RestaurantOrder> restaurantOrders) {
-		this.restaurantOrders = restaurantOrders;
-	}
+
+    public Map<String, RestaurantOrder> getRestaurantOrders() {
+        return restaurantOrders;
+    }
+
+    public void setRestaurantOrders(Map<String, RestaurantOrder> restaurantOrders) {
+        this.restaurantOrders = restaurantOrders;
+    }
+
 	
 	
 }

@@ -1,7 +1,7 @@
 package com.acme.training.service;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -51,9 +51,9 @@ public class SandBoxRepo {
 		
 		CustomerOrder co = new CustomerOrder();
 		co.setCustomer(cust1);
-		Collection<RestaurantOrder> orders1 = new ArrayList<RestaurantOrder>();
-        orders1.add(ro1);
-        orders1.add(ro2);
+		Map<String, RestaurantOrder> orders1 = new HashMap<String, RestaurantOrder>();
+        orders1.put(ro1.getRestaurant().getName(), ro1);
+        orders1.put(ro1.getRestaurant().getName(), ro2);
 		co.setRestaurantOrders( orders1 );
 		
 		co.printBill();

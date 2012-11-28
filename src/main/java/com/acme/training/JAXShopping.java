@@ -14,7 +14,7 @@ import com.acme.training.ws.ShoppingCartWS;
 public class JAXShopping {
 
     public static void main(String[] args) throws UnknownHostException {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext( "beans.xml" );
+        ApplicationContext ctx = new ClassPathXmlApplicationContext( "beans.xml", "foods.xml", "kfc.xml", "csing.xml" );
 
         ShoppingCartWS shoppingCartWS = ctx.getBean(ShoppingCartWS.class);
         

@@ -1,11 +1,14 @@
 package com.acme.training.service;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.CustomerOrder;
+import com.acme.training.domain.Restaurant;
 
 @Component
 public class CustomerOrderRepository {
