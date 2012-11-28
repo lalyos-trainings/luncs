@@ -1,7 +1,5 @@
 package com.acme.training.service;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -11,64 +9,64 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
 import com.acme.training.domain.Order;
 import com.acme.training.domain.OrderItem;
 
 @Component("cart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ShoppingCart implements BeanNameAware {
-    private final Order order;
-    private OrderService os;
+    private OrderService orderService;
     @Autowired
     private RestaurantRepository repo;
+    private final Order order;
     private final Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
-    public ShoppingCart() {
-        order = new Order();
-        Address addr = new Address("pelda", "Budapset", "1088", "Hungary");
-        order.setBillingAddress(addr);
-        order.setDeliveryAddress(addr);
-        order.setCustomer("Bela");
+    private ShoppingCart() {
+        this.order = new Order();
     }
 
-    public ShoppingCart(String customer, Address billingAddress, Address deliveryAddress) {
-        order = new Order(customer, billingAddress, deliveryAddress);
+    public ShoppingCart withCustomer(String customer) {
+        order.setCustomer(customer);
+        return this;
     }
 
-    public String getCustomer() {
-        return order.getCustomer();
+    public ShoppingCart withDeliveryAddress(Address deliveryAddress) {
+        order.setDeliveryAddress(deliveryAddress);
+        return this;
     }
 
-    public Address getBillingAddress() {
-        return order.getBillingAddress();
+    public ShoppingCart withBillingAddress(Address billingAddress) {
+        order.setBillingAddress(billingAddress);
+        return this;
     }
 
-    public Address derliveryAddress() {
-        return order.getDeliveryAddress();
+    public ShoppingCart withFood(int id) {
+        return withFood(id, 1);
     }
 
-    public void addFood(int id, int quantity) {
-        List<OrderItem> orders = order.getOrderItems();
-        orders.add(new OrderItem(quantity, repo.getFoodById(id)));
+    public ShoppingCart withFood(int id, int quantity) {
+        Food food = repo.getFoodById(id);
+        order.addItem(new OrderItem(quantity, food));
+        return this;
     }
 
     public void checkout() {
-        os.doOrder(order);
+        orderService.doOrder(order);
+        logger.info("checking out order:" + order.getId());
     }
 
-    public OrderService getOs() {
-        return os;
+    public OrderService getOrderService() {
+        return orderService;
     }
 
-    public void setOs(OrderService os) {
-        this.os = os;
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
     }
 
-    public RestaurantRepository getRepo() {
-        return repo;
-    }
+    public void setBeanName(String name) {
+        logger.info("my name is: " + name);
+        logger.info("my hashCode is: " + hashCode());
 
-    public void setBeanName(String arg0) {
-        logger.info(arg0 + " " + this.hashCode());
     }
 }
