@@ -39,7 +39,7 @@ public class InMemoryShoppingCartWS implements ShoppingCartWS {
 
     @WebMethod
     @Override
-    public int createShoppingCart(String customerName) {
+    public int getShoppingCart(String customerName) {
         ShoppingCart shoppingCart = ctx.getBean(ShoppingCart.class);
         shoppingCart = shoppingCart.withCustomer(customerName);
         id++;

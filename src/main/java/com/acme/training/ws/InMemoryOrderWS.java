@@ -32,6 +32,13 @@ public class InMemoryOrderWS implements OrderWS {
         Status status = Status.values()[statusId];
         customerOrder.setStatus(status);
     }
+
+    @WebMethod
+    @Override
+    public String getOrderContent(String orderId) {
+        CustomerOrder customerOrder = orderService.findById(orderId);
+        return customerOrder.toString();
+    }
     
     
 
