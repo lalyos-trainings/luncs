@@ -89,4 +89,8 @@ public class CustomerOrder {
         List<RestaurantOrder> ret = new ArrayList(orderMap.values());
         return ret;
     }
+
+    public String toString() {
+        return printBill();
+    }
 }

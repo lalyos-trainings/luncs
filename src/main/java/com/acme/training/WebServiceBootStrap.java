@@ -22,7 +22,7 @@ public class WebServiceBootStrap {
         OrderWS orderWS = ctx.getBean(OrderWS.class);
 
         InetAddress localHost = InetAddress.getLocalHost();
-        String url = "http://" + localHost.getHostAddress() + ":8080/menu";
+        String url = "http://" + localHost.getHostAddress() + ":8080/order";
         System.out.println("Listening on: " + url);
         Endpoint.publish(url, orderWS);
 

@@ -22,7 +22,7 @@ public class MenuWS {
     private RestaurantRepository repo;
 
     private List<Food> foods = new ArrayList<Food>();
-    
+
     public void init() {
         Collection<Restaurant> restaurants = repo.getAllRestaurants();
         for (Restaurant restaurant : restaurants) {
@@ -30,12 +30,12 @@ public class MenuWS {
             for (Food food : foods2) {
                 foods.add(food);
             }
-        }        
+        }
     }
-    
+
     public MenuWS() {
     }
-    
+
     @WebMethod
     public List<Food> getFoods() {
         return foods;

@@ -21,10 +21,12 @@ public class ShoppingCart implements BeanNameAware {
     @Autowired
     private RestaurantRepository repo;
     private CustomerOrder order;
+    private Integer id;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     private ShoppingCart() {
         this.order = new CustomerOrder();
+        this.id = this.order.getId();
     }
 
     public ShoppingCart withCustomer(String customer) {
@@ -52,9 +54,11 @@ public class ShoppingCart implements BeanNameAware {
         return this;
     }
 
-    public void checkout() {
+    public Integer checkout() {
         orderService.doOrder(order);
         logger.info("checking out order:" + order.getId());
+        System.out.println(order.printBill());
+        return order.getId();
     }
 
     public OrderService getOrderService() {
@@ -63,6 +67,10 @@ public class ShoppingCart implements BeanNameAware {
 
     public void setOrderService(OrderService orderService) {
         this.orderService = orderService;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public void setBeanName(String name) {
