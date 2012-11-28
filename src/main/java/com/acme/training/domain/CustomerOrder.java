@@ -77,7 +77,12 @@ public class CustomerOrder {
     }
 
     public List<OrderItem> getItems() {
-        List<OrderItem> ret = new ArrayList(items.values());
+        List<OrderItem> ret = new ArrayList<OrderItem>();
+        for (RestaurantOrder order : items.values()) {
+            for (OrderItem item : order.getOrderItems()) {
+                ret.add(item);
+            }
+        }
         return ret;
     }
 
