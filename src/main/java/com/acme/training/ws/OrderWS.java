@@ -2,7 +2,7 @@ package com.acme.training.ws;
 
 public interface OrderWS {
     
-    public String getStatus(int orderId);
-    public String getCustomerOrderContent();
+    public String getStatus(String orderId);
+    public void setStatus(String orderId, int statusId);
 
 }

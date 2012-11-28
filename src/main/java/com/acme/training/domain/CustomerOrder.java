@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class CustomerOrder {
     
+    public static enum Status { CREATED, REQUEST_SENT_TO_RESTAURANT, DELIVER_ON_WAY_TO_RESTAURANT, DELIVER_ON_WAY_TO_CUSTOMER, PAID
+    }
+    
     private static int nextId = 0;
     
     private String id = String.valueOf(nextId++);
@@ -16,6 +19,7 @@ public class CustomerOrder {
     private Address billingAddress;
     private Map<Restaurant, RestaurantOrder> restaurantOrders = new HashMap<Restaurant, RestaurantOrder>();
     private int total = 0;
+    private Status status = Status.CREATED;
     
     public void addOrderItem(OrderItem orderItem) {
         Restaurant restaurant = orderItem.getFood().getRestaurant();
@@ -74,6 +78,14 @@ public class CustomerOrder {
         return total;
     }
     
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "CustomerOrder [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress

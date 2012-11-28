@@ -67,7 +67,7 @@ public class InMemoryShoppingCartWS implements ShoppingCartWS {
 
     @WebMethod
     @Override
-    public void setbillingAddress(int shoppingCartId, String city, String street, String zip, String country) {
+    public void setBillingAddress(int shoppingCartId, String city, String street, String zip, String country) {
         ShoppingCart shoppingCart = shoppingCarts.get(shoppingCartId);
         Address address = new Address(street, city, zip, country);
         shoppingCarts.put(id, shoppingCart.withBillingAddress(address));
@@ -77,10 +77,10 @@ public class InMemoryShoppingCartWS implements ShoppingCartWS {
 
     @WebMethod
     @Override
-    public int checkout(int shoppingCartId) {
+    public String checkout(int shoppingCartId) {
         ShoppingCart shoppingCart = shoppingCarts.get(shoppingCartId);
         shoppingCart.checkout();
-        return Integer.parseInt(shoppingCart.getCustomerOrder().getId());
+        return shoppingCart.getCustomerOrder().getId();
     }
 
 }
