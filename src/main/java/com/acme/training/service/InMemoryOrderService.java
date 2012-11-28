@@ -7,12 +7,15 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.CustomerOrder;
 
-@Component
+@Component("InMemoryOrderService")
+@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class InMemoryOrderService implements OrderService {
 
     Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);

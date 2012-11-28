@@ -28,7 +28,8 @@ public class InMemoryShoppingCart implements BeanNameAware, ShoppingCart {
     public String getCustomerOrderId() {
         return order.getId();
     }
-
+    
+    @Autowired
     private OrderService orderService;
     @Autowired
     private RestaurantRepository repo;    
@@ -67,14 +68,6 @@ public class InMemoryShoppingCart implements BeanNameAware, ShoppingCart {
     public void checkout() {
         orderService.doOrder(order);
         logger.info("checking out order:" + order.getId());
-    }
-
-    public OrderService getOrderService() {
-        return orderService;
-    }
-
-    public void setOrderService(OrderService orderService) {
-        this.orderService = orderService;
     }
 
     public void setBeanName(String name) {

@@ -20,8 +20,4 @@ public interface ShoppingCart {
 
     public abstract void checkout();
 
-    public abstract OrderService getOrderService();
-
-    public abstract void setOrderService(OrderService orderService);
-
 }

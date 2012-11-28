@@ -14,8 +14,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Restaurant;
 import com.acme.training.service.InMemoryShoppingCart;
+import com.acme.training.service.OrderService;
 import com.acme.training.service.RestaurantRepository;
 import com.acme.training.service.ShoppingCart;
 
@@ -89,6 +91,15 @@ public class ShoppingCartWS {
             logger.warn("setDeliveryAddress() request: invalid cartId: "+cartId);
             return null;
         }           
-    }   
+    }  
+    
+    public void printData() {
+        OrderService orderService = context.getBean(OrderService.class);
+        System.out.println("This OS is "+orderService+" hashcode: "+orderService.hashCode());
+        for (CustomerOrder order : orderService.getAllOrder()) {
+            System.out.println("- next order:" + order);
+            order.printBill();
+        }
+    }
 
 }
