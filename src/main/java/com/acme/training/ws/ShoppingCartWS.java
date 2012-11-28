@@ -4,13 +4,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import javax.jws.WebService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.stereotype.Component;
+
 import com.acme.training.domain.Address;
 import com.acme.training.service.ShoppingCart;
 
+@WebService
+@Component
 public class ShoppingCartWS {
 
     private static int nextId = 0;
 
+    @Autowired
+    private ApplicationContext ctx;
     private final Map<Integer, ShoppingCart> carts = new HashMap<Integer, ShoppingCart>();
 
     public ShoppingCartWS() {
@@ -62,7 +72,8 @@ public class ShoppingCartWS {
 
     private Integer createShoppingCart(String customer) {
         Integer id = nextId++;
-        carts.put(id, new ShoppingCart().withCustomer(customer));
+        ShoppingCart cart = ctx.getBean(ShoppingCart.class);
+        carts.put(id, cart.withCustomer(customer));
         return id;
     }
 }
