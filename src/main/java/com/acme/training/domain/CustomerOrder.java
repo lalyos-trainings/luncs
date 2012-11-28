@@ -12,7 +12,7 @@ public class CustomerOrder {
     private String customer;
     private Address deliveryAddress;
     private Address billingAddress;
-    private final Map<Integer, OrderItem> itemMap = new HashMap<Integer, OrderItem>();
+    private final Map<Integer, OrderItem> items = new HashMap<Integer, OrderItem>();
 
     @Override
     public String toString() {
@@ -22,8 +22,9 @@ public class CustomerOrder {
 
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
-        for (OrderItem item : itemMap.values()) {
-            ret.append(String.format("%n %-25s : %3d", item.getFood().getName(), item.getQuantity()));
+        for (OrderItem item : items.values()) {
+            ret.append(String.format("%n %-25s : %3d", item.getFood()
+                                                           .getName(), item.getQuantity()));
         }
         return ret.toString();
     }
@@ -63,23 +64,24 @@ public class CustomerOrder {
     public void addItem(OrderItem item) {
         Food food = item.getFood();
         int quantity = item.getQuantity();
-        OrderItem previousItem = itemMap.get(food.getId());
+        OrderItem previousItem = items.get(food.getId());
         if (null == previousItem) {
-            itemMap.put(food.getId(), item);
+            items.put(food.getId(), item);
         } else {
             previousItem.addQuantity(quantity);
         }
     }
 
     public List<OrderItem> getItems() {
-        List<OrderItem> ret = new ArrayList(itemMap.values());
+        List<OrderItem> ret = new ArrayList(items.values());
         return ret;
     }
 
     public int getGrandTotal() {
         int total = 0;
-        for (OrderItem item : itemMap.values()) {
-            int price = item.getFood().getPrice();
+        for (OrderItem item : items.values()) {
+            int price = item.getFood()
+                            .getPrice();
             int quantity = item.getQuantity();
             total += price * quantity;
         }
