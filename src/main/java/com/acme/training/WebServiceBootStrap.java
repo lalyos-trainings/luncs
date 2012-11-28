@@ -37,7 +37,7 @@ public class WebServiceBootStrap {
 //        scws.checkout(scId2);
         
         InetAddress local = InetAddress.getLocalHost();
-        Endpoint.publish("http://" +local.getHostAddress() +":8080/menu", scws);
+        Endpoint.publish("http://" +local.getHostAddress() +":8081/shoppingCart", scws);
         System.out.println(local.getHostAddress());
         
         
