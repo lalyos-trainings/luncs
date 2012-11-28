@@ -9,7 +9,6 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.Customer;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Menu;
 import com.acme.training.domain.OrderItem;
 import com.acme.training.domain.Restaurant;
 import com.acme.training.domain.RestaurantOrder;
@@ -23,8 +22,8 @@ public class SandBoxRepo {
 		Restaurant r1 = new Restaurant("Ancsa", "Futo utca 52", "1082");
 		Restaurant r2 = new Restaurant("Kifozde", "Gyilkos galoca utca 52", "1082");
 
-		Restaurant rest1 = createResti1(r1);
-		Restaurant rest2 = createResti2(r2);
+//		Restaurant rest1 = createResti1(r1);
+//		Restaurant rest2 = createResti2(r2);
 		
 		Customer cust1 = createCusti1();
 		Customer cust2 = createCusti2();
@@ -37,8 +36,8 @@ public class SandBoxRepo {
 		OrderItem oi6 = new OrderItem(04, new Food(6, "kaposzta2", 3210, r2));
 		OrderItem oi7 = new OrderItem(04, new Food(6, "kaposzta2", 3210, r2));
 		
-		RestaurantOrder ro1 = new RestaurantOrder( rest1, cust1 );
-		RestaurantOrder ro2 = new RestaurantOrder( rest2, cust2 );
+		RestaurantOrder ro1 = new RestaurantOrder( r1, cust1 );
+		RestaurantOrder ro2 = new RestaurantOrder( r2, cust2 );
 		ro1.addItem(oi1);
 		ro1.addItem(oi2);
 		ro1.addItem(oi3);
@@ -76,24 +75,24 @@ public class SandBoxRepo {
 		return customer;
 	}
 	
-	private Restaurant createResti1(Restaurant r1) {
-		Menu m1 = new Menu();
-		r1.setMenu(m1);
-		m1.setWeek(34);
-		m1.getFoods().add(new Food("pacal", 500, r1));
-		m1.getFoods().add(new Food("toltott kaposzta", 750, r1));
-		m1.getFoods().add(new Food("bableves", 690, r1));
-		return r1;
-	}
-
-	private Restaurant createResti2(Restaurant r1) {
-		Menu m1 = new Menu();
-		r1.setMenu(m1);
-		m1.setWeek(34);
-		m1.getFoods().add(new Food("gombapaprikas", 500, r1));
-		m1.getFoods().add(new Food("toltott gomba", 750, r1));
-		m1.getFoods().add(new Food("gombaleves", 690, r1));
-		return r1;
-	}
+//	private Restaurant createResti1(Restaurant r1) {
+//		Menu m1 = new Menu();
+//		r1.setMenu(m1);
+//		m1.setWeek(34);
+//		m1.getFoods().add(new Food("pacal", 500, r1));
+//		m1.getFoods().add(new Food("toltott kaposzta", 750, r1));
+//		m1.getFoods().add(new Food("bableves", 690, r1));
+//		return r1;
+//	}
+//
+//	private Restaurant createResti2(Restaurant r1) {
+//		Menu m1 = new Menu();
+//		r1.setMenu(m1);
+//		m1.setWeek(34);
+//		m1.getFoods().add(new Food("gombapaprikas", 500, r1));
+//		m1.getFoods().add(new Food("toltott gomba", 750, r1));
+//		m1.getFoods().add(new Food("gombaleves", 690, r1));
+//		return r1;
+//	}
 
 }

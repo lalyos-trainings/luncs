@@ -5,6 +5,16 @@ public class Customer {
 	private Address deliveryAddress;
 	private String name;
 
+	public Customer(){
+	    
+	}
+	
+	public Customer( String name, String street, String city, String zip, String country ){
+	    this.name = name;
+	    this.billingAddress = new Address(street, city, zip, country);
+	    this.deliveryAddress = new Address(street, city, zip, country);
+	}
+	
     public Address getBillingAddress() {
         return billingAddress;
     }

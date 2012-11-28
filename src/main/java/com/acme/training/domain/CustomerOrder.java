@@ -6,9 +6,22 @@ import java.util.ArrayList;
 
 public class CustomerOrder {
 	
+    private static int nextId = 0;
+    
 	private Customer customer;
 	private Collection<RestaurantOrder> restaurantOrders = new ArrayList<RestaurantOrder>();
+	private int id = nextId++;
 
+	public CustomerOrder(){}
+	
+	public CustomerOrder( String customerName, String street, String city, String zip, String country ){
+	    customer = new Customer( customerName, street, city, zip, country );
+	}
+	
+	public int getId(){
+	    return id;
+	}
+	
 	public void printBill(){
 		System.out.println( getBillString() );
 	}
@@ -30,7 +43,9 @@ public class CustomerOrder {
                 " ...... \n" +
 	            customerStr + "\n" +
 	            " ...... \n" +
-	            "Restaurant Orders: " + restOrdersStr + "\n";
+	            "Restaurant Orders: " + restOrdersStr + "\n" +
+                " ...... \n" +
+	            "Full total: " + getTotal() + "Ft";
 	            
 	    
 	    return billStr;

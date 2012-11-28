@@ -43,7 +43,7 @@ public class RestaurantOrder {
                     " Restaurant: " + this.getRestaurant().getName() + "     " +
                     " <Order id: " + getId() + "    Customer: " + getCustomer().getName() + " >\n" + 
                     " Ordered foods:" + getFormattedItems() + "\n" +
-                    " Subtotal: " + getTotal() + "\n" +
+                    " Subtotal: " + getTotal() + "Ft\n" +
                     "--------------- \n"
                    ;
         return billStr;
@@ -52,7 +52,7 @@ public class RestaurantOrder {
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
         for (OrderItem item : orderItemMap.values()) {
-            ret.append(String.format("%n   %-25s : %3d", item.getFood().getName(), item.getQuantity()));
+            ret.append(String.format("%n   %-25s : %3d pcs", item.getFood().getName(), item.getQuantity()));
         }
         return ret.toString();
     }
