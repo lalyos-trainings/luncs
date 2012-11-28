@@ -58,7 +58,7 @@ public class Food
     @Override
     public String toString() 
     {
-        return String.format("Food: %-15s %5d YEN", getName(), getPrice());
+        return String.format("%-15s %5d YEN", getName(), getPrice());
     }
     
 }

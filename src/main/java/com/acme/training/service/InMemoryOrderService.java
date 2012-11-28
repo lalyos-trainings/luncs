@@ -9,14 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryOrderService implements OrderService 
 {
     private static Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);
     
-    private List<Order> orders;
+    private List<CustomerOrder> orders;
     
     @Autowired
     private ApplicationContext context;
@@ -24,17 +24,17 @@ public class InMemoryOrderService implements OrderService
     
     public InMemoryOrderService() 
     {
-        orders = new ArrayList<Order>();
+        orders = new ArrayList<CustomerOrder>();
     }
 
-    public void doOrder(Order order) 
+    public void doOrder(CustomerOrder order) 
     {
         orders.add(order);
 
         context.publishEvent(new OrderEvent(this, order));
     }
 
-    public List<Order> getAllOrders() 
+    public List<CustomerOrder> getAllOrders() 
     {
         return orders;
     }

@@ -5,15 +5,19 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryAFAService implements ApplicationListener<OrderEvent>
 {
+    private static final Logger logger = LoggerFactory.getLogger(InMemoryAFAService.class);
+    
     @Value("${vat}")
     private double vat;
     
@@ -21,7 +25,7 @@ public class InMemoryAFAService implements ApplicationListener<OrderEvent>
     
     public void onApplicationEvent(OrderEvent event)
     {
-        Order order = event.getOrder();
+        CustomerOrder order = event.getCustomerOrder();
         String customer = order.getCustomer();
         
         Integer total = incomes.get(customer);
@@ -37,9 +41,9 @@ public class InMemoryAFAService implements ApplicationListener<OrderEvent>
             
     }
 
-    public void doAFA()
+    public void printAFA()
     {
-        System.out.println("=== ÁFA ===");
+        logger.info("=== ÁFA ===");
         
         Iterator<Entry<String, Integer>> iterator = incomes.entrySet().iterator();
         while (iterator.hasNext() == true)
@@ -49,7 +53,7 @@ public class InMemoryAFAService implements ApplicationListener<OrderEvent>
             int total = next.getValue();
             double afa = total * vat / 100.0;
             
-            System.out.println(String.format("%-12s : %10d    YEN ÁFA (%.2g %%): %10g YEN", next.getKey(), total, vat, afa));
+            logger.info(String.format("%-12s : %10d    YEN ÁFA (%.2g %%): %10g YEN", next.getKey(), total, vat, afa));
         }
     }
 }

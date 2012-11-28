@@ -2,10 +2,10 @@ package com.acme.training.service;
 
 import java.util.List;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 public interface OrderService 
 {
-    void doOrder(Order order);
-    List<Order> getAllOrders();
+    void doOrder(CustomerOrder order);
+    List<CustomerOrder> getAllOrders();
 }
