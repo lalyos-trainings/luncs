@@ -12,6 +12,9 @@ public class CustomerOrder
 {
     private static final Logger logger = LoggerFactory.getLogger(CustomerOrder.class);
     
+    private static int nextId = 0;
+    
+    private int id;
     private String customer;
     private Address billingAddress;
     private Address deliveryAddress;
@@ -20,7 +23,13 @@ public class CustomerOrder
     
     public CustomerOrder() 
     {
+        this.id = nextId++;
         restaurantOrders = new HashMap<String, RestaurantOrder>();
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public String getCustomer()

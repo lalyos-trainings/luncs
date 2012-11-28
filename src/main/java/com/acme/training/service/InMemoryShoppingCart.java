@@ -17,7 +17,10 @@ import com.acme.training.domain.CustomerOrder;
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware
 {
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
-    
+
+    private static int nextId = 0;
+
+    private int id;
     private CustomerOrder order;
     
     @Autowired
@@ -28,9 +31,15 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware
 
     public InMemoryShoppingCart() 
     {
+        this.id = nextId++;
         order = new CustomerOrder();
     }
     
+    public int getId()
+    {
+        return id;
+    }
+
     public void addFood(int foodId, int quantity) 
     {
         Food food = repo.getFoodById(foodId);
@@ -52,9 +61,10 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware
         order.setBillingAddress(new Address(street, city, zip, country));
     }
 
-    public void checkout() 
+    public int checkout() 
     {
         orderService.doOrder(order);
+        return order.getId();
     }
 
     public void setBeanName(String beanName) 

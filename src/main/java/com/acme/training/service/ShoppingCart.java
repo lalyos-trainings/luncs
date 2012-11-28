@@ -10,5 +10,5 @@ public interface ShoppingCart
     
     void setBillingAddress(String street, String city, String zip, String country);
     
-    void checkout();
+    int checkout();
 }
