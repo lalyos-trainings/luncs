@@ -28,12 +28,13 @@ public class ShoppingWS {
     }
 
     @WebMethod
-    public void getShoppingCart(String customer) {
+    public Integer getShoppingCart(String customer) {
         try {
             cart.withCustomer(customer);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
+        return Integer.parseInt(cart.getCustomerOrder().getId());
     }
 
     @WebMethod
@@ -58,7 +59,7 @@ public class ShoppingWS {
 
     // OrderId
     @WebMethod
-    public int checkout() {
+    public Integer checkout() {
         return cart.checkout();
     }
 }
