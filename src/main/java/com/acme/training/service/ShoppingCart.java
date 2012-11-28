@@ -9,8 +9,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Food;
 import com.acme.training.domain.CustomerOrder;
+import com.acme.training.domain.Food;
 import com.acme.training.domain.OrderItem;
 
 @Component("cart")
@@ -49,6 +49,10 @@ public class ShoppingCart implements BeanNameAware {
         Food food = repo.getFoodById(id);
         order.addItem(new OrderItem(quantity, food));
         return this;
+    }
+
+    public String getOrderId() {
+        return order.getId();
     }
 
     public void checkout() {
