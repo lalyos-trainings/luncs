@@ -1,5 +1,6 @@
 package com.acme.training.ws;
 
+import javax.jws.WebMethod;
 import javax.jws.WebService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,33 +27,38 @@ public class ShoppingWS {
 
     }
 
-    public void init() {
-
-    }
-
+    @WebMethod
     public void getShoppingCart(String customer) {
-
-        this.cart= null;
+        try {
+            cart.withCustomer(customer);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void addFood(int scId, Food food, int quantity) {
-        
-        rOrder.addItem(new OrderItem(quantity, food));
-
+    @WebMethod
+    public void addFood(int shoppingCartId, int foodId, int quantity) {
+        try {
+            Food food = cart.getRepo().findFoodById(foodId);
+            rOrder.addItem(new OrderItem(quantity, food));
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public void setDeliveryAddress(int scId, String city, String street, String zip, String country) {
-        Address deliveryAddress=new Address(street, city, zip, country);
-        cart.withDeliveryAddress(deliveryAddress);
-        
+    @WebMethod
+    public void setDeliveryAddress(int shoppingCartId, String city, String street, String zip, String country) {
+        try {
+            Address deliveryAddress = new Address(street, city, zip, country);
+            cart.withDeliveryAddress(deliveryAddress);
+        } catch (NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     // OrderId
+    @WebMethod
     public int checkout() {
-       
-        cart.checkout();
-        return 1;
-
+        return cart.checkout();
     }
-
 }

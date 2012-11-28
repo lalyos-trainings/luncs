@@ -25,9 +25,6 @@ public class WebServiceBootStrap {
         
         Endpoint.publish(menuServiceUrl, menuService);
         Endpoint.publish(shoppingServiceUrl, shoppingService);
-        System.out.print(shoppingServiceUrl);
-
-
+        System.out.println(shoppingServiceUrl);
     }
-
 }

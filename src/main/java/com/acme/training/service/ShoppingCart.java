@@ -53,12 +53,17 @@ public class ShoppingCart{
     }
 
     // ******************************************** FINISHING SHOPPING **************************************************
-    public void checkout() {
+    public int checkout() {
         orderService.doOrder(customerOrder);
+        return Integer.parseInt(customerOrder.getId());
     }
 
     // *********************************************** GETTERS ************************************************************
     public OrderService getOrderService() {
         return orderService;
+    }
+
+    public RestaurantRepository getRepo() {
+        return repo;
     }
 }

@@ -23,10 +23,9 @@ public class MenuWS {
     private RestaurantRepository repo;
 
     public MenuWS() {
-
     }
     
-
+    @WebMethod(exclude=true)
     public void init(){
         Collection<Restaurant> rests = repo.getAllRestaurants();
         for (Restaurant rest : rests) {
@@ -35,12 +34,10 @@ public class MenuWS {
                 foods.add(food);
             }
         }
-        
     }
 
     @WebMethod
     public List<Food> getFood() {
-
         return foods;
     }
 }

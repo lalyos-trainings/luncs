@@ -1,7 +1,6 @@
 package com.acme.training.service;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +8,6 @@ import java.util.Map;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Restaurant;
 import com.acme.training.ordermodel.OrderItem;
 import com.acme.training.ordermodel.RestaurantOrder;
 
