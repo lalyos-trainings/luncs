@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	
+
+<bean c:id="101" c:name="ciposz cirke" c:price="${csing.price.small}" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
+<bean c:id="102" c:name="edesz-szavanyu" c:price="${csing.price.small}" c:restaurant-ref="csing-csang"  class="com.acme.training.domain.Food" />
+<bean c:id="103" c:name="mackahusz" c:price="${csing.price.medium}" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
+<bean c:id="104" c:name="penki kacsa" c:price="${csing.price.big}" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
+<bean c:id="201" c:name="csirkeszarny" c:price="750" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
+<bean c:id="202" c:name="csirkelab" c:price="450" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
+<bean c:id="203" c:name="libamaj" c:price="1550" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
+					
+
+
+</beans>
