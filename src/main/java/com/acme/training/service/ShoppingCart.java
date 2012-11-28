@@ -21,4 +21,6 @@ public interface ShoppingCart {
     
     public int getId();
     
+    public CustomerOrder getOrder();
+    
 }

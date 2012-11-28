@@ -13,6 +13,7 @@ public class CustomerOrder{
 //    private Map<Integer, OrderItem> orderItems;
     private Map<Integer, RestaurantOrder> restaurantOrders;
     private double total;
+    private int id;
 
     public CustomerOrder(String customer, Address billingAddress, Address deliveryAddress) {
         super();
@@ -72,6 +73,14 @@ public class CustomerOrder{
         total += (quantity * food.getPrice());
     }
     
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public double getTotal() {
         return total;
     }

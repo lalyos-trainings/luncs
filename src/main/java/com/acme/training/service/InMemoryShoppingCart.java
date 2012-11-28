@@ -1,41 +1,31 @@
 package com.acme.training.service;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
-import com.acme.training.domain.Food;
 import com.acme.training.domain.CustomerOrder;
+import com.acme.training.domain.Food;
 
-@Component
-@Scope("prototype")
+//@Component
+//@Scope("prototype")
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
-    @Autowired
     private RestaurantRepository repo;
     private CustomerOrder order;
     private static Logger logger = LoggerFactory.getLogger(InMemoryShoppingCart.class);
-    @Autowired
     private OrderService orderService;
     private int id;
     
-    private static AtomicInteger ID = new AtomicInteger(0);
-    
-    private InMemoryShoppingCart(){
+    public InMemoryShoppingCart(int id, RestaurantRepository repo, OrderService orderService){
         order = new CustomerOrder();
-        id = ID.incrementAndGet();
+        order.setId(id);
+        this.id = id;
+        this.repo = repo;
+        this.orderService = orderService;
     }
     
-    public static ShoppingCart getShoppingCart(){
-        return new InMemoryShoppingCart();
-    }
- 
     public RestaurantRepository getRepo(){
         return repo;
     }
@@ -85,11 +75,16 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     public CustomerOrder checkOut(){
         orderService.doOrder(order);
+        System.out.println(order);
         return order;
     }
 
     public void setBeanName(String name) {
         logger.info("*************************\ninMemoryShoppingCart: {}\n*************************", name);
+    }
+
+    public CustomerOrder getOrder() {
+        return order;
     }
     
 }

@@ -7,7 +7,6 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.InMemoryNAVService;
 import com.acme.training.service.InMemoryOrderService;
-import com.acme.training.service.InMemoryShoppingCart;
 import com.acme.training.service.InMemoryStatisticsService;
 import com.acme.training.service.MenuLister;
 import com.acme.training.service.OrderService;
@@ -24,10 +23,11 @@ public class App
         MenuLister menuLister = ctx.getBean(SystemOutMenuLister.class);
         menuLister.doList();
         
-        ShoppingCart cart = ctx.getBean(InMemoryShoppingCart.class);
-        ShoppingCart cart2 = ctx.getBean(InMemoryShoppingCart.class);
-        ShoppingCart cart3 = ctx.getBean(InMemoryShoppingCart.class);
+//        ShoppingCart cart = ctx.getBean(InMemoryShoppingCart.class);
+//        ShoppingCart cart2 = ctx.getBean(InMemoryShoppingCart.class);
+//        ShoppingCart cart3 = ctx.getBean(InMemoryShoppingCart.class);
         OrderService os = ctx.getBean(InMemoryOrderService.class);
+        ShoppingCart cart = os.getShoppingCart();
         cart.withBillingAddress(new Address("1122", "Csaba utca"))
                 .withDeliveryAddress(new Address("1122", "Csaba utca"))
                 .withCustomer("Sztike")
@@ -36,6 +36,7 @@ public class App
                 .withFood("KFC", "csirkeszarny", 2)
                 .withFood(4, 1)
                 .checkOut();
+        ShoppingCart cart2 = os.getShoppingCart();
         cart2.withBillingAddress(new Address("1234", "Ize utca"))
                 .withDeliveryAddress(new Address("1234", "Ize utca"))
                 .withCustomer("Gizi")
@@ -45,6 +46,7 @@ public class App
                 .withFood("Csing-csang", "edes-savanyu", 3)
                 .withFood("Csing-csang", "szezamos csirke", 5)
                 .checkOut();
+        ShoppingCart cart3 = os.getShoppingCart();
         cart3.withBillingAddress(new Address("1234", "Ize utca"))
                 .withDeliveryAddress(new Address("1234", "Ize utca"))
                 .withCustomer("Jani")
