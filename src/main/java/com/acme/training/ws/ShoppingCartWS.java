@@ -93,6 +93,7 @@ public class ShoppingCartWS {
         }           
     }  
     
+    @WebMethod    
     public void printData() {
         OrderService orderService = context.getBean(OrderService.class);
         System.out.println("This OS is "+orderService+" hashcode: "+orderService.hashCode());
