@@ -22,7 +22,7 @@ public class ShoppingCart implements BeanNameAware {
     private final CustomerOrder order;
     private final Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
-    public ShoppingCart() {
+    private ShoppingCart() {
         this.order = new CustomerOrder();
     }
 
