@@ -17,7 +17,7 @@ public class InMemoryNavService implements ApplicationListener<OrderEvent> {
     private double vat;
 
     public void onApplicationEvent(OrderEvent oe) {
-        for (OrderItem oi : oe.getOrder()
+        for (OrderItem oi : oe.getCustomerOrder()
                               .getItems()) {
             handleOrderItem(oi);
         }

@@ -14,7 +14,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     Map<Integer, OrderItem> foodStatistic = new HashMap<Integer, OrderItem>();
 
     public void onApplicationEvent(OrderEvent event) {
-        for (OrderItem i : event.getOrder()
+        for (OrderItem i : event.getCustomerOrder()
                                 .getItems()) {
             doStatistic(i);
         }

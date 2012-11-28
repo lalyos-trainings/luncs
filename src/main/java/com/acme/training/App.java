@@ -21,7 +21,7 @@ public class App {
         ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml",
                 "orders.xml");
 
-        ShoppingCart cart = appContext.getBean("cart", ShoppingCart.class);
+        ShoppingCart cart = appContext.getBean(ShoppingCart.class);
         cart.withCustomer("jeno")
             .withDeliveryAddress(new Address("Futo utca 47", "Budapest", "1082", "H"))
             .withFood(2, 2)
