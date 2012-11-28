@@ -23,7 +23,7 @@ public class WebServiceBootStrap {
                 
         InetAddress localHost = InetAddress.getLocalHost();
         String url = "http://" + localHost.getHostAddress() + ":8080/menu";
-        System.out.println("Listenng on: " + url);
+        System.out.println("Listening on: " + url);
         Endpoint.publish(url, menuWS);
 
     }
