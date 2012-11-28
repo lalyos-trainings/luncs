@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component("cart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -20,11 +20,11 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
     private OrderService os;
     @Autowired
     private RestaurantRepository repo;
-    private Order order;
+    private CustomerOrder order;
     private Logger logger = LoggerFactory.getLogger(InMemoryRestaurantRepository.class);
     
     public InMemoryShoppingcart() {
-        order = new Order();
+        order = new CustomerOrder();
     }
 
     public void addFood(int foodId, int quantity) {
@@ -34,7 +34,6 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
 
     public void setCustomer(String customer) {
         order.setCustomer(customer);
-        
     }
 
     public void setDeliveryAddress(String city, String street, String zip, String country) {
@@ -47,7 +46,6 @@ public class InMemoryShoppingcart implements ShoppingCart, BeanNameAware{
 
     public void checkOut() {
         os.doOrder(order);
-        
     }
     
     public void setBeanName(String bean) {

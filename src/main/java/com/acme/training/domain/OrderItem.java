@@ -23,5 +23,8 @@ public class OrderItem {
     public void addQuantity(int quantity2) {
         this.quantity += quantity2;
     }
+    public int getTotal(){
+        return food.getPrice() * quantity;
+    }
     
 }

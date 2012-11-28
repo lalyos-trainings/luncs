@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryAFAService implements ApplicationListener<OrderEvent>{
@@ -13,7 +13,7 @@ public class InMemoryAFAService implements ApplicationListener<OrderEvent>{
     double VAT;
     int total = 0;
     public void onApplicationEvent(OrderEvent event) {        
-        Order order = event.getOrder();
+        CustomerOrder order = event.getOrder();
         total += order.getTotal();
     }    
     public void doNAVStatistics(){
