@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.ws.MenuWS;
+import com.acme.training.ws.ShoppingCartWS;
 
 public class WebServiceBootStrap {
 
@@ -20,6 +21,9 @@ public class WebServiceBootStrap {
 		
 		MenuWS menuWs = context.getBean(MenuWS.class);
 		Endpoint.publish("http://localhost:8080/menu", menuWs);
+		
+		ShoppingCartWS scWS = context.getBean(ShoppingCartWS.class);
+		Endpoint.publish("http://localhost:8080/sc", scWS);
 	}
 
 }

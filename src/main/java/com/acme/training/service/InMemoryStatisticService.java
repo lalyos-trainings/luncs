@@ -1,7 +1,7 @@
 package com.acme.training.service;
 
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
 
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
+        Collection<OrderItem> items = event.getCustomerOrder().getItems();
         for (OrderItem item : items) {
             doStatistic(item);
         }

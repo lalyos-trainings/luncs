@@ -36,5 +36,10 @@ public class OrderItem {
         return "OrderItem [quantity=" + quantity + ", food=" + food.getName() + "]";
     }
     
+    public int getTotal()
+    {
+    	return this.food.getPrice() - this.quantity;
+    }
+    
     
 }
