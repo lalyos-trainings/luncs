@@ -12,12 +12,12 @@ public class CustomerOrder {
     private Collection<RestaurantOrder> restaurantOrders = new ArrayList<RestaurantOrder>();
     private double total=0;
     
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
+    public CustomerOrder(int id) {
         this.id = id;
     }
+    public int getId() {
+        return id;
+    }    
     public String getCustomer() {
         return customer;
     }

@@ -21,6 +21,7 @@ import com.acme.domain.RestaurantOrder;
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
     
+    private static int orderId=0;
     private CustomerOrder customerOrder;
     @Autowired
     private RestaurantRepository repo;
@@ -31,7 +32,7 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
    
     
     public InMemoryShoppingCart(){
-        this.customerOrder = new CustomerOrder();
+        this.customerOrder = new CustomerOrder(orderId++);
         this.repo = new InMemoryRestaurantRepository();
     }
     
@@ -46,31 +47,27 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
         Collection<RestaurantOrder> restaurantOrders = customerOrder.getRestaurantOrders();
         boolean orderContainsRestaurant = false;
         
+        OrderItem orderItem = new OrderItem(food, quantity);        
+        
         for (RestaurantOrder restaurantOrder : restaurantOrders) {
             if(restaurantOrder.getRestaurant().equals(restaurant)){
                 orderContainsRestaurant = true;
-                updateRestaurantOrder(restaurantOrder, food, quantity);
+                updateRestaurantOrderWithNewItem(restaurantOrder,orderItem);
                 break;
             }
         }
         
         if(!orderContainsRestaurant){
-            createNewRestaurantOrder(food, quantity, restaurant);
+            createNewRestaurantOrder(orderItem, restaurant);
         }
     }
     
-    private void updateRestaurantOrder(RestaurantOrder restaurantOrder, Food food, int quantity){
-        OrderItem orderItem = new OrderItem();        
-        orderItem.setFood(food);
-        orderItem.setQuantity(quantity);
+    private void updateRestaurantOrderWithNewItem(RestaurantOrder restaurantOrder, OrderItem orderItem){               
         restaurantOrder.addOrderItem(orderItem);
     }
     
-    private void createNewRestaurantOrder(Food food, int quantity, Restaurant restaurant){
-        RestaurantOrder restaurantOrder = new RestaurantOrder(restaurant);
-        OrderItem orderItem = new OrderItem();        
-        orderItem.setFood(food);
-        orderItem.setQuantity(quantity);
+    private void createNewRestaurantOrder(OrderItem orderItem, Restaurant restaurant){
+        RestaurantOrder restaurantOrder = new RestaurantOrder(restaurant);         
         restaurantOrder.addOrderItem(orderItem);
         customerOrder.addRestaurantOrder(restaurantOrder);
     }

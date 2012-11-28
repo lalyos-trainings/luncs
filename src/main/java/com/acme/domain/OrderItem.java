@@ -4,7 +4,11 @@ public class OrderItem {
     private int quantity;
     private Food food;
     
-    public OrderItem(){}
+    public OrderItem(Food food, int quantity){
+        super();
+        this.food = food;
+        this.quantity = quantity;
+    }
     
     public OrderItem(OrderItem item){        
         super();
@@ -15,14 +19,9 @@ public class OrderItem {
     public int getQuantity() {
         return quantity;
     }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
+  
     public Food getFood() {
         return food;
-    }
-    public void setFood(Food food) {
-        this.food = food;
     }
 
     public String toString(){
