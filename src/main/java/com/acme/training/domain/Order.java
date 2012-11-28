@@ -1,21 +1,39 @@
 package com.acme.training.domain;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Order {
-    private String customer;
-    private Address billingAddress;
-    private Address deliveryAddress;
-    private List<OrderItem> orderItems = new LinkedList<OrderItem>();
+    private static int nextId = 0;
 
-    public Order() {
+    private String id = String.valueOf(nextId++);
+    private String customer;
+    private Address deliveryAddress;
+    private Address billingAddress;
+    private final Map<Integer, OrderItem> itemMap = new HashMap<Integer, OrderItem>();
+
+    @Override
+    public String toString() {
+        return "Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress + "]"
+                + getFormattedItems();
     }
 
-    public Order(String customer, Address billingAddress, Address deliveryAddress) {
-        this.customer = customer;
-        this.billingAddress = billingAddress;
-        this.deliveryAddress = deliveryAddress;
+    private String getFormattedItems() {
+        StringBuffer ret = new StringBuffer();
+        for (OrderItem item : itemMap.values()) {
+            ret.append(String.format("%n %-25s : %3d", item.getFood().getName(), item.getQuantity()));
+        }
+        return ret.toString();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCustomer() {
@@ -26,14 +44,6 @@ public class Order {
         this.customer = customer;
     }
 
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
     public Address getDeliveryAddress() {
         return deliveryAddress;
     }
@@ -42,19 +52,35 @@ public class Order {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
+    public Address getBillingAddress() {
+        return billingAddress;
     }
 
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
 
-    public int total() {
+    public void addItem(OrderItem item) {
+        Food food = item.getFood();
+        int quantity = item.getQuantity();
+        OrderItem previousItem = itemMap.get(food.getId());
+        if (null == previousItem) {
+            itemMap.put(food.getId(), item);
+        } else {
+            previousItem.addQuantity(quantity);
+        }
+    }
+
+    public List<OrderItem> getItems() {
+        List<OrderItem> ret = new ArrayList(itemMap.values());
+        return ret;
+    }
+
+    public int getGrandTotal() {
         int total = 0;
-        for (OrderItem oi : orderItems) {
-            int price = oi.getFood().getPrice();
-            int quantity = oi.getQuantity();
+        for (OrderItem item : itemMap.values()) {
+            int price = item.getFood().getPrice();
+            int quantity = item.getQuantity();
             total += price * quantity;
         }
 
