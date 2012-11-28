@@ -66,4 +66,8 @@ public class ShoppingCart{
     public RestaurantRepository getRepo() {
         return repo;
     }
+
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
 }
