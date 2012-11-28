@@ -5,16 +5,18 @@ import java.util.ResourceBundle;
 
 public class BundlePlay {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Locale german = Locale.GERMAN;
-		Locale hun = new Locale("hu");
-		ResourceBundle rb = ResourceBundle.getBundle("luncs", hun);
-		String msg = rb.getString("welcome");
-		System.out.println(msg);
-	}
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        Locale germany = Locale.GERMANY;
+        Locale hun = new Locale("hu");
+        Locale ck = new Locale("hu", "ro");
+        ResourceBundle bundle = ResourceBundle.getBundle("luncs");
+        
+        String msg = bundle.getString("welcome");
+        System.out.println("msg: " + msg);
+
+    }
 
 }

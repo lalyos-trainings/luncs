@@ -1,7 +1,7 @@
 package com.acme.training.domain;
 
 public class Restaurant {
-	
+
     private String name;
     private Address address;
     private Menu menu;

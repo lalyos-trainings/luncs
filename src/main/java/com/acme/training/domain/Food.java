@@ -1,32 +1,24 @@
 package com.acme.training.domain;
 
-import org.springframework.context.ApplicationContext;
-
 public class Food {
-
     private String name;
     private String description;
     private int price;
-    
-    private static ApplicationContext ctx;
-    
-    public static void setApplicationContext(ApplicationContext ctx)
-    {
-    	Food.ctx = ctx;
-    }
-
-    public static Food getById(String id)
-    {
-    	return ctx.getBean(id, Food.class);
-    }
+    private Integer id;
+    private Restaurant restaurant;
     
     public Food() {}
     
-    public Food(String name, int price) {
+    public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
+        this.restaurant = restaurant;
     }
     
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
     public String getName() {
         return name;
     }
@@ -46,11 +38,16 @@ public class Food {
         this.price = price;
     }
     
-
     public String toString(){
         return  String.format("Food: %-15s [%5d]", name, price);
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
     
-
-
 }

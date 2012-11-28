@@ -8,10 +8,13 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+		default-init-method="init">
 
-	<!-- <bean class="com.acme.training.service.SystemOutOrderLister" p:locale="hu" /> -->
+	<context:property-placeholder location="classpath:config.properties" ignore-unresolvable="true"/>
+	<context:component-scan base-package="com.acme" />
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
 	
-	<context:component-scan base-package="com.acme.training"></context:component-scan>
+	<alias alias="repo" name="${restaurant.repo.type}" />
+	
 </beans>
