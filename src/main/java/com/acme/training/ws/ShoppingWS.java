@@ -8,9 +8,7 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.Food;
-import com.acme.training.ordermodel.CustomerOrder;
 import com.acme.training.ordermodel.OrderItem;
-import com.acme.training.ordermodel.RestaurantOrder;
 import com.acme.training.service.ShoppingCart;
 
 @WebService
@@ -19,12 +17,8 @@ public class ShoppingWS {
 
     @Autowired
     private ShoppingCart cart;
-    private RestaurantOrder rOrder;
-    @SuppressWarnings("unused")
-    private CustomerOrder cOder;
 
     public ShoppingWS() {
-
     }
 
     @WebMethod
@@ -41,7 +35,7 @@ public class ShoppingWS {
     public void addFood(int shoppingCartId, int foodId, int quantity) {
         try {
             Food food = cart.getRepo().findFoodById(foodId);
-            rOrder.addItem(new OrderItem(quantity, food));
+            cart.getCustomerOrder().addItem(new OrderItem(quantity, food));
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
         }
@@ -60,6 +54,7 @@ public class ShoppingWS {
     // OrderId
     @WebMethod
     public Integer checkout() {
-        return cart.checkout();
+        cart.checkout();
+        return Integer.parseInt(cart.getCustomerOrder().getId());
     }
 }

@@ -53,9 +53,8 @@ public class ShoppingCart{
     }
 
     // ******************************************** FINISHING SHOPPING **************************************************
-    public int checkout() {
+    public void checkout() {
         orderService.doOrder(customerOrder);
-        return Integer.parseInt(customerOrder.getId());
     }
 
     // *********************************************** GETTERS ************************************************************
