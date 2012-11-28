@@ -28,7 +28,7 @@ public class NetCincer {
 
         OrderService orderService = ctx.getBean(OrderService.class);
         for (CustomerOrder order : orderService.getAllOrder()) {
-            System.out.println("- next order:" + order);
+            System.out.println("- next order: \n" + order.printBill());
         }
 
         InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);

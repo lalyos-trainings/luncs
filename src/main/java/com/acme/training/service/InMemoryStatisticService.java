@@ -22,7 +22,7 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     public void onApplicationEvent(OrderEvent event) {
         List<RestaurantOrder> restOrders = event.getOrder().getRestaurantOrders();
         for (RestaurantOrder restOrder : restOrders) {
-            for (OrderItem item : restOrder.getItems()) {
+            for (OrderItem item : restOrder.getOrderItems()) {
                 doStatistic(item);
             }
         }

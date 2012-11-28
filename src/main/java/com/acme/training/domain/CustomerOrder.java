@@ -5,6 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.acme.training.service.InMemoryStatisticService;
+
 public class CustomerOrder {
 
     private static int nextId = 0;
@@ -15,32 +20,33 @@ public class CustomerOrder {
     private Address deliveryAddress;
     private Address billingAddress;
     private Map<Integer, RestaurantOrder> orderMap = new HashMap<Integer, RestaurantOrder>();
+    private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
 
-    @Override
-    public String toString() {
-        return "Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress + "]"
+    public String printBill() {
+        return "Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress + "]\n"
                 + getFormattedItems();
     }
 
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
         for (RestaurantOrder restaurantOrder : orderMap.values()) {
-            for (OrderItem item : restaurantOrder.getItems()) {
-                ret.append(String.format("%n   %-25s : %3d", item.getFood().getName(), item.getQuantity()));
-            }
+            // ret.append(String.format("%n   %-25s : %3d",
+            // item.getFood().getName(), item.getQuantity()));
+            ret.append(restaurantOrder.printBill() + "\n");
         }
         return ret.toString();
     }
 
     public void addItem(OrderItem item) {
         Food food = item.getFood();
-        RestaurantOrder previousRestaurantOrder = orderMap.get(food.getRestaurant().getName());
-        if (null == previousRestaurantOrder) {
-            RestaurantOrder restaurantOrder = new RestaurantOrder(item);
-            orderMap.put(restaurantOrder.getId(), restaurantOrder);
-        } else {
-            previousRestaurantOrder.addItem(item);
+        for (RestaurantOrder restOrder : orderMap.values()) {
+            if (restOrder.getRestaurant().getName() == food.getRestaurant().getName()) {
+                restOrder.addItem(item);
+                return;
+            }
         }
+        RestaurantOrder restaurantOrder = new RestaurantOrder(item);
+        orderMap.put(restaurantOrder.getId(), restaurantOrder);
     }
 
     public String getCustomer() {

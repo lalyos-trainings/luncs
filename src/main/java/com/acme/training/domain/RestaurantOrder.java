@@ -14,10 +14,11 @@ public class RestaurantOrder {
     private Map<Integer, OrderItem> itemMap = new HashMap<Integer, OrderItem>();
 
     public RestaurantOrder(OrderItem item) {
+        restaurant = item.getFood().getRestaurant();
         itemMap.put(item.getFood().getId(), item);
     }
 
-    public List<OrderItem> getItems() {
+    public List<OrderItem> getOrderItems() {
         List<OrderItem> ret = new ArrayList(itemMap.values());
         return ret;
     }
@@ -36,9 +37,7 @@ public class RestaurantOrder {
     public int getTotal() {
         int total = 0;
         for (OrderItem item : itemMap.values()) {
-            int price = item.getFood().getPrice();
-            int quantity = item.getQuantity();
-            total += price * quantity;
+            total += item.getTotal();
         }
 
         return total;
@@ -55,4 +54,17 @@ public class RestaurantOrder {
     public int getId() {
         return id;
     }
+
+    public String printBill() {
+        return "Restaurant name: " + restaurant.getName() + getFormattedItems();
+    }
+
+    private String getFormattedItems() {
+        StringBuffer ret = new StringBuffer();
+        for (OrderItem item : itemMap.values()) {
+            ret.append(String.format("%n   %-25s : %3d", item.getFood().getName(), item.getQuantity()));
+        }
+        return ret.toString();
+    }
+
 }
