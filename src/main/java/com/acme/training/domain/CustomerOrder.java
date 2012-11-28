@@ -87,15 +87,15 @@ public class CustomerOrder {
     
     public String printBill() {
         StringBuffer bill = new StringBuffer();
-        bill.append("Customer Order: " + "test" + "\n");
+        bill.append("Customer Order: " + id + "\n");
         bill.append("Customer Name: " + customer + "\n");
         bill.append("Customer Delivery Address: " + deliveryAddress + "\n");
         for (RestaurantOrder restaurantOrder : restaurantOrders.values()) {
             bill.append(restaurantOrder.printBill());
         }
-        bill.append("\n===============\n");
-        bill.append("Grand Total: " + getTotal() + "\n");
-        bill.append("===============\n");
+        bill.append("\n===============================================\n");
+        bill.append("===== Grand Total: " + String.format("%8d", getTotal()) + " ===================\n");
+        bill.append("===============================================\n");
         return bill.toString();
         
     }

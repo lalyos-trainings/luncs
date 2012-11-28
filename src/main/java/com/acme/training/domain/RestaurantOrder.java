@@ -30,13 +30,16 @@ public class RestaurantOrder {
     }
 
     public String printBill() {
-        StringBuffer printedRestaurantOrder = new StringBuffer("===============\n");
+        StringBuffer printedRestaurantOrder = new StringBuffer("===============================================\n");
         printedRestaurantOrder.append(restaurant.toString() + "\n");
+        printedRestaurantOrder.append("===============================================\n");
+        printedRestaurantOrder.append("Food Name             Quant. Price   Unit total\n");
+        printedRestaurantOrder.append("===============================================\n");
         for (OrderItem orderItem : orderItems.values()) {
             printedRestaurantOrder.append(orderItem.printBill() + "\n");
         }
-        printedRestaurantOrder.append("===============\n");
-        printedRestaurantOrder.append("Restaurant Total: " + getTotal() + "\n");
+        printedRestaurantOrder.append("===============================================\n");
+        printedRestaurantOrder.append("Restaurant Total: " + getTotal() + "\n\n");
         return printedRestaurantOrder.toString();
     }
     

@@ -41,7 +41,7 @@ public class OrderItem {
     }
     
     public String printBill() {
-        return String.format("OrderItem: %20s %2d * %5d   [%6d]", food.getName(), quantity, food.getPrice(), getTotal());
+        return String.format("%20s %5d * %5d   [%8d]", food.getName(), quantity, food.getPrice(), getTotal());
     }
     
     

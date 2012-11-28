@@ -52,9 +52,11 @@ public class ShoppingCart implements BeanNameAware{
         return this;
     }
 
-    public void checkout() {
+    public String checkout() {
         orderService.doOrder(order);
         logger.info("checking out order:" + order.getId());
+        logger.info(order.printBill());
+        return order.getId();
     }
 
     public OrderService getOrderService() {
