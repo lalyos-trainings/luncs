@@ -16,9 +16,9 @@
 						<bean class="com.acme.domain.Food" c:id="1" c:name="csirkeszarny"
  							c:price="750" c:restaurant-ref="kfc" />
 						<bean class="com.acme.domain.Food" c:id="2" c:name="csirkelab"
-							c:price="450" c:restaurant-ref="chingChung"/>
+							c:price="450" c:restaurant-ref="kfc"/>
 						<bean class="com.acme.domain.Food" c:id="3" c:name="libamaj"
-							c:price="1550" c:restaurant-ref="chingChung"/>
+							c:price="1550" c:restaurant-ref="kfc"/>
 					</util:list>
 				</property>
 			</bean>

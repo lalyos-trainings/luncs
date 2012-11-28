@@ -13,14 +13,14 @@ public class Food{
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;
         this.price = price;
-        this.setRestaurant(restaurant);
+        this.restaurant = restaurant;
     }
     
     public Food(int id, String name, int price, Restaurant restaurant) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.setRestaurant(restaurant);
+        this.restaurant = restaurant;
     }
     
     public int getId() {
@@ -58,10 +58,6 @@ public class Food{
 
     public Restaurant getRestaurant() {
         return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
 }

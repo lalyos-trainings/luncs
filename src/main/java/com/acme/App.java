@@ -1,6 +1,10 @@
 package com.acme;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Collection;
+
+import javax.xml.ws.Endpoint;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -13,13 +17,15 @@ import com.acme.service.InMemoryStatisticService;
 import com.acme.service.MenuLister;
 import com.acme.service.OrderService;
 import com.acme.service.ShoppingCart;
+import com.acme.ws.MenuWS;
 
 public class App {
 
     /**
      * @param args
+     * @throws UnknownHostException 
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "ching.xml", "kfc.xml", "order1.xml");
 
         MenuLister lister = ctx.getBean(MenuLister.class);
@@ -69,6 +75,12 @@ public class App {
         //create Small Order classes for each restaurant and big Order(Customer Order) class for the overall Order including all small Orders(Restaurant Order)
         //orderEventet megvaltoztatni -> nem Order lesz benne, hanem CustomerOrder
         //textfile-ba leirni, ha olyan dontest kell hozni, ami nincs benne a specifikacioban
+        
+        MenuWS menuWS = ctx.getBean(MenuWS.class);
+        InetAddress localHost = InetAddress.getLocalHost();
+       //Endpoint.publish("http://"+localHost.getHostAddress()+":8080/menu", menuWS );
+        Endpoint.publish("http://localhost:8080/menu", menuWS );
     }
+    
 
 }
