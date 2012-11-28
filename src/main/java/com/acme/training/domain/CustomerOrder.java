@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Order {
+public class CustomerOrder {
     private static int nextId = 0;
 
     private String id = String.valueOf(nextId++);
