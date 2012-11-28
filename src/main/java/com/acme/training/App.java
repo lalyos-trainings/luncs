@@ -70,9 +70,9 @@ public class App
     
     public static void main(String[] args) 
     {
-//      lister();
-//        netCincer();
-        menuWS();
+      lister();
+////        netCincer();
+//        menuWS();
     }
 
 }
