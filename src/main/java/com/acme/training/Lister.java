@@ -1,0 +1,18 @@
+package com.acme.training;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.acme.training.service.MenuLister;
+
+public class Lister 
+{
+    public static void main(String[] args) 
+    {
+        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
+        
+        MenuLister lister = context.getBean(MenuLister.class);
+        lister.doList();
+    }
+
+}

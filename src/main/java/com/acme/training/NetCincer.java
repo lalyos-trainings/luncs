@@ -2,22 +2,21 @@ package com.acme.training;
 
 import java.util.List;
 
-import javax.xml.ws.Endpoint;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.acme.training.domain.Order;
 import com.acme.training.service.InMemoryAFAService;
 import com.acme.training.service.InMemoryStatisticService;
-import com.acme.training.service.MenuLister;
 import com.acme.training.service.OrderService;
 import com.acme.training.service.ShoppingCart;
-import com.acme.training.ws.MenuWS;
 
-public class App 
+public class NetCincer
 {
-    private static void netCincer()
+    /**
+     * @param args
+     */
+    public static void main(String[] args)
     {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
         
@@ -49,30 +48,6 @@ public class App
 
         InMemoryAFAService nav = context.getBean(InMemoryAFAService.class);
         nav.doAFA();
-}
-    
-    private static void lister()
-    {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
-        
-        MenuLister lister = context.getBean(MenuLister.class);
-        lister.doList();
-    }
-    
-    private static void menuWS()
-    {
-        ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml", "csingCsung.xml", "kfc.xml");
-        
-        MenuWS menuWS = context.getBean(MenuWS.class);
-        
-        Endpoint.publish("http://localhost:8081/menu", menuWS);
-    }
-    
-    public static void main(String[] args) 
-    {
-      lister();
-////        netCincer();
-//        menuWS();
     }
 
 }
