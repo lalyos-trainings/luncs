@@ -10,16 +10,16 @@ public class NavService implements ApplicationListener<OrderEvent> {
     @Value("${vat}")
     private double vat;
     private int uberGrandTotal = 0;
-    
+
     public void onApplicationEvent(OrderEvent event) {
-        int orderTotal = event.getOrder().getGrandTotal();
+        int orderTotal = event.getCustomerOrder().getTotal();
         uberGrandTotal += orderTotal;
     }
-    
+
     public int getUberGrandTotal() {
         return uberGrandTotal;
     }
-    
+
     public double getTotalVAT() {
         return uberGrandTotal * vat;
     }

@@ -1,10 +1,14 @@
-package com.acme.training.domain;
+package com.acme.training.deprecated;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.acme.training.domain.Address;
+import com.acme.training.domain.Food;
+import com.acme.training.domain.OrderItem;
 
 
 public class Order {

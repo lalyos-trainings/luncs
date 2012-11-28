@@ -1,5 +1,6 @@
 package com.acme.training.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,24 +11,29 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.OrderItem;
+import com.acme.training.domain.RestaurantOrder;
 
 @Component
-public class InMemoryStatisticService implements ApplicationListener<OrderEvent>{
+public class InMemoryStatisticService implements ApplicationListener<OrderEvent> {
 
     Map<Integer, OrderItem> foodStatistic = new HashMap<Integer, OrderItem>();
     private Logger logger = LoggerFactory.getLogger(InMemoryStatisticService.class);
 
     public void onApplicationEvent(OrderEvent event) {
-        List<OrderItem> items = event.getOrder().getItems();
+        List<OrderItem> items = new ArrayList<OrderItem>();
+        for (RestaurantOrder nextRestaurantOrder : event.getCustomerOrder().getRestaurantOrders()) {
+            items.addAll(nextRestaurantOrder.getOrderItems());
+        }
         for (OrderItem item : items) {
             doStatistic(item);
         }
     }
+
     private void doStatistic(OrderItem item) {
         logger.info("next OrderItem:" + item.toString());
 
         Integer foodId = item.getFood().getId();
-        
+
         OrderItem orderItem = foodStatistic.get(foodId);
         if (orderItem != null) {
             orderItem.addQuantity(item.getQuantity());
@@ -39,7 +45,8 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     public void printStatistic() {
         System.out.println("==== STATISTIC:");
         for (OrderItem item : foodStatistic.values()) {
-            System.out.println(String.format(" %20s [%10s] : %-4d" , item.getFood().getRestaurant().getName(), item.getFood().getName(), item.getQuantity()));
+            System.out.println(String.format(" %20s [%10s] : %-4d", item.getFood().getRestaurant().getName(), item.getFood().getName(),
+                    item.getQuantity()));
         }
     }
 }

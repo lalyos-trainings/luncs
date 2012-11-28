@@ -2,21 +2,19 @@ package com.acme.training.service;
 
 import org.springframework.context.ApplicationEvent;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
-public class OrderEvent extends ApplicationEvent{
+public class OrderEvent extends ApplicationEvent {
 
-    private Order order;
-    
-    
-    public OrderEvent(OrderService source, Order order) {
+    private CustomerOrder customerOrder;
+
+    public OrderEvent(OrderService source, CustomerOrder customerOrder) {
         super(source);
-        this.order = order;
+        this.customerOrder = customerOrder;
     }
 
-
-    public Order getOrder() {
-        return order;
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
     }
 
 }
