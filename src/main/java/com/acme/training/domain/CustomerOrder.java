@@ -9,9 +9,31 @@ public class CustomerOrder {
 	private Customer customer;
 	private Collection<RestaurantOrder> restaurantOrders = new ArrayList<RestaurantOrder>();
 
-	// ToDo: implement printing !!
 	public void printBill(){
-		System.out.println("NOT IMPLEMENTED YET");
+		System.out.println( getBillString() );
+	}
+
+	public String getBillString(){
+	    
+	    String customerStr = "Customer name: " + customer.getName() + "\n" +
+	    		" Delivery Address: " + customer.getDeliveryAddress().toString() + "\n" +
+	    		" Billing Address: " + customer.getBillingAddress().toString();
+	    
+	    
+	    String restOrdersStr = "";
+	    for ( RestaurantOrder restOrd : restaurantOrders ){
+	        restOrdersStr += restOrd.getBill(); 
+	    }
+	    
+	    
+	    String billStr = "\n ***************************** \n" +
+                " ...... \n" +
+	            customerStr + "\n" +
+	            " ...... \n" +
+	            "Restaurant Orders: " + restOrdersStr + "\n";
+	            
+	    
+	    return billStr;
 	}
 	
 	
@@ -29,7 +51,7 @@ public class CustomerOrder {
 	}
 	
 	public String getDeliveryAddress(){
-		String address = customer.getDeliveryAddress();
+		String address = customer.getDeliveryAddress().toString();
 		return address;
 	}
 	

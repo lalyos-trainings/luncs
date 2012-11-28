@@ -1,8 +1,13 @@
 package com.acme.training.service;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import org.springframework.stereotype.Component;
 
+import com.acme.training.domain.Address;
 import com.acme.training.domain.Customer;
+import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.OrderItem;
@@ -42,23 +47,32 @@ public class SandBoxRepo {
 		ro2.addItem(oi6);
 		ro2.addItem(oi7);
 		
-		System.out.println( ro1.toString() );
-		System.out.println( ro2.toString() );
+//		System.out.println( ro1.toString() );
+//		System.out.println( ro2.toString() );
+		
+		CustomerOrder co = new CustomerOrder();
+		co.setCustomer(cust1);
+		Collection<RestaurantOrder> orders1 = new ArrayList<RestaurantOrder>();
+        orders1.add(ro1);
+        orders1.add(ro2);
+		co.setRestaurantOrders( orders1 );
+		
+		co.printBill();
 	}
 	
 	private Customer createCusti1(){
 		Customer customer = new Customer();
 		customer.setName( "Bela" );
-		customer.setBillingAddress("Budapest kossuth striit");
-		customer.setDeliveryAddress("Budapest kossuth striit");
+        customer.setBillingAddress(new Address( "Kosút", "Budapest", "1111", "hu" ) );
+        customer.setDeliveryAddress( new Address( "Pusztulatos", "Budapest", "2222", "hu" ) );
 		return customer;
 	}
 
 	private Customer createCusti2(){
 		Customer customer = new Customer();
 		customer.setName( "Macika" );
-		customer.setBillingAddress("Debrecen valahol");
-		customer.setDeliveryAddress("Debrecen valahova");
+        customer.setBillingAddress(new Address( "Petyőfi", "Budapest", "1111", "hu" ) );
+        customer.setDeliveryAddress( new Address( "Bubu", "Budapest", "2222", "hu" ) );
 		return customer;
 	}
 	

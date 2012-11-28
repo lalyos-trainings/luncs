@@ -17,7 +17,6 @@ public class RestaurantOrder {
 	private Integer id = nextId++;
 	
 	public RestaurantOrder() {
-		// TODO Auto-generated constructor stub		
 	}
 	
 	public RestaurantOrder( Restaurant restaurant, Customer customer ) {
@@ -36,8 +35,19 @@ public class RestaurantOrder {
 	}
 
     public String toString() {
-        return "Order [id=" + id + " customer:" + customer.getName() + " " +customer.getDeliveryAddress() +" ]" + getFormattedItems();
+        return "Order [id=" + id + " customer:" + customer.getName() + " " +customer.getDeliveryAddress().toString() +" ]" + getFormattedItems();
     }
+    
+    public String getBill() {
+        String billStr = "--------------- \n" +
+                    " Restaurant: " + this.getRestaurant().getName() + "     " +
+                    " <Order id: " + getId() + "    Customer: " + getCustomer().getName() + " >\n" + 
+                    " Ordered foods:" + getFormattedItems() + "\n" +
+                    " Subtotal: " + getTotal() + "\n" +
+                    "--------------- \n"
+                   ;
+        return billStr;
+    }    
     
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
