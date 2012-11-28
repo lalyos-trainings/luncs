@@ -5,7 +5,10 @@ import java.net.UnknownHostException;
 
 import javax.xml.ws.Endpoint;
 
-import com.acme.training.ws.MenuWS;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.acme.training.ws.ShoppingCartWS;
 
 public class WebServiceBootStrap {
 
@@ -14,7 +17,10 @@ public class WebServiceBootStrap {
      * @throws UnknownHostException
      */
     public static void main(String[] args) throws UnknownHostException {
-        MenuWS ws = new MenuWS();
+        ApplicationContext appContext = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "chinchung.xml",
+                "orders.xml");
+
+        ShoppingCartWS ws = appContext.getBean(ShoppingCartWS.class);
 
         InetAddress localhost = InetAddress.getLocalHost();
         String address = "http://" + localhost.getHostAddress() + ":8080/menu";
