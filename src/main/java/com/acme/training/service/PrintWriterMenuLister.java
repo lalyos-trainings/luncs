@@ -21,7 +21,6 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
     private PrintWriter writer;
     
     @Autowired
-    //@Qualifier("#{restaurant.repo.type}")
     private RestaurantRepository repo;
     private ApplicationContext ctx;
     @Value("${language}")

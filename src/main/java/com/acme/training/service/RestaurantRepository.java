@@ -8,9 +8,7 @@ import com.acme.training.domain.Restaurant;
 public interface RestaurantRepository {
 
     public Collection<Restaurant> getAllRestaurants();
-    
-    Food findFoodById ( Integer id ) ;
+
+    public Food findFoodById(Integer foodId);
 
 }
-
-

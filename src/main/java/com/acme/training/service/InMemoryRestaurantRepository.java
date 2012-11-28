@@ -2,15 +2,13 @@ package com.acme.training.service;
 
 
 import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Menu;
 import com.acme.training.domain.Restaurant;
 
-@Component("repo")
-//@Qualifier("memory")
+@Component("memoryRepo")
 public class InMemoryRestaurantRepository extends AbstractRestaurantRepository implements BeanNameAware {
 
     public InMemoryRestaurantRepository() {
@@ -28,9 +26,9 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("pacal", 500));
-        m1.getFoods().add(new Food("toltott kaposzta",750));
-        m1.getFoods().add(new Food("bableves", 690));
+        m1.getFoods().add(new Food("pacal", 500, r1));
+        m1.getFoods().add(new Food("toltott kaposzta",750, r1));
+        m1.getFoods().add(new Food("bableves", 690, r1));
         return r1;
     }
 
@@ -39,9 +37,9 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository i
         Menu m1 = new Menu();
         r1.setMenu(m1);
         m1.setWeek(34);
-        m1.getFoods().add(new Food("lencse leves", 400));
-        m1.getFoods().add(new Food("gyros",850));
-        m1.getFoods().add(new Food("baklava", 300));
+        m1.getFoods().add(new Food("lencse leves", 400, r1));
+        m1.getFoods().add(new Food("gyros",850 ,r1));
+        m1.getFoods().add(new Food("baklava", 300 , r1));
         return r1;
     }
 }

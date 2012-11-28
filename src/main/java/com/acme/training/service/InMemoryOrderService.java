@@ -4,24 +4,36 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
-@Component("memory")
+@Component
 public class InMemoryOrderService implements OrderService {
 
-    Map<String, Order> orders = new HashMap<String, Order>();
+    Logger logger = LoggerFactory.getLogger(InMemoryOrderService.class);
+    Map<String, CustomerOrder> orders = new HashMap<String, CustomerOrder>();
     
-    public void doOrder(Order order) {
+    @Autowired
+    private ApplicationContext context;
+    
+    public void doOrder(CustomerOrder order) {
+        logger.info("new Order for:" + order.getCustomer());
         orders.put(order.getId(), order);
+        logger.info("# of order:" + orders.keySet().size());
+        OrderEvent event = new OrderEvent(this, order);
+        context.publishEvent(event);
     }
     
-    public Collection<Order> getAllOrder() {
+    public Collection<CustomerOrder> getAllOrder() {
         return orders.values();
     }
     
-    public Order findById(String id) {
+    public CustomerOrder findById(String id) {
         return orders.get(id);
     }
 }

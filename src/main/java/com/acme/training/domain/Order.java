@@ -8,7 +8,10 @@ import java.util.Map;
 
 
 public class Order {
-    private String id;
+    
+    private static int nextId = 0;
+    
+    private String id = String.valueOf(nextId++);
     private String customer;
     private Address deliveryAddress;
     private Address billingAddress;

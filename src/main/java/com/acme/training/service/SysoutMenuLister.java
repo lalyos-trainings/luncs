@@ -4,6 +4,7 @@ import java.io.PrintWriter;
 
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class SysoutMenuLister extends PrintWriterMenuLister {
 
@@ -11,5 +12,3 @@ public class SysoutMenuLister extends PrintWriterMenuLister {
         super(new PrintWriter(System.out));
     }
 }
-
-
