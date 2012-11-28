@@ -52,8 +52,6 @@ public class RestaurantOrder {
     public void printBill() {
         System.out.println("---------- Restaurant: " + restaurant.getName() + " ----------");
         for (OrderItem item : itemMap.values()) {
-            int price = item.getFood().getPrice();
-            int quantity = item.getQuantity();
             System.out.println(String.format("%-20s %6dx%d  %11d", item.getFood().getName(), item.getQuantity(), item.getFood().getPrice(), item.getQuantity() * item.getFood().getPrice()));
         }
         System.out.println(String.format("%s %23d","Restaurant subtotal:",getTotal()));

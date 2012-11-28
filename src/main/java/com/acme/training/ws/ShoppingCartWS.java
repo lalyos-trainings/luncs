@@ -1,6 +1,5 @@
 package com.acme.training.ws;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,10 +16,8 @@ import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
-import com.acme.training.domain.Restaurant;
 import com.acme.training.service.InMemoryShoppingCart;
 import com.acme.training.service.OrderService;
-import com.acme.training.service.RestaurantRepository;
 import com.acme.training.service.ShoppingCart;
 
 @WebService
