@@ -31,4 +31,8 @@ public class OrderItem {
     public void addQuantity(int q) {
         this.quantity += q;
     }
+
+    public int getTotal() {
+        return (food.getPrice() * quantity);
+    }
 }
