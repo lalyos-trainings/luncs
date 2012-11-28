@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.Order;
+import com.acme.training.domain.CustomerOrder;
 
 @Component
 public class InMemoryOrderService implements OrderService {
-    public List<Order> orders = new LinkedList<Order>();
+    public List<CustomerOrder> orders = new LinkedList<CustomerOrder>();
     @Autowired
     private ApplicationContext context;
 
-    public void doOrder(Order o) {
+    public void doOrder(CustomerOrder o) {
         orders.add(o);
         OrderEvent oe = new OrderEvent(this, o);
         context.publishEvent(oe);
     }
 
-    public List<Order> getOrders() {
+    public List<CustomerOrder> getOrders() {
         return orders;
     }
 

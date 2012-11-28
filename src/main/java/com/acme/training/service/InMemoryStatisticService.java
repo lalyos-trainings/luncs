@@ -14,13 +14,15 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     Map<Integer, OrderItem> foodStatistic = new HashMap<Integer, OrderItem>();
 
     public void onApplicationEvent(OrderEvent event) {
-        for (OrderItem i : event.getOrder().getOrderItems()) {
+        for (OrderItem i : event.getOrder()
+                                .getItems()) {
             doStatistic(i);
         }
     }
 
     private void doStatistic(OrderItem i) {
-        Integer foodId = i.getFood().getId();
+        Integer foodId = i.getFood()
+                          .getId();
 
         OrderItem orderItem = foodStatistic.get(foodId);
         if (orderItem != null) {
@@ -33,8 +35,10 @@ public class InMemoryStatisticService implements ApplicationListener<OrderEvent>
     public void printStatistics() {
         System.out.println("=== STATISTICS");
         for (OrderItem oi : foodStatistic.values()) {
-            System.out.println(String.format("%20s - %-25s %d", oi.getFood().getRestaurant().getName(), oi.getFood()
-                    .getName(), oi.getQuantity()));
+            System.out.println(String.format("%20s - %-25s %d", oi.getFood()
+                                                                  .getRestaurant()
+                                                                  .getName(), oi.getFood()
+                                                                                .getName(), oi.getQuantity()));
         }
     }
 }

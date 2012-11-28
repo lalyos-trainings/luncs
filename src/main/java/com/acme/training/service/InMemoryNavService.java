@@ -17,14 +17,17 @@ public class InMemoryNavService implements ApplicationListener<OrderEvent> {
     private double vat;
 
     public void onApplicationEvent(OrderEvent oe) {
-        for (OrderItem oi : oe.getOrder().getOrderItems()) {
+        for (OrderItem oi : oe.getOrder()
+                              .getItems()) {
             handleOrderItem(oi);
         }
     }
 
     private void handleOrderItem(OrderItem oi) {
-        Restaurant r = oi.getFood().getRestaurant();
-        Integer price = oi.getQuantity() * oi.getFood().getPrice();
+        Restaurant r = oi.getFood()
+                         .getRestaurant();
+        Integer price = oi.getQuantity() * oi.getFood()
+                                             .getPrice();
         if (rests.containsKey(r)) {
             Integer oldPrice = rests.get(r);
             price += oldPrice;
