@@ -54,16 +54,29 @@ public class CustomerOrder {
 
 	public String getBillString(){
 	    
-	    String customerStr = "Customer name: " + customer.getName() + "\n" +
-	    		" Delivery Address: " + customer.getDeliveryAddress().toString() + "\n" +
-	    		" Billing Address: " + customer.getBillingAddress().toString();
-	    
-	    
-	    String restOrdersStr = "";
-	    for ( RestaurantOrder restOrd : restaurantOrders.values() ){
-	        restOrdersStr += restOrd.getBill(); 
+	    // Print customer data
+	    String customerStr = "";
+	    try{
+    	    customerStr = "Customer name: " + customer.getName() + "\n" +
+    	    		" Delivery Address: " + customer.getDeliveryAddress().toString() + "\n" +
+    	    		" Billing Address: " + customer.getBillingAddress().toString();
+	    }catch(Exception e){
+            customerStr = "Customer name: " + customer.getName() + "\n" +
+                    " Delivery Address:  Not set\n" +
+                    " Billing Address: Not set\n";
 	    }
-	    
+
+	    // Print restaurant orders 
+	    String restOrdersStr = "";
+	    int totalPrice = 0;
+	    try{
+    	    for ( RestaurantOrder restOrd : restaurantOrders.values() ){
+    	        restOrdersStr += restOrd.getBill(); 
+    	    }
+    	    totalPrice = getTotal();
+	    }catch(Exception e){
+	        restOrdersStr = "Restaurant orders not found!";
+	    }
 	    
 	    String billStr = "\n ***************************** \n" +
                 " ...... \n" +
@@ -71,8 +84,7 @@ public class CustomerOrder {
 	            " ...... \n" +
 	            "Restaurant Orders: " + restOrdersStr + "\n" +
                 " ...... \n" +
-	            "Full total: " + getTotal() + "Ft";
-	            
+	            "Full total: " + totalPrice + "Ft";
 	    
 	    return billStr;
 	}

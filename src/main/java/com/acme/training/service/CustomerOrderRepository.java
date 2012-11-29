@@ -45,7 +45,8 @@ public class CustomerOrderRepository {
     }
     
     public CustomerOrder getCustomerOrderById( Integer id ){
-        return customerOrders.get( id );
+        CustomerOrder co = customerOrders.get( id );
+        return co;
     }
     
     public Map<Integer, CustomerOrder> getCustomerOrders() {

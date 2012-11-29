@@ -84,7 +84,7 @@ public class ShoppingCartWS {
         Customer customer = new Customer();
         customer.setDeliveryAddress( new Address(street, city, zip, country) );
 //        customerOrder.setCustomer(customer);
-        return "The new delivery address:";
+        return "The new delivery address set";
     }
     
     public int checkout( Integer scId ){
@@ -94,11 +94,13 @@ public class ShoppingCartWS {
     }
    
 
-    public String getBill( Integer scId ){
+    public String getBill( @WebParam(name="scId") Integer scId ){
         String billString = "";
         try{
+            logger.info("getBill: Customer:" + custRepo.getCustomerOrderById(scId) + " Bill:" +custRepo.getCustomerOrderById(scId).getBillString() );
             billString = custRepo.getCustomerOrderById(scId).getBillString();
         }catch(Exception e){
+            logger.info("getBill: NOT FOUND");
             billString = "Shopping cart not found - you don't have to pay"; 
         }
         
