@@ -1,5 +1,7 @@
 package com.acme.training.service;
 
+import java.io.FileNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanNameAware;
@@ -12,6 +14,7 @@ import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.OrderItem;
+import com.acme.training.exception.FoodNotFoundException;
 
 @Component("kart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -43,10 +46,15 @@ public class ShoppingCart implements BeanNameAware {
     }
 
     public ShoppingCart withFood(int id) {
-        return withFood(id, 1);
+        try {
+            return withFood(id, 1);
+        } catch (FoodNotFoundException e) {
+            logger.info(e.getMessage());
+        }
+        return this;
     }
 
-    public ShoppingCart withFood(int id, int quantity) {
+    public ShoppingCart withFood(int id, int quantity) throws FoodNotFoundException {
         Food food = repo.findFoodById(id);
         customerOrder.addOrderItem(new OrderItem(quantity, food));
         return this;

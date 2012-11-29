@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.acme.training.domain.Address;
+import com.acme.training.exception.FoodNotFoundException;
 import com.acme.training.service.ShoppingCart;
 
 @Component
@@ -50,10 +51,15 @@ public class InMemoryShoppingCartWS implements ShoppingCartWS {
 
     @WebMethod
     @Override
-    public void addFood(int shoppingCartId, int foodId, int quantity) {
+    public String addFood(int shoppingCartId, int foodId, int quantity) {
         ShoppingCart shoppingCart = shoppingCarts.get(shoppingCartId);
+        try{
         shoppingCarts.put(id, shoppingCart.withFood(foodId, quantity));
+        } catch (FoodNotFoundException e){
+            return e.getMessage();
+        }
         logger.info("Food with foodId: "+foodId+" added to cart with id: "+shoppingCartId);
+        return "OK";
     }
 
     @WebMethod
