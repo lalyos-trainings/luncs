@@ -3,6 +3,8 @@ package com.acme.training.domain;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,14 +12,15 @@ import org.springframework.stereotype.Component;
 public class RestaurantOrder {
 
 	private static int nextId = 0;
+    private Logger logger = LoggerFactory.getLogger( CustomerOrder.class );
 	
 	private Restaurant restaurant;
 	private Map<Integer,OrderItem> orderItemMap = new HashMap<Integer, OrderItem>();
 	private Customer customer;
 	private Integer id = nextId++;
 	
-	public RestaurantOrder() {
-	}
+//	public RestaurantOrder() {
+//	}
 	
 	public RestaurantOrder( Restaurant restaurant, Customer customer ) {
 		this.restaurant = restaurant;
@@ -25,6 +28,7 @@ public class RestaurantOrder {
 	}
 	
 	public void addItem( OrderItem inItem ){
+	    logger.info("addItem: inItem:" + inItem + " food name:" + inItem.getFood().getName() );
 		Food food = inItem.getFood();
 		OrderItem item = orderItemMap.get( food.getId() );
 		if ( item !=null ){
@@ -35,7 +39,13 @@ public class RestaurantOrder {
 	}
 
     public String toString() {
-        return "Order [id=" + id + " customer:" + customer.getName() + " " +customer.getDeliveryAddress().toString() +" ]" + getFormattedItems();
+        String tmp = "";
+        try{
+            tmp = "Order [id=" + id + " customer:" + customer.getName() + " " +customer.getDeliveryAddress().toString() +" ]" + getFormattedItems();
+        }catch( Exception e ){
+            tmp = "cannot create tostring";
+        }
+        return tmp;
     }
     
     public String getBill() {

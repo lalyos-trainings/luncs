@@ -1,12 +1,15 @@
 package com.acme.training.domain;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CustomerOrder {
 	
     private static int nextId = 0;
+    private Logger logger = LoggerFactory.getLogger( CustomerOrder.class );
     
 	private Customer customer;
 	// rest name, order
@@ -29,20 +32,23 @@ public class CustomerOrder {
      * @param quantity
      */
     public void addFood( Food food, Integer quantity ){
-        RestaurantOrder properRO = getRestaurantOrderByName ( food.getRestaurant().getName() );
-        properRO.addItem( new OrderItem(quantity, food) );
+
+        String restaurantName = food.getRestaurant().getName();
+        
+        // get restaurantorder by restaurantname
+        RestaurantOrder ro = restaurantOrders.get( restaurantName );
+        if ( ro==null ){
+            ro = new RestaurantOrder( food.getRestaurant(), this.customer );
+            restaurantOrders.put( restaurantName, ro);
+            logger.info( "getRestaurantOrderByName : New RestaurantOrder added" );
+        }else{
+            logger.info( "getRestaurantOrderByName : RestaurantOrder found" );
+        }
+        
+        logger.info("addFood: Restaurant order:" + ro.hashCode() );
+        ro.addItem( new OrderItem(quantity, food) );
     }
     
-    private RestaurantOrder getRestaurantOrderByName( String name ){
-        RestaurantOrder ro = restaurantOrders.get( name );
-        if ( ro==null ){
-            ro = new RestaurantOrder();
-            restaurantOrders.put(name, ro);
-        }else{
-            
-        }
-        return ro;
-    }
     
 	public int getId(){
 	    return id;

@@ -26,7 +26,7 @@ public class ShoppingCartWS {
     @Autowired
     private CustomerOrderRepository custRepo;
     
-    // much simpler to work from a "foods" bean 
+    // it's much simplier to work from a standalone "foods" bean 
     @Autowired
     private WSFoodRepository foodRepo;
     
@@ -71,7 +71,7 @@ public class ShoppingCartWS {
                 co.addFood( food, quantity );
                 logger.info( "addFood: Food added succesfully" );
             }catch( Exception e){
-                logger.info( "addFood: Food not found with id" );
+                logger.info( "addFood: unsuccesful" );
                 return "Food not found by ID";
             }
             return "Food added";
