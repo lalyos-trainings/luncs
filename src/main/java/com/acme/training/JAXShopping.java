@@ -5,7 +5,6 @@ import java.net.UnknownHostException;
 
 import javax.xml.ws.Endpoint;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

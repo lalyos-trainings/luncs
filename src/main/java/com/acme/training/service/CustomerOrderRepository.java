@@ -21,6 +21,13 @@ public class CustomerOrderRepository {
     public CustomerOrderRepository() {
         
     }
+
+    
+    // 
+    public int addCustomerOrder( CustomerOrder co ){
+        customerOrdersByName.put( co.getCustomer().getName() , co );
+        return co.getId();
+    }
     
     // start a new order and return with id
     public int addCustomerOrder( String customerName, String street, String city, String zip, String country){

@@ -29,8 +29,19 @@ public class CustomerOrder {
      * @param quantity
      */
     public void addFood( Food food, Integer quantity ){
-        RestaurantOrder properRO = restaurantOrders.get( food.getRestaurant().getName() );
+        RestaurantOrder properRO = getRestaurantOrderByName ( food.getRestaurant().getName() );
         properRO.addItem( new OrderItem(quantity, food) );
+    }
+    
+    private RestaurantOrder getRestaurantOrderByName( String name ){
+        RestaurantOrder ro = restaurantOrders.get( name );
+        if ( ro==null ){
+            ro = new RestaurantOrder();
+            restaurantOrders.put(name, ro);
+        }else{
+            
+        }
+        return ro;
     }
     
 	public int getId(){
