@@ -79,7 +79,9 @@ public class JAXClient {
         System.out.println("make your choice: ");
         String choice = userInput();
         if ( choice.charAt(0) != 'm') {
-            cartId = menu.addFood(Integer.parseInt(choice), 1, cartId);
+            System.out.println("how many?");
+            int count = Integer.parseInt(userInput());
+            cartId = menu.addFood(Integer.parseInt(choice), count, cartId);
         }
     }
 
