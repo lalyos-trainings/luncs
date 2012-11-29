@@ -15,25 +15,27 @@ import com.acme.training.domain.OrderItem;
 
 @Component("kart")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ShoppingCart implements BeanNameAware{
+public class ShoppingCart implements BeanNameAware {
 
     private OrderService orderService;
     @Autowired
-    private RestaurantRepository repo;    
+    private RestaurantRepository repo;
     private CustomerOrder order;
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     private ShoppingCart() {
         this.order = new CustomerOrder();
     }
-    
+
     public ShoppingCart withCustomer(String customer) {
         order.setCustomer(customer);
         return this;
     }
-    
+
     public ShoppingCart withDeliveryAddress(Address deliveryAddress) {
         order.setDeliveryAddress(deliveryAddress);
+        logger.info("CustomerId: " + order.getId() + " Delivery address set to :" + deliveryAddress.getZip() + " " + deliveryAddress.getCountry() + ", " + deliveryAddress.getCity() + " "
+                + deliveryAddress.getStreet());
         return this;
     }
 
@@ -49,6 +51,7 @@ public class ShoppingCart implements BeanNameAware{
     public ShoppingCart withFood(int id, int quantity) {
         Food food = repo.findFoodById(id);
         order.addItem(new OrderItem(quantity, food));
+        logger.info("CustomerId: " + order.getId() + " Added " + quantity + " * " + id + " to cart.");
         return this;
     }
 
@@ -71,7 +74,7 @@ public class ShoppingCart implements BeanNameAware{
         logger.info("my name is: " + name);
         logger.info("my hashCode is: " + hashCode());
     }
-    
+
     public String getCustomer() {
         return order.getCustomer();
     }

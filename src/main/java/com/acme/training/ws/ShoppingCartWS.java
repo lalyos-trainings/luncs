@@ -35,19 +35,21 @@ public class ShoppingCartWS {
     }
     
     @WebMethod
-    public void addFood(int shoppingCartId, int foodId, int quantity) {
+    public String addFood(int shoppingCartId, int foodId, int quantity) {
         ShoppingCart cart = carts.get(shoppingCartId);
         if (cart != null) {
             cart.withFood(foodId, quantity);
         }
+        return quantity + " * " + foodId + " added to cart " + shoppingCartId;
     }
     
     @WebMethod
-    public void setDeliveryAddress(int shoppingCartId, String city, String street, String zip, String country) {
+    public String setDeliveryAddress(int shoppingCartId, String city, String street, String zip, String country) {
         ShoppingCart cart = carts.get(shoppingCartId);
         if (cart != null) {
             cart.withDeliveryAddress(new Address(street, city, zip, country));
         }
+        return "Delivery address (" + zip + ", " + city + " " + street + ", " + country + " set for cart " + shoppingCartId;
     }
     
     @WebMethod
@@ -56,6 +58,6 @@ public class ShoppingCartWS {
         if (cart != null) {
             return cart.checkout();
         }
-        return null;
+        return "Checkout failed";
     }
 }

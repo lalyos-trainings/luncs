@@ -24,7 +24,10 @@ public class CustomerOrder {
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
         for (RestaurantOrder restaurantOrder : restaurantOrders.values()) {
-//            ret.append(String.format("%n   %-25s : %3d", restaurantOrder.getFood().getName(), restaurantOrder.getQuantity()));
+            ret.append(restaurantOrder.getRestaurant().toString());
+            for (OrderItem orderItem : restaurantOrder.getOrderItems().values()) {
+                ret.append(String.format("%n   %-25s : %3d", orderItem.getFood().getName(), orderItem.getQuantity()));
+            }
         }
         return ret.toString();
     }
