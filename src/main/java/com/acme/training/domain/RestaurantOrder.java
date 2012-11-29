@@ -18,9 +18,7 @@ public class RestaurantOrder {
 	private Map<Integer,OrderItem> orderItemMap = new HashMap<Integer, OrderItem>();
 	private Customer customer;
 	private Integer id = nextId++;
-	
-//	public RestaurantOrder() {
-//	}
+
 	
 	public RestaurantOrder( Restaurant restaurant, Customer customer ) {
 		this.restaurant = restaurant;
@@ -62,7 +60,7 @@ public class RestaurantOrder {
     private String getFormattedItems() {
         StringBuffer ret = new StringBuffer();
         for (OrderItem item : orderItemMap.values()) {
-            ret.append(String.format("%n   %-25s : %3d pcs", item.getFood().getName(), item.getQuantity()));
+            ret.append(String.format("%n   %-25s : %3d pcs  = %2$2d x %4d Ft", item.getFood().getName(), item.getQuantity(), item.getFood().getPrice() ));
         }
         return ret.toString();
     }

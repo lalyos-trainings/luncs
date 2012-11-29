@@ -11,8 +11,8 @@
     <bean c:id="201" c:name="csirkeszarny" c:price="750" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
     <bean c:id="202" c:name="csirkelab" c:price="450" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
     <bean c:id="203" c:name="libamaj" c:price="1550" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
-    <bean c:id="101" c:name="" c:price="750" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
-    <bean c:id="102" c:name="" c:price="450" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
-    <bean c:id="103" c:name="" c:price="1550" c:restaurant-ref="kfc" class="com.acme.training.domain.Food" />
+    <bean c:id="101" c:name="répa" c:price="750" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
+    <bean c:id="102" c:name="citrom" c:price="450" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
+    <bean c:id="103" c:name="banán" c:price="1550" c:restaurant-ref="csing-csang" class="com.acme.training.domain.Food" />
 
 </beans>
