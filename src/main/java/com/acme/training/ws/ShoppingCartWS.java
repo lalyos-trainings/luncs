@@ -6,7 +6,6 @@ import javax.jws.WebService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.acme.training.domain.CustomerOrder;
 import com.acme.training.service.OrderService;
 
 @Component
@@ -31,8 +30,13 @@ public class ShoppingCartWS {
     }
     
     @WebMethod
-    public void addFood(int sCId, int foodId, int quantity){
+    public void addFoodByID(int sCId, int foodId, int quantity){
         os.addFood(sCId, foodId, quantity);
+    }
+    
+    @WebMethod
+    public void addFoodByName(int sCId, String restiName, String foodName, int quantity){
+        os.addFood(sCId, restiName, foodName, quantity);
     }
     
     @WebMethod

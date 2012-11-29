@@ -31,8 +31,9 @@ public class InMemoryOrderService implements OrderService {
         shoppingCarts = new HashMap<Integer, ShoppingCart>();
     }
 
-    public void doOrder(CustomerOrder order) {
+    public synchronized void doOrder(CustomerOrder order) {
         orders.put(order.getCustomer(), order);
+        System.out.println(order);
         OrderEvent event = new OrderEvent(this, order);
         context.publishEvent(event);
     }
@@ -69,6 +70,10 @@ public class InMemoryOrderService implements OrderService {
 
     public void addFood(int sCId, int foodId, int quantity) {
         shoppingCarts.get(sCId).withFood(foodId, quantity);
+    }
+
+    public void addFood(int sCId, String restiName, String foodName, int quantity) {
+        shoppingCarts.get(sCId).withFood(restiName, foodName, quantity);
     }
 
     public void setDeliveryAddress(int sCId, String city, String street, String zip, String country) {

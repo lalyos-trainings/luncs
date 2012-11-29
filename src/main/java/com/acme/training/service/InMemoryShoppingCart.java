@@ -75,7 +75,6 @@ public class InMemoryShoppingCart implements ShoppingCart, BeanNameAware {
 
     public CustomerOrder checkOut(){
         orderService.doOrder(order);
-        System.out.println(order);
         return order;
     }
 

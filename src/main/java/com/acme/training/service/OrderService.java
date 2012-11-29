@@ -13,6 +13,7 @@ public interface OrderService {
     public ShoppingCart getShoppingCart();
     public int getShoppingCartId(String customer);
     public void addFood(int sCId, int foodId, int quantity);
+    public void addFood(int sCId, String restiName, String foodName, int quantity);
     public void setDeliveryAddress(int sCId, String city, String street, String zip, String country);
     public void setBillingAddress(int sCId, String city, String street, String zip, String country);
     public void setCustomer(int sCId, String customer);
