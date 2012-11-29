@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd"
+	default-autowire="no"
+>
+
+
+	<!-- egybe kell tenni azokat a beaneket, amelyek körbe hivatkoznak, mint 
+		ez, mert végtelen exception-t kapsz -->
+
+	<bean id="kfc" class="com.acme.training.domain.Restaurant">
+		<constructor-arg value="KFC"></constructor-arg>
+		<constructor-arg value="Kentaki"></constructor-arg>
+		<constructor-arg value="1"></constructor-arg>
+		<property name="menu">
+			<bean id="kfc-menu" class="com.acme.training.domain.Menu">
+				<property name="foods">
+					<util:list>
+						<bean class="com.acme.training.domain.Food" c:name="csirkeszar"
+							c:price="500" c:restaurant-ref="kfc" />
+						<bean class="com.acme.training.domain.Food" c:name="csirkelab"
+							c:price="450" c:restaurant-ref="kfc" />
+						<bean class="com.acme.training.domain.Food" c:name="libamaj"
+							c:price="1500" c:restaurant-ref="kfc" />
+					</util:list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- ez nem megy annotaciobol, mert akkor minden aron autowireel -->
+	
+	<bean id="shopingcart" class="com.acme.training.service.ShoppingCart" scope="prototype" />
+
+</beans>

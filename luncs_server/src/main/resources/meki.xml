@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+	default-autowire="no"
+>
+
+	<context:property-placeholder location="classpath:meki.properties" />
+
+	<bean id="meki" class="com.acme.training.domain.Restaurant">
+		<constructor-arg value="${meki.name}"></constructor-arg>
+		<constructor-arg value="${meki.address}"></constructor-arg>
+		<constructor-arg value="${meki.zip}"></constructor-arg>
+		<property name="menu">
+			<bean id="meki-menu" class="com.acme.training.domain.Menu">
+				<property name="foods">
+					<util:list>
+						<bean class="com.acme.training.domain.Food" c:name="sajtos burger"
+							c:price="500" c:restaurant-ref="meki" />
+						<bean class="com.acme.training.domain.Food" c:name="csirke burger"
+							c:price="450" c:restaurant-ref="meki" />
+						<bean class="com.acme.training.domain.Food" c:name="sajtos csirke burger"
+							c:price="600" c:restaurant-ref="meki" />
+					</util:list>
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<!--bean id="meki-menu" class="com.acme.training.domain.Menu"> <property 
+		name="foods"> <util:list> <bean class="com.acme.training.domain.Food" c:name="sajtos 
+		burger" c:price="500" c:restaurant-ref="meki" /> <bean class="com.acme.training.domain.Food" 
+		c:name="csirke burger" c:price="450" c:restaurant-ref="meki" /> <bean class="com.acme.training.domain.Food" 
+		c:name="sajtos csirke burger" c:price="600" c:restaurant-ref="meki" /> </util:list> 
+		</property> </bean -->
+
+
+</beans>
