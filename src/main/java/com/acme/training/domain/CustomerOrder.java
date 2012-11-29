@@ -11,14 +11,27 @@ import com.acme.training.domain.Restaurant;
 
 public class CustomerOrder {
     private static int nextId = 0;
+    
     private String id = String.valueOf(nextId++);
-
+    private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
     private String customer;
     private Address deliveryAddress;
+    
+    public Address getDeliveryAddress() {
+        return deliveryAddress;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public List<OrderItem> getOrderItemList() {
+        return orderItemList;
+    }
+
     private Address billingAddress;
     private Map<String, RestaurantOrder> restaurantOrders;
     
-    private List<OrderItem> orderItemList = new ArrayList<OrderItem>();
     
     public List<OrderItem> getOrderItemsList () {
         return this.orderItemList;

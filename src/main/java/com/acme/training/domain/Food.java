@@ -2,10 +2,12 @@ package com.acme.training.domain;
 
 public class Food {
     private String name;
-    private String description;
+    private String description="desc-" + i++;
     private int price;
     private Integer id;
     private Restaurant restaurant;
+    
+    private static int i = 0;
     
     public Food(String name, int price, Restaurant restaurant) {
         this.name = name;

@@ -18,9 +18,8 @@ import com.acme.training.domain.RestaurantOrder;
 
 public class NetCincer {
 
-    /**
-* @param args
-*/
+
+
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
         

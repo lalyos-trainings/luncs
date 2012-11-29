@@ -4,6 +4,8 @@ public class OrderItem {
     private int quantity;
     private Food food;
     
+    public OrderItem () {}
+    
     public OrderItem(int quantity, Food food) {
         super();
         this.quantity = quantity;

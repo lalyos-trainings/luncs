@@ -21,6 +21,10 @@ public class InMemoryOrderService implements OrderService {
     @Autowired
     private ApplicationContext context;
     
+    
+    public InMemoryOrderService () {}
+    
+    
     public void doOrder(CustomerOrder order) {
         logger.info("new Order for:" + order.getCustomer());
         orders.put(order.getId(), order);

@@ -23,6 +23,11 @@ public class ShoppingCart implements BeanNameAware{
     @Autowired
     private RestaurantRepository repo;    
     private CustomerOrder order;
+    
+    public CustomerOrder getOrder() {
+        return order;
+    }
+
     private Logger logger = LoggerFactory.getLogger(ShoppingCart.class);
 
     
