@@ -99,7 +99,6 @@ public class ShoppingCartWS {
     @WebMethod    
     public void printData() {
         OrderService orderService = context.getBean(OrderService.class);
-        System.out.println("This OS is "+orderService+" hashcode: "+orderService.hashCode());
         for (CustomerOrder order : orderService.getAllOrder()) {
             System.out.println("- next order:" + order);
             order.printBill();

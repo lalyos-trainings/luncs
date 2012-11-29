@@ -15,7 +15,6 @@ public class NetCincer {
 
     public static void main(String[] args) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml", "kfc.xml", "csing.xml");
-        
         ShoppingCart cart = ctx.getBean(InMemoryShoppingCart.class);
         cart.withCustomer("lalyos")
         .withDeliveryAddress(new Address("Futo utca 47", "Budapest", "1082", "H"))
@@ -33,7 +32,6 @@ public class NetCincer {
         .checkout();
 
         OrderService orderService = ctx.getBean(OrderService.class);
-        System.out.println("This OS is "+orderService+" hashcode: "+orderService.hashCode());
         for (CustomerOrder order : orderService.getAllOrder()) {
             System.out.println("- next order:" + order);
             order.printBill();
