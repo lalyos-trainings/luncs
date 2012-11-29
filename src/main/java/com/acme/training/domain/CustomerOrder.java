@@ -90,13 +90,21 @@ public class CustomerOrder {
     }
         
     public void addItem(OrderItem orderItem) {
-                if(restaurantOrders.isEmpty()){restaurantOrders.add(new RestaurantOrder(orderItem.getFood().getRestaurant()));}
+        RestaurantOrder rO = null;
+               // if(restaurantOrders.isEmpty()){restaurantOrders.add(new RestaurantOrder(orderItem.getFood().getRestaurant()));}
+              //  if(restaurantOrders.contains(new RestaurantOrder(orderItem.getFood().getRestaurant()))){restaurantOrders.add(new RestaurantOrder(orderItem.getFood().getRestaurant()));}
         for (RestaurantOrder restaurantOrder : restaurantOrders) {
             if(restaurantOrder.getRestaurant().getName().equals(orderItem.getFood().getRestaurant().getName())){
-                restaurantOrder.addItem(orderItem);
+                //restaurantOrder.addItem(orderItem);
+                rO = restaurantOrder;
             }
-            
         }
         
+        if(rO == null){
+                rO = new RestaurantOrder(orderItem.getFood().getRestaurant());
+                restaurantOrders.add(rO);
+        }
+        
+        rO.addItem(orderItem);
     }
-}
+  }
