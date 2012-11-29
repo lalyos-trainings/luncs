@@ -1,6 +1,7 @@
 package com.acme.training.domain;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +20,29 @@ public class CustomerOrder {
     private Address billingAddress;
     private Map<Restaurant, RestaurantOrder> restaurantOrders = new HashMap<Restaurant, RestaurantOrder>();
     private int total = 0;
-    private Status status = Status.CREATED;
+    private Status status;
+    private Date creationTime;
+    private Date paymentTime;
+     
     
+    public CustomerOrder() {
+        creationTime = new Date();
+        status = Status.CREATED;
+    }
+
+    public Date getCreationTime() {
+        return creationTime;
+    }
+
+    public Date getPaymentTime() {
+        return paymentTime;
+    }
+    
+    public void pay() {
+        status = Status.PAID;
+        paymentTime = new Date();
+    }
+
     public void addOrderItem(OrderItem orderItem) {
         Restaurant restaurant = orderItem.getFood().getRestaurant();
         RestaurantOrder previousOrder = restaurantOrders.get(restaurant);
@@ -89,6 +111,10 @@ public class CustomerOrder {
     @Override
     public String toString() {
         return "CustomerOrder [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress
-                + "]" + printBill() + String.format("%n %n Total bill for customer: %s",getTotal());
+                + ", billingAddress=" + billingAddress + ", total=" + total
+                + ", status=" + status + ", creationTime=" + creationTime + ", paymentTime=" + paymentTime + "]"
+                + printBill() + String.format("%n %n Total bill for customer: %s", getTotal());
     }
+
+    
 }
