@@ -7,6 +7,7 @@ public class RestaurantOrder {
 	private Restaurant restaurant;
 	private List<OrderItem> orderItems;
 	
+	
 	public RestaurantOrder(Restaurant restaurant) {
 		orderItems = new ArrayList<OrderItem>();
 		this.restaurant = restaurant;
@@ -25,19 +26,25 @@ public class RestaurantOrder {
 		return total;
 	}
 	
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+	
 	public String printBill() {
 		StringBuilder sb = new StringBuilder();
-		sb.append("Name of the restaurant: " + restaurant.getName())
-				.append("\nOrders:");
+		sb.append(" Name of the restaurant: " + restaurant.getName())
+				.append("\n Orders:\n");
 		for (OrderItem item : orderItems) {
-			sb.append(item.getFood().getName())
+			sb.append("".format("%20s", item.getFood().getName()))
 				.append(" - nr.: ")
 				.append(item.getQuantity())
-				.append(" | ")
+				.append(" * ")
+				.append(item.getFood().getPrice())
+				.append(" Ft (")
 				.append(item.getTotal())
-				.append(" Ft\n");
+				.append(" Ft)\n");
 		}
-		sb.append("------------------------\nTotal: ")
+		sb.append("------------------------\n Total: ")
 		.append(getTotal())
 		.append("\n\n");
 		

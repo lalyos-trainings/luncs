@@ -51,10 +51,7 @@ public class ShoppingCart {
         Food food = repo.findFoodById(id);
         Restaurant restaurant = food.getRestaurant();
         
-        RestaurantOrder restaurantOrder = new RestaurantOrder(restaurant);
-        OrderItem orderItem = new OrderItem(quantity, food);
-		restaurantOrder.getOrderItems().add(orderItem);
-		customerOrder.getRestaurantOrders().add(restaurantOrder);
+		customerOrder.addOrder(restaurant, quantity, food);
         return this;
     }
 

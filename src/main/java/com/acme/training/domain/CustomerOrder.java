@@ -30,7 +30,7 @@ public class CustomerOrder {
     
     public String printBill() {
     	StringBuilder sb = new StringBuilder();
-    	sb.append("\n********** The Bill **************")
+    	sb.append("\n\n********** The Bill **************")
     			.append("\n Customer name: ")
     			.append(customerName)
     			.append("\n delivery address: ")
@@ -43,7 +43,7 @@ public class CustomerOrder {
 		}
     	sb.append("** Total: ")
     			.append(getTotal())
-    			.append(" Ft **************\n\n\n");
+    			.append(" Ft **************\n\n");
     	
     	return sb.toString();
     }
@@ -82,6 +82,25 @@ public class CustomerOrder {
     
 	private String getNextId() {
 		return String.valueOf(++NEXT_ID);
+	}
+
+	public void addOrder(Restaurant restaurant, int quantity, Food food) {
+		RestaurantOrder restaurantOrder = getRestaurantOrder(restaurant);
+		OrderItem orderItem = new OrderItem(quantity, food);
+		restaurantOrder.getOrderItems().add(orderItem);
+	}
+
+	private RestaurantOrder getRestaurantOrder(Restaurant restaurant) {
+		for (RestaurantOrder order : restaurantOrders) {
+			if(order.getRestaurant().equals(restaurant)) {
+				return order;
+			}
+		}
+		
+		RestaurantOrder restaurantOrder = new RestaurantOrder(restaurant);
+		restaurantOrders.add(restaurantOrder);
+		
+		return restaurantOrder;
 	}
 	
 }
