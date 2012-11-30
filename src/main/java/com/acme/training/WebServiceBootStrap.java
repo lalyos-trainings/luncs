@@ -8,6 +8,7 @@ import javax.xml.ws.Endpoint;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.acme.training.ws.MenuWS;
 import com.acme.training.ws.ShoppingCartWS;
 
 public class WebServiceBootStrap {
@@ -23,9 +24,14 @@ public class WebServiceBootStrap {
         ShoppingCartWS ws = appContext.getBean(ShoppingCartWS.class);
 
         InetAddress localhost = InetAddress.getLocalHost();
-        String address = "http://" + localhost.getHostAddress() + ":8080/menu";
-        System.out.println(address);
-        Endpoint.publish(address, ws);
+        String addrCart = "http://" + localhost.getHostAddress() + ":8080/cart";
+        System.out.println(addrCart);
+        Endpoint.publish(addrCart, ws);
+
+        MenuWS menuWs = appContext.getBean(MenuWS.class);
+
+        String addrMenu = "http://" + localhost.getHostAddress() + ":8080/menu";
+        Endpoint.publish(addrMenu, menuWs);
     }
 
 }
