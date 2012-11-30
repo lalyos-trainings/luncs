@@ -31,18 +31,18 @@ public class ShoppingCart implements BeanNameAware{
         this.customerOrder = new CustomerOrder();
     }
     
-    public ShoppingCart withCustomer(String customer) {
-        customerOrder.setCustomer(customer);
+    public ShoppingCart withCustomer(String name) {
+        customerOrder.getCustomer().setName(name);
         return this;
     }
     
     public ShoppingCart withDeliveryAddress(Address deliveryAddress) {
-        customerOrder.setDeliveryAddress(deliveryAddress);
+        customerOrder.getCustomer().setDeliveryAddress(deliveryAddress);
         return this;
     }
 
     public ShoppingCart withBillingAddress(Address billingAddress) {
-        customerOrder.setBillingAddress(billingAddress);
+        customerOrder.getCustomer().setBillingAddress(billingAddress);
         return this;
     }
 

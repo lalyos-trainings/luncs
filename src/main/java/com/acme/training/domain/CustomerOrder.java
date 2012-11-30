@@ -8,26 +8,11 @@ public class CustomerOrder {
     private static int nextId = 0;
     
     private Integer id = nextId++;
-    private String customer;
-    private Address deliveryAddress;
-    private Address billingAddress;
+    private Customer customer;
     private Collection<RestaurantOrder> restaurantOrders;
-    
-    /*@Override
-    public String toString() {
-        return "Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress
-                + "]" + getFormattedItems();
-    }
-    private String getFormattedItems() {
-        StringBuffer ret = new StringBuffer();
-        for (OrderItem item : itemMap.values()) {
-            ret.append(String.format("%n   %-25s : %3d", item.getFood().getName(), item.getQuantity()));
-        }
-        return ret.toString();
-    }*/
-    
+     
     public CustomerOrder (){
-        
+        this.customer = new Customer();
         this.restaurantOrders = new ArrayList<RestaurantOrder>();
     }
     
@@ -38,26 +23,14 @@ public class CustomerOrder {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getCustomer() {
+    public Customer getCustomer() {
         return customer;
     }
     
-    public void setCustomer(String customer) {
+    public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    public Address getDeliveryAddress() {
-        return deliveryAddress;
-    }
-    public void setDeliveryAddress(Address deliveryAddress) {
-        this.deliveryAddress = deliveryAddress;
-    }
-    public Address getBillingAddress() {
-        return billingAddress;
-    }
-    public void setBillingAddress(Address billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-    
+ 
     public void addRestaurantOrder(RestaurantOrder restaurantOrder) {
         restaurantOrders.add(restaurantOrder);
                 
@@ -83,7 +56,7 @@ public class CustomerOrder {
     
     
     public void printBill(){
-        System.out.println("Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + deliveryAddress + "]");
+        System.out.println("Order [id=" + id + ", customer=" + customer + ", deliveryAddress=" + customer.getDeliveryAddress() + "]");
         for (RestaurantOrder restaurantOrder : restaurantOrders) {if(restaurantOrder == null){System.out.println("=====üres rest orders========");}
                   restaurantOrder.printBill();
         }
@@ -91,12 +64,9 @@ public class CustomerOrder {
         
     public void addItem(OrderItem orderItem) {
         RestaurantOrder rO = null;
-               // if(restaurantOrders.isEmpty()){restaurantOrders.add(new RestaurantOrder(orderItem.getFood().getRestaurant()));}
-              //  if(restaurantOrders.contains(new RestaurantOrder(orderItem.getFood().getRestaurant()))){restaurantOrders.add(new RestaurantOrder(orderItem.getFood().getRestaurant()));}
         for (RestaurantOrder restaurantOrder : restaurantOrders) {
             if(restaurantOrder.getRestaurant().getName().equals(orderItem.getFood().getRestaurant().getName())){
-                //restaurantOrder.addItem(orderItem);
-                rO = restaurantOrder;
+               rO = restaurantOrder;
             }
         }
         

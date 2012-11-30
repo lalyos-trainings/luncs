@@ -1,7 +1,5 @@
 package com.acme.training.service;
 
-import org.springframework.stereotype.Component;
-
 import com.acme.training.domain.Address;
 import com.acme.training.domain.CustomerOrder;
 import com.acme.training.domain.Food;
@@ -37,11 +35,12 @@ public class TestRepo {
         
         CustomerOrder co = new CustomerOrder();
         Address addr = new Address();
-        co.setDeliveryAddress(addr);
+        co.getCustomer().setName("Béla");
+        co.getCustomer().setDeliveryAddress(addr);
         co.addRestaurantOrder(ro);
         co.addRestaurantOrder(ro2);
         
-        co.setCustomer("Béla");
+        
         co.printBill();
     
     }

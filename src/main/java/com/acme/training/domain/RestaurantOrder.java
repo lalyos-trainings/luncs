@@ -9,18 +9,12 @@ import java.util.Map;
 
 public class RestaurantOrder {
 
-
-
-
-    
-    
     private Restaurant restaurant;
     private Map<Integer, OrderItem> itemMap = new HashMap<Integer, OrderItem>(); 
     
     public RestaurantOrder (Restaurant restaurant){
         this.restaurant = restaurant;
     }
-    
     
     public Restaurant getRestaurant() {
         return restaurant;
