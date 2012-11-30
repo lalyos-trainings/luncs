@@ -49,21 +49,21 @@ public class InMemoryRestaurantRepository extends AbstractRestaurantRepository{
         Address a1 = new Address("1082", "Ulloi ut");
         r1.setAddress(a1);
         Collection<Food> foods1 = new ArrayList<Food>();
+        Menu m1 = new Menu(foods1, 1);
         foods1.add(new Food("szezamos csirke", 850, "Csirkemell darabok szezamos-mezes-csipos bundaban.", r1));
         foods1.add(new Food("edes-savanyu", 650, "-", r1));
         foods1.add(new Food("leves", 350, "Kinai leves.", r1));
         foods1.add(new Food("csirkecomb", 850, "Kinai csirkecomb.", r1));
-        Menu m1 = new Menu(foods1, 1);
         r1.setMenu(m1);
 
         Restaurant r2 = new Restaurant("KFC");
         Address a2 = new Address("1082", "Corvin negyed");
         r2.setAddress(a2);
         Collection<Food> foods2 = new ArrayList<Food>();
+        Menu m2 = new Menu(foods2, 1);
         foods2.add(new Food("csirkeszarny", 750, "Csirkeszarny csipos bundaban.", r2));
         foods2.add(new Food("csirkecomb", 950, "Rantott csirkecomb.", r2));
         foods2.add(new Food("libamaj", 1450, "Sult libamaj.", r2));
-        Menu m2 = new Menu(foods2, 1);
         r2.setMenu(m2);
         
         addRestaurant("elso", r1);
