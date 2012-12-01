@@ -15,6 +15,9 @@ public class CustomerOrder {
     private Address billingAddress;
     private Map<String, RestaurantOrder> restaurantOrderMap = new HashMap<String, RestaurantOrder>(); 
     
+    public Map<String, RestaurantOrder> getRestaurantOrderMap() {
+        return restaurantOrderMap;
+    }
     public String getId() {
         return id;
     }

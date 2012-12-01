@@ -2,6 +2,10 @@ package com.acme.training.domain;
 
 public class Address {
     private String street;
+    public Address() {
+        super();
+    }
+
     private String city;
     private String zip;
     private String country;
