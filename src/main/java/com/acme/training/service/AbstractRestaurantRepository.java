@@ -3,11 +3,13 @@ package com.acme.training.service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanNameAware;
 
+import com.acme.training.aop.Retry;
+import com.acme.training.aop.Timer;
 import com.acme.training.domain.Food;
 import com.acme.training.domain.Restaurant;
 
@@ -32,7 +34,15 @@ public class AbstractRestaurantRepository implements RestaurantRepository {
         return restaurantMap.values();
     }
 
+    static Random rnd = new Random();
+    
+    @Retry(maxRetry=30)
+    @Timer
     public Food findFoodById(Integer foodId) {
+    	int nextInt = rnd.nextInt(10);
+    	if (nextInt < 6) {
+    		throw new RuntimeException("Uuuupss!!!");
+    	}
         return foodMap.get(foodId);
     }
 
