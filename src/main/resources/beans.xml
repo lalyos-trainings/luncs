@@ -6,7 +6,9 @@
 	xmlns:c="http://www.springframework.org/schema/c"
 	default-autowire="byType"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
@@ -15,4 +17,6 @@
 	<alias name="${restaurant.repo.type}" alias="repo" />
 	
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="luncs" />
+    
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 </beans>
