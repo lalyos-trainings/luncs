@@ -26,6 +26,7 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
         this.writer = writer;
     }
 
+    @Override
     public void doList() {
         String nextMsg;
         String foodMsg;
@@ -44,12 +45,15 @@ public class PrintWriterMenuLister implements MenuLister, ApplicationContextAwar
             }
         }
         writer.flush();
+
+        repo.getFoodById(2);
     }
 
     public RestaurantRepository getRepo() {
         return repo;
     }
 
+    @Override
     public void setApplicationContext(ApplicationContext ctx) throws BeansException {
         this.ctx = ctx;
     }

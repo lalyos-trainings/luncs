@@ -9,10 +9,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class HereIComeAspect {
 
-    @Before("execution(java.util.Collection com.acme.training..*.*(..))")
+    @Before("execution(java.util.Collection com.acme.training..*.*(*))")
     public void here(JoinPoint joinPoint) {
         String methodName = joinPoint.getSignature()
                                      .toString();
         System.out.format("Here I come ... %s%n", methodName);
+        for (Object arg : joinPoint.getArgs()) {
+            System.out.format("    next arg: %i%n", arg);
+        }
     }
 }
