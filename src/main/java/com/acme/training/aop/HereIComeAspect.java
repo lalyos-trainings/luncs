@@ -1,5 +1,6 @@
 package com.acme.training.aop;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -8,8 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class HereIComeAspect {
 
-	@Before("execution(* com.acme.training.service.*.*(..) )")
-	public void here() {
-		System.out.println("Here I come ...");
+	@Before("execution(* com.acme.training..*.*(..) )")
+	public void here(JoinPoint joinPoint) {
+		String name = joinPoint.getSignature().toString();
+		System.out.format("Here I come ...: %s%n", name);
+		
 	}
 }
