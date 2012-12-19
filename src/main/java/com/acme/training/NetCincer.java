@@ -39,11 +39,11 @@ public class NetCincer {
             System.out.println("- next order:" + order);
         }
         
-        InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
-        statisticService.printStatistic();
+//        InMemoryStatisticService statisticService = ctx.getBean(InMemoryStatisticService.class);
+//        statisticService.printStatistic();
         
-        NavService navService = ctx.getBean(NavService.class);
-        System.out.println("Total VAT: " + navService.getTotalVAT());
+//        NavService navService = ctx.getBean(NavService.class);
+//        System.out.println("Total VAT: " + navService.getTotalVAT());
     }
 
 }
