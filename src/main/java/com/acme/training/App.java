@@ -1,11 +1,11 @@
 package com.acme.training;
 
-import java.util.Locale;
-
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.acme.training.domain.Food;
 import com.acme.training.service.MenuLister;
+import com.acme.training.service.RestaurantRepository;
 
 public class App {
 
@@ -18,6 +18,11 @@ public class App {
         MenuLister lister = ctx.getBean(MenuLister.class);
         
         lister.doList();
+        
+        RestaurantRepository repository = (RestaurantRepository)ctx.getBean("xmlRepo");
+        int foodId = 101;
+        Food food = repository.findFoodById(foodId);
+        System.out.format("Food with id: %d = %s", foodId, food.getName());
         
     }
 
