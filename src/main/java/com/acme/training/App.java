@@ -20,6 +20,7 @@ public class App {
         lister.doList();
         
         RestaurantRepository repository = (RestaurantRepository)ctx.getBean("xmlRepo");
+        System.out.println("Repo.class : " + repository.getClass());
         int foodId = 101;
         Food food = repository.findFoodById(foodId);
         System.out.format("Food with id: %d = %s", foodId, food.getName());
